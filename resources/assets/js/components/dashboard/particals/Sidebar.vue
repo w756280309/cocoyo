@@ -1,32 +1,39 @@
 <template>
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <div class="user">
-                <div class="avatar">
-                    <img :src="user.avatar" class="img-responsive img-circle">
-                </div>
-                <div class="nickname">
-                    <p>{{ user.name }}</p>
-                    <p>{{ user.email }}</p>
-                </div>
-                <div class="buttons">
-                    <a href="/">
-                        <i class="ion-ios-home"></i>
-                    </a>
-                    <a :href="userInfo">
-                        <i class="ion-md-person"></i>
-                    </a>
-                    <a href="/setting">
-                        <i class="ion-ios-cog"></i>
-                    </a>
+    <div class="drawer_nav">
+        <div class="current_team">
+            <div class="title_box">
+                <span class="team_name" style="font-size: 20px;">我是青年</span>
+            </div>
+        </div>
+
+        <div class="action_list">
+            <div v-for="(menu, key) in menus" :key="key">
+                <div class="mu-list">
+                    <div>
+                        <div class="mu-item-wrapper" tabindex="0"
+                             style="user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;">
+                            <div class="" style="margin-left: 0px;">
+                                <div class="mu-ripple-wrapper"></div>
+                                <div class="mu-item show-left has-avatar">
+                                    <div class="mu-item-left">
+                                        <div class="mu-avatar">
+                                            <div class="mu-avatar-inner">
+                                                <i :class="menu.icon"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mu-item-content">
+                                        <div class="mu-item-text" style="max-height: 36px; -webkit-line-clamp: 2;">
+                                            {{ menu.label }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <li v-for="menu in menus">
-                <router-link :to="menu.uri">
-                    <i :class="menu.icon"></i> {{ menu.label }}
-                </router-link>
-            </li>
-        </ul>
+        </div>
     </div>
 </template>
 
@@ -34,26 +41,26 @@
 <script>
     import menus from "../../../config/menu.js";
 
-    export default{
-        data () {
+    export default {
+        data() {
             return {
-                menus : menus,
-                user :{}
+                menus: menus,
+                user: {}
             }
         },
-        mounted () {
+        mounted() {
             this.user = {
-                avatar : 'https://image.cocoyo.xin/IMG_0347.PNG',
-                name : 'cocoyo',
-                email : '2430114823@qq.com'
+                avatar: 'https://image.cocoyo.xin/IMG_0347.PNG',
+                name: 'cocoyo',
+                email: '2430114823@qq.com'
             }
         },
-        computed : {
-            userInfo(){
-                return '/user/'+this.user.name
+        computed: {
+            userInfo() {
+                return '/user/' + this.user.name
             }
         },
-        methods : {
+        methods: {
             logout() {
             }
         }
@@ -61,114 +68,201 @@
 </script>
 
 <style scoped>
-    .sidebar-nav {
+    .drawer_nav {
+        width: 266px;
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+        background: white;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: all ease 500ms;
+        float: left;
+    }
+
+    .drawer_nav .current_team {
+        height: 51px;
+        position: relative;
+        padding: 28px 32px 0 22px;
+    }
+
+    .drawer_nav .current_team .title_box {
+        width: 230px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+    }
+
+    .drawer_nav .team_name {
+        width: 220px;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        color: #0E1726;
+        line-height: 28px;
+        word-wrap: break-word;
+    }
+
+    .drawer_nav .action_list {
+        height: 210px;
+        margin-top: 16px;
+        position: relative;
+    }
+
+    .mu-list {
+        padding: 8px 0;
+        width: 100%;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    .mu-item-wrapper {
+        display: block;
+        color: inherit;
+        position: relative;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .mu-item-wrapper:hover {
+        background-color: #ecf5ff;
+        color: #66b1ff;
+    }
+
+    .mu-ripple-wrapper {
+        height: 100%;
+        width: 100%;
         position: absolute;
         top: 0;
-        width: 250px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        left: 0;
     }
 
-    .sidebar-nav li {
-        text-indent: 20px;
-        line-height: 40px;
+    .mu-ripple-wrapper {
+        overflow: hidden;
     }
 
-    .navbar {
-        margin-bottom: 0;
+    .drawer_nav .action_list .mu-item.show-left {
+        padding-left: 60px;
     }
 
-    .sidebar-nav li .user {
-        display: block;
-        text-align: center;
-        width: 100%;
-        background-color: #3d4e60;
-        padding-top: 20px;
-        padding-bottom: 10px;
-        color: #fff;
+    .mu-item.has-avatar {
+        min-height: 56px;
     }
 
-    .user {
-        text-align: center;
-        padding-top: 15px;
-        background-color: #52697f;
+    .mu-item.show-left {
+        padding-left: 72px;
     }
 
-    .user .avatar {
-        width: 80px;
-        margin: 10px auto;
+    .mu-item {
+        color: rgba(0, 0, 0, 0.87);
     }
 
-    .nickname {
-        color: #fff;
+    .mu-item {
+        min-height: 48px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 16px;
+        color: rgba(0, 0, 0, .87);
+        position: relative;
     }
 
-    .buttons {
-        height: 50px;
+    .drawer_nav .action_list .mu-item-left {
+        left: 22px;
+        top: 2px;
     }
-    .buttons a {
-        display: inline-block;
-        font-size: 20px;
+
+    .mu-item-left {
+        color: #757575;
+    }
+
+    .mu-item-left, .mu-item-right {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
         width: 40px;
-        height: 40px;
-        line-height: 40px;
-        margin-right: 5px;
-        color: #828a9a;
-    }
-    .buttons a:hover {
-        font-size: 30px;
-        color: #fff;
-    }
-    .sidebar-nav li a {
-        display: block;
-        text-decoration: none;
-        color: #999999;
+        height: 100%;
+        position: absolute;
+        color: #757575;
+        top: 0;
+        max-height: 72px;
     }
 
-    .sidebar-nav li a:hover {
-        text-decoration: none;
-        color: #fff;
-        background: rgba(255,255,255,0.2);
+    .mu-item-content {
+        width: 100%;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     }
 
-    .sidebar-nav li .active {
-        color: #fff !important;
+    .mu-item-text {
+        color: rgba(0, 0, 0, 0.54);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        position: relative;
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 18px;
+        margin-top: 4px;
+        max-height: 40px;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        color: rgba(0, 0, 0, .54);
     }
 
-    .sidebar-nav li a i {
-        padding-right: 10px;
-    }
-
-    .sidebar-nav li a:active,
-    .sidebar-nav li a:focus {
-        text-decoration: none;
-    }
-
-    .active {
-        background-color: #3d4e60;
-        border-right: 4px solid #647f9d;
-    }
-    .active a {
-        color: #fff !important;
-    }
-
-    .sidebar-nav > .sidebar-brand {
-        height: 65px;
-        font-size: 18px;
-        line-height: 60px;
-    }
-
-    .sidebar-nav > .sidebar-brand a {
-        color: #999999;
-    }
-
-    .sidebar-nav > .sidebar-brand a:hover {
-        color: #fff;
+    .drawer_nav .action_list .mu-avatar {
         background: none;
+        width: 24px;
+        height: 24px;
     }
 
-    .logout {
-        cursor: pointer;
+    .mu-avatar {
+        color: #ffffff;
+        background-color: #bdbdbd;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    .mu-avatar-inner {
+        height: 100%;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .mu-avatar img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        display: block;
     }
 </style>

@@ -90114,6 +90114,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -90210,7 +90222,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n.sidebar-nav[data-v-f119f368] {\n    position: absolute;\n    top: 0;\n    width: 250px;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n}\n.sidebar-nav li[data-v-f119f368] {\n    text-indent: 20px;\n    line-height: 40px;\n}\n.navbar[data-v-f119f368] {\n    margin-bottom: 0;\n}\n.sidebar-nav li .user[data-v-f119f368] {\n    display: block;\n    text-align: center;\n    width: 100%;\n    background-color: #3d4e60;\n    padding-top: 20px;\n    padding-bottom: 10px;\n    color: #fff;\n}\n.user[data-v-f119f368] {\n    text-align: center;\n    padding-top: 15px;\n    background-color: #52697f;\n}\n.user .avatar[data-v-f119f368] {\n    width: 80px;\n    margin: 10px auto;\n}\n.nickname[data-v-f119f368] {\n    color: #fff;\n}\n.buttons[data-v-f119f368] {\n    height: 50px;\n}\n.buttons a[data-v-f119f368] {\n    display: inline-block;\n    font-size: 20px;\n    width: 40px;\n    height: 40px;\n    line-height: 40px;\n    margin-right: 5px;\n    color: #828a9a;\n}\n.buttons a[data-v-f119f368]:hover {\n    font-size: 30px;\n    color: #fff;\n}\n.sidebar-nav li a[data-v-f119f368] {\n    display: block;\n    text-decoration: none;\n    color: #999999;\n}\n.sidebar-nav li a[data-v-f119f368]:hover {\n    text-decoration: none;\n    color: #fff;\n    background: rgba(255,255,255,0.2);\n}\n.sidebar-nav li .active[data-v-f119f368] {\n    color: #fff !important;\n}\n.sidebar-nav li a i[data-v-f119f368] {\n    padding-right: 10px;\n}\n.sidebar-nav li a[data-v-f119f368]:active,\n.sidebar-nav li a[data-v-f119f368]:focus {\n    text-decoration: none;\n}\n.active[data-v-f119f368] {\n    background-color: #3d4e60;\n    border-right: 4px solid #647f9d;\n}\n.active a[data-v-f119f368] {\n    color: #fff !important;\n}\n.sidebar-nav > .sidebar-brand[data-v-f119f368] {\n    height: 65px;\n    font-size: 18px;\n    line-height: 60px;\n}\n.sidebar-nav > .sidebar-brand a[data-v-f119f368] {\n    color: #999999;\n}\n.sidebar-nav > .sidebar-brand a[data-v-f119f368]:hover {\n    color: #fff;\n    background: none;\n}\n.logout[data-v-f119f368] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.drawer_nav[data-v-f119f368] {\n    width: 266px;\n    height: 100%;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    position: relative;\n    background: white;\n    white-space: nowrap;\n    overflow: hidden;\n    -webkit-transition: all ease 500ms;\n    transition: all ease 500ms;\n    float: left;\n}\n.drawer_nav .current_team[data-v-f119f368] {\n    height: 51px;\n    position: relative;\n    padding: 28px 32px 0 22px;\n}\n.drawer_nav .current_team .title_box[data-v-f119f368] {\n    width: 230px;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n.drawer_nav .team_name[data-v-f119f368] {\n    width: 220px;\n    font-size: 20px;\n    font-style: normal;\n    font-weight: 500;\n    color: #0E1726;\n    line-height: 28px;\n    word-wrap: break-word;\n}\n.drawer_nav .action_list[data-v-f119f368] {\n    height: 210px;\n    margin-top: 16px;\n    position: relative;\n}\n.mu-list[data-v-f119f368] {\n    padding: 8px 0;\n    width: 100%;\n    position: relative;\n    overflow-x: hidden;\n    overflow-y: visible;\n}\n.mu-item-wrapper[data-v-f119f368] {\n    display: block;\n    color: inherit;\n    position: relative;\n    outline: none;\n    cursor: pointer;\n}\n.mu-item-wrapper[data-v-f119f368]:hover {\n    background-color: #ecf5ff;\n    color: #66b1ff;\n}\n.mu-ripple-wrapper[data-v-f119f368] {\n    height: 100%;\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.mu-ripple-wrapper[data-v-f119f368] {\n    overflow: hidden;\n}\n.drawer_nav .action_list .mu-item.show-left[data-v-f119f368] {\n    padding-left: 60px;\n}\n.mu-item.has-avatar[data-v-f119f368] {\n    min-height: 56px;\n}\n.mu-item.show-left[data-v-f119f368] {\n    padding-left: 72px;\n}\n.mu-item[data-v-f119f368] {\n    color: rgba(0, 0, 0, 0.87);\n}\n.mu-item[data-v-f119f368] {\n    min-height: 48px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 16px;\n    color: rgba(0, 0, 0, .87);\n    position: relative;\n}\n.drawer_nav .action_list .mu-item-left[data-v-f119f368] {\n    left: 22px;\n    top: 2px;\n}\n.mu-item-left[data-v-f119f368] {\n    color: #757575;\n}\n.mu-item-left[data-v-f119f368], .mu-item-right[data-v-f119f368] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    width: 40px;\n    height: 100%;\n    position: absolute;\n    color: #757575;\n    top: 0;\n    max-height: 72px;\n}\n.mu-item-content[data-v-f119f368] {\n    width: 100%;\n    -webkit-align-self: center;\n    -ms-flex-item-align: center;\n    -ms-grid-row-align: center;\n    align-self: center;\n}\n.mu-item-text[data-v-f119f368] {\n    color: rgba(0, 0, 0, 0.54);\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    position: relative;\n    overflow: hidden;\n    font-size: 14px;\n    line-height: 18px;\n    margin-top: 4px;\n    max-height: 40px;\n    max-width: 100%;\n    text-overflow: ellipsis;\n    word-break: break-all;\n    color: rgba(0, 0, 0, .54);\n}\n.drawer_nav .action_list .mu-avatar[data-v-f119f368] {\n    background: none;\n    width: 24px;\n    height: 24px;\n}\n.mu-avatar[data-v-f119f368] {\n    color: #ffffff;\n    background-color: #bdbdbd;\n    display: inline-block;\n    height: 40px;\n    width: 40px;\n    font-size: 20px;\n    text-align: center;\n    border-radius: 50%;\n}\n.mu-avatar-inner[data-v-f119f368] {\n    height: 100%;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n}\n.mu-avatar img[data-v-f119f368] {\n    border-radius: 50%;\n    width: 100%;\n    height: 100%;\n    display: block;\n}\n", ""]);
 
 // exports
 
@@ -90222,6 +90234,13 @@ exports.push([module.i, "\n.sidebar-nav[data-v-f119f368] {\n    position: absolu
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_menu_js__ = __webpack_require__(194);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -90338,50 +90357,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "sidebar-wrapper" } }, [
+  return _c("div", { staticClass: "drawer_nav" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
-      "ul",
-      { staticClass: "sidebar-nav" },
-      [
-        _c("div", { staticClass: "user" }, [
-          _c("div", { staticClass: "avatar" }, [
-            _c("img", {
-              staticClass: "img-responsive img-circle",
-              attrs: { src: _vm.user.avatar }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "nickname" }, [
-            _c("p", [_vm._v(_vm._s(_vm.user.name))]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.user.email))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "buttons" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("a", { attrs: { href: _vm.userInfo } }, [
-              _c("i", { staticClass: "ion-md-person" })
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
+      "div",
+      { staticClass: "action_list" },
+      _vm._l(_vm.menus, function(menu, key) {
+        return _c("div", { key: key }, [
+          _c("div", { staticClass: "mu-list" }, [
+            _c("div", [
+              _c(
+                "div",
+                {
+                  staticClass: "mu-item-wrapper",
+                  staticStyle: {
+                    "user-select": "none",
+                    outline: "none",
+                    cursor: "pointer",
+                    "-webkit-appearance": "none"
+                  },
+                  attrs: { tabindex: "0" }
+                },
+                [
+                  _c("div", { staticStyle: { "margin-left": "0px" } }, [
+                    _c("div", { staticClass: "mu-ripple-wrapper" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mu-item show-left has-avatar" }, [
+                      _c("div", { staticClass: "mu-item-left" }, [
+                        _c("div", { staticClass: "mu-avatar" }, [
+                          _c("div", { staticClass: "mu-avatar-inner" }, [
+                            _c("i", { class: menu.icon })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mu-item-content" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "mu-item-text",
+                            staticStyle: {
+                              "max-height": "36px",
+                              "-webkit-line-clamp": "2"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(menu.label) +
+                                "\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ])
           ])
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.menus, function(menu) {
-          return _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: menu.uri } }, [
-                _c("i", { class: menu.icon }),
-                _vm._v(" " + _vm._s(menu.label) + "\n            ")
-              ])
-            ],
-            1
-          )
-        })
-      ],
-      2
+        ])
+      })
     )
   ])
 }
@@ -90390,16 +90427,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/" } }, [
-      _c("i", { staticClass: "ion-ios-home" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/setting" } }, [
-      _c("i", { staticClass: "ion-ios-cog" })
+    return _c("div", { staticClass: "current_team" }, [
+      _c("div", { staticClass: "title_box" }, [
+        _c(
+          "span",
+          { staticClass: "team_name", staticStyle: { "font-size": "20px" } },
+          [_vm._v("我是青年")]
+        )
+      ])
     ])
   }
 ]
@@ -90498,7 +90533,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n#repbar[data-v-d5447560] {\n    margin-left: -15px;\n}\n.navbar-nav[data-v-d5447560] {\nli {\na {\n            padding-top: 0px;\n            padding-bottom: 0px;\n            line-height: 60px;\n}\n}\n}\n.navbar-toggle[data-v-d5447560] {\n    margin: 0;\n    font-size: 20px;\n    text-decoration: none;\n    padding: 13px 10px;\n    border: 0;\n    color: #777;\n    cursor: pointer;\n}\n.navbar-inverse .navbar-toggle[data-v-d5447560]:hover {\n    border: 0;\n    border-radius: 0;\n    background-color: #fff !important;\n    text-decoration: none;\n    color: #888;\n}\n", ""]);
+exports.push([module.i, "\n.top_info[data-v-d5447560] {\n     position: absolute;\n     right: 20px;\n     top: 20px;\n     z-index: 111;\n}\n.top_info .item_notify[data-v-d5447560] {\n     width: 24px;\n     height: 24px;\n     margin-right: 20px;\n     margin-top: 4px;\n     cursor: pointer;\n     float: left;\n}\n.notify_wrap .mu-icon-button[data-v-d5447560] {\n     left: -10px;\n     top: -12px;\n}\n.top_info .user_info[data-v-d5447560] {\n     width: 50px;\n     height: 50px;\n     border-radius: 50%;\n     float: left;\n     position: relative;\n     top: -5px;\n     left: 0;\n}\n", ""]);
 
 // exports
 
@@ -90509,6 +90544,24 @@ exports.push([module.i, "\n#repbar[data-v-d5447560] {\n    margin-left: -15px;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -90527,20 +90580,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-inverse navbar-static-top" },
-      [_c("div", { staticClass: "container-fluid" })]
+  return _c("div", { staticClass: "top_info clearfix" }, [
+    _c("div", { staticClass: "item_notify" }, [
+      _c(
+        "div",
+        { staticClass: "notify_wrap" },
+        [
+          _c(
+            "el-tooltip",
+            {
+              staticClass: "item",
+              attrs: {
+                effect: "dark",
+                content: "Top Right 提示文字",
+                placement: "bottom"
+              }
+            },
+            [_c("i", { staticClass: "el-icon-bell" })]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "user_info" },
+      [
+        _c(
+          "el-dropdown",
+          [
+            _c("img", {
+              staticClass: "img-responsive img-circle",
+              attrs: {
+                "data-v-5552f324": "",
+                src: "https://image.cocoyo.xin/IMG_0347.PNG"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "el-dropdown-menu",
+              { attrs: { slot: "dropdown" }, slot: "dropdown" },
+              [
+                _c("el-dropdown-item", [_vm._v("黄金糕")]),
+                _vm._v(" "),
+                _c("el-dropdown-item", [_vm._v("狮子头")]),
+                _vm._v(" "),
+                _c("el-dropdown-item", [_vm._v("螺蛳粉")]),
+                _vm._v(" "),
+                _c("el-dropdown-item", { attrs: { disabled: "" } }, [
+                  _vm._v("双皮奶")
+                ]),
+                _vm._v(" "),
+                _c("el-dropdown-item", { attrs: { divided: "" } }, [
+                  _vm._v("蚵仔煎")
+                ])
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
     )
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -90558,37 +90664,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "wrapper" } },
-    [
-      _c("sidebar"),
-      _vm._v(" "),
+  return _c("div", { staticClass: "cocoyo" }, [
+    _c("div", { staticClass: "container" }, [
       _c(
         "div",
-        { attrs: { id: "page-content-wrapper" } },
+        { attrs: { id: "wrapper" } },
         [
-          _c("navbar"),
+          _c("sidebar"),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "container-fluid" },
+            {
+              staticClass: "wrappeer_box mCustomScrollbar _mCS_3 mCS-autoHide",
+              staticStyle: { overflow: "visible" },
+              attrs: { id: "wrapper-box" }
+            },
             [
               _c(
-                "transition",
-                { attrs: { name: "slide-fade" } },
-                [_c("router-view")],
-                1
+                "div",
+                {
+                  staticClass:
+                    "mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside",
+                  staticStyle: { "max-height": "none" },
+                  attrs: { id: "mCSB_3", tabindex: "0" }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "mCSB_container",
+                      staticStyle: {
+                        position: "relative",
+                        top: "0px",
+                        left: "0px"
+                      },
+                      attrs: { id: "mCSB_3_container" }
+                    },
+                    [
+                      _c("navbar"),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "wrapper_container",
+                        staticStyle: { width: "784px" }
+                      })
+                    ],
+                    1
+                  )
+                ]
               )
-            ],
-            1
+            ]
           )
         ],
         1
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

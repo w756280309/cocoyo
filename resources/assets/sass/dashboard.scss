@@ -1,6 +1,6 @@
 
 // Fonts
-//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
 @import "variables";
@@ -13,6 +13,7 @@
 
 @import "~ionicons/dist/scss/ionicons";
 
+@import "./dashboard/common";
 @import "./dashboard/_navbar";
-@import "./dashboard/sidebar";
+
 @import "./dashboard/_ibox";

@@ -16,7 +16,7 @@ trait ProxyHelpers
             $url = request()->root() . '/api/oauth/token';
 
             $params = array_merge(config('passport.proxy'), [
-                'email' => request('email'),
+                'username' => request('email'),
                 'password' => request('password'),
             ]);
 
