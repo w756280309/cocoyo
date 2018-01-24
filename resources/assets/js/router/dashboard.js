@@ -13,6 +13,10 @@ export default [
             {
                 path :'home',
                 component : resolve => void(require(['../views/dashboard/Home.vue'], resolve))
+            },
+            {
+                path: 'user',
+                component : resolve => void(require(['../views/dashboard/user/index.vue'], resolve))
             }
         ]
     },

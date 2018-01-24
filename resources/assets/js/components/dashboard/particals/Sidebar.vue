@@ -78,6 +78,7 @@
         overflow: hidden;
         transition: all ease 500ms;
         float: left;
+        overflow-y: visible;
     }
 
     .drawer_nav .current_team {
