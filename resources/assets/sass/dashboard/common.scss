@@ -18,6 +18,8 @@ html, body, #app, .cocoyo {
   overflow: hidden;
 }
 
+a:hover {text-decoration:none;}
+
 .container{
   height: 100%;
   position: absolute;
@@ -48,8 +50,6 @@ html, body, #app, .cocoyo {
       padding-top: 82px;
       .mu-paper{
         display: block;
-        max-height: calc(100% - 80px - 80px);
-        min-height: 200px;
         position: absolute;
         left: 0;
         right: 0;
@@ -61,7 +61,6 @@ html, body, #app, .cocoyo {
         overflow: hidden;
         transition: all .45s cubic-bezier(.23,1,.32,1);
         .header{
-          height: 120px;
           background-color: #f4f7fd;
           padding: 24px 48px;
           position: absolute;
@@ -85,7 +84,6 @@ html, body, #app, .cocoyo {
           }
           .header-type-switch{
             white-space: nowrap;
-            padding: 12px 0;
             -webkit-transform-origin: left;
             transform-origin: left;
           }
@@ -95,7 +93,85 @@ html, body, #app, .cocoyo {
             position: absolute;
           }
         }
+        .body{
+          padding: 25px 50px 50px;
+          margin-top: 80px;
+          overflow-y: auto;
+          .avatar{
+            width:50px;
+            height:50px;
+            border-radius: 50%;
+          }
+          .table-pagination{
+            margin-top:20px;
+            text-align: center;
+          }
+        }
       }
+    }
+  }
+  .switch_top{
+    height: 160px;
+    background: #F4F7FD;
+    width: 100%;
+    text-align: center;
+    .switch_return{
+      text-align: left;
+      padding: 20px 50px;
+      font-size: 16px;
+      color: #6E747D;
+      line-height: 16px;
+      display: -webkit-box;
+      display: flex;
+      height: 20px;
+      .back-but {
+        color: rgba(0, 0, 0, 0.87);
+        z-index: 4;
+        span.page-name{
+          font-size: 16px;
+          color: rgba(0, 0, 0, 0.87);
+          display: inline-block;
+          vertical-align: top;
+          line-height: 48px;
+          cursor: default;
+          margin-right: 16px;
+        }
+      }
+    }
+
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      height: 40px;
+      color: #0E1726;
+      width: 800px;
+      margin: 0 auto;
+      margin-top: 31px;
+      .team_name_show {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        margin-top: 29px;
+      }
+    }
+  }
+  .list_box{
+    margin: 0 auto;
+    padding-top: 40px;
+    height: 100%;
+    .list_box_big {
+      width: 100%;
+      padding-bottom: 60px;
+    }
+    .box_body{
+      overflow: auto;
+      padding-bottom: 80px;
+      position: relative;
+      width: 800px;
+      margin: 0 auto;
+      font-size: 14px;
     }
   }
 }
@@ -105,14 +181,12 @@ html, body, #app, .cocoyo {
 }
 .mCustomScrollBox {
   position: relative;
-  overflow: hidden;
   height: 100%;
   max-width: 100%;
   outline: 0;
   direction: ltr;
 }
 .mCSB_container {
-  overflow: hidden;
   width: auto;
   height: auto;
 }

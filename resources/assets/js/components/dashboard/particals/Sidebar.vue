@@ -8,30 +8,32 @@
 
         <div class="action_list">
             <div v-for="(menu, key) in menus" :key="key">
-                <div class="mu-list">
-                    <div>
-                        <div class="mu-item-wrapper" tabindex="0"
-                             style="user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;">
-                            <div class="" style="margin-left: 0px;">
-                                <div class="mu-ripple-wrapper"></div>
-                                <div class="mu-item show-left has-avatar">
-                                    <div class="mu-item-left">
-                                        <div class="mu-avatar">
-                                            <div class="mu-avatar-inner">
-                                                <i :class="menu.icon"></i>
+                <router-link :to="menu.uri">
+                    <div class="mu-list">
+                        <div>
+                            <div class="mu-item-wrapper" tabindex="0"
+                                 style="user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;">
+                                <div class="" style="margin-left: 0px;">
+                                    <div class="mu-ripple-wrapper"></div>
+                                    <div class="mu-item show-left has-avatar">
+                                        <div class="mu-item-left">
+                                            <div class="mu-avatar">
+                                                <div class="mu-avatar-inner">
+                                                    <i :class="menu.icon"></i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="mu-item-content">
-                                        <div class="mu-item-text" style="max-height: 36px; -webkit-line-clamp: 2;">
-                                            {{ menu.label }}
+                                        <div class="mu-item-content">
+                                            <div class="mu-item-text" style="max-height: 36px; -webkit-line-clamp: 2;">
+                                                {{ menu.label }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -80,7 +82,20 @@
         float: left;
         overflow-y: visible;
     }
-
+    .drawer_nav::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    .drawer_nav::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.2);
+    }
+    .drawer_nav::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+    }
     .drawer_nav .current_team {
         height: 51px;
         position: relative;

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class UserResource extends Resource
+class User extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -26,9 +26,10 @@ class UserResource extends Resource
             'github_url' => $this->github_url,
             'weibo_name' => $this->weibo_name,
             'weibo_link' => $this->weibo_link,
+            'website' => $this->website,
             'description' => $this->description,
             'email_notify_enabled' => $this->email_notify_enabled,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at->toDateTimeString()
         ];
     }
 }

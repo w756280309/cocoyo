@@ -20,3 +20,10 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+# ==================== Dashboard =----------------------
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
+    Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
+    Route::post('/users/{user}/status', 'UserController@status');
+});
