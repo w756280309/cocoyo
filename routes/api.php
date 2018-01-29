@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'Auth'], function () {
-   Route::post('login', 'LoginController@login')->name('user.login');
+   Route::post('dashboard/login', 'LoginController@login')->name('user.login');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
