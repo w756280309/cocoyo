@@ -54,7 +54,7 @@
             FormNavbar,
             Avatar
         },
-        mounted() {
+        created() {
             this.$http.get('users/' + this.$route.params.id + '/edit').then((response) => {
                 this.form = response.data;
             })

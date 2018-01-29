@@ -1,40 +1,44 @@
 <template>
     <div class="cover-avatar text-center">
-        <vue-image-core-upload field="avatar"
+        <vue-image-core-upload field="image"
                                @crop-success="cropSuccess"
                                @crop-upload-success="cropUploadSuccess"
                                @crop-upload-fail="cropUploadFail"
                                v-model="show"
-                               url="/api/user/avatar"
-                               :params="params"
+                               url="/api/upload/image"
                                :headers="headers"
                                img-format="png">
         </vue-image-core-upload>
-            <img :src="imgDataUrl" class="avatar">
+            <img :src="avatar" class="avatar">
             <a class="btn btn-success file" @click="toggleShow"><span>修改头像</span></a>
     </div>
 </template>
 
 <script>
-    import VueImageCropUpload from 'vue-image-crop-upload/upload-2.vue';
+    import VueImageCropUpload from 'vue-image-crop-upload/upload-2.vue'
+    import {getToken} from '@/plugins/auth/auth'
 
     export default{
         props:['imgDataUrl'],
         components: {
             'vue-image-core-upload': VueImageCropUpload,
         },
+        computed: {
+            avatar() {
+                return this.upload || this.imgDataUrl
+            }
+        },
         data(){
             return {
                 show: false,
-                params: {
-                    _token: '',
-                    name: 'avatar'
-                },
+                upload: '',
                 headers: {
-                    'X-CSRF-TOKEN': ''
+                    'Authorization': getToken().token_type + ' ' + getToken().access_token,
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             }
         },
+
         methods: {
             toggleShow() {
                 this.show = !this.show;
@@ -46,7 +50,7 @@
              * [param] field
              */
             cropSuccess(imgDataUrl, field){
-                this.imgDataUrl = imgDataUrl;
+                this.upload = imgDataUrl;
             },
             /**
              * upload success
@@ -55,8 +59,9 @@
              * [param] field
              */
             cropUploadSuccess(response, field){
-                this.imgDataUrl = response.url;
+                this.upload = response.relative_url;
                 this.toggleShow();
+                console.log(this.upload)
 //                swal("Here's a message!", "It's pretty, isn't it?")
            //     toastr.success('头像修改成功');
             },
