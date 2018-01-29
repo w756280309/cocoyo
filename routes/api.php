@@ -13,17 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
+# ==================== Login =----------------------
 Route::group(['namespace' => 'Auth'], function () {
    Route::post('dashboard/login', 'LoginController@login')->name('user.login');
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+# ==================== Upload =----------------------
+Route::group(['prefix' => 'upload'], function () {
+    Route::post('image', 'UploadController@uploadImage');
 });
+
 
 # ==================== Dashboard =----------------------
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
     Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
-    Route::post('/users/{user}/status', 'UserController@status');
+    Route::put('users/{user}/status', 'UserController@status');
+    Route::post('users/{user}/avatar', 'UserController@avatar');
+
+    Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
 });

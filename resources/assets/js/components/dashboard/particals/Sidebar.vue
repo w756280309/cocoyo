@@ -18,7 +18,7 @@
                                     <div class="mu-item show-left has-avatar">
                                         <div class="mu-item-left">
                                             <div class="mu-avatar">
-                                                <div class="mu-avatar-inner">
+                                                <div class="mu-avatar-inner" :style="{color: menu.color}">
                                                     <i :class="menu.icon"></i>
                                                 </div>
                                             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\User as UserResource;
 use App\Modules\User;
+use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function status(User $user, Request $request)
     {
-        if ($user == $request->user()->id) {
+        if ($user->id == $request->user()->id) {
             return $this->errorUnauthorized('您无法为自己和其他管理员更改状态');
         }
 
@@ -49,5 +50,46 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return new UserResource($user);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param User $user
+     * @param  \Illuminate\Http\Request $request
+     * @return \Response
+     */
+    public function update(User $user, Request $request)
+    {
+        $user->fill($request->only(['nickname', 'website', 'description']));
+
+        $user->save();
+
+        return $this->noContent();
+    }
+
+    /**
+     * 上传头像
+     *
+     * @param User $user
+     * @param Request $request
+     * @param BaseManager $manager
+     * @return mixed
+     */
+    public function avatar(User $user, Request $request, BaseManager $manager)
+    {
+        $this->validate($request, [
+            'image' => 'required|image'
+        ]);
+
+        $path = date('Y') . date('m') . '/' . date('d');
+
+        $resource = $manager->store($request->file('image'), $path);
+
+        $user->avatar = $resource['relative_url'];
+
+        $user->save();
+
+        return $this->respond($resource);
     }
 }

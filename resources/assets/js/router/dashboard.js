@@ -17,6 +17,10 @@ export default [
             {
                 path: 'users',
                 component : resolve => void(require(['../views/dashboard/users/index.vue'], resolve))
+            },
+            {
+                path: 'category',
+                component : resolve => void(require(['@/views/dashboard/categories/index.vue'], resolve))
             }
         ]
     },

@@ -8,21 +8,9 @@
                     v-loading="loading"
                     style="width: 100%">
                 <el-table-column property="id" label="id"></el-table-column>
-                <el-table-column label="头像">
-                    <template slot-scope="scope">
-                        <img :src="scope.row.avatar" class="avatar" alt="avatar">
-                    </template>
-                </el-table-column>
-                <el-table-column property="name" label="用户名"></el-table-column>
-                <el-table-column property="email" label="邮箱"></el-table-column>
-                <el-table-column label="状态">
-                    <template slot-scope="scope">
-                        <i :class="scope.row.status == 1 ? 'el-icon-success' : 'el-icon-error'"
-                           :style="scope.row.status == 1 ?  statusEnable : statusDisable"
-                           @click="handleStatus(scope.row.id)">
-                        </i>
-                    </template>
-                </el-table-column>
+                <el-table-column property="name" label="分类名"></el-table-column>
+                <el-table-column property="path" label="路径"></el-table-column>
+                <el-table-column property="description" label="描述"></el-table-column>
                 <el-table-column property="created_at" label="创建时间"></el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
@@ -54,34 +42,26 @@
         components : {
             bodyHeader
         },
-       data() {
+        data() {
             return {
                 loading: true,
-                name : '用户列表',
+                name : '分类列表',
                 action_add: false,
                 tableData: [],
                 meta: {
                     current_page: 1,
                     total : 0,
                     per_page: 10
-                },
-                statusEnable: {
-                    color: '#409EFF',
-                    cursor: 'pointer'
-                },
-                statusDisable: {
-                    color: '#F56C6C',
-                    cursor: 'pointer'
                 }
             }
-       },
+        },
         created() {
             this.loadData()
         },
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'users';
+                var url = 'category';
 
                 if (this.meta.current_page > 1) {
                     let page = ''
@@ -104,23 +84,6 @@
                 this.meta.current_page = val
                 this.loadData()
             },
-            handleStatus(id) {
-                this.$confirm('该动作可能会影响一些数据，请三思!', '改变该状态?', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning',
-                    center: true
-                }).then(() => {
-                    this.$http.put('users/' + id + '/status').then((response) => {
-                        this.$notify({
-                            title: 'success',
-                            message: '状态修改成功',
-                            type: 'success'
-                        })
-                        this.loadData()
-                    })
-                });
-            }
         }
     }
 </script>

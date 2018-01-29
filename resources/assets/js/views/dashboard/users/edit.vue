@@ -12,11 +12,11 @@
                             <el-col :span="14" :offset="2">
                                 <el-form ref="form" :model="form" label-width="80px">
                                     <el-form-item label="用户名">
-                                        <el-input v-model="form.name"></el-input>
+                                        <el-input v-model="form.name" disabled="disabled"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="邮箱">
-                                        <el-input v-model="form.email"></el-input>
+                                        <el-input v-model="form.email" disabled="disabled"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="昵称">
@@ -32,8 +32,8 @@
                                     </el-form-item>
 
                                     <el-form-item>
-                                        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-                                        <el-button>取消</el-button>
+                                        <el-button type="primary" @click="onSubmit">编辑</el-button>
+                                        <el-button @click="handleBack">取消</el-button>
                                     </el-form-item>
                                 </el-form>
                             </el-col>
@@ -54,7 +54,7 @@
             FormNavbar,
             Avatar
         },
-        mounted() {
+        created() {
             this.$http.get('users/' + this.$route.params.id + '/edit').then((response) => {
                 this.form = response.data;
             })
@@ -73,7 +73,17 @@
         },
         methods: {
             onSubmit() {
-                console.log('submit!');
+                this.$http.put('users/' + this.$route.params.id, this.form).then((response) => {
+                    this.$notify({
+                        title: 'success',
+                        message: '编辑成功',
+                        type: 'success'
+                    })
+                    this.$router.push('/users')
+                });
+            },
+            handleBack() {
+                this.$router.push('/users')
             }
         }
     }
