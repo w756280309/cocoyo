@@ -1,6 +1,6 @@
 <template>
     <div class="mu-paper">
-        <body-header :name="name" :action_add="action_add"></body-header>
+        <body-header :name="name" :action_add="action_add" add_to_url="/category/create"></body-header>
         <div class="body">
             <el-table
                     :data="tableData"
@@ -14,7 +14,7 @@
                 <el-table-column property="created_at" label="创建时间"></el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <router-link :to="'users/' + scope.row.id + '/edit'">
+                        <router-link :to="'category/' + scope.row.id + '/edit'">
                             <el-button type="primary" icon="el-icon-edit" round></el-button>
                         </router-link>
                         <el-button type="danger" icon="el-icon-delete" round></el-button>
@@ -46,7 +46,7 @@
             return {
                 loading: true,
                 name : '分类列表',
-                action_add: false,
+                action_add: true,
                 tableData: [],
                 meta: {
                     current_page: 1,

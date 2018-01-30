@@ -16,11 +16,15 @@ export default [
             },
             {
                 path: 'users',
-                component : resolve => void(require(['../views/dashboard/users/index.vue'], resolve))
+                component : resolve => void(require(['@/views/dashboard/users/index.vue'], resolve))
             },
             {
                 path: 'category',
                 component : resolve => void(require(['@/views/dashboard/categories/index.vue'], resolve))
+            },
+            {
+                path: 'tags',
+                component : resolve => void(require(['@/views/dashboard/tags/index.vue'], resolve))
             }
         ]
     },
@@ -30,7 +34,35 @@ export default [
         children : [
             {
                 path: ':id/edit',
-                component : resolve => void(require(['../views/dashboard/users/edit.vue'], resolve))
+                component : resolve => void(require(['@/views/dashboard/users/edit.vue'], resolve))
+            }
+        ]
+    },
+    {
+        path : '/category',
+        component : From,
+        children : [
+            {
+                path: 'create',
+                component : resolve => void(require(['@/views/dashboard/categories/create.vue'], resolve))
+            },
+            {
+                path: ':id/edit',
+                component: resolve => void(require(['@/views/dashboard/categories/edit.vue'], resolve))
+            }
+        ]
+    },
+    {
+        path : '/tags',
+        component : From,
+        children : [
+            {
+                path: 'create',
+                component : resolve => void(require(['@/views/dashboard/tags/create.vue'], resolve))
+            },
+            {
+                path: ':id/edit',
+                component: resolve => void(require(['@/views/dashboard/tags/edit.vue'], resolve))
             }
         ]
     },

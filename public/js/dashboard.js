@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		4: 0
+/******/ 		10: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"5":"1ac1ae858f6d410bd068","6":"5524094f697bba171549","7":"f3885ba08d4b637b15e3","8":"d1ef6a6744d74b06215c","9":"513489323695941299b9"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"6c97ef4de6f85ba1f208","1":"b839925fa152b80e400d","2":"31222a73c4565a0f2ea9","3":"fc2cadfd8bc817180d98","4":"0991e1dcb8673a3238a3","5":"129a74842712d3bee5a8","6":"d9d17f238ed29eda0fb9","7":"05605f81c32740415ed9","8":"dfeb0a1b72bea4eb7ed2","9":"e0ed96b0a68ee3b9ea43"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -89961,12 +89961,17 @@ if (inBrowser && window.Vue) {
     }, {
         path: 'users',
         component: function component(resolve) {
-            return void __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(211)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(211)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
         path: 'category',
         component: function component(resolve) {
-            return void __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(276)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(212)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
+    }, {
+        path: 'tags',
+        component: function component(resolve) {
+            return void __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(213)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }]
 }, {
@@ -89975,13 +89980,41 @@ if (inBrowser && window.Vue) {
     children: [{
         path: ':id/edit',
         component: function component(resolve) {
-            return void __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(212)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(214)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
+    }]
+}, {
+    path: '/category',
+    component: __WEBPACK_IMPORTED_MODULE_1__views_Form_vue___default.a,
+    children: [{
+        path: 'create',
+        component: function component(resolve) {
+            return void __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(215)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
+    }, {
+        path: ':id/edit',
+        component: function component(resolve) {
+            return void __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(216)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
+    }]
+}, {
+    path: '/tags',
+    component: __WEBPACK_IMPORTED_MODULE_1__views_Form_vue___default.a,
+    children: [{
+        path: 'create',
+        component: function component(resolve) {
+            return void __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(217)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
+    }, {
+        path: ':id/edit',
+        component: function component(resolve) {
+            return void __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(218)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }]
 }, {
     path: '/login',
     component: function component(resolve) {
-        return void __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(213)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        return void __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(219)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }]);
 
@@ -90235,7 +90268,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.drawer_nav[data-v-f119f368] {\n    width: 266px;\n    height: 100%;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    position: relative;\n    background: white;\n    white-space: nowrap;\n    overflow: hidden;\n    -webkit-transition: all ease 500ms;\n    transition: all ease 500ms;\n    float: left;\n    overflow-y: visible;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar {\n    width: 4px;\n    height: 4px;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-thumb {\n    border-radius: 5px;\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    background: rgba(0,0,0,0.2);\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    border-radius: 0;\n    background: rgba(0,0,0,0.1);\n}\n.drawer_nav .current_team[data-v-f119f368] {\n    height: 51px;\n    position: relative;\n    padding: 28px 32px 0 22px;\n}\n.drawer_nav .current_team .title_box[data-v-f119f368] {\n    width: 230px;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n.drawer_nav .team_name[data-v-f119f368] {\n    width: 220px;\n    font-size: 20px;\n    font-style: normal;\n    font-weight: 500;\n    color: #0E1726;\n    line-height: 28px;\n    word-wrap: break-word;\n}\n.drawer_nav .action_list[data-v-f119f368] {\n    height: 210px;\n    margin-top: 16px;\n    position: relative;\n}\n.mu-list[data-v-f119f368] {\n    padding: 8px 0;\n    width: 100%;\n    position: relative;\n    overflow-x: hidden;\n    overflow-y: visible;\n}\n.mu-item-wrapper[data-v-f119f368] {\n    display: block;\n    color: inherit;\n    position: relative;\n    outline: none;\n    cursor: pointer;\n}\n.mu-item-wrapper[data-v-f119f368]:hover {\n    background-color: #ecf5ff;\n    color: #66b1ff;\n}\n.mu-ripple-wrapper[data-v-f119f368] {\n    height: 100%;\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.mu-ripple-wrapper[data-v-f119f368] {\n    overflow: hidden;\n}\n.drawer_nav .action_list .mu-item.show-left[data-v-f119f368] {\n    padding-left: 60px;\n}\n.mu-item.has-avatar[data-v-f119f368] {\n    min-height: 56px;\n}\n.mu-item.show-left[data-v-f119f368] {\n    padding-left: 72px;\n}\n.mu-item[data-v-f119f368] {\n    color: rgba(0, 0, 0, 0.87);\n}\n.mu-item[data-v-f119f368] {\n    min-height: 48px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 16px;\n    color: rgba(0, 0, 0, .87);\n    position: relative;\n}\n.drawer_nav .action_list .mu-item-left[data-v-f119f368] {\n    left: 22px;\n    top: 2px;\n}\n.mu-item-left[data-v-f119f368] {\n    color: #757575;\n}\n.mu-item-left[data-v-f119f368], .mu-item-right[data-v-f119f368] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n    -webkit-box-pack: start;\n    -ms-flex-pack: start;\n    justify-content: flex-start;\n    width: 40px;\n    height: 100%;\n    position: absolute;\n    color: #757575;\n    top: 0;\n    max-height: 72px;\n}\n.mu-item-content[data-v-f119f368] {\n    width: 100%;\n    -webkit-align-self: center;\n    -ms-flex-item-align: center;\n    -ms-grid-row-align: center;\n    align-self: center;\n}\n.mu-item-text[data-v-f119f368] {\n    color: rgba(0, 0, 0, 0.54);\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    position: relative;\n    overflow: hidden;\n    font-size: 14px;\n    line-height: 18px;\n    margin-top: 4px;\n    max-height: 40px;\n    max-width: 100%;\n    text-overflow: ellipsis;\n    word-break: break-all;\n    color: rgba(0, 0, 0, .54);\n}\n.drawer_nav .action_list .mu-avatar[data-v-f119f368] {\n    background: none;\n    width: 24px;\n    height: 24px;\n}\n.mu-avatar[data-v-f119f368] {\n    color: #ffffff;\n    background-color: #bdbdbd;\n    display: inline-block;\n    height: 40px;\n    width: 40px;\n    font-size: 20px;\n    text-align: center;\n    border-radius: 50%;\n}\n.mu-avatar-inner[data-v-f119f368] {\n    height: 100%;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n    align-items: center;\n}\n.mu-avatar img[data-v-f119f368] {\n    border-radius: 50%;\n    width: 100%;\n    height: 100%;\n    display: block;\n}\n", ""]);
+exports.push([module.i, "\n.drawer_nav[data-v-f119f368] {\n    width: 266px;\n    height: 100%;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    position: relative;\n    background: white;\n    white-space: nowrap;\n    overflow: hidden;\n    -webkit-transition: all ease 500ms;\n    transition: all ease 500ms;\n    float: left;\n    overflow-y: visible;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar {\n    width: 4px;\n    height: 4px;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-thumb {\n    border-radius: 5px;\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    background: rgba(0,0,0,0.2);\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    border-radius: 0;\n    background: rgba(0,0,0,0.1);\n}\n.drawer_nav .current_team[data-v-f119f368] {\n    height: 51px;\n    position: relative;\n    padding: 28px 32px 0 22px;\n}\n.drawer_nav .current_team .title_box[data-v-f119f368] {\n    width: 230px;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n.drawer_nav .team_name[data-v-f119f368] {\n    width: 220px;\n    font-size: 20px;\n    font-style: normal;\n    font-weight: 500;\n    color: #0E1726;\n    line-height: 28px;\n    word-wrap: break-word;\n}\n.drawer_nav .action_list[data-v-f119f368] {\n    height: 210px;\n    margin-top: 16px;\n    position: relative;\n}\n.el-menu li[data-v-f119f368]{\n    height: 64px;\n    line-height: 64px;\n    font-size: 16px;\n}\n.el-menu-item i[data-v-f119f368] {\n    color: #909399;\n    margin-right: 15px;\n    width: 24px;\n    text-align: center;\n    font-size: 18px;\n    vertical-align: middle;\n}\n.mu-avatar img[data-v-f119f368] {\n    border-radius: 50%;\n    width: 100%;\n    height: 100%;\n    display: block;\n}\n", ""]);
 
 // exports
 
@@ -90247,26 +90280,6 @@ exports.push([module.i, "\n.drawer_nav[data-v-f119f368] {\n    width: 266px;\n  
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_menu_js__ = __webpack_require__(194);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -90388,78 +90401,30 @@ var render = function() {
     _c(
       "div",
       { staticClass: "action_list" },
-      _vm._l(_vm.menus, function(menu, key) {
-        return _c(
-          "div",
-          { key: key },
-          [
-            _c("router-link", { attrs: { to: menu.uri } }, [
-              _c("div", { staticClass: "mu-list" }, [
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "mu-item-wrapper",
-                      staticStyle: {
-                        "user-select": "none",
-                        outline: "none",
-                        cursor: "pointer",
-                        "-webkit-appearance": "none"
-                      },
-                      attrs: { tabindex: "0" }
-                    },
-                    [
-                      _c("div", { staticStyle: { "margin-left": "0px" } }, [
-                        _c("div", { staticClass: "mu-ripple-wrapper" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mu-item show-left has-avatar" },
-                          [
-                            _c("div", { staticClass: "mu-item-left" }, [
-                              _c("div", { staticClass: "mu-avatar" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "mu-avatar-inner",
-                                    style: { color: menu.color }
-                                  },
-                                  [_c("i", { class: menu.icon })]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mu-item-content" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "mu-item-text",
-                                  staticStyle: {
-                                    "max-height": "36px",
-                                    "-webkit-line-clamp": "2"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                            " +
-                                      _vm._s(menu.label) +
-                                      "\n                                        "
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ])
-                    ]
-                  )
+      [
+        _c(
+          "el-menu",
+          {
+            staticClass: "el-menu-vertical",
+            attrs: { "default-active": _vm.$route.path }
+          },
+          _vm._l(_vm.menus, function(menu, key) {
+            return _c(
+              "router-link",
+              { key: key, attrs: { to: menu.uri } },
+              [
+                _c("el-menu-item", { attrs: { index: menu.uri } }, [
+                  _c("i", { class: menu.icon }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(menu.label))])
                 ])
-              ])
-            ])
-          ],
-          1
+              ],
+              1
+            )
+          })
         )
-      })
+      ],
+      1
     )
   ])
 }
@@ -90470,11 +90435,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "current_team" }, [
       _c("div", { staticClass: "title_box" }, [
-        _c(
-          "span",
-          { staticClass: "team_name", staticStyle: { "font-size": "20px" } },
-          [_vm._v("我是青年")]
-        )
+        _c("img", { attrs: { src: "/images/logo.png", alt: "logo" } })
       ])
     ])
   }

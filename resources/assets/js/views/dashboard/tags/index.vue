@@ -1,6 +1,6 @@
 <template>
     <div class="mu-paper">
-        <body-header :name="name" :action_add="action_add"></body-header>
+        <body-header :name="name" :action_add="action_add" add_to_url="/tags/create"></body-header>
         <div class="body">
             <el-table
                     :data="tableData"
@@ -8,25 +8,13 @@
                     v-loading="loading"
                     style="width: 100%">
                 <el-table-column property="id" label="id"></el-table-column>
-                <el-table-column label="头像">
-                    <template slot-scope="scope">
-                        <img :src="scope.row.avatar" class="avatar" alt="avatar">
-                    </template>
-                </el-table-column>
-                <el-table-column property="name" label="用户名"></el-table-column>
-                <el-table-column property="email" label="邮箱"></el-table-column>
-                <el-table-column label="状态">
-                    <template slot-scope="scope">
-                        <i :class="scope.row.status == 1 ? 'el-icon-success' : 'el-icon-error'"
-                           :style="scope.row.status == 1 ?  statusEnable : statusDisable"
-                           @click="handleStatus(scope.row.id)">
-                        </i>
-                    </template>
-                </el-table-column>
+                <el-table-column property="tag" label="标签"></el-table-column>
+                <el-table-column property="title" label="标题"></el-table-column>
+                <el-table-column property="meta_description" label="描述"></el-table-column>
                 <el-table-column property="created_at" label="创建时间"></el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <router-link :to="'users/' + scope.row.id + '/edit'">
+                        <router-link :to="'tags/' + scope.row.id + '/edit'">
                             <el-button type="primary" icon="el-icon-edit" round></el-button>
                         </router-link>
                         <el-button type="danger" icon="el-icon-delete" round></el-button>
@@ -49,39 +37,31 @@
 </template>
 
 <script>
-    import  bodyHeader from '../../../components/dashboard/body/header'
+    import  bodyHeader from '@/components/dashboard/body/header'
     export default {
         components : {
             bodyHeader
         },
-       data() {
+        data() {
             return {
                 loading: true,
-                name : '用户列表',
-                action_add: false,
+                name : '标签列表',
+                action_add: true,
                 tableData: [],
                 meta: {
                     current_page: 1,
                     total : 0,
                     per_page: 10
-                },
-                statusEnable: {
-                    color: '#409EFF',
-                    cursor: 'pointer'
-                },
-                statusDisable: {
-                    color: '#F56C6C',
-                    cursor: 'pointer'
                 }
             }
-       },
+        },
         created() {
             this.loadData()
         },
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'users';
+                var url = 'tags';
 
                 if (this.meta.current_page > 1) {
                     let page = ''
@@ -104,28 +84,6 @@
                 this.meta.current_page = val
                 this.loadData()
             },
-            handleStatus(id) {
-                this.$confirm('该动作可能会影响一些数据，请三思!', '改变该状态?', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning',
-                    center: true
-                }).then(() => {
-                    this.$http.put('users/' + id + '/status').then((response) => {
-                        this.$notify({
-                            title: 'success',
-                            message: '状态修改成功',
-                            type: 'success'
-                        })
-                        this.loadData()
-                    })
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消'
-                    });
-                });
-            }
         }
     }
 </script>

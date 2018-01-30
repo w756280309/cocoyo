@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Resources\Category as CategoryResource;
-use App\Modules\Category;
+use App\Http\Resources\Tag as TagResource;
+use App\Modules\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,58 +16,59 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::latest()->paginate(10));
+        return TagResource::collection(Tag::latest()->paginate(10));
     }
 
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:1|max:15',
-            'path' => 'required',
-            'description' => 'required'
+            'tag' => 'required|min:1|max:15',
+            'title' => 'required',
+            'meta_description' => 'required'
         ]);
 
-        Category::create($request->all());
+        Tag::create($request->all());
 
         return $this->noContent();
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Category $category
-     * @return CategoryResource
+     * @param Tag $tag
+     * @return TagResource
      */
-    public function edit(Category $category)
+    public function edit(Tag $tag)
     {
-        return new CategoryResource($category);
+        return new TagResource($tag);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Category $category
-     * @param Request $request
+     * @param Tag $tag
+     * @param  \Illuminate\Http\Request $request
      * @return \Response
      */
-    public function update(Category $category, Request $request)
+    public function update(Tag $tag, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:1|max:15',
-            'path' => 'required',
-            'description' => 'required'
+            'tag' => 'required|min:1|max:15',
+            'title' => 'required',
+            'meta_description' => 'required'
         ]);
 
-        $category->fill($request->all());
+        $tag->fill($request->all());
 
-        $category->save();
+        $tag->save();
 
         return $this->noContent();
     }

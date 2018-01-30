@@ -2,39 +2,19 @@
     <div class="drawer_nav">
         <div class="current_team">
             <div class="title_box">
-                <span class="team_name" style="font-size: 20px;">我是青年</span>
+                <img src="/images/logo.png" alt="logo">
             </div>
         </div>
 
         <div class="action_list">
-            <div v-for="(menu, key) in menus" :key="key">
-                <router-link :to="menu.uri">
-                    <div class="mu-list">
-                        <div>
-                            <div class="mu-item-wrapper" tabindex="0"
-                                 style="user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;">
-                                <div class="" style="margin-left: 0px;">
-                                    <div class="mu-ripple-wrapper"></div>
-                                    <div class="mu-item show-left has-avatar">
-                                        <div class="mu-item-left">
-                                            <div class="mu-avatar">
-                                                <div class="mu-avatar-inner" :style="{color: menu.color}">
-                                                    <i :class="menu.icon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mu-item-content">
-                                            <div class="mu-item-text" style="max-height: 36px; -webkit-line-clamp: 2;">
-                                                {{ menu.label }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <el-menu :default-active="$route.path" class="el-menu-vertical">
+                <router-link v-for="(menu, key) in menus" :key="key" :to="menu.uri">
+                    <el-menu-item :index="menu.uri">
+                        <i :class="menu.icon"></i>
+                        <span>{{ menu.label }}</span>
+                    </el-menu-item>
                 </router-link>
-            </div>
+            </el-menu>
         </div>
     </div>
 </template>
@@ -47,7 +27,7 @@
         data() {
             return {
                 menus: menus,
-                user: {}
+                user: {},
             }
         },
         mounted() {
@@ -126,155 +106,19 @@
         position: relative;
     }
 
-    .mu-list {
-        padding: 8px 0;
-        width: 100%;
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: visible;
+    .el-menu li{
+        height: 64px;
+        line-height: 64px;
+        font-size: 16px;
     }
-
-    .mu-item-wrapper {
-        display: block;
-        color: inherit;
-        position: relative;
-        outline: none;
-        cursor: pointer;
-    }
-
-    .mu-item-wrapper:hover {
-        background-color: #ecf5ff;
-        color: #66b1ff;
-    }
-
-    .mu-ripple-wrapper {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .mu-ripple-wrapper {
-        overflow: hidden;
-    }
-
-    .drawer_nav .action_list .mu-item.show-left {
-        padding-left: 60px;
-    }
-
-    .mu-item.has-avatar {
-        min-height: 56px;
-    }
-
-    .mu-item.show-left {
-        padding-left: 72px;
-    }
-
-    .mu-item {
-        color: rgba(0, 0, 0, 0.87);
-    }
-
-    .mu-item {
-        min-height: 48px;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        padding: 16px;
-        color: rgba(0, 0, 0, .87);
-        position: relative;
-    }
-
-    .drawer_nav .action_list .mu-item-left {
-        left: 22px;
-        top: 2px;
-    }
-
-    .mu-item-left {
-        color: #757575;
-    }
-
-    .mu-item-left, .mu-item-right {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: start;
-        -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        width: 40px;
-        height: 100%;
-        position: absolute;
-        color: #757575;
-        top: 0;
-        max-height: 72px;
-    }
-
-    .mu-item-content {
-        width: 100%;
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
-    }
-
-    .mu-item-text {
-        color: rgba(0, 0, 0, 0.54);
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        position: relative;
-        overflow: hidden;
-        font-size: 14px;
-        line-height: 18px;
-        margin-top: 4px;
-        max-height: 40px;
-        max-width: 100%;
-        text-overflow: ellipsis;
-        word-break: break-all;
-        color: rgba(0, 0, 0, .54);
-    }
-
-    .drawer_nav .action_list .mu-avatar {
-        background: none;
+    .el-menu-item i {
+        color: #909399;
+        margin-right: 15px;
         width: 24px;
-        height: 24px;
-    }
-
-    .mu-avatar {
-        color: #ffffff;
-        background-color: #bdbdbd;
-        display: inline-block;
-        height: 40px;
-        width: 40px;
-        font-size: 20px;
         text-align: center;
-        border-radius: 50%;
+        font-size: 18px;
+        vertical-align: middle;
     }
-
-    .mu-avatar-inner {
-        height: 100%;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
     .mu-avatar img {
         border-radius: 50%;
         width: 100%;

@@ -32,4 +32,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
     Route::post('users/{user}/avatar', 'UserController@avatar');
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
+    Route::resource('tags', 'TagController', ['except' => ['create', 'show']]);
 });
