@@ -13403,6 +13403,14 @@ a:hover {
   padding: 12px 12px;
 }
 
+.el-upload__input {
+  display: none !important;
+}
+
+.el-message-box {
+  width: auto;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;

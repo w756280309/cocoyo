@@ -27,10 +27,20 @@ Route::group(['prefix' => 'upload'], function () {
 # ==================== Dashboard =----------------------
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
+
+    # ==================== User Manager =----------------------
     Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
     Route::put('users/{user}/status', 'UserController@status');
     Route::post('users/{user}/avatar', 'UserController@avatar');
 
+    # ==================== Category Manager =----------------------
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
+
+    # ==================== Tags Manager =----------------------
     Route::resource('tags', 'TagController', ['except' => ['create', 'show']]);
+
+    # ==================== Links Manager =----------------------
+    Route::resource('links', 'LinkController', ['except' => ['create', 'show']]);
+    Route::put('links/{link}/status', 'LinkController@status');
+    Route::post('links/upload', 'LinkController@upload');
 });

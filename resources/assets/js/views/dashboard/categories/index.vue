@@ -37,7 +37,7 @@
 </template>
 
 <script>
-    import  bodyHeader from '../../../components/dashboard/body/header'
+    import  bodyHeader from '@/components/dashboard/body/header'
     export default {
         components : {
             bodyHeader

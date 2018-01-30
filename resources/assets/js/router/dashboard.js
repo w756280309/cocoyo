@@ -25,6 +25,10 @@ export default [
             {
                 path: 'tags',
                 component : resolve => void(require(['@/views/dashboard/tags/index.vue'], resolve))
+            },
+            {
+                path: 'links',
+                component : resolve => void(require(['@/views/dashboard/links/index.vue'], resolve))
             }
         ]
     },
@@ -63,6 +67,20 @@ export default [
             {
                 path: ':id/edit',
                 component: resolve => void(require(['@/views/dashboard/tags/edit.vue'], resolve))
+            }
+        ]
+    },
+    {
+        path : '/links',
+        component : From,
+        children : [
+            {
+                path: 'create',
+                component : resolve => void(require(['@/views/dashboard/links/create.vue'], resolve))
+            },
+            {
+                path: ':id/edit',
+                component: resolve => void(require(['@/views/dashboard/links/edit.vue'], resolve))
             }
         ]
     },

@@ -1,3 +1,10 @@
 .el-button.is-round {
   padding: 12px 12px;
 }
+
+.el-upload__input {
+  display: none !important;
+}
+.el-message-box{
+  width:auto;
+}
