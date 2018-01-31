@@ -18,10 +18,7 @@ class ArticleController extends Controller
     {
         $articles = Article::latest()->paginate(10);
 
-        $articles->load('category');
-
-        http_response_code(500);
-        dd($articles->toArray());
+        $articles->load(['user', 'category']);
 
         return ArticleResource::collection($articles);
     }

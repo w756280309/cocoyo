@@ -19,10 +19,10 @@ class Category extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function article()
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasMany(Article::class);
     }
 }

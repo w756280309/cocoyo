@@ -16,8 +16,8 @@ class Article extends Resource
     {
         return [
             'id'                => $this->id,
-            'category'          => Category::collection($this->whenLoaded('category')),
-            'user'              => User::collection($this->whenLoaded('user')),
+            'category'          => new Category($this->whenLoaded('category')),
+            'user'              => new User($this->whenLoaded('user')),
             'slug'              => $this->slug,
             'title'             => $this->title,
             'icon'              => $this->icon,
@@ -29,6 +29,7 @@ class Article extends Resource
             'visitors'          => $this->view_count,
             'published_at'      => $this->published_at->diffForHumans(),
             'published_time'    => $this->published_at->toDateTimeString(),
+            'created_at'        => $this->created_at->toDateTimeString(),
         ];
     }
 }

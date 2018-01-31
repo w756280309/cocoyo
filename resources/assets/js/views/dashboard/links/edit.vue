@@ -121,7 +121,7 @@
             },
             handleImagePreview(file) {
                 console.log(file);
-                this.$alert('<img src="' + file.response.relative_url + '">', '', {
+                this.$alert('<img src="' + file.url + '">', '', {
                     dangerouslyUseHTMLString: true,
                     showConfirmButton: false,
                     customClass : 'alert-preview'

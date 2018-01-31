@@ -8,12 +8,11 @@
                     v-loading="loading"
                     style="width: 100%">
                 <el-table-column property="id" label="id"></el-table-column>
-                <el-table-column label="所属分类" property="category"></el-table-column>
+                <el-table-column label="所属分类" property="category.name"></el-table-column>
                 <el-table-column label="撰写人">
-
                     <template slot-scope="scope">
-                        <el-tooltip class="item" effect="dark" content="Top Center 提示文字" placement="top">
-                            <img :src="scope.row.avatar" class="avatar" alt="avatar">
+                        <el-tooltip class="item" effect="dark" :content="scope.row.user.name" placement="top">
+                            <img :src="scope.row.user.avatar" class="avatar" alt="avatar">
                         </el-tooltip>
                     </template>
                 </el-table-column>
@@ -23,7 +22,7 @@
                             <img :src="scope.row.page_image" class="avatar" alt="avatar">
                     </template>
                 </el-table-column>
-
+                <el-table-column property="published_time" label="发布时间"></el-table-column>
                 <el-table-column property="created_at" label="创建时间"></el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
