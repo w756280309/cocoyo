@@ -17,7 +17,7 @@ class CreateVisitorsTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('article_id')->comment('文章id');
             $table->string('ip', 32)->comment('ip地址');
-            $table->string('country')->nullable()->comment('国家');
+            $table->string('city')->nullable()->comment('城市');
             $table->unsignedBigInteger('clicks')->default(1)->comment('点击次数');
             $table->timestamps();
         });

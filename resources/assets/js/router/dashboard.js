@@ -19,6 +19,10 @@ export default [
                 component : resolve => void(require(['@/views/dashboard/users/index.vue'], resolve))
             },
             {
+                path: 'articles',
+                component : resolve => void(require(['@/views/dashboard/articles/index.vue'], resolve))
+            },
+            {
                 path: 'category',
                 component : resolve => void(require(['@/views/dashboard/categories/index.vue'], resolve))
             },
@@ -29,6 +33,10 @@ export default [
             {
                 path: 'links',
                 component : resolve => void(require(['@/views/dashboard/links/index.vue'], resolve))
+            },
+            {
+                path: 'visitors',
+                component : resolve => void(require(['@/views/dashboard/visitors/index.vue'], resolve))
             }
         ]
     },

@@ -33,6 +33,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
     Route::put('users/{user}/status', 'UserController@status');
     Route::post('users/{user}/avatar', 'UserController@avatar');
 
+    # ==================== Article Manager =----------------------
+    Route::resource('articles', 'ArticleController', ['except' => ['create', 'show']]);
+
     # ==================== Category Manager =----------------------
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
 
@@ -43,4 +46,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
     Route::resource('links', 'LinkController', ['except' => ['create', 'show']]);
     Route::put('links/{link}/status', 'LinkController@status');
     Route::post('links/upload', 'LinkController@upload');
+
+    # ==================== Visitors Manager =----------------------
+    Route::get('visitors', 'visitorController@index');
 });

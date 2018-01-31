@@ -20,7 +20,17 @@
 
 <script>
     export default {
-        props: ['name', 'action_add', 'add_to_url'],
+        props: {
+            name: {
+                default : ''
+            },
+            action_add: {
+                default : false
+            },
+            add_to_url: {
+                default: ''
+            }
+        },
     }
 </script>
 

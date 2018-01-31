@@ -1,6 +1,6 @@
 <template>
     <div class="mu-paper">
-        <body-header :name="name" :action_add="action_add"></body-header>
+        <body-header :name="name"></body-header>
         <div class="body">
             <el-table
                     :data="tableData"
@@ -58,7 +58,6 @@
             return {
                 loading: true,
                 name : '用户列表',
-                action_add: false,
                 tableData: [],
                 meta: {
                     current_page: 1,
