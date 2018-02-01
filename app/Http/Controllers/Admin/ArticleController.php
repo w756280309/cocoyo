@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\Article as ArticleResource;
 use App\Modules\Article;
+use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -87,5 +88,25 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * 文章封面图片
+     *
+     * @param Request $request
+     * @param BaseManager $manager
+     * @return mixed
+     */
+    public function upload(Request $request, BaseManager $manager)
+    {
+        $this->validate($request, [
+            'image' => 'required|image'
+        ]);
+
+        $path = date('Y') . date('m') . '/' . date('d');
+
+        $resource = $manager->store($request->file('image'), $path);
+
+        return $this->respond($resource);
     }
 }

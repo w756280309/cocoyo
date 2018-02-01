@@ -20,6 +20,7 @@
                                         <el-upload
                                                 :headers="headers"
                                                 name="image"
+                                                accept="image/*"
                                                 action="/api/dashboard/links/upload"
                                                 :on-success="handleImageSuccess"
                                                 :on-preview="handleImagePreview"
@@ -63,7 +64,8 @@
         data() {
             return {
                 headers:{
-                    Authorization : getToken().token_type + ' ' + getToken().access_token
+                    Authorization : getToken().token_type + ' ' + getToken().access_token,
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
                 limit: 1,
                 form: {

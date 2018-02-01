@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
 
     # ==================== Article Manager =----------------------
     Route::resource('articles', 'ArticleController', ['except' => ['create', 'show']]);
+    Route::post('articles/upload', 'ArticleController@upload', ['except' => ['create', 'show']]);
 
     # ==================== Category Manager =----------------------
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);

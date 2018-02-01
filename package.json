@@ -21,6 +21,7 @@
     "dependencies": {
         "element-ui": "^2.1.0",
         "ionicons": "^3.0.0",
+        "simplemde-theme-base": "^0.2.1",
         "vue-image-crop-upload": "^2.2.3",
         "vue-multiselect": "^2.0.8",
         "vue-router": "^3.0.1",
