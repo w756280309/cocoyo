@@ -12,11 +12,20 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return CategoryResource::collection(Category::latest()->paginate(10));
+        $category = Category::latest();
+
+        if ($request->has('type') && $request->input('type') == 'all') {
+            $category = $category->get();
+        } else {
+            $category = $category->paginate(10);
+        }
+
+        return CategoryResource::collection($category);
     }
 
 

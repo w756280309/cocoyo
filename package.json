@@ -22,6 +22,8 @@
         "element-ui": "^2.1.0",
         "ionicons": "^3.0.0",
         "vue-image-crop-upload": "^2.2.3",
-        "vue-router": "^3.0.1"
+        "vue-multiselect": "^2.0.8",
+        "vue-router": "^3.0.1",
+        "vue-simplemde": "^0.4.6"
     }
 }

@@ -12,11 +12,20 @@ class TagController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return TagResource::collection(Tag::latest()->paginate(10));
+        $tags = Tag::latest();
+
+        if ($request->has('type') && $request->input('type') == 'all') {
+            $tags = $tags->get();
+        } else {
+            $tags = $tags->paginate(10);
+        }
+
+        return TagResource::collection($tags);
     }
 
 

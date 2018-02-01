@@ -51,6 +51,16 @@ export default [
         ]
     },
     {
+        path : '/articles',
+        component : From,
+        children : [
+            {
+                path: 'create',
+                component : resolve => void(require(['@/views/dashboard/articles/create.vue'], resolve))
+            }
+        ]
+    },
+    {
         path : '/category',
         component : From,
         children : [
