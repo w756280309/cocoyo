@@ -86,8 +86,6 @@
             </el-date-picker>
         </el-form-item>
 
-
-
         <el-form-item>
             <el-button type="primary" @click="onSubmit('form')">发布文章</el-button>
             <el-button @click="handleBack">取消</el-button>
@@ -99,6 +97,7 @@
     import markdownEditor from 'vue-simplemde/src/markdown-editor'
     import Multiselect from 'vue-multiselect'
     import {getToken} from '@/plugins/auth/auth'
+    import FineUploader from 'fine-uploader/lib/traditional'
 
     export default {
         components: {
@@ -121,14 +120,20 @@
                 this.allTags = response[1].data
             })
         },
+        computed: {
+            mode() {
+                return this.form.id ? 'update' : 'create'
+            },
+        },
         mounted() {
             this.simplemdeMark = this.$refs.markdownEditor.simplemde
             this.contentUploader()
         },
         data() {
            return {
-               tags: null,
+               selected: null,
                allCategory: [],
+               tags: null,
                allTags: [],
                simplemdeMark: {},
                headers: {
@@ -152,9 +157,6 @@
                    content: [
                        {required: true, message: '请输入内容'}
                    ],
-                   tags: [
-                       {type: 'array', required: true, message: '至少选择一个标签'},
-                   ],
                    meta_description: [
                        {required: true, message: '请输入文章描述'}
                    ],
@@ -168,14 +170,38 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$http.put('links/' + this.$route.params.id, this.form).then((response) => {
-                            this.$notify({
-                                title: 'success',
-                                message: '编辑成功',
-                                type: 'success'
+                        let tagIDs = []
+                        let url = 'articles/' + (this.form.id || '')
+                        let method = (this.mode == 'update') ? 'path' : 'post'
+
+                        for(var i = 0 ; i < this.tags.length ; i++) {
+                            tagIDs[i] = this.tags[i].id
+                        }
+                        debugger
+                        console.log(tagIDs);
+                        console.log(this.tags);
+
+                        this.form.tags = JSON.stringify(tagIDs)
+
+                        if (method == 'post') {
+                            this.$http.post(url, this.form).then((response) => {
+                                this.$notify({
+                                    title: 'success',
+                                    message: '添加成功',
+                                    type: 'success'
+                                })
+                                this.$router.push('/articles')
                             })
-                            this.$router.push('/links')
-                        });
+                        } else {
+                            this.$http.put(url, this.form).then((response) => {
+                                this.$notify({
+                                    title: 'success',
+                                    message: '编辑成功',
+                                    type: 'success'
+                                })
+                                this.$router.push('/articles')
+                            })
+                        }
 
                     } else {
                         return false;
@@ -210,10 +236,10 @@
                         targetElement: document.querySelector('.CodeMirror')
                     },
                     request: {
-                        endpoint: '/api/file/upload',
+                        endpoint: '/api/dashboard/articles/upload',
                         inputName: 'image',
                         customHeaders: {
-                            'X-CSRF-TOKEN': window.Laravel.csrfToken,
+                            Authorization : getToken().token_type + ' ' + getToken().access_token,
                             'X-Requested-With': 'XMLHttpRequest'
                         },
                         params: {
@@ -237,7 +263,7 @@
                             }).success('image')
                         },
                         onComplete(id, name, responseJSON) {
-                            vm.replaceImageUploading(name, responseJSON.url)
+                            vm.replaceImageUploading(responseJSON.filename, responseJSON.relative_url)
                         },
                     },
                 });
