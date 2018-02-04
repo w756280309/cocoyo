@@ -2,6 +2,7 @@
 
 namespace App\Modules;
 
+use App\Services\MarkDown;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -49,5 +50,32 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Set the title and the readable slug.
+     *
+     * @param string $value
+     */
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+
+        $this->attributes['slug'] = translug($value);
+    }
+
+    /**
+     * Set the content attribute.
+     *
+     * @param $value
+     */
+    public function setContentAttribute($value)
+    {
+        $data = [
+            'raw' => $value,
+            'html' => (new MarkDown)->convertMarkdownToHtml($value)
+        ];
+
+        $this->attributes['content'] = json_encode($data);
     }
 }

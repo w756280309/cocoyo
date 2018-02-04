@@ -1,24 +1,24 @@
-webpackJsonp([11],{
+webpackJsonp([13],{
 
-/***/ 220:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(263)
+  __webpack_require__(299)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(265)
+var __vue_script__ = __webpack_require__(301)
 /* template */
-var __vue_template__ = __webpack_require__(266)
+var __vue_template__ = __webpack_require__(302)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-13bb9b84"
+var __vue_scopeId__ = "data-v-868cfeec"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\tags\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-13bb9b84", Component.options)
+    hotAPI.createRecord("data-v-868cfeec", Component.options)
   } else {
-    hotAPI.reload("data-v-13bb9b84", Component.options)
+    hotAPI.reload("data-v-868cfeec", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,19 +52,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 237:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(238)
+  __webpack_require__(240)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(240)
+var __vue_script__ = __webpack_require__(242)
 /* template */
-var __vue_template__ = __webpack_require__(241)
+var __vue_template__ = __webpack_require__(243)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -104,13 +104,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 238:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(239);
+var content = __webpack_require__(241);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -131,7 +131,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 239:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -146,7 +146,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-/***/ 240:
+/***/ 242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -188,7 +188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 241:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -247,23 +247,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 263:
+/***/ 299:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(264);
+var content = __webpack_require__(300);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(18)("53c9427a", content, false);
+var update = __webpack_require__(18)("55fe8abb", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-13bb9b84\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-13bb9b84\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-868cfeec\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-868cfeec\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -274,7 +274,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 264:
+/***/ 300:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -282,20 +282,32 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 265:
+/***/ 301:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -343,13 +355,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             loading: true,
-            name: '标签列表',
+            name: '友链列表',
             action_add: true,
             tableData: [],
             meta: {
                 current_page: 1,
                 total: 0,
                 per_page: 10
+            },
+            statusEnable: {
+                color: '#409EFF',
+                cursor: 'pointer'
+            },
+            statusDisable: {
+                color: '#F56C6C',
+                cursor: 'pointer'
             }
         };
     },
@@ -362,7 +382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.loading = true;
-            var url = 'tags';
+            var url = 'links';
 
             if (this.meta.current_page > 1) {
                 var page = '';
@@ -384,13 +404,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleCurrentChange: function handleCurrentChange(val) {
             this.meta.current_page = val;
             this.loadData();
+        },
+        handleDelete: function handleDelete(id) {
+            var _this2 = this;
+
+            this.$confirm('您确定要删除该友链吗？请三思!', '是否删除?', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'error',
+                center: true
+            }).then(function () {
+                _this2.$http.delete('links/' + id).then(function (response) {
+                    _this2.$notify({
+                        title: 'success',
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    _this2.loadData();
+                });
+            }).catch(function () {
+                _this2.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });
+            });
+        },
+        handleStatus: function handleStatus(id) {
+            var _this3 = this;
+
+            this.$confirm('该动作可能会影响一些数据，请三思!', '改变该状态?', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+                center: true
+            }).then(function () {
+                _this3.$http.put('links/' + id + '/status').then(function (response) {
+                    _this3.$notify({
+                        title: 'success',
+                        message: '状态修改成功',
+                        type: 'success'
+                    });
+                    _this3.loadData();
+                });
+            }).catch(function () {
+                _this3.$message({
+                    type: 'info',
+                    message: '已取消'
+                });
+            });
         }
     }
 });
 
 /***/ }),
 
-/***/ 266:
+/***/ 302:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -405,7 +473,7 @@ var render = function() {
         attrs: {
           name: _vm.name,
           action_add: _vm.action_add,
-          add_to_url: "/tags/create"
+          add_to_url: "/links/create"
         }
       }),
       _vm._v(" "),
@@ -431,15 +499,56 @@ var render = function() {
               _c("el-table-column", { attrs: { property: "id", label: "id" } }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { property: "tag", label: "标签" }
+                attrs: { property: "image", label: "图片" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("img", {
+                          staticClass: "avatar",
+                          attrs: { src: scope.row.image, alt: "avatar" }
+                        })
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { property: "title", label: "标题" }
+                attrs: { property: "name", label: "名字" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { property: "meta_description", label: "描述" }
+                attrs: { property: "link", label: "链接" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { property: "status", label: "是否启用" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("i", {
+                          class:
+                            scope.row.status == 1
+                              ? "el-icon-success"
+                              : "el-icon-error",
+                          style:
+                            scope.row.status == 1
+                              ? _vm.statusEnable
+                              : _vm.statusDisable,
+                          on: {
+                            click: function($event) {
+                              _vm.handleStatus(scope.row.id)
+                            }
+                          }
+                        })
+                      ]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
@@ -455,7 +564,7 @@ var render = function() {
                       return [
                         _c(
                           "router-link",
-                          { attrs: { to: "tags/" + scope.row.id + "/edit" } },
+                          { attrs: { to: "links/" + scope.row.id + "/edit" } },
                           [
                             _c("el-button", {
                               attrs: {
@@ -473,6 +582,11 @@ var render = function() {
                             type: "danger",
                             icon: "el-icon-delete",
                             round: ""
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.handleDelete(scope.row.id)
+                            }
                           }
                         })
                       ]
@@ -513,7 +627,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-13bb9b84", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-868cfeec", module.exports)
   }
 }
 

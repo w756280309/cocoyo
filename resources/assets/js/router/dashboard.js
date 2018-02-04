@@ -57,6 +57,10 @@ export default [
             {
                 path: 'create',
                 component : resolve => void(require(['@/views/dashboard/articles/create.vue'], resolve))
+            },
+            {
+                path: ':id/edit',
+                component : resolve => void(require(['@/views/dashboard/articles/edit.vue'], resolve))
             }
         ]
     },

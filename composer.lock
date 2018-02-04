@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3cf68b1f48344a76fa7678b39a6f9ab9",
+    "content-hash": "90dfe6decce12e367155687dc99089c5",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -695,6 +695,64 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jellybool/translug",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JellyBool/translug.git",
+                "reference": "fa6ea97d8ac5be0f2df24a8153b80f9d25675a22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/JellyBool/translug/fa6ea97d8ac5be0f2df24a8153b80f9d25675a22.zip",
+                "reference": "fa6ea97d8ac5be0f2df24a8153b80f9d25675a22",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.3|~6.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/support": "^5.2",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\JellyBool\\Translug\\TranslugServiceProvider"
+                    ],
+                    "aliases": {
+                        "Translug": "\\JellyBool\\Translug\\TranslugFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JellyBool\\Translug\\": "src/"
+                },
+                "files": [
+                    "src/helpers/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JellyBool",
+                    "email": "jellybool@outlook.com"
+                }
+            ],
+            "description": "Translate Chinese And Then Make It Sluggable",
+            "keywords": [
+                "slug",
+                "translate"
+            ],
+            "time": "2017-07-28T15:36:02+00:00"
         },
         {
             "name": "laravel/framework",

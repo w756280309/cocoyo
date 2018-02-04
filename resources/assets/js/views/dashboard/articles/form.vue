@@ -7,28 +7,25 @@
         </el-form-item>
 
         <el-form-item label="文章标题" prop="title">
-            <el-input v-model="form.title"></el-input>
-        </el-form-item>
-
-        <el-form-item label="封面显示图标" prop="icon">
-            <el-input v-model="form.icon"></el-input>
+            <el-input v-model="form.title" placeholder="请输入文章标题"></el-input>
         </el-form-item>
 
         <el-form-item label="封面图片" prop="page_image">
             <el-upload
                     accept="image/*"
                     name="image"
-                    drag
+                    list-type="picture-card"
                     :headers="headers"
                     action="api/dashboard/articles/upload"
-                    :on-success="handleImageSuccess"
-                    :on-preview="handleImagePreview"
-                    :limit="1"
-                    list-type="picture">
-                <i class="el-icon-upload"></i>
-                <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                    :on-preview="handlePictureCardPreview"
+                    :on-success="handleUploadSuccess"
+                    :file-list="fileList"
+                    :limit="1">
+                <i class="el-icon-plus"></i>
             </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="dialogImageUrl" alt="">
+            </el-dialog>
         </el-form-item>
 
         <el-form-item label="文章内容" prop="content">
@@ -52,7 +49,7 @@
         </el-form-item>
 
         <el-form-item label="文章描述" prop="meta_description">
-            <el-input type="textarea"  v-model="form.meta_description"></el-input>
+            <el-input type="textarea" placeholder="请输入文章描述"  v-model="form.meta_description"></el-input>
         </el-form-item>
 
         <el-row>
@@ -82,6 +79,7 @@
             <el-date-picker
                     v-model="form.published_at"
                     type="datetime"
+                    value-format="yyyy-MM-dd HH:mm:ss"
                     placeholder="选择日期时间">
             </el-date-picker>
         </el-form-item>
@@ -129,13 +127,23 @@
             this.simplemdeMark = this.$refs.markdownEditor.simplemde
             this.contentUploader()
         },
+        watch: {
+            form() {
+                this.selected = this.form.category
+                this.tags     = this.form.tags
+                this.fileList = [{url: this.form.page_image, name: '封面图片'}]
+            }
+        },
         data() {
            return {
                selected: null,
                allCategory: [],
-               tags: null,
+               tags: [],
                allTags: [],
+               fileList: [],
                simplemdeMark: {},
+               dialogImageUrl: '',
+               dialogVisible: false,
                headers: {
                    Authorization : getToken().token_type + ' ' + getToken().access_token,
                    'X-Requested-With': 'XMLHttpRequest'
@@ -148,9 +156,6 @@
                        {required: true, message: '请输入标题'},
                        {min:1, max:255, message: '长度在1到255个字符'},
                    ],
-                   icon: [
-                       {required: true, message:'请填写封面图标'}
-                   ],
                    page_image: [
                        {required: true, message: '请上传封面图片'}
                    ],
@@ -161,7 +166,7 @@
                        {required: true, message: '请输入文章描述'}
                    ],
                    published_at: [
-                       {type: 'date', required: true, message: '请选择发布时间'}
+                       {required: true, message: '请选择发布时间'}
                    ]
                }
            }
@@ -170,16 +175,21 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
+                        if (! this.tags.length > 0) {
+                            return  this.$message.error('请选择文章标签');
+                        }
                         let tagIDs = []
-                        let url = 'articles/' + (this.form.id || '')
+
+                        let url = 'articles';
+                        if (this.form.id) {
+                            url = 'articles/' + this.form.id
+                        }
+
                         let method = (this.mode == 'update') ? 'path' : 'post'
 
                         for(var i = 0 ; i < this.tags.length ; i++) {
                             tagIDs[i] = this.tags[i].id
                         }
-                        debugger
-                        console.log(tagIDs);
-                        console.log(this.tags);
 
                         this.form.tags = JSON.stringify(tagIDs)
 
@@ -212,15 +222,12 @@
             handleBack() {
                 this.$router.push('/articles')
             },
-            handleImageSuccess(res, file) {
-                this.form.page_image = res.relative_url;
+            handleUploadSuccess(response) {
+               this.form.page_image = response.relative_url
             },
-            handleImagePreview(file) {
-                this.$alert('<img src="' + file.url + '">', '', {
-                    dangerouslyUseHTMLString: true,
-                    showConfirmButton: false,
-                    customClass : 'alert-preview'
-                })
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
             },
             contentUploader() {
                 let vm = this

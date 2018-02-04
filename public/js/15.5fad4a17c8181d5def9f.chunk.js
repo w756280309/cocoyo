@@ -1,24 +1,24 @@
-webpackJsonp([9],{
+webpackJsonp([15],{
 
-/***/ 222:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(271)
+  __webpack_require__(287)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(273)
+var __vue_script__ = __webpack_require__(289)
 /* template */
-var __vue_template__ = __webpack_require__(274)
+var __vue_template__ = __webpack_require__(290)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-305878a0"
+var __vue_scopeId__ = "data-v-501e0628"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\visitors\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\articles\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-305878a0", Component.options)
+    hotAPI.createRecord("data-v-501e0628", Component.options)
   } else {
-    hotAPI.reload("data-v-305878a0", Component.options)
+    hotAPI.reload("data-v-501e0628", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,19 +52,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 237:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(238)
+  __webpack_require__(240)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(240)
+var __vue_script__ = __webpack_require__(242)
 /* template */
-var __vue_template__ = __webpack_require__(241)
+var __vue_template__ = __webpack_require__(243)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -104,13 +104,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 238:
+/***/ 240:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(239);
+var content = __webpack_require__(241);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -131,7 +131,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 239:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -146,7 +146,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-/***/ 240:
+/***/ 242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -188,7 +188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 241:
+/***/ 243:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -247,23 +247,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 271:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(272);
+var content = __webpack_require__(288);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(18)("27d3ba1e", content, false);
+var update = __webpack_require__(18)("95b84134", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-305878a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-305878a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-501e0628\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-501e0628\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -274,7 +274,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 272:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -282,20 +282,40 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 273:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_dashboard_body_header__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -334,13 +354,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            loading: false,
-            name: '访问列表',
+            loading: true,
+            name: '文章列表',
+            action_add: true,
             tableData: [],
             meta: {
                 current_page: 1,
                 total: 0,
                 per_page: 10
+            },
+            statusEnable: {
+                color: '#409EFF',
+                cursor: 'pointer'
+            },
+            statusDisable: {
+                color: '#F56C6C',
+                cursor: 'pointer'
             }
         };
     },
@@ -353,7 +382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.loading = true;
-            var url = 'visitors';
+            var url = 'articles';
 
             if (this.meta.current_page > 1) {
                 var page = '';
@@ -375,13 +404,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleCurrentChange: function handleCurrentChange(val) {
             this.meta.current_page = val;
             this.loadData();
+        },
+        handleStatus: function handleStatus(id) {
+            var _this2 = this;
+
+            this.$confirm('该动作可能会影响一些数据，请三思!', '改变该状态?', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+                center: true
+            }).then(function () {
+                _this2.$http.put('users/' + id + '/status').then(function (response) {
+                    _this2.$notify({
+                        title: 'success',
+                        message: '状态修改成功',
+                        type: 'success'
+                    });
+                    _this2.loadData();
+                });
+            }).catch(function () {
+                _this2.$message({
+                    type: 'info',
+                    message: '已取消'
+                });
+            });
         }
     }
 });
 
 /***/ }),
 
-/***/ 274:
+/***/ 290:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -392,7 +445,13 @@ var render = function() {
     "div",
     { staticClass: "mu-paper" },
     [
-      _c("body-header", { attrs: { name: _vm.name } }),
+      _c("body-header", {
+        attrs: {
+          name: _vm.name,
+          action_add: _vm.action_add,
+          add_to_url: "/articles/create"
+        }
+      }),
       _vm._v(" "),
       _c(
         "div",
@@ -416,17 +475,106 @@ var render = function() {
               _c("el-table-column", { attrs: { property: "id", label: "id" } }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { property: "article", label: "文章标题" }
+                attrs: { label: "所属分类", property: "category.name" }
               }),
               _vm._v(" "),
-              _c("el-table-column", { attrs: { property: "ip", label: "IP" } }),
+              _c("el-table-column", {
+                attrs: { label: "撰写人" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c(
+                          "el-tooltip",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              effect: "dark",
+                              content: scope.row.user.name,
+                              placement: "top"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "avatar",
+                              attrs: {
+                                src: scope.row.user.avatar,
+                                alt: "avatar"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { property: "clicks", label: "点击次数" }
+                attrs: { property: "title", label: "标题" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { property: "page_image", label: "封面图片" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c("img", {
+                          staticClass: "avatar",
+                          attrs: { src: scope.row.page_image, alt: "avatar" }
+                        })
+                      ]
+                    }
+                  }
+                ])
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { property: "published_time", label: "发布时间" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
                 attrs: { property: "created_at", label: "创建时间" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { label: "操作" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: { to: "articles/" + scope.row.id + "/edit" }
+                          },
+                          [
+                            _c("el-button", {
+                              attrs: {
+                                type: "primary",
+                                icon: "el-icon-edit",
+                                round: ""
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("el-button", {
+                          attrs: {
+                            type: "danger",
+                            icon: "el-icon-delete",
+                            round: ""
+                          }
+                        })
+                      ]
+                    }
+                  }
+                ])
               })
             ],
             1
@@ -461,7 +609,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-305878a0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-501e0628", module.exports)
   }
 }
 

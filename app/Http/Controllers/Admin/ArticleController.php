@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ArticleRequest;
 use App\Http\Resources\Article as ArticleResource;
 use App\Modules\Article;
 use App\Services\FileManager\BaseManager;
@@ -19,7 +20,7 @@ class ArticleController extends Controller
     {
         $articles = Article::latest()->paginate(10);
 
-        $articles->load(['user', 'category']);
+        $articles->load(['user', 'category', 'tags']);
 
         return ArticleResource::collection($articles);
     }
@@ -28,47 +29,56 @@ class ArticleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        http_response_code(500);
+        $data = array_merge($request->all(), [
+            'user_id' => $request->user()->id,
+            'last_user_id' => $request->user()->id
+        ]);
 
-        dd($request->all());
+        $article = Article::create($data);
+
+        $article->tags()->sync(json_decode($request->input('tags')));
+
+        return $this->noContent();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Article $article
+     * @return ArticleResource
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        $article->load(['user', 'category', 'tags']);
+
+        return new ArticleResource($article);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Article $article
+     * @param  \Illuminate\Http\Request $request
+     * @return \Response
      */
-    public function update(Request $request, $id)
+    public function update(Article $article, Request $request)
     {
-        //
+        $data = array_merge($request->all(), [
+            'last_user_id' => $request->user()->id
+        ]);
+
+        $article->fill($data);
+
+        $article->save();
+
+        $article->tags()->sync(json_decode($request->get('tags')));
+
+        return $this->noContent();
     }
 
     /**

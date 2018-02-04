@@ -1,24 +1,24 @@
-webpackJsonp([8],{
+webpackJsonp([6],{
 
-/***/ 225:
+/***/ 231:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(328)
+  __webpack_require__(353)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(330)
+var __vue_script__ = __webpack_require__(355)
 /* template */
-var __vue_template__ = __webpack_require__(331)
+var __vue_template__ = __webpack_require__(356)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3a5d8f97"
+var __vue_scopeId__ = "data-v-5b292cfc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\categories\\create.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\edit.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a5d8f97", Component.options)
+    hotAPI.createRecord("data-v-5b292cfc", Component.options)
   } else {
-    hotAPI.reload("data-v-3a5d8f97", Component.options)
+    hotAPI.reload("data-v-5b292cfc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,19 +52,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 232:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(233)
+  __webpack_require__(235)
 }
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(235)
+var __vue_script__ = __webpack_require__(237)
 /* template */
-var __vue_template__ = __webpack_require__(236)
+var __vue_template__ = __webpack_require__(238)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -104,13 +104,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 233:
+/***/ 235:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(234);
+var content = __webpack_require__(236);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -131,7 +131,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 234:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -146,7 +146,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", 
 
 /***/ }),
 
-/***/ 235:
+/***/ 237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -176,7 +176,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 236:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -222,23 +222,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 328:
+/***/ 353:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(329);
+var content = __webpack_require__(354);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(18)("fc5f6de4", content, false);
+var update = __webpack_require__(18)("1bffa699", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a5d8f97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./create.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a5d8f97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./create.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5b292cfc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5b292cfc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -249,7 +249,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 329:
+/***/ 354:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(17)(false);
@@ -257,20 +257,21 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 330:
+/***/ 355:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_form_navbar__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_form_navbar__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_form_navbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_dashboard_form_navbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_auth_auth__ = __webpack_require__(49);
 //
 //
 //
@@ -307,6 +308,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -314,34 +336,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         FormNavbar: __WEBPACK_IMPORTED_MODULE_0__components_dashboard_form_navbar___default.a
     },
+    created: function created() {
+        var _this = this;
+
+        this.$http.get('links/' + this.$route.params.id + '/edit').then(function (response) {
+            _this.form = response.data;
+            _this.fileLists = [{ name: '图片', url: _this.form.image }];
+        });
+    },
     data: function data() {
         return {
+            headers: {
+                Authorization: Object(__WEBPACK_IMPORTED_MODULE_1__plugins_auth_auth__["a" /* getToken */])().token_type + ' ' + Object(__WEBPACK_IMPORTED_MODULE_1__plugins_auth_auth__["a" /* getToken */])().access_token,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            limit: 1,
+            fileLists: [],
             form: {
                 name: '',
-                path: '',
-                description: ''
+                link: '',
+                image: '',
+                status: true
             },
             rules: {
-                name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }, { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }],
-                path: [{ required: true, message: '请输入路径', trigger: 'change' }],
-                description: [{ required: true, message: '请输入描述', trigger: 'change' }]
+                name: [{ required: true, message: '请输入链接名', trigger: 'change' }, { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'change' }],
+                link: [{ required: true, message: '请输入链接', trigger: 'change' }],
+                image: [{ required: true, message: '请上传图片', trigger: 'change' }]
             }
         };
     },
 
     methods: {
         onSubmit: function onSubmit(formName) {
-            var _this = this;
+            var _this2 = this;
 
             this.$refs[formName].validate(function (valid) {
                 if (valid) {
-                    _this.$http.post('category', _this.form).then(function (response) {
-                        _this.$notify({
+                    _this2.$http.put('links/' + _this2.$route.params.id, _this2.form).then(function (response) {
+                        _this2.$notify({
                             title: 'success',
-                            message: '添加成功',
+                            message: '编辑成功',
                             type: 'success'
                         });
-                        _this.$router.push('/category');
+                        _this2.$router.push('/links');
                     });
                 } else {
                     return false;
@@ -349,14 +386,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         handleBack: function handleBack() {
-            this.$router.push('/category');
+            this.$router.push('/links');
+        },
+        handleImageSuccess: function handleImageSuccess(res, file) {
+            this.form.image = res.relative_url;
+        },
+        handleImagePreview: function handleImagePreview(file) {
+            this.$alert('<img src="' + file.url + '">', '', {
+                dangerouslyUseHTMLString: true,
+                showConfirmButton: false,
+                customClass: 'alert-preview'
+            });
         }
     }
 });
 
 /***/ }),
 
-/***/ 331:
+/***/ 356:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -367,7 +414,7 @@ var render = function() {
     "div",
     [
       _c("form-navbar", {
-        attrs: { page_name: "创建分类", menu: "分类列表", back: "/category" }
+        attrs: { page_name: "编辑友链", menu: "友链列表", back: "/links" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "list_box" }, [
@@ -397,7 +444,7 @@ var render = function() {
                           [
                             _c(
                               "el-form-item",
-                              { attrs: { label: "分类名", prop: "name" } },
+                              { attrs: { label: "链接名", prop: "name" } },
                               [
                                 _c("el-input", {
                                   model: {
@@ -414,15 +461,15 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "el-form-item",
-                              { attrs: { label: "路径", prop: "path" } },
+                              { attrs: { label: "链 接", prop: "link" } },
                               [
                                 _c("el-input", {
                                   model: {
-                                    value: _vm.form.path,
+                                    value: _vm.form.link,
                                     callback: function($$v) {
-                                      _vm.$set(_vm.form, "path", $$v)
+                                      _vm.$set(_vm.form, "link", $$v)
                                     },
-                                    expression: "form.path"
+                                    expression: "form.link"
                                   }
                                 })
                               ],
@@ -431,16 +478,70 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "el-form-item",
-                              { attrs: { label: "描述", prop: "description" } },
+                              { attrs: { label: "图片", prop: "image" } },
                               [
-                                _c("el-input", {
-                                  attrs: { type: "textarea" },
+                                _c(
+                                  "el-upload",
+                                  {
+                                    attrs: {
+                                      headers: _vm.headers,
+                                      name: "image",
+                                      accept: "image/*",
+                                      action: "/api/dashboard/links/upload",
+                                      "on-success": _vm.handleImageSuccess,
+                                      "on-preview": _vm.handleImagePreview,
+                                      "file-list": _vm.fileLists,
+                                      limit: _vm.limit,
+                                      "list-type": "picture"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "el-button",
+                                      {
+                                        attrs: {
+                                          size: "small",
+                                          type: "primary"
+                                        }
+                                      },
+                                      [_vm._v("点击上传")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "el-upload__tip",
+                                        attrs: { slot: "tip" },
+                                        slot: "tip"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "只能上传jpg/png文件，且不超过500kb"
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-form-item",
+                              { attrs: { label: "是否开启", prop: "status" } },
+                              [
+                                _c("el-switch", {
+                                  attrs: {
+                                    "active-color": "#13ce66",
+                                    "inactive-color": "#ff4949"
+                                  },
                                   model: {
-                                    value: _vm.form.description,
+                                    value: _vm.form.status,
                                     callback: function($$v) {
-                                      _vm.$set(_vm.form, "description", $$v)
+                                      _vm.$set(_vm.form, "status", $$v)
                                     },
-                                    expression: "form.description"
+                                    expression: "form.status"
                                   }
                                 })
                               ],
@@ -460,7 +561,7 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("添加")]
+                                  [_vm._v("编辑")]
                                 ),
                                 _vm._v(" "),
                                 _c(
@@ -496,7 +597,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3a5d8f97", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5b292cfc", module.exports)
   }
 }
 
