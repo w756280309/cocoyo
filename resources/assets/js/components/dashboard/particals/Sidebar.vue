@@ -12,7 +12,7 @@
             </el-menu-item>
 
             <router-link v-for="(menu, index) in menus" :key="index" :to="menu.uri">
-                <el-menu-item  :index="menu.uri">
+                <el-menu-item  :index="menu.uri" class="side-menu">
                     <icon class="el-icon-menu" :name="menu.icon"></icon>
                     <span slot="title">{{ menu.label }}</span>
                 </el-menu-item>

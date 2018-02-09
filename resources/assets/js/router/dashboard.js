@@ -23,6 +23,10 @@ export default [
                 component : resolve => void(require(['@/views/dashboard/articles/index.vue'], resolve))
             },
             {
+                path: 'comments',
+                component : resolve => void(require(['@/views/dashboard/comments/index.vue'], resolve))
+            },
+            {
                 path: 'category',
                 component : resolve => void(require(['@/views/dashboard/categories/index.vue'], resolve))
             },

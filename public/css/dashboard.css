@@ -8714,6 +8714,20 @@ a:hover {
   width: auto;
 }
 
+.el-menu-item.is-active {
+  color: #fa3e5e;
+}
+
+.side-menu.is-active:before {
+  content: "";
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 6px;
+  background-color: #fa3e5e;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;

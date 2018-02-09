@@ -33,6 +33,14 @@ class Article extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commenttable');
+    }
+
+    /**
      * Get the tag for the blog article.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
