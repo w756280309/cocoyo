@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\User as UserResource;
-use App\Modules\User;
+use App\Models\User;
 use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

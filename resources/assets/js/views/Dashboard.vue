@@ -30,5 +30,7 @@
 </script>
 
 <style scoped>
-
+    .wrappeer_box{
+        margin-left:266px;
+    }
 </style>

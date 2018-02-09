@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules;
+namespace App\Models;
 
 use App\Services\MarkDown;
 use Illuminate\Database\Eloquent\Model;

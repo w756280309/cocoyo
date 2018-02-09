@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\Visitor as VisitorResource;
-use App\Modules\Visitor;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

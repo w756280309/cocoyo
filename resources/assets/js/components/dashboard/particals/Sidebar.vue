@@ -1,21 +1,46 @@
 <template>
     <div class="drawer_nav">
-        <div class="current_team">
-            <div class="title_box">
-                <img src="/images/logo.png" alt="logo">
-            </div>
-        </div>
-
-        <div class="action_list">
-            <el-menu :default-active="$route.path" class="el-menu-vertical">
-                <router-link v-for="(menu, key) in menus" :key="key" :to="menu.uri">
-                    <el-menu-item :index="menu.uri">
-                        <i :class="menu.icon"></i>
-                        <span>{{ menu.label }}</span>
-                    </el-menu-item>
-                </router-link>
-            </el-menu>
-        </div>
+        <el-menu default-active="1-4-1" class="el-menu-vertical" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+            <el-menu-item>
+                <div class="logo">
+                    <div class="title_box">
+                        <img src="/images/logo.png" alt="logo">
+                    </div>
+                </div>
+            </el-menu-item>
+            <el-menu-item>
+                <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                    <el-radio-button :label="false">展开</el-radio-button>
+                    <el-radio-button :label="true">收起</el-radio-button>
+                </el-radio-group>
+            </el-menu-item>
+            <el-submenu index="1">
+                <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span slot="title">导航一</span>
+                </template>
+                <el-menu-item-group>
+                    <span slot="title">分组一</span>
+                    <el-menu-item index="1-1">选项1</el-menu-item>
+                    <el-menu-item index="1-2">选项2</el-menu-item>
+                </el-menu-item-group>
+                <el-menu-item-group title="分组2">
+                    <el-menu-item index="1-3">选项3</el-menu-item>
+                </el-menu-item-group>
+                <el-submenu index="1-4">
+                    <span slot="title">选项4</span>
+                    <el-menu-item index="1-4-1">选项1</el-menu-item>
+                </el-submenu>
+            </el-submenu>
+            <el-menu-item index="2">
+                <i class="el-icon-menu"></i>
+                <span slot="title">导航二</span>
+            </el-menu-item>
+            <el-menu-item index="3">
+                <i class="el-icon-setting"></i>
+                <span slot="title">导航三</span>
+            </el-menu-item>
+        </el-menu>
     </div>
 </template>
 
@@ -27,102 +52,36 @@
         data() {
             return {
                 menus: menus,
-                user: {},
-            }
-        },
-        mounted() {
-            this.user = {
-                avatar: 'https://image.cocoyo.xin/IMG_0347.PNG',
-                name: 'cocoyo',
-                email: '2430114823@qq.com'
-            }
-        },
-        computed: {
-            userInfo() {
-                return '/user/' + this.user.name
+                isCollapse: true
             }
         },
         methods: {
-            logout() {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
             }
         }
     }
 </script>
 
 <style scoped>
-    .drawer_nav {
-        width: 266px;
+    .drawer_nav{
+        position: fixed;
         height: 100%;
-        box-sizing: border-box;
-        position: relative;
-        background: white;
-        white-space: nowrap;
-        overflow: hidden;
-        transition: all ease 500ms;
-        float: left;
-        overflow-y: visible;
     }
-    .drawer_nav::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-    }
-    .drawer_nav::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        background: rgba(0,0,0,0.2);
-    }
-    .drawer_nav::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        border-radius: 0;
-        background: rgba(0,0,0,0.1);
-    }
-    .drawer_nav .current_team {
+    .logo{
         height: 51px;
         position: relative;
         padding: 28px 32px 0 22px;
+        background: #fff;
     }
-
-    .drawer_nav .current_team .title_box {
-        width: 230px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-
-    }
-
-    .drawer_nav .team_name {
-        width: 220px;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        color: #0E1726;
-        line-height: 28px;
-        word-wrap: break-word;
-    }
-
-    .drawer_nav .action_list {
-        height: 210px;
-        margin-top: 16px;
-        position: relative;
-    }
-
-    .el-menu li{
-        height: 64px;
-        line-height: 64px;
-        font-size: 16px;
-    }
-    .el-menu-item i {
-        color: #909399;
-        margin-right: 15px;
-        width: 24px;
-        text-align: center;
-        font-size: 18px;
-        vertical-align: middle;
-    }
-    .mu-avatar img {
-        border-radius: 50%;
-        width: 100%;
+    .el-menu-vertical {
         height: 100%;
-        display: block;
+        overflow: auto;
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
     }
 </style>

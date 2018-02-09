@@ -91428,7 +91428,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.wrappeer_box[data-v-6ac91152]{\n    margin-left:266px;\n}\n", ""]);
 
 // exports
 
@@ -91592,7 +91592,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.drawer_nav[data-v-f119f368] {\n    width: 266px;\n    height: 100%;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    position: relative;\n    background: white;\n    white-space: nowrap;\n    overflow: hidden;\n    -webkit-transition: all ease 500ms;\n    transition: all ease 500ms;\n    float: left;\n    overflow-y: visible;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar {\n    width: 4px;\n    height: 4px;\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-thumb {\n    border-radius: 5px;\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    background: rgba(0,0,0,0.2);\n}\n.drawer_nav[data-v-f119f368]::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);\n    border-radius: 0;\n    background: rgba(0,0,0,0.1);\n}\n.drawer_nav .current_team[data-v-f119f368] {\n    height: 51px;\n    position: relative;\n    padding: 28px 32px 0 22px;\n}\n.drawer_nav .current_team .title_box[data-v-f119f368] {\n    width: 230px;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n.drawer_nav .team_name[data-v-f119f368] {\n    width: 220px;\n    font-size: 20px;\n    font-style: normal;\n    font-weight: 500;\n    color: #0E1726;\n    line-height: 28px;\n    word-wrap: break-word;\n}\n.drawer_nav .action_list[data-v-f119f368] {\n    height: 210px;\n    margin-top: 16px;\n    position: relative;\n}\n.el-menu li[data-v-f119f368]{\n    height: 64px;\n    line-height: 64px;\n    font-size: 16px;\n}\n.el-menu-item i[data-v-f119f368] {\n    color: #909399;\n    margin-right: 15px;\n    width: 24px;\n    text-align: center;\n    font-size: 18px;\n    vertical-align: middle;\n}\n.mu-avatar img[data-v-f119f368] {\n    border-radius: 50%;\n    width: 100%;\n    height: 100%;\n    display: block;\n}\n", ""]);
+exports.push([module.i, "\n.drawer_nav[data-v-f119f368]{\n    position: fixed;\n    height: 100%;\n}\n.logo[data-v-f119f368]{\n    height: 51px;\n    position: relative;\n    padding: 28px 32px 0 22px;\n    background: #fff;\n}\n.el-menu-vertical[data-v-f119f368] {\n    height: 100%;\n    overflow: auto;\n}\n.el-menu-vertical-demo[data-v-f119f368]:not(.el-menu--collapse) {\n    width: 200px;\n}\n", ""]);
 
 // exports
 
@@ -91626,6 +91626,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -91633,24 +91658,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             menus: __WEBPACK_IMPORTED_MODULE_0__config_menu_js__["a" /* default */],
-            user: {}
-        };
-    },
-    mounted: function mounted() {
-        this.user = {
-            avatar: 'https://image.cocoyo.xin/IMG_0347.PNG',
-            name: 'cocoyo',
-            email: '2430114823@qq.com'
+            isCollapse: true
         };
     },
 
-    computed: {
-        userInfo: function userInfo() {
-            return '/user/' + this.user.name;
-        }
-    },
     methods: {
-        logout: function logout() {}
+        handleOpen: function handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose: function handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        }
     }
 });
 
@@ -91719,51 +91737,138 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "drawer_nav" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "action_list" },
-      [
-        _c(
-          "el-menu",
-          {
-            staticClass: "el-menu-vertical",
-            attrs: { "default-active": _vm.$route.path }
-          },
-          _vm._l(_vm.menus, function(menu, key) {
-            return _c(
-              "router-link",
-              { key: key, attrs: { to: menu.uri } },
-              [
-                _c("el-menu-item", { attrs: { index: menu.uri } }, [
-                  _c("i", { class: menu.icon }),
+  return _c(
+    "div",
+    { staticClass: "drawer_nav" },
+    [
+      _c(
+        "el-menu",
+        {
+          staticClass: "el-menu-vertical",
+          attrs: { "default-active": "1-4-1", collapse: _vm.isCollapse },
+          on: { open: _vm.handleOpen, close: _vm.handleClose }
+        },
+        [
+          _c("el-menu-item", [
+            _c("div", { staticClass: "logo" }, [
+              _c("div", { staticClass: "title_box" }, [
+                _c("img", { attrs: { src: "/images/logo.png", alt: "logo" } })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "el-menu-item",
+            [
+              _c(
+                "el-radio-group",
+                {
+                  staticStyle: { "margin-bottom": "20px" },
+                  model: {
+                    value: _vm.isCollapse,
+                    callback: function($$v) {
+                      _vm.isCollapse = $$v
+                    },
+                    expression: "isCollapse"
+                  }
+                },
+                [
+                  _c("el-radio-button", { attrs: { label: false } }, [
+                    _vm._v("展开")
+                  ]),
                   _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(menu.label))])
+                  _c("el-radio-button", { attrs: { label: true } }, [
+                    _vm._v("收起")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-submenu",
+            { attrs: { index: "1" } },
+            [
+              _c("template", { slot: "title" }, [
+                _c("i", { staticClass: "el-icon-location" }),
+                _vm._v(" "),
+                _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+                  _vm._v("导航一")
                 ])
-              ],
-              1
-            )
-          })
-        )
-      ],
-      1
-    )
-  ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "el-menu-item-group",
+                [
+                  _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+                    _vm._v("分组一")
+                  ]),
+                  _vm._v(" "),
+                  _c("el-menu-item", { attrs: { index: "1-1" } }, [
+                    _vm._v("选项1")
+                  ]),
+                  _vm._v(" "),
+                  _c("el-menu-item", { attrs: { index: "1-2" } }, [
+                    _vm._v("选项2")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-menu-item-group",
+                { attrs: { title: "分组2" } },
+                [
+                  _c("el-menu-item", { attrs: { index: "1-3" } }, [
+                    _vm._v("选项3")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-submenu",
+                { attrs: { index: "1-4" } },
+                [
+                  _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+                    _vm._v("选项4")
+                  ]),
+                  _vm._v(" "),
+                  _c("el-menu-item", { attrs: { index: "1-4-1" } }, [
+                    _vm._v("选项1")
+                  ])
+                ],
+                1
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("el-menu-item", { attrs: { index: "2" } }, [
+            _c("i", { staticClass: "el-icon-menu" }),
+            _vm._v(" "),
+            _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+              _vm._v("导航二")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("el-menu-item", { attrs: { index: "3" } }, [
+            _c("i", { staticClass: "el-icon-setting" }),
+            _vm._v(" "),
+            _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+              _vm._v("导航三")
+            ])
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "current_team" }, [
-      _c("div", { staticClass: "title_box" }, [
-        _c("img", { attrs: { src: "/images/logo.png", alt: "logo" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
