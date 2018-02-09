@@ -1,8 +1,8 @@
 <template>
     <div class="drawer_nav">
-        <el-menu default-active="1-4-1" class="el-menu-vertical" :collapse="collapse">
+        <el-menu class="el-menu-vertical" :collapse="collapse" :default-active="$route.path">
             <el-menu-item index="7">
-                <div style="padding:10px">
+                <div class="logo">
                     <img src="/images/logo.png" alt="logo">
                 </div>
             </el-menu-item>
@@ -10,32 +10,15 @@
                 <i class="el-icon-menu"></i>
                 <span slot="title">收放自如</span>
             </el-menu-item>
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">导航一</span>
-                </template>
-                <el-menu-item-group>
-                    <span slot="title">分组一</span>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                    <span slot="title">选项4</span>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="3">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航三</span>
-            </el-menu-item>
+
+            <router-link v-for="(menu, index) in menus" :key="index" :to="menu.uri">
+                <el-menu-item  :index="menu.uri">
+                    <icon class="el-icon-menu" :name="menu.icon"></icon>
+                    <span slot="title">{{ menu.label }}</span>
+                </el-menu-item>
+            </router-link>
+
+
         </el-menu>
     </div>
 </template>
@@ -43,7 +26,7 @@
 
 <script>
     import menus from "@/config/menu.js";
-    import { mapActions } from 'vuex';
+
     export default {
         data() {
             return {
@@ -69,10 +52,7 @@
         height: 100%;
     }
     .logo{
-        height: 51px;
-        position: relative;
-        padding: 28px 32px 0 22px;
-        background: #fff;
+        padding: 10px;
     }
     .el-menu-vertical {
         height: 100%;

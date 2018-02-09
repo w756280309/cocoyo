@@ -16,6 +16,8 @@ import routes from './router/dashboard.js'
 import App from './App.vue';
 import {getToken} from './plugins/auth/auth'
 import store from '@/vuex/store.js';
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
 
 
 Vue.use(ElementUI);
@@ -24,6 +26,7 @@ Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(HttpPlugin);
 Vue.use(VueRouter);
+Vue.component('icon', Icon)
 
 
 

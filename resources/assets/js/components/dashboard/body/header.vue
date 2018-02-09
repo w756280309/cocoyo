@@ -9,7 +9,7 @@
                     <div>
                         <div class="mu-ripple-wrapper"></div>
                         <div class="mu-float-button-wrapper">
-                            <i class="ion-md-add material-icons"></i>
+                            <icon name="plus" class="material-icons"></icon>
                         </div>
                     </div>
                 </button>
