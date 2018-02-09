@@ -21,7 +21,7 @@
                                                 :headers="headers"
                                                 name="image"
                                                 accept="image/*"
-                                                action="/api/dashboard/links/upload"
+                                                action="/api/dashboard/upload/image"
                                                 :on-success="handleImageSuccess"
                                                 :on-preview="handleImagePreview"
                                                 :file-list="fileLists"

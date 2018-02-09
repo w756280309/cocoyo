@@ -85,11 +85,18 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Tag $tag
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        if ($tag->articles()->count()) {
+            return $this->failed('该标签下有内容，您不能删除该分类');
+        }
+
+        $tag->delete();
+
+        return $this->noContent();
     }
 }

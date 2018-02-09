@@ -16,7 +16,7 @@
                     name="image"
                     list-type="picture-card"
                     :headers="headers"
-                    action="api/dashboard/articles/upload"
+                    action="api/dashboard/upload/image"
                     :on-preview="handlePictureCardPreview"
                     :on-success="handleUploadSuccess"
                     :file-list="fileList"
@@ -243,7 +243,7 @@
                         targetElement: document.querySelector('.CodeMirror')
                     },
                     request: {
-                        endpoint: '/api/dashboard/articles/upload',
+                        endpoint: '/api/dashboard/upload/image',
                         inputName: 'image',
                         customHeaders: {
                             Authorization : getToken().token_type + ' ' + getToken().access_token,

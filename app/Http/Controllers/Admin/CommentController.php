@@ -23,28 +23,17 @@ class CommentController extends Controller
         return CommentResource::collection($comments);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        $comment->load('user');
+
+        return new CommentResource($comment);
     }
 
     /**
@@ -52,11 +41,15 @@ class CommentController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Response
      */
-    public function update(Request $request, $id)
+    public function update(Comment $comment, Request $request)
     {
-        //
+        $comment->fill(['content' => $request->input('content_raw')]);
+
+        $comment->save();
+
+        return $this->noContent();
     }
 
     /**
@@ -67,6 +60,8 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::destroy($id);
+
+        return $this->noContent();
     }
 }

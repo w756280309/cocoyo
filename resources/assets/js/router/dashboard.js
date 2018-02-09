@@ -69,6 +69,16 @@ export default [
         ]
     },
     {
+        path : '/comments',
+        component : From,
+        children : [
+            {
+                path: ':id/edit',
+                component : resolve => void(require(['@/views/dashboard/comments/edit.vue'], resolve))
+            }
+        ]
+    },
+    {
         path : '/category',
         component : From,
         children : [

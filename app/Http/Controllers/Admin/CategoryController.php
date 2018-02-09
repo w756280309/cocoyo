@@ -84,11 +84,18 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        if ($category->article()->count()) {
+            return $this->failed('该分类下有内容，您不能删除该分类');
+        }
+
+        $category->delete();
+
+        return $this->noContent();
     }
 }

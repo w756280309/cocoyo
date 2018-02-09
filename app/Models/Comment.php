@@ -12,16 +12,18 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'commenttable_id', 'commenttable_type', 'content'
+        'user_id', 'commentable_id', 'commentable_type', 'content'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     *多态
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function commentable()

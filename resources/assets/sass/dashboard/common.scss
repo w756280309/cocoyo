@@ -39,6 +39,8 @@ a:hover {text-decoration:none;}
   .wrappeer_box{
     width: calc(100% - 266px);
     transition: all .28s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    overflow: hidden;
+    overflow-y: visible;
     margin-left:266px;
     position: relative;
     float: left;

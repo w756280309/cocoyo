@@ -15,16 +15,15 @@ class Comment extends Resource
     public function toArray($request)
     {
         $content = json_decode($this->content);
-        http_response_code(500);
-        dd($this->commentable);
 
         return [
             'id'            => $this->id,
             'user'          => new User($this->whenLoaded('user')),
             'commentable'   => isset($this->commentable) ? $this->commentable->title : '',
-            'type'          => $this->commenttable_type,
+            'type'          => $this->commentable_type,
             'content_raw'   => $content->raw,
-            'created_at'    => $this->created_at->diffForHumans(),
+            'created_at'    => $this->created_at->toDateTimeString(),
+            'create_diff'   => $this->created_at->diffForHumans()
         ];
     }
 }

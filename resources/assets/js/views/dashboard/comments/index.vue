@@ -10,7 +10,9 @@
                 <el-table-column property="id" label="id"></el-table-column>
                 <el-table-column property="name" label="用户">
                     <template slot-scope="scope">
-                        <img :src="scope.user.avatar" class="avatar" alt="avatar">
+                        <el-tooltip class="item" effect="dark" :content="scope.row.user.name" placement="top">
+                            <img :src="scope.row.user.avatar" class="avatar" alt="avatar">
+                        </el-tooltip>
                     </template>
                 </el-table-column>
                 <el-table-column property="type" label="评论类型"></el-table-column>
@@ -19,7 +21,7 @@
 
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <router-link :to="'comment/' + scope.row.id + '/edit'">
+                        <router-link :to="'comments/' + scope.row.id + '/edit'">
                             <el-button type="primary" icon="el-icon-edit" round></el-button>
                         </router-link>
                         <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete" round></el-button>
@@ -96,7 +98,7 @@
                     type: 'error',
                     center: true
                 }).then(() => {
-                    this.$http.delete('links/' + id ).then((response) => {
+                    this.$http.delete('comments/' + id ).then((response) => {
                         this.$notify({
                             title: 'success',
                             message: '删除成功',

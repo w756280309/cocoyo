@@ -84,31 +84,18 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Article $article
+     * @return \Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
-    }
+        $article->tags()->detach();
 
-    /**
-     * 文章封面图片
-     *
-     * @param Request $request
-     * @param BaseManager $manager
-     * @return mixed
-     */
-    public function upload(Request $request, BaseManager $manager)
-    {
-        $this->validate($request, [
-            'image' => 'required|image'
-        ]);
+        $article->comments()->detach();
 
-        $path = date('Y') . date('m') . '/' . date('d');
+        $article->delete();
 
-        $resource = $manager->store($request->file('image'), $path);
-
-        return $this->respond($resource);
+        return $this->noContent();
     }
 }

@@ -100,24 +100,4 @@ class LinkController extends Controller
 
         return $this->noContent();
     }
-
-    /**
-     * upload image the link avatar
-     *
-     * @param Request $request
-     * @param BaseManager $manager
-     * @return mixed
-     */
-    public function upload(Request $request, BaseManager $manager)
-    {
-        $this->validate($request, [
-            'image' => 'required|image'
-        ]);
-
-        $path = date('Y') . date('m') . '/' . date('d');
-
-        $resource = $manager->store($request->file('image'), $path);
-
-        return $this->respond($resource);
-    }
 }

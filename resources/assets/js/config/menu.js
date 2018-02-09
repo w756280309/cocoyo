@@ -36,12 +36,6 @@ export default [
         uri  : '/category'
     },
     {
-        label : '文件管理',
-        icon : 'file',
-        color: '#f56c6c;',
-        uri : '/files'
-    },
-    {
         label: '友链管理',
         icon : 'link',
         color: '#f56c6c;',
@@ -52,11 +46,5 @@ export default [
         icon : 'eye',
         color: '#f56c6c;',
         uri  : '/visitors'
-    },
-    {
-        label: '系统配置',
-        icon : 'wrench',
-        color: '#f56c6c;',
-        uri  : '/system'
     }
 ]
