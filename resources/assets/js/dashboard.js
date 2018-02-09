@@ -15,6 +15,7 @@ import VueRouter from 'vue-router'
 import routes from './router/dashboard.js'
 import App from './App.vue';
 import {getToken} from './plugins/auth/auth'
+import store from '@/vuex/store.js';
 
 
 Vue.use(ElementUI);
@@ -56,6 +57,7 @@ router.beforeEach((to, from, next) => {
 
 const app = new Vue({
     router,
+    store,
     el: '#app',
     render: h => h(App),
 });

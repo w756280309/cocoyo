@@ -1,18 +1,14 @@
 <template>
     <div class="drawer_nav">
-        <el-menu default-active="1-4-1" class="el-menu-vertical" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-            <el-menu-item>
-                <div class="logo">
-                    <div class="title_box">
-                        <img src="/images/logo.png" alt="logo">
-                    </div>
+        <el-menu default-active="1-4-1" class="el-menu-vertical" :collapse="collapse">
+            <el-menu-item index="7">
+                <div style="padding:10px">
+                    <img src="/images/logo.png" alt="logo">
                 </div>
             </el-menu-item>
-            <el-menu-item>
-                <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                    <el-radio-button :label="false">展开</el-radio-button>
-                    <el-radio-button :label="true">收起</el-radio-button>
-                </el-radio-group>
+            <el-menu-item index="4" @click="toggle">
+                <i class="el-icon-menu"></i>
+                <span slot="title">收放自如</span>
             </el-menu-item>
             <el-submenu index="1">
                 <template slot="title">
@@ -46,21 +42,22 @@
 
 
 <script>
-    import menus from "../../../config/menu.js";
-
+    import menus from "@/config/menu.js";
+    import { mapActions } from 'vuex';
     export default {
         data() {
             return {
                 menus: menus,
-                isCollapse: true
+            }
+        },
+        computed: {
+            collapse() {
+                return this.$store.getters.opened
             }
         },
         methods: {
-            handleOpen(key, keyPath) {
-                console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                console.log(key, keyPath);
+            toggle() {
+                this.$store.commit('modifyOpen')
             }
         }
     }
@@ -81,7 +78,7 @@
         height: 100%;
         overflow: auto;
     }
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 200px;
+    .el-menu-vertical:not(.el-menu--collapse) {
+        width: 266px;
     }
 </style>
