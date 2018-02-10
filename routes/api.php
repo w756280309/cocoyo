@@ -29,6 +29,9 @@ Route::group(['prefix' => 'upload'], function () {
 Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
 
     # ==================== User Manager =----------------------
+    Route::get('statistics', 'DashboardController@statistics');
+
+    # ==================== User Manager =----------------------
     Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
     Route::put('users/{user}/status', 'UserController@status');
     Route::post('users/{user}/avatar', 'UserController@avatar');

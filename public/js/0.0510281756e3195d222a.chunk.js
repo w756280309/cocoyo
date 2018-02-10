@@ -26483,7 +26483,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     page_image: ''
                 };
             }
-        }
+        },
+        fileList: null
     },
     created: function created() {
         var _this = this;
@@ -26508,7 +26509,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         form: function form() {
             this.selected = this.form.category;
             this.tags = this.form.tags;
-            this.fileList = [{ url: this.form.page_image, name: '封面图片' }];
         }
     },
     data: function data() {
@@ -26517,7 +26517,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             allCategory: [],
             tags: [],
             allTags: [],
-            fileList: [],
             simplemdeMark: {},
             dialogImageUrl: '',
             dialogVisible: false,
@@ -27002,7 +27001,7 @@ exports = module.exports = __webpack_require__(16)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -27048,7 +27047,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            form: undefined
+            form: undefined,
+            file: []
         };
     },
     created: function created() {
@@ -27056,6 +27056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.$http.get('articles/' + this.$route.params.id + '/edit').then(function (response) {
             _this.form = response.data;
+            _this.file = [{ url: _this.form.page_image, name: '封面图片' }];
         });
     }
 });
@@ -27090,15 +27091,7 @@ var render = function() {
                       "el-col",
                       [
                         _c("article-form", {
-                          directives: [
-                            {
-                              name: "loading",
-                              rawName: "v-loading",
-                              value: _vm.loading,
-                              expression: "loading"
-                            }
-                          ],
-                          attrs: { form: _vm.form }
+                          attrs: { form: _vm.form, fileList: _vm.file }
                         })
                       ],
                       1

@@ -19,10 +19,12 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "chart.js": "^2.7.1",
         "element-ui": "^2.1.0",
         "fine-uploader": "^5.15.6",
         "simplemde-theme-base": "^0.2.1",
         "vue-awesome": "^2.3.4",
+        "vue-chartjs": "^3.1.1",
         "vue-image-crop-upload": "^2.2.3",
         "vue-multiselect": "^2.0.8",
         "vue-router": "^3.0.1",

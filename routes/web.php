@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
+Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
+
+Route::get('test', 'Admin\DashboardController@statistics');

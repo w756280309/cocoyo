@@ -7,7 +7,7 @@
                     <div class="box_body">
                         <el-row>
                             <el-col>
-                                <article-form  v-loading="loading" :form="form"></article-form>
+                                <article-form :form="form" :fileList="file"></article-form>
                             </el-col>
                         </el-row>
                     </div>
@@ -28,13 +28,15 @@
         },
         data() {
             return {
-                form: undefined
+                form: undefined,
+                file: [],
             }
         },
         created() {
             this.$http.get('articles/' + this.$route.params.id + '/edit')
                 .then((response) => {
                     this.form = response.data
+                    this.file = [{url: this.form.page_image, name: '封面图片'}]
                 })
         }
     }

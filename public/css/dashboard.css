@@ -8730,6 +8730,26 @@ a:hover {
   background-color: #fa3e5e;
 }
 
+::-moz-selection {
+  background: #fa3e5e;
+  color: white;
+}
+
+::selection {
+  background: #fa3e5e;
+  color: white;
+}
+
+::-moz-selection {
+  background: #fa3e5e;
+  color: white;
+}
+
+::-webkit-selection {
+  background: #fa3e5e;
+  color: white;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;

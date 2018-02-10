@@ -92,8 +92,6 @@ class ArticleController extends Controller
     {
         $article->tags()->detach();
 
-        $article->comments()->detach();
-
         $article->delete();
 
         return $this->noContent();

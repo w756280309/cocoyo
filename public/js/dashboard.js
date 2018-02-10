@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"b6167c298cccd8e77374","1":"6dbedfa68d9eea74eafa","2":"44899fa851a96f5732d7","3":"5566c90ed54b7feaa931","4":"f3306c2dee9bc8dd361c","5":"66faf08a64d93d07c85f","6":"0d4a92788a85d8298011","7":"51520b71716f1b1723b5","8":"7fa37c416aa92d74ee3b","9":"c8bdd747f6ee63308eaf","10":"ac835b4758a284d2a072","11":"2fbc4c3abb9df0fa8d98","12":"8473716eaba5661de809","13":"4c7fbdf9692fd220c923","14":"331ab61b2d6a2fbf7286","15":"093000fdfc09ea99e5db","16":"070ca087adecb2c8a0ae","17":"5098f05eb1fa3409d859","18":"a3407a95e68f3b4b6d46"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"0510281756e3195d222a","1":"a318970c5d3749500e1a","2":"44899fa851a96f5732d7","3":"5566c90ed54b7feaa931","4":"f3306c2dee9bc8dd361c","5":"66faf08a64d93d07c85f","6":"0d4a92788a85d8298011","7":"51520b71716f1b1723b5","8":"7fa37c416aa92d74ee3b","9":"c8bdd747f6ee63308eaf","10":"ac835b4758a284d2a072","11":"2fbc4c3abb9df0fa8d98","12":"8473716eaba5661de809","13":"09b84da2362c1cff1c7e","14":"331ab61b2d6a2fbf7286","15":"093000fdfc09ea99e5db","16":"b1baa51dedeb39be4d22","17":"c04ecff74cd2d8a44fe2","18":"664707fc734a207d90d2"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -88503,6 +88503,8 @@ function isDef(val) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__plugins_auth_auth__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_element_ui__);
+var _this = this;
+
 
 
 
@@ -88510,7 +88512,10 @@ function isDef(val) {
 
 
 var http = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: __WEBPACK_IMPORTED_MODULE_1__config_base__["a" /* apiUrl */]
+    baseURL: __WEBPACK_IMPORTED_MODULE_1__config_base__["a" /* apiUrl */],
+    validateStatus: function validateStatus(status) {
+        return [200, 201, 204, 422, 401, 400, 404, 429, 403].indexOf(status) !== -1; // 默认的
+    }
 });
 
 http.interceptors.request.use(function (config) {
@@ -88532,7 +88537,6 @@ http.interceptors.response.use(function (response) {
         return response.data;
     }
     if ([422].indexOf(status) !== -1) {
-        console.log(res);
         return Promise.reject(res);
     }
     if ([400, 404, 429, 403].indexOf(status) !== -1) {
@@ -88544,13 +88548,12 @@ http.interceptors.response.use(function (response) {
         return Promise.reject(res.message);
     }
     if ([401].indexOf(status) !== -1) {
-        window.User = '';
-        return Promise.reject(res.message);
+        _this.$router.push('/login');
     }
 }, function (error) {
     console.log('err' + error); // for debug
     Object(__WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"])({
-        message: error.message,
+        message: 'server error',
         type: 'error',
         duration: 5 * 1000
     });

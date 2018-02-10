@@ -110,7 +110,8 @@
                         page_image: ''
                     }
                 }
-            }
+            },
+            fileList: null
         },
         created() {
             Promise.all([this.$http.get('category?type=all'), this.$http.get('tags?type=all')]).then((response) => {
@@ -131,7 +132,6 @@
             form() {
                 this.selected = this.form.category
                 this.tags     = this.form.tags
-                this.fileList = [{url: this.form.page_image, name: '封面图片'}]
             }
         },
         data() {
@@ -140,7 +140,6 @@
                allCategory: [],
                tags: [],
                allTags: [],
-               fileList: [],
                simplemdeMark: {},
                dialogImageUrl: '',
                dialogVisible: false,

@@ -29,7 +29,7 @@
                         <router-link :to="'articles/' + scope.row.id + '/edit'">
                             <el-button type="primary" icon="el-icon-edit" round></el-button>
                         </router-link>
-                        <el-button type="danger" icon="el-icon-delete" round></el-button>
+                        <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete" round></el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -104,17 +104,17 @@
                 this.meta.current_page = val
                 this.loadData()
             },
-            handleStatus(id) {
-                this.$confirm('该动作可能会影响一些数据，请三思!', '改变该状态?', {
+            handleDelete(id) {
+                this.$confirm('您确定要删除该文章吗？请三思!', '是否删除?', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
-                    type: 'warning',
+                    type: 'error',
                     center: true
                 }).then(() => {
-                    this.$http.put('users/' + id + '/status').then((response) => {
+                    this.$http.delete('articles/' + id ).then((response) => {
                         this.$notify({
                             title: 'success',
-                            message: '状态修改成功',
+                            message: '删除成功',
                             type: 'success'
                         })
                         this.loadData()
@@ -122,10 +122,10 @@
                 }).catch(() => {
                     this.$message({
                         type: 'info',
-                        message: '已取消'
+                        message: '已取消删除'
                     });
                 });
-            }
+            },
         }
     }
 </script>

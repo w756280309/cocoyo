@@ -26483,7 +26483,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     page_image: ''
                 };
             }
-        }
+        },
+        fileList: null
     },
     created: function created() {
         var _this = this;
@@ -26508,7 +26509,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         form: function form() {
             this.selected = this.form.category;
             this.tags = this.form.tags;
-            this.fileList = [{ url: this.form.page_image, name: '封面图片' }];
         }
     },
     data: function data() {
@@ -26517,7 +26517,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             allCategory: [],
             tags: [],
             allTags: [],
-            fileList: [],
             simplemdeMark: {},
             dialogImageUrl: '',
             dialogVisible: false,

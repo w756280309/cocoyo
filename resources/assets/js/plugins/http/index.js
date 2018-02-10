@@ -6,6 +6,9 @@ import {Message, MessageBox} from "element-ui";
 
 export const http = axios.create({
     baseURL : apiUrl,
+    validateStatus: function(status) {
+        return [200, 201, 204, 422, 401, 400, 404, 429, 403].indexOf(status) !== -1 // 默认的
+    },
 })
 
 http.interceptors.request.use(
@@ -30,7 +33,6 @@ http.interceptors.response.use(
             return response.data
         }
         if ([422].indexOf(status) !== -1) {
-            console.log(res)
             return Promise.reject(res)
         }
         if ([400, 404, 429, 403].indexOf(status) !== -1) {
@@ -42,15 +44,14 @@ http.interceptors.response.use(
             return Promise.reject(res.message)
         }
         if ([401].indexOf(status) !== -1) {
-            window.User = '';
-            return Promise.reject(res.message)
+            this.$router.push('/login')
         }
 
     },
     error => {
         console.log('err' + error)// for debug
         Message({
-            message: error.message,
+            message: 'server error',
             type: 'error',
             duration: 5 * 1000
         })
