@@ -119,9 +119,5 @@ export default [
                 component: resolve => void(require(['@/views/dashboard/links/edit.vue'], resolve))
             }
         ]
-    },
-    {
-        path : '/login',
-        component: resolve => void(require(['../views/auth/Login.vue'], resolve))
     }
 ]

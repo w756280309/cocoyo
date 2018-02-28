@@ -23,9 +23,6 @@ import Icon from 'vue-awesome/components/Icon'
 Vue.use(ElementUI);
 Vue.use(HttpPlugin);
 Vue.use(VueRouter);
-Vue.use(ElementUI);
-Vue.use(HttpPlugin);
-Vue.use(VueRouter);
 Vue.component('icon', Icon)
 
 

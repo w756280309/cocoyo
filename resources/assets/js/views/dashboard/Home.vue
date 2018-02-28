@@ -21,7 +21,7 @@
                             <span class="label label-success pull-right">全部</span>
                         </div>
                         <div class="text item">
-                            <h1><icon name="users"></icon><span>{{ statistics.articles }}</span></h1>
+                            <h1><icon name="book"></icon><span>{{ statistics.articles }}</span></h1>
                         </div>
                     </el-card>
                 </el-col>
@@ -32,7 +32,7 @@
                             <span class="label label-success pull-right">全部</span>
                         </div>
                         <div class="text item">
-                            <h1><icon name="users"></icon><span>{{ statistics.visitors }}</span></h1>
+                            <h1><icon name="eye"></icon><span>{{ statistics.visitors }}</span></h1>
                         </div>
                     </el-card>
                 </el-col>
@@ -43,7 +43,7 @@
                             <span class="label label-success pull-right">全部</span>
                         </div>
                         <div class="text item">
-                            <h1><icon name="users"></icon><span>{{ statistics.comments }}</span></h1>
+                            <h1><icon name="comments"></icon><span>{{ statistics.comments }}</span></h1>
                         </div>
                     </el-card>
                 </el-col>

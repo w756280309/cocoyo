@@ -9,13 +9,14 @@
         </div>
         <div class="user_info">
             <el-dropdown>
-                <img data-v-5552f324="" class="img-responsive img-circle" src="https://image.cocoyo.xin/IMG_0347.PNG">
+                <img  class="img-responsive img-circle" src="https://image.cocoyo.xin/IMG_0347.PNG">
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-                    <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    <el-dropdown-item>
+                        <span @click="logout()">退出登录</span>
+                    </el-dropdown-item>
+                    <el-dropdown-item>
+                        <span @click="backHome()">返回首页</span>
+                    </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -24,7 +25,20 @@
 
 
 <script>
-    export default {}
+    import {removeToken, removeUser} from '@/plugins/auth/auth'
+
+    export default {
+        methods: {
+            logout() {
+                removeToken()
+                removeUser()
+                window.location.href = '/'
+            },
+            backHome() {
+                window.location.href = '/'
+            }
+        }
+    }
 </script>
 
 <style scoped>

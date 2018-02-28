@@ -3,7 +3,12 @@
         <div class="switch_return">
             <div class="back-but">
                 <router-link :to="back">
-                    <span class="page-name"><i class="el-icon-back"></i></span>
+                    <button class="mu-icon-button" type="button" style="user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;">
+                        <div class="">
+                            <div class="mu-ripple-wrapper"></div>
+                            <i class="el-icon-back"></i>
+                        </div>
+                    </button>
                 </router-link>
 
                 <span class="page-name">{{ menu }}</span>

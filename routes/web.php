@@ -12,9 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app.index');
 });
 
 Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
-
-Route::get('test', 'Admin\DashboardController@statistics');
