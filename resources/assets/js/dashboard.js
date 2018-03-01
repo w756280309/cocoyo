@@ -9,55 +9,41 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import ElementUI from 'element-ui'
-import HttpPlugin from './plugins/http'
-import VueRouter from 'vue-router'
-import routes from './router/dashboard.js'
+import iView from 'iview';
+import store from './store';
 import App from './App.vue';
-import {getToken} from './plugins/auth/auth'
-import store from '@/vuex/store.js';
-import 'vue-awesome/icons'
-import Icon from 'vue-awesome/components/Icon'
-
-
-Vue.use(ElementUI);
-Vue.use(HttpPlugin);
-Vue.use(VueRouter);
-Vue.component('icon', Icon)
+import {router} from './router/index';
+import {appRouter} from './router/router';
+import 'iview/dist/styles/iview.css';
 
 
 
-const router = new VueRouter({
-    mode: 'hash',
-    base: __dirname,
-    linkActiveClass: 'active',
-    routes: routes
-});
+Vue.use(iView)
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-router.beforeEach((to, from, next) => {
-    const whiteList = ['/login']
-    if(whiteList.indexOf(to.path) !== -1) {
-        if (getToken()) {
-            return next('/')
-        }
-        return next()
-    } else {
-        if (getToken()) {
-            return next()
-        }
-        return next('/login')
-    }
-})
 
 const app = new Vue({
-    router,
-    store,
     el: '#app',
+    router: router,
+    store: store,
     render: h => h(App),
+    data: {
+        currentPageName: ''
+    },
+    mounted () {
+        this.currentPageName = this.$route.name;
+        // 显示打开的页面的列表
+        this.$store.commit('setOpenedList');
+        this.$store.commit('initCachepage');
+    },
+    created () {
+        let tagsList = [];
+        appRouter.map((item) => {
+            if (item.children.length <= 1) {
+                tagsList.push(item.children[0]);
+            } else {
+                tagsList.push(...item.children);
+            }
+        });
+        this.$store.commit('setTagsList', tagsList);
+    }
 });

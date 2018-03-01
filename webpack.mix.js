@@ -26,19 +26,3 @@ mix.js('resources/assets/js/dashboard.js', 'public/js')
            chunkFilename: 'js/[name].[chunkhash].chunk.js'
        },
     });
-
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .webpackConfig({
-        resolve: {
-            extensions: ['.js', '.vue', '.json'],
-            alias: {
-                '@': path.resolve(__dirname, 'resources/assets/js'),
-            },
-        },
-        output: {
-            publicPath: '/',
-            filename: '[name].js',
-            chunkFilename: 'js/[name].[chunkhash].chunk.js'
-        },
-    });
