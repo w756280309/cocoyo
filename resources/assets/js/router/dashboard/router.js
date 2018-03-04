@@ -1,4 +1,4 @@
-import Main from '@/views/Main.vue';
+import Main from '@/views/dashboard/Main.vue';
 
 export const otherRouter = {
     path: '/',
@@ -6,7 +6,7 @@ export const otherRouter = {
     redirect: '/home',
     component: Main,
     children: [
-        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: () => require('@/views/home/home.vue') },
+        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: resolve => void(require(['@/views/home/home.vue'], resolve)) },
     ]
 };
 

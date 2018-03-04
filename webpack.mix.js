@@ -25,4 +25,16 @@ mix.js('resources/assets/js/dashboard.js', 'public/js')
            filename: '[name].js',
            chunkFilename: 'js/[name].[chunkhash].chunk.js'
        },
+       module: {
+           rules: [
+               {
+                   test: /\.less$/,
+                   use: [
+                       'style-loader',
+                       { loader: 'css-loader', options: { importLoaders: 1 } },
+                       'less-loader'
+                   ]
+               }
+           ]
+       }
     });

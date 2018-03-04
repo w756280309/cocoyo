@@ -10,12 +10,10 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import iView from 'iview';
+import {router} from './router/dashboard/index';
+import {appRouter} from './router/dashboard/router';
 import store from './store';
 import App from './App.vue';
-import {router} from './router/index';
-import {appRouter} from './router/router';
-import 'iview/dist/styles/iview.css';
-
 
 
 Vue.use(iView)
