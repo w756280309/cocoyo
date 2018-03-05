@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"46e07b58b2adeb531eff"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"af648260421d30adfd6d"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -566,6 +566,259 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+
+
+var util = {};
+
+util.title = function (title) {
+    title = title || 'cocoyo';
+    window.document.title = title;
+};
+
+util.inOf = function (arr, targetArr) {
+    var res = true;
+    arr.forEach(function (item) {
+        if (targetArr.indexOf(item) < 0) {
+            res = false;
+        }
+    });
+    return res;
+};
+
+util.oneOf = function (ele, targetArr) {
+    if (targetArr.indexOf(ele) >= 0) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+util.showThisRoute = function (itAccess, currentAccess) {
+    if ((typeof itAccess === 'undefined' ? 'undefined' : _typeof(itAccess)) === 'object' && Array.isArray(itAccess)) {
+        return util.oneOf(currentAccess, itAccess);
+    } else {
+        return itAccess === currentAccess;
+    }
+};
+
+util.getRouterObjByName = function (routers, name) {
+    if (!name || !routers || !routers.length) {
+        return null;
+    }
+    // debugger;
+    var routerObj = null;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = routers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var item = _step.value;
+
+            if (item.name === name) {
+                return item;
+            }
+            routerObj = util.getRouterObjByName(item.children, name);
+            if (routerObj) {
+                return routerObj;
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    return null;
+};
+
+util.handleTitle = function (vm, item) {
+    console.log(vm, item);
+    if (_typeof(item.title) === 'object') {
+        return item.title.i18n;
+    } else {
+        return item.title;
+    }
+};
+
+util.setCurrentPath = function (vm, name) {
+    var title = '';
+    var isOtherRouter = false;
+    vm.$store.state.app.routers.forEach(function (item) {
+        if (item.children.length === 1) {
+            if (item.children[0].name === name) {
+                title = util.handleTitle(vm, item);
+                if (item.name === 'otherRouter') {
+                    isOtherRouter = true;
+                }
+            }
+        } else {
+            item.children.forEach(function (child) {
+                if (child.name === name) {
+                    title = util.handleTitle(vm, child);
+                    if (item.name === 'otherRouter') {
+                        isOtherRouter = true;
+                    }
+                }
+            });
+        }
+    });
+    var currentPathArr = [];
+    if (name === 'home_index') {
+        currentPathArr = [{
+            title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
+            path: '',
+            name: 'home_index'
+        }];
+    } else if ((name.indexOf('_index') >= 0 || isOtherRouter) && name !== 'home_index') {
+        currentPathArr = [{
+            title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
+            path: '/home',
+            name: 'home_index'
+        }, {
+            title: title,
+            path: '',
+            name: name
+        }];
+    } else {
+        var currentPathObj = vm.$store.state.app.routers.filter(function (item) {
+            if (item.children.length <= 1) {
+                return item.children[0].name === name;
+            } else {
+                var i = 0;
+                var childArr = item.children;
+                var len = childArr.length;
+                while (i < len) {
+                    if (childArr[i].name === name) {
+                        return true;
+                    }
+                    i++;
+                }
+                return false;
+            }
+        })[0];
+        if (currentPathObj.children.length <= 1 && currentPathObj.name === 'home') {
+            currentPathArr = [{
+                title: '首页',
+                path: '',
+                name: 'home_index'
+            }];
+        } else if (currentPathObj.children.length <= 1 && currentPathObj.name !== 'home') {
+            currentPathArr = [{
+                title: '首页',
+                path: '/home',
+                name: 'home_index'
+            }, {
+                title: currentPathObj.title,
+                path: '',
+                name: name
+            }];
+        } else {
+            var childObj = currentPathObj.children.filter(function (child) {
+                return child.name === name;
+            })[0];
+            currentPathArr = [{
+                title: '首页',
+                path: '/home',
+                name: 'home_index'
+            }, {
+                title: currentPathObj.title,
+                path: '',
+                name: currentPathObj.name
+            }, {
+                title: childObj.title,
+                path: currentPathObj.path + '/' + childObj.path,
+                name: name
+            }];
+        }
+    }
+    vm.$store.commit('setCurrentPath', currentPathArr);
+
+    return currentPathArr;
+};
+
+util.openNewPage = function (vm, name, argu, query) {
+    var pageOpenedList = vm.$store.state.app.pageOpenedList;
+    var openedPageLen = pageOpenedList.length;
+    var i = 0;
+    var tagHasOpened = false;
+    while (i < openedPageLen) {
+        if (name === pageOpenedList[i].name) {
+            // 页面已经打开
+            vm.$store.commit('pageOpenedList', {
+                index: i,
+                argu: argu,
+                query: query
+            });
+            tagHasOpened = true;
+            break;
+        }
+        i++;
+    }
+    if (!tagHasOpened) {
+        var tag = vm.$store.state.app.tagsList.filter(function (item) {
+            if (item.children) {
+                return name === item.children[0].name;
+            } else {
+                return name === item.name;
+            }
+        });
+        tag = tag[0];
+        if (tag) {
+            tag = tag.children ? tag.children[0] : tag;
+            if (argu) {
+                tag.argu = argu;
+            }
+            if (query) {
+                tag.query = query;
+            }
+            vm.$store.commit('increateTag', tag);
+        }
+    }
+    vm.$store.commit('setCurrentPageName', name);
+};
+
+util.toDefaultPage = function (routers, name, route, next) {
+    var len = routers.length;
+    var i = 0;
+    var notHandle = true;
+    while (i < len) {
+        if (routers[i].name === name && routers[i].children && routers[i].redirect === undefined) {
+            route.replace({
+                name: routers[i].children[0].name
+            });
+            notHandle = false;
+            next();
+            break;
+        }
+        i++;
+    }
+
+    if (notHandle) {
+        next();
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (util);
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11382,258 +11635,6 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(43).setImmediate))
 
 /***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-
-
-var util = {};
-
-util.title = function (title) {
-    title = title || 'cocoyo';
-    window.document.title = title;
-};
-
-util.inOf = function (arr, targetArr) {
-    var res = true;
-    arr.forEach(function (item) {
-        if (targetArr.indexOf(item) < 0) {
-            res = false;
-        }
-    });
-    return res;
-};
-
-util.oneOf = function (ele, targetArr) {
-    if (targetArr.indexOf(ele) >= 0) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-util.showThisRoute = function (itAccess, currentAccess) {
-    if ((typeof itAccess === 'undefined' ? 'undefined' : _typeof(itAccess)) === 'object' && Array.isArray(itAccess)) {
-        return util.oneOf(currentAccess, itAccess);
-    } else {
-        return itAccess === currentAccess;
-    }
-};
-
-util.getRouterObjByName = function (routers, name) {
-    if (!name || !routers || !routers.length) {
-        return null;
-    }
-    // debugger;
-    var routerObj = null;
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-        for (var _iterator = routers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var item = _step.value;
-
-            if (item.name === name) {
-                return item;
-            }
-            routerObj = util.getRouterObjByName(item.children, name);
-            if (routerObj) {
-                return routerObj;
-            }
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
-    }
-
-    return null;
-};
-
-util.handleTitle = function (vm, item) {
-    if (_typeof(item.title) === 'object') {
-        return vm.$t(item.title.i18n);
-    } else {
-        return item.title;
-    }
-};
-
-util.setCurrentPath = function (vm, name) {
-    var title = '';
-    var isOtherRouter = false;
-    vm.$store.state.app.routers.forEach(function (item) {
-        if (item.children.length === 1) {
-            if (item.children[0].name === name) {
-                title = util.handleTitle(vm, item);
-                if (item.name === 'otherRouter') {
-                    isOtherRouter = true;
-                }
-            }
-        } else {
-            item.children.forEach(function (child) {
-                if (child.name === name) {
-                    title = util.handleTitle(vm, child);
-                    if (item.name === 'otherRouter') {
-                        isOtherRouter = true;
-                    }
-                }
-            });
-        }
-    });
-    var currentPathArr = [];
-    if (name === 'home_index') {
-        currentPathArr = [{
-            title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
-            path: '',
-            name: 'home_index'
-        }];
-    } else if ((name.indexOf('_index') >= 0 || isOtherRouter) && name !== 'home_index') {
-        currentPathArr = [{
-            title: util.handleTitle(vm, util.getRouterObjByName(vm.$store.state.app.routers, 'home_index')),
-            path: '/home',
-            name: 'home_index'
-        }, {
-            title: title,
-            path: '',
-            name: name
-        }];
-    } else {
-        var currentPathObj = vm.$store.state.app.routers.filter(function (item) {
-            if (item.children.length <= 1) {
-                return item.children[0].name === name;
-            } else {
-                var i = 0;
-                var childArr = item.children;
-                var len = childArr.length;
-                while (i < len) {
-                    if (childArr[i].name === name) {
-                        return true;
-                    }
-                    i++;
-                }
-                return false;
-            }
-        })[0];
-        if (currentPathObj.children.length <= 1 && currentPathObj.name === 'home') {
-            currentPathArr = [{
-                title: '首页',
-                path: '',
-                name: 'home_index'
-            }];
-        } else if (currentPathObj.children.length <= 1 && currentPathObj.name !== 'home') {
-            currentPathArr = [{
-                title: '首页',
-                path: '/home',
-                name: 'home_index'
-            }, {
-                title: currentPathObj.title,
-                path: '',
-                name: name
-            }];
-        } else {
-            var childObj = currentPathObj.children.filter(function (child) {
-                return child.name === name;
-            })[0];
-            currentPathArr = [{
-                title: '首页',
-                path: '/home',
-                name: 'home_index'
-            }, {
-                title: currentPathObj.title,
-                path: '',
-                name: currentPathObj.name
-            }, {
-                title: childObj.title,
-                path: currentPathObj.path + '/' + childObj.path,
-                name: name
-            }];
-        }
-    }
-    vm.$store.commit('setCurrentPath', currentPathArr);
-
-    return currentPathArr;
-};
-
-util.openNewPage = function (vm, name, argu, query) {
-    var pageOpenedList = vm.$store.state.app.pageOpenedList;
-    var openedPageLen = pageOpenedList.length;
-    var i = 0;
-    var tagHasOpened = false;
-    while (i < openedPageLen) {
-        if (name === pageOpenedList[i].name) {
-            // 页面已经打开
-            vm.$store.commit('pageOpenedList', {
-                index: i,
-                argu: argu,
-                query: query
-            });
-            tagHasOpened = true;
-            break;
-        }
-        i++;
-    }
-    if (!tagHasOpened) {
-        var tag = vm.$store.state.app.tagsList.filter(function (item) {
-            if (item.children) {
-                return name === item.children[0].name;
-            } else {
-                return name === item.name;
-            }
-        });
-        tag = tag[0];
-        if (tag) {
-            tag = tag.children ? tag.children[0] : tag;
-            if (argu) {
-                tag.argu = argu;
-            }
-            if (query) {
-                tag.query = query;
-            }
-            vm.$store.commit('increateTag', tag);
-        }
-    }
-    vm.$store.commit('setCurrentPageName', name);
-};
-
-util.toDefaultPage = function (routers, name, route, next) {
-    var len = routers.length;
-    var i = 0;
-    var notHandle = true;
-    while (i < len) {
-        if (routers[i].name === name && routers[i].children && routers[i].redirect === undefined) {
-            route.replace({
-                name: routers[i].children[0].name
-            });
-            notHandle = false;
-            next();
-            break;
-        }
-        i++;
-    }
-
-    if (notHandle) {
-        next();
-    }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (util);
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12255,7 +12256,7 @@ var otherRouter = {
     name: 'otherRouter',
     redirect: '/home',
     component: __WEBPACK_IMPORTED_MODULE_0__views_dashboard_Main_vue___default.a,
-    children: [{ path: 'home', title: { i18n: 'home' }, name: 'home_index', component: function component(resolve) {
+    children: [{ path: 'home', title: { i18n: '主页' }, name: 'home_index', component: function component(resolve) {
             return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(86)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }]
 };
@@ -12734,7 +12735,7 @@ module.exports = Cancel;
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
-		module.exports = factory(__webpack_require__(2));
+		module.exports = factory(__webpack_require__(3));
 	else if(typeof define === 'function' && define.amd)
 		define("iview", ["vue"], factory);
 	else if(typeof exports === 'object')
@@ -47183,7 +47184,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 __webpack_require__(20);
 
-window.Vue = __webpack_require__(2);
+window.Vue = __webpack_require__(3);
 
 
 
@@ -78298,11 +78299,11 @@ exports.clearImmediate = clearImmediate;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return router; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_iview__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_iview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_iview__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_util__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_util__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_js_cookie__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_js_cookie__);
@@ -81062,7 +81063,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -81118,6 +81119,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__main_components_message_tip_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__main_components_message_tip_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_js_cookie__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_js_cookie__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__libs_util_js__ = __webpack_require__(2);
 //
 //
 //
@@ -81180,6 +81182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -81230,7 +81233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         init: function init() {
-            var pathArr = util.setCurrentPath(this, this.$route.name);
+            var pathArr = __WEBPACK_IMPORTED_MODULE_6__libs_util_js__["a" /* default */].setCurrentPath(this, this.$route.name);
             this.$store.commit('updateMenulist');
             if (pathArr.length >= 2) {
                 this.$store.commit('addOpenSubmenu', pathArr[1].name);
@@ -81246,7 +81249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         handleClickUserDropdown: function handleClickUserDropdown(name) {
             if (name === 'ownSpace') {
-                util.openNewPage(this, 'ownspace_index');
+                __WEBPACK_IMPORTED_MODULE_6__libs_util_js__["a" /* default */].openNewPage(this, 'ownspace_index');
                 this.$router.push({
                     name: 'ownspace_index'
                 });
@@ -81267,7 +81270,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             if (!openpageHasTag) {
                 //  解决关闭当前标签后再点击回退按钮会退到当前页时没有标签的问题
-                util.openNewPage(this, name, this.$route.params || {}, this.$route.query || {});
+                __WEBPACK_IMPORTED_MODULE_6__libs_util_js__["a" /* default */].openNewPage(this, name, this.$route.params || {}, this.$route.query || {});
             }
         },
         handleSubmenuChange: function handleSubmenuChange(val) {
@@ -81288,7 +81291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         '$route': function $route(to) {
             this.$store.commit('setCurrentPageName', to.name);
-            var pathArr = util.setCurrentPath(this, to.name);
+            var pathArr = __WEBPACK_IMPORTED_MODULE_6__libs_util_js__["a" /* default */].setCurrentPath(this, to.name);
             if (pathArr.length > 2) {
                 this.$store.commit('addOpenSubmenu', pathArr[1].name);
             }
@@ -81406,7 +81409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_sidebarMenu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_sidebarMenu_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_sidebarMenuShrink_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_sidebarMenuShrink_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_sidebarMenuShrink_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_util__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_util__ = __webpack_require__(2);
 //
 //
 //
@@ -82116,8 +82119,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_util__ = __webpack_require__(2);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 //
@@ -82185,8 +82187,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
     methods: {
         itemTitle: function itemTitle(item) {
+            console.log(item);
             if (_typeof(item.title) === 'object') {
-                return this.$t(item.title.i18n);
+                return __WEBPACK_IMPORTED_MODULE_0__libs_util__["a" /* default */].handleTitle(this, item);
             } else {
                 return item.title;
             }
@@ -82762,7 +82765,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_util_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_util_js__ = __webpack_require__(2);
 //
 //
 //
@@ -83092,7 +83095,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_app__ = __webpack_require__(78);
@@ -84072,10 +84075,10 @@ var index_esm = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__router_dashboard_router__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_util__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_util__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_js_cookie__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_js_cookie__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue__);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 

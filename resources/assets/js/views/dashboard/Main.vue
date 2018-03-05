@@ -67,6 +67,7 @@
     import fullScreen from './main-components/fullscreen.vue';
     import messageTip from './main-components/message-tip.vue';
     import Cookies from 'js-cookie';
+    import util from '@/libs/util.js'
 
     export default {
         components: {
