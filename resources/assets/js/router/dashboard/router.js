@@ -10,7 +10,18 @@ export const otherRouter = {
     ]
 };
 
-export const appRouter = []
+export const appRouter = [
+    {
+        path: '/users',
+        icon: 'key',
+        name: 'users',
+        title: '分类管理',
+        component: Main,
+        children: [
+            { path: 'index', title: '用户管理', name: 'users_index', component: resolve => void(require(['@/views/dashboard/users/index.vue'], resolve)) }
+        ]
+    }
+]
 
 export const routers = [
     otherRouter,
