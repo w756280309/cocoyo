@@ -14,9 +14,10 @@ import {router} from './router/dashboard/index';
 import {appRouter} from './router/dashboard/router';
 import store from './store';
 import App from './App.vue';
-
+import HttpPlugin from './libs/http'
 
 Vue.use(iView)
+Vue.use(HttpPlugin);
 
 
 const app = new Vue({

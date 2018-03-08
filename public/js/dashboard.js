@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		1: 0
+/******/ 		2: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"2":"b9b0cebda9568e76684c","3":"6f71eaceead2c6f33155"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"4ce61828b5e34c486e67","1":"4fbeba899fe2eafb8b26"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -12257,7 +12257,7 @@ var otherRouter = {
     redirect: '/home',
     component: __WEBPACK_IMPORTED_MODULE_0__views_dashboard_Main_vue___default.a,
     children: [{ path: 'home', title: { i18n: '主页' }, name: 'home_index', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(86)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(86)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }]
 };
 
@@ -12268,7 +12268,7 @@ var appRouter = [{
     title: '分类管理',
     component: __WEBPACK_IMPORTED_MODULE_0__views_dashboard_Main_vue___default.a,
     children: [{ path: 'index', title: '用户管理', name: 'users_index', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(112)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(87)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }]
 }];
 
@@ -47183,6 +47183,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__App_vue__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__App_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__libs_http__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__libs_http___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__libs_http__);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /**
@@ -47201,7 +47203,9 @@ window.Vue = __webpack_require__(3);
 
 
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_iview___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5__libs_http__["default"]);
 
 var app = new Vue({
     el: '#app',
@@ -84479,6 +84483,38 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: h:/code/cocoyo/resources/assets/js/libs/http.js: `http` has already been exported. Exported identifiers must be unique. (11:13)\n\n\u001b[0m \u001b[90m  9 | \u001b[39m})\n \u001b[90m 10 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m http \u001b[33m=\u001b[39m axios\u001b[33m.\u001b[39mcreate({\n \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 | \u001b[39m    baseURL \u001b[33m:\u001b[39m apiUrl\u001b[33m,\u001b[39m\n \u001b[90m 13 | \u001b[39m    validateStatus\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m(status) {\n \u001b[90m 14 | \u001b[39m        \u001b[36mreturn\u001b[39m [\u001b[35m200\u001b[39m\u001b[33m,\u001b[39m \u001b[35m201\u001b[39m\u001b[33m,\u001b[39m \u001b[35m204\u001b[39m\u001b[33m,\u001b[39m \u001b[35m422\u001b[39m\u001b[33m,\u001b[39m \u001b[35m401\u001b[39m\u001b[33m,\u001b[39m \u001b[35m400\u001b[39m\u001b[33m,\u001b[39m \u001b[35m404\u001b[39m\u001b[33m,\u001b[39m \u001b[35m429\u001b[39m\u001b[33m,\u001b[39m \u001b[35m403\u001b[39m]\u001b[33m.\u001b[39mindexOf(status) \u001b[33m!==\u001b[39m \u001b[33m-\u001b[39m\u001b[35m1\u001b[39m \u001b[90m// 默认的\u001b[39m\u001b[0m\n");
 
 /***/ })
 /******/ ]);
