@@ -37,13 +37,12 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $data = $this->validate($request, [
             'tag' => 'required|min:1|max:15',
-            'title' => 'required',
             'meta_description' => 'required'
         ]);
 
-        Tag::create($request->all());
+        Tag::create($data);
 
         return $this->noContent();
     }
@@ -69,13 +68,12 @@ class TagController extends Controller
      */
     public function update(Tag $tag, Request $request)
     {
-        $this->validate($request, [
+        $data = $this->validate($request, [
             'tag' => 'required|min:1|max:15',
-            'title' => 'required',
             'meta_description' => 'required'
         ]);
 
-        $tag->fill($request->all());
+        $tag->fill($data);
 
         $tag->save();
 
@@ -92,7 +90,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         if ($tag->articles()->count()) {
-            return $this->failed('该标签下有内容，您不能删除该分类');
+            return $this->failed('该标签下有内容，您不能删除该标签');
         }
 
         $tag->delete();

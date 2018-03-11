@@ -31,42 +31,32 @@
                         key: 'id'
                     },
                     {
-                        title: '头像',
-                        key: 'avatar',
+                        title: '用户',
+                        key: 'name',
                         render: (h, params) => {
-                            return h('Avatar', {
+                            return h('Tooltip', {
                                 props: {
-                                    src: params.row.avatar
+                                    content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
                                 }
-                            })
-                        }
-                    },
-                    {
-                        title: '用户名',
-                        key: 'name'
-                    },
-                    {
-                        title: '邮箱',
-                        key: 'email',
-                    },
-                    {
-                        title: '状态',
-                        key: 'status',
-                        render: (h, params) => {
-                            return h('span', [
-                                h('Icon', {
+                            }, [
+                                h('Avatar', {
                                     props: {
-                                        type: 'record'
-                                    },
-                                    style: {
-                                        color: params.row.status == 1 ? 'rgb(142, 180, 203)' : '    color: rgb(191, 83, 41)'
+                                        src: params.row.user.avatar
                                     }
                                 })
                             ])
                         }
                     },
                     {
-                        title: '创建时间',
+                        title: '评论类型',
+                        key: 'type'
+                    },
+                    {
+                        title: '评论标题',
+                        key: 'commentable'
+                    },
+                    {
+                        title: '评论时间',
                         key: 'created_at'
                     },
                     {
@@ -77,7 +67,7 @@
                             return h('div', [
                                 h('router-link',{
                                     props: {
-                                        to: '/users/' + params.row.id + '/edit'
+                                        to: '/comments/' + params.row.id + '/edit'
                                     },
                                 }, [
                                     h('Button', {
@@ -116,7 +106,7 @@
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'users';
+                var url = 'comments';
                 if (this.meta.current_page > 1) {
                     let page = ''
                     if (url.indexOf('?') != -1) {
@@ -139,16 +129,16 @@
             },
             handleDelete(data) {
                 this.$Modal.confirm({
-                    title: '改变该状态?',
+                    title: '删除该评论?',
                     content: '该动作可能会影响一些数据，请三思!',
-                    okText: '是,改变它!',
+                    okText: '是,删除它!',
                     cancelText: '取消',
                     loading: true,
                     onOk: () => {
-                        this.$http.put('users/' + data.row.id + '/status').then((response) => {
+                        this.$http.delete('comments/' + data.row.id).then((response) => {
                             this.$Modal.remove();
-                            this.$Message.success('修改成功');
-                            this.tableData[data.index].status = ! data.row.status
+                            this.loadData()
+                            this.$Message.success('删除成功');
                         })
                     }
                 });

@@ -26,7 +26,7 @@ Route::group(['prefix' => 'upload'], function () {
 
 # ==================== Dashboard =----------------------
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard'], function () {
 
     # ==================== User Manager =----------------------
     Route::get('statistics', 'DashboardController@statistics');
@@ -43,7 +43,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
     Route::resource('comments', 'CommentController', ['except' => ['create', 'show', 'store']]);
 
     # ==================== Category Manager =----------------------
-    Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
+    Route::resource('categories', 'CategoryController', ['except' => ['create', 'show']]);
 
     # ==================== Tags Manager =----------------------
     Route::resource('tags', 'TagController', ['except' => ['create', 'show']]);

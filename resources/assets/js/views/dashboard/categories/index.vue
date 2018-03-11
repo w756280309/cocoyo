@@ -3,6 +3,11 @@
         <Row>
             <Col :span="24">
                 <Card>
+                    <p slot="title" style="height:100%;text-align: right;">
+                        <router-link to="/categories/add">
+                            <Button type="primary" icon="android-add-circle">添加分类</Button>
+                        </router-link>
+                    </p>
                     <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe></Table>
                     <div style="margin: 10px;overflow: hidden">
                         <div style="float: right;">
@@ -31,39 +36,12 @@
                         key: 'id'
                     },
                     {
-                        title: '头像',
-                        key: 'avatar',
-                        render: (h, params) => {
-                            return h('Avatar', {
-                                props: {
-                                    src: params.row.avatar
-                                }
-                            })
-                        }
-                    },
-                    {
-                        title: '用户名',
+                        title: '分类名',
                         key: 'name'
                     },
                     {
-                        title: '邮箱',
-                        key: 'email',
-                    },
-                    {
-                        title: '状态',
-                        key: 'status',
-                        render: (h, params) => {
-                            return h('span', [
-                                h('Icon', {
-                                    props: {
-                                        type: 'record'
-                                    },
-                                    style: {
-                                        color: params.row.status == 1 ? 'rgb(142, 180, 203)' : '    color: rgb(191, 83, 41)'
-                                    }
-                                })
-                            ])
-                        }
+                        title: '路径',
+                        key: 'path',
                     },
                     {
                         title: '创建时间',
@@ -77,7 +55,7 @@
                             return h('div', [
                                 h('router-link',{
                                     props: {
-                                        to: '/users/' + params.row.id + '/edit'
+                                        to: '/categories/' + params.row.id + '/edit'
                                     },
                                 }, [
                                     h('Button', {
@@ -116,7 +94,7 @@
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'users';
+                var url = 'categories';
                 if (this.meta.current_page > 1) {
                     let page = ''
                     if (url.indexOf('?') != -1) {
@@ -145,10 +123,10 @@
                     cancelText: '取消',
                     loading: true,
                     onOk: () => {
-                        this.$http.put('users/' + data.row.id + '/status').then((response) => {
+                        this.$http.delete('categories/' + data.row.id).then((response) => {
                             this.$Modal.remove();
-                            this.$Message.success('修改成功');
-                            this.tableData[data.index].status = ! data.row.status
+                            this.loadData()
+                            this.$Message.success('删除成功');
                         })
                     }
                 });

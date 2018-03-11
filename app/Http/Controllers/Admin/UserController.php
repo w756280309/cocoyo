@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
-        $user->fill($request->only(['nickname', 'website', 'description']));
+        $user->fill($request->only(['nickname', 'website', 'description', 'github_url', 'weibo_link', 'weibo_name']));
 
         $user->save();
 
