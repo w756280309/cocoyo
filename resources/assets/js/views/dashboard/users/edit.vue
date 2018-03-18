@@ -73,6 +73,8 @@
 
 <script>
     import Cropper from 'cropperjs'
+    import Cookies from 'js-cookie';
+
     export default {
         data() {
             return {
@@ -106,6 +108,11 @@
                         title: '这是一个消息提示',
                         desc: '编辑成功'
                     });
+
+                    if (this.$route.params.id == this.$store.state.user.info.id) {
+                        this.$store.commit('profile', response.data);
+                    }
+
                     this.$router.push('/users')
                 });
             },
@@ -129,6 +136,11 @@
 
                     vm.$http.post('users/' + vm.$route.params.id + '/avatar', formData).then((response) => {
                         vm.form.avatar = response.relative_url;
+
+                        if (this.$route.params.id == this.$store.state.user.info.id) {
+                            vm.$store.commit('modifyAvatar', response.relative_url);
+                        }
+
                         vm.cut_avatar = false;
                     })
                 });

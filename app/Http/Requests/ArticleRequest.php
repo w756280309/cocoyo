@@ -30,11 +30,19 @@ class ArticleRequest extends FormRequest
                 Rule::exists('categories', 'id')
             ],
             'title' => 'required|min:3|max:255',
-            'page_image' => 'required',
+            'page_image' => 'required|string',
             'content' => 'required',
-            'meta_description' => 'required',
+            'meta_description' => 'required|string',
             'published_at' => 'required',
-            'tags' => 'required'
+            'tags' => 'required|array',
+            'is_draft' => [
+                'required',
+                Rule::in([0, 1])
+            ],
+            'is_original' => [
+                'required',
+                Rule::in([0, 1])
+            ]
         ];
     }
 }

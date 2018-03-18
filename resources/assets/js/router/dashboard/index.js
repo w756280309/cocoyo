@@ -17,15 +17,11 @@ export const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-    // if (!Cookies.get('user') && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
-    //     next({
-    //         name: 'login'
-    //     });
-    // } else if (Cookies.get('user') && to.name === 'login') { // 判断是否已经登录且前往的是登录页
-    //     next({
-    //         name: 'home_index'
-    //     });
-    // }
+
+    if (!Cookies.get('user')) { // 判断是否已经登录且前往的页面不是登录页
+       window.location.href = '/';
+    }
+
     Util.toDefaultPage([otherRouter, ...appRouter], to.name, router, next);
 });
 

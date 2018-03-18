@@ -13,20 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-# ==================== Login =----------------------
+# ==================== Auth =----------------------
 Route::group(['namespace' => 'Auth'], function () {
-   Route::post('dashboard/login', 'LoginController@login')->name('user.login');
+   Route::post('login', 'LoginController@login')->name('user.login');
 });
-
-# ==================== Upload =----------------------
-Route::group(['prefix' => 'upload'], function () {
-    Route::post('image', 'UploadController@uploadImage');
-});
-
 
 # ==================== Dashboard =----------------------
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => 'auth:api'], function () {
 
     # ==================== User Manager =----------------------
     Route::get('statistics', 'DashboardController@statistics');

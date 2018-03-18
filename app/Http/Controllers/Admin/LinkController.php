@@ -91,12 +91,13 @@ class LinkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Link $link
      * @return \Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Link $link)
     {
-        Link::destroy($id);
+       $link->delete();
 
         return $this->noContent();
     }

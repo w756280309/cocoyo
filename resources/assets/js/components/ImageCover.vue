@@ -1,10 +1,20 @@
 <template>
     <div>
-        <Modal title="裁剪图片" ok-text="裁剪" :loading="true" :mask-closable="false" @on-ok="handelCut" v-model="cut_avatar">
+        <div class="my-uploader ivu-upload"
+             :style="{backgroundImage:`url(${image})`}">
+            <div class="ivu-upload ivu-upload-drag">
+                <input accept="image/png, image/jpeg, image/gif, image/jpg" id="fileinput" @change="previewModel" type="file" class="ivu-upload-input">
+                <div class="upload-compoment hasBg">
+                    <i class="ivu-icon ivu-icon-ios-cloud-upload" style="font-size: 52px; color: rgb(51, 153, 255);"></i>
+                    <div class="el-upload__text">支持png/jpg/gif格式图片，或<em>点击上传</em></div>
+                </div>
+            </div>
+        </div>
+        <Modal title="裁剪图片" ok-text="裁剪" :loading="true" :mask-closable="false" @on-ok="handelCut" v-model="innerVisible">
             <Row :gutter="10">
                 <Col span="14" class="image-editor-con">
                 <div class="cropper">
-                    <img id="cropimg" alt="">
+                    <img id="image-cover" alt="">
                 </div>
                 </Col>
                 <Col span="10" class="image-editor-con">
@@ -15,27 +25,28 @@
             </Row>
         </Modal>
     </div>
+
 </template>
 
 <script>
     import Cropper from 'cropperjs'
-    import './cropper.min.css
 
     export default {
         name: "ImageCover",
-        data() {
-            cropper: {}
-        },
         props: {
-            cut_avatar: {
-                type: Boolean,
+            image: {
                 default() {
-                    return false
-                }
-            }
+                    return ''
+                },
+                type: String
+            },
+            action: {
+                type: String,
+                default: 'upload/image'
+            },
         },
-        mounted() {
-            let img = document.getElementById('cropimg');
+        mounted () {
+            let img = document.getElementById('image-cover');
             this.cropper = new Cropper(img, {
                 dragMode: 'move',
                 preview: '#preview',
@@ -45,6 +56,12 @@
                 cropBoxMovable: false,
                 toggleDragModeOnDblclick: false
             });
+        },
+        data() {
+            return {
+                cropper: {},
+                innerVisible: false,
+            }
         },
         methods: {
             previewModel(e) {
@@ -56,34 +73,79 @@
                 };
 
                 reader.readAsDataURL(file);
-                this.cut_avatar = true;
+                this.innerVisible = true;
+            },
+            handelCut() {
+                let vm = this;
+                vm.cropper.getCroppedCanvas().toBlob(function (blob) {
+                    var formData = new FormData();
+
+                    formData.append('image', blob);
+
+                    vm.$http.post(vm.action, formData).then((response) => {
+                        vm.$emit('successUpload', response)
+                        vm.innerVisible = false;
+                    })
+                });
             },
         }
 
     }
 </script>
 
-<style scoped>
-    .image-editor-con{
-        height: 300px;
-    }
-    .image-editor-con .cropper{
-        box-sizing: border-box;
-        border: 1px solid #c3c3c3;
+<style lang="scss">
+    .my-uploader{
+        border-radius: 6px;
+        background: no-repeat center center/cover;
+        .el-upload{
+            width: 100%
+        }
         width: 100%;
-        height: 100%;
+        .upload-compoment{
+            padding-top: 40px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1;
+            border-radius: 20px;
+            cursor: pointer;
+            div{
+                margin-bottom: 20px;
+                margin-top: 25px;
+            }
+            small{
+                display: block;
+                margin-bottom: 15px
+            }
+            &.hasBg{
+                transition: all 0.5s;
+                .iconfont{
+                    color: #fff
+                }
+                small{
+                    color: #fff
+                }
+            }
+        }
+        &:hover{
+            .upload-compoment.hasBg{
+                opacity: 1;
+            }
+        }
     }
-    .image-editor-con .cropper img{
-        max-height: 100%;
+    .ivu-upload-drag{
+        background:none;
     }
-    .image-editor-con-preview-con{
-        width: 100% !important;
-        height: 200px !important;
-        border: 1px solid #c3c3c3;
-    }
-    #preview{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
+    .ivu-upload input[type=file]{
+        display:block;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left:0;
+        right:0;
+        cursor: pointer;
+        width:100%;
+        height:100%;
+        opacity: 0;
     }
 </style>

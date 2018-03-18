@@ -1,5 +1,7 @@
 import axios from 'axios'
 import {apiUrl} from '@/config/dashboard'
+import Cookies from "js-cookie";
+import {Message} from 'iview'
 
 export const http = axios.create({
     baseURL : apiUrl,
@@ -7,6 +9,17 @@ export const http = axios.create({
         return [200, 201, 204, 422, 401, 400, 404, 429, 403].indexOf(status) !== -1 // 默认的
     },
 })
+
+http.interceptors.request.use(
+    config => {
+        const token = Cookies.getJSON('token');
+        if (token) {
+            config.headers['Authorization'] = token.token_type + ' ' + token.access_token
+        }
+
+        return config;
+    }
+)
 
 http.interceptors.response.use(
     response => {
@@ -22,22 +35,27 @@ http.interceptors.response.use(
             return Promise.reject(res)
         }
         if ([400, 404, 429, 403].indexOf(status) !== -1) {
-            this.$Notice.error({
-                title: 'error',
-                desc: res.message,
+            Message.error({
+                content: res.message,
+                duration: 10,
+                closable: true
             });
             return Promise.reject(res.message)
         }
         if ([401].indexOf(status) !== -1) {
-            this.$router.push('/login')
+            Message.error({
+                content: res.message,
+                duration: 10,
+                closable: true
+            });
         }
 
     },
     error => {
-
-        this.$Notice.error({
-            title: 'server error',
-            desc: 'false'
+        Message.error({
+            content: 'server error',
+            duration: 10,
+            closable: true
         });
 
         return Promise.reject(error)

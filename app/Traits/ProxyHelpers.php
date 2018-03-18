@@ -5,6 +5,7 @@ namespace App\Traits;
 use GuzzleHttp\Client;
 use App\Exceptions\UnauthorizedException;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Validation\ValidationException;
 
 trait ProxyHelpers
 {
@@ -22,13 +23,15 @@ trait ProxyHelpers
 
             $respond = $client->request('POST', $url, ['form_params' => $params]);
         } catch (RequestException $exception) {
-            return $this->failed('请求失败，服务器错误');
+            if ($exception->getCode() === 401) {
+                throw ValidationException::withMessages(['message' => '用户名或密码错误']);
+            }
         }
 
-        if ($respond->getStatusCode() !== 401) {
+        if ($respond->getStatusCode() === 200) {
             return json_decode($respond->getBody()->getContents(), true);
         }
 
-        return $this->failed('账号或密码错误');
+        abort(500, 'service error');
     }
 }

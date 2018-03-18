@@ -1,8 +1,2 @@
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-
-//element
-@import "~element-ui/lib/theme-chalk/index.css";
-
-@import "./app/common";
-@import "./app/login";
+// main.styl
+@import "~vuetify/dist/vuetify.min.css";

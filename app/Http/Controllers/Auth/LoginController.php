@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User as UserResource;
+use App\Models\User;
 use App\Traits\ProxyHelpers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -24,16 +26,35 @@ class LoginController extends Controller
 
     use AuthenticatesUsers, ProxyHelpers;
 
+    /**
+     * Handle a login request to the application.
+     *
+     * @param Request $request
+     * @return mixed
+     * @throws ValidationException
+     */
     public function login(Request $request)
     {
         $this->validateLogin($request);
 
-        if (! Auth::attempt($request->only($this->username(), 'password'))) {
-            return $this->failed();
-        }
+        $user = User::where($this->username(), $request->input($this->username()))->first();
 
         $tokens = $this->authenticate();
 
-        return $this->respond(['data' => ['token' => $tokens, 'user' => new UserResource($request->user())]]);
+        return $this->respond(['data' => ['token' => $tokens, 'user' => new UserResource($user)]]);
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string|exists:users,'. $this->username(),
+            'password' => 'required|string',
+        ]);
     }
 }

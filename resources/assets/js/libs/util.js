@@ -55,7 +55,6 @@ util.getRouterObjByName = function (routers, name) {
 };
 
 util.handleTitle = function (vm, item) {
-    console.log(vm,item)
     if (typeof item.title === 'object') {
         return item.title.i18n;
     } else {

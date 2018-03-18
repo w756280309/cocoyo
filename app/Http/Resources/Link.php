@@ -19,7 +19,7 @@ class Link extends Resource
             'name' => $this->name,
             'link' => $this->link,
             'image' => $this->image,
-            'status' => (boolean) $this->status,
+            'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString()
         ];
     }

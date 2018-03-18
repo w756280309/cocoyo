@@ -4,7 +4,6 @@
          <shrinkable-menu
                  :shrink="shrink"
                  @on-change="handleSubmenuChange"
-                 :theme="menuTheme"
                  :before-push="beforePush"
                  :open-names="openedSubmenuArr"
                  :menu-list="menuList">
@@ -26,14 +25,13 @@
                </div>
             </div>
             <div class="header-avator-con">
-               <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
-               <message-tip v-model="mesCount"></message-tip>
+               <message-tip v-model="mesCount" style="margin-left:41%"></message-tip>
 
                <div class="user-dropdown-menu-con">
                   <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
                      <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
                         <a href="javascript:void(0)">
-                           <span class="main-user-name">cocoyo</span>
+                           <span class="main-user-name">{{ name }}</span>
                            <Icon type="arrow-down-b"></Icon>
                         </a>
                         <DropdownMenu slot="list">
@@ -80,12 +78,13 @@
         data () {
             return {
                 shrink: false,
-                userName: '',
-                isFullScreen: false,
                 openedSubmenuArr: this.$store.state.app.openedSubmenuArr
             };
         },
         computed: {
+            name() {
+                return this.$store.state.user.info.nickname ? this.$store.state.user.info.nickname : this.$store.state.user.info.name;
+            },
             menuList () {
                 return this.$store.state.app.menuList;
             },
@@ -96,13 +95,10 @@
                 return this.$store.state.app.currentPath; // 当前面包屑数组
             },
             avatorPath () {
-                return localStorage.avatorImgPath;
+                return this.$store.state.user.info.avatar;
             },
             cachePage () {
                 return this.$store.state.app.cachePage;
-            },
-            menuTheme () {
-                return this.$store.state.app.menuTheme;
             },
             mesCount () {
                 return this.$store.state.app.messageCount;
@@ -115,7 +111,6 @@
                 if (pathArr.length >= 2) {
                     this.$store.commit('addOpenSubmenu', pathArr[1].name);
                 }
-                this.userName = Cookies.get('user');
                 let messageCount = 3;
                 this.messageCount = messageCount.toString();
                 this.checkTag(this.$route.name);
@@ -126,17 +121,15 @@
             },
             handleClickUserDropdown (name) {
                 if (name === 'ownSpace') {
-                    util.openNewPage(this, 'ownspace_index');
                     this.$router.push({
-                        name: 'ownspace_index'
+                        name: 'users_edit',
+                        params: {id : this.$store.state.user.info.id}
                     });
                 } else if (name === 'loginout') {
                     // 退出登录
                     this.$store.commit('logout', this);
                     this.$store.commit('clearOpenedSubmenu');
-                    this.$router.push({
-                        name: 'login'
-                    });
+                    window.location.href = '/';
                 }
             },
             checkTag (name) {
@@ -159,9 +152,6 @@
                 //     return true;
                 // }
                 return true;
-            },
-            fullscreenChange (isFullScreen) {
-                // console.log(isFullScreen);
             }
         },
         watch: {

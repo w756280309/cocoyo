@@ -139,7 +139,7 @@
             },
             handleDelete(data) {
                 this.$Modal.confirm({
-                    title: '改变该状态?',
+                    title: '改变该用户的状态?',
                     content: '该动作可能会影响一些数据，请三思!',
                     okText: '是,改变它!',
                     cancelText: '取消',
