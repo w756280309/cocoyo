@@ -20,7 +20,6 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('last_user_id')->comment('最后一次评论id');
             $table->string('slug')->unique()->comment('链接');
             $table->string('title')->comment('标题');
-            $table->string('icon')->comment('显示图标');
             $table->text('content')->comment('内容');
             $table->string('page_image')->nullable()->comment('图片');
             $table->string('meta_description')->nullable()->comment('描述');

@@ -22,7 +22,6 @@ class Article extends Resource
             'tags'              => Tag::collection($this->whenLoaded('tags')),
             'slug'              => $this->slug,
             'title'             => $this->title,
-            'icon'              => $this->icon,
             'content'           => collect(json_decode($this->content))->get('raw'),
             'page_image'        => $this->page_image,
             'meta_description'  => $this->meta_description,

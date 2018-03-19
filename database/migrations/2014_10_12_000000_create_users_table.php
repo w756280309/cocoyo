@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('weibo_id')->nullable()->comment('微博id');
             $table->string('weibo_name')->nullable()->comment('微博名称');
             $table->string('weibo_link')->nullable()->comment('微博链接');
+            $table->string('qq_id')->nullable()->comment('qq_id');
             $table->string('website')->nullable()->comment('个人网站');
             $table->string('description')->nullable()->comment('描述');
             $table->enum('email_notify_enabled', ['yes',  'no'])->default('yes')->index()->comment('启用电子邮件通知');

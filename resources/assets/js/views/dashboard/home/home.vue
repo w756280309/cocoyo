@@ -21,12 +21,7 @@
                         </Row>
                         <div class="line-gray"></div>
                         <Row class="margin-top-8">
-                            <Col span="8"><p class="notwrap">上次登录时间:</p></Col>
-                            <Col span="16" class="padding-left-8">2017.09.12-13:32:20</Col>
-                        </Row>
-                        <Row class="margin-top-8">
-                            <Col span="8"><p class="notwrap">上次登录地点:</p></Col>
-                            <Col span="16" class="padding-left-8">北京</Col>
+                            <Col span="24"><p class="notwrap">{{ user_description }}</p></Col>
                         </Row>
                     </Card>
                     </Col>
@@ -38,38 +33,38 @@
                 <Col :xs="24" :sm="12" :md="6" :style="{marginBottom: '10px'}">
                 <infor-card
                         id-name="user_created_count"
-                        :end-val="count.createUser"
+                        :end-val="count.users"
                         iconType="android-person-add"
                         color="#2d8cf0"
-                        intro-text="今日新增用户"
+                        intro-text="今日新增用户数"
                 ></infor-card>
                 </Col>
                 <Col :xs="24" :sm="12" :md="6" :style="{marginBottom: '10px'}">
                 <infor-card
                         id-name="visit_count"
-                        :end-val="count.visit"
-                        iconType="ios-eye"
+                        :end-val="count.articles"
+                        iconType="ios-book"
                         color="#64d572"
                         :iconSize="50"
-                        intro-text="今日浏览量"
+                        intro-text="今日新增文章数"
                 ></infor-card>
                 </Col>
                 <Col :xs="24" :sm="12" :md="6" :style="{marginBottom: '10px'}">
                 <infor-card
                         id-name="collection_count"
-                        :end-val="count.collection"
-                        iconType="upload"
+                        :end-val="count.visitors"
+                        iconType="ios-eye"
                         color="#ffd572"
-                        intro-text="今日数据采集量"
+                        intro-text="今日文章流量量"
                 ></infor-card>
                 </Col>
                 <Col :xs="24" :sm="12" :md="6" :style="{marginBottom: '10px'}">
                 <infor-card
                         id-name="transfer_count"
-                        :end-val="count.transfer"
-                        iconType="shuffle"
+                        :end-val="count.comments"
+                        iconType="chatboxes"
                         color="#f25e43"
-                        intro-text="今日服务调用量"
+                        intro-text="今日新增文章评论数"
                 ></infor-card>
                 </Col>
             </Row>
@@ -89,12 +84,18 @@
         data() {
             return {
                 count: {
-                    createUser: 496,
-                    visit: 3264,
-                    collection: 24389305,
-                    transfer: 39503498
+                    users: 0,
+                    articles: 0,
+                    comments: 0,
+                    visitors: 0
                 },
             }
+        },
+        created() {
+            this.$http.get('statistics').then((response) => {
+                console.log(response);
+                this.count = response.data;
+            })
         },
         computed: {
             name() {
@@ -102,6 +103,9 @@
             },
             avatar() {
                 return  this.$store.state.user.info.avatar;
+            },
+            user_description() {
+                return  this.$store.state.user.info.description;
             }
         }
     }

@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(\App\Models\Category::class, function (Faker $faker) {
     return [
         'name' => $faker->firstName,
-        'path' => $faker->url,
+        'path' => '/',
         'description' => $faker->text
     ];
 });
