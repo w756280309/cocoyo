@@ -147,16 +147,14 @@
                         if (method == 'post') {
                             this.$http.post(url, this.form).then((response) => {
                                 this.$Notice.success({
-                                    title: '这是一个消息提示',
-                                    desc: '添加文章成功'
+                                    title: '添加文章成功'
                                 });
                                 this.$router.push('/articles')
                             })
                         } else {
                             this.$http.put(url, this.form).then((response) => {
                                 this.$Notice.success({
-                                    title: '这是一个消息提示',
-                                    desc: '添加文章成功'
+                                    title: '编辑文章成功'
                                 });
                                 this.$router.push('/articles')
                             })

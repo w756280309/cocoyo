@@ -47,13 +47,12 @@
                     if (valid) {
                         this.$http.put('tags/' + this.$route.params.id, this.form).then((response) => {
                             this.$Notice.success({
-                                title: '这是一个消息提示',
-                                desc: '编辑标签成功'
+                                title: '编辑标签成功'
                             });
                             this.$router.push('/tags')
                         });
                     } else {
-                        this.$Message.error('表单信息不完善!');
+                        this.$Message.error('请完善表单信息!');
                     }
                 })
             }

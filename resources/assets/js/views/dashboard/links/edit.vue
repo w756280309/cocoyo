@@ -70,13 +70,12 @@
                     if (valid) {
                         this.$http.put('links/' + this.$route.params.id, this.form).then((response) => {
                             this.$Notice.success({
-                                title: '这是一个消息提示',
-                                desc: '编辑友链成功'
+                                title: '编辑友链成功',
                             });
                             this.$router.push('/links')
                         });
                     } else {
-                        this.$Message.error('表单信息不完善!');
+                        this.$Message.error('请完善表单信息!');
                     }
                 })
             },

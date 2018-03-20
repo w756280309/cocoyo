@@ -45,8 +45,7 @@
                 if (this.form.content_raw) {
                     this.$http.put('comments/' + this.$route.params.id, this.form).then((response) => {
                         this.$Notice.success({
-                            title: '这是一个消息提示',
-                            desc: '编辑评论成功'
+                            title: '编辑评论成功'
                         });
                         this.$router.push('/comments')
                     });

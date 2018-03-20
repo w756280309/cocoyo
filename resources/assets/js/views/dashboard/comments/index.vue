@@ -130,7 +130,7 @@
             handleDelete(data) {
                 this.$Modal.confirm({
                     title: '删除该评论?',
-                    content: '该动作可能会影响一些数据，请三思!',
+                    content: '该评论会永久删除，请三思!',
                     okText: '是,删除它!',
                     cancelText: '取消',
                     loading: true,

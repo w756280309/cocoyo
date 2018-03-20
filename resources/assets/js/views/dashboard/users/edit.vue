@@ -105,8 +105,7 @@
             onSubmit() {
                 this.$http.put('users/' + this.$route.params.id, this.form).then((response) => {
                     this.$Notice.success({
-                        title: '这是一个消息提示',
-                        desc: '编辑成功'
+                        title: '编辑成功'
                     });
 
                     if (this.$route.params.id == this.$store.state.user.info.id) {
