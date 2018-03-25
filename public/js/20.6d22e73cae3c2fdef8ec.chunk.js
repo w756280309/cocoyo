@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(225)
+var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(226)
+var __vue_template__ = __webpack_require__(227)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -167,9 +167,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '改变该状态?',
-                content: '该动作可能会影响一些数据，请三思!',
-                okText: '是,改变它!',
+                title: '删除该分类?',
+                content: '该分类会永久删除，请三思!',
+                okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
@@ -186,7 +186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

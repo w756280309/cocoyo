@@ -1,14 +1,14 @@
-webpackJsonp([19],{
+webpackJsonp([16],{
 
-/***/ 117:
+/***/ 115:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(229)
+var __vue_script__ = __webpack_require__(224)
 /* template */
-var __vue_template__ = __webpack_require__(230)
+var __vue_template__ = __webpack_require__(225)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\comments\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\users\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37df191f", Component.options)
+    hotAPI.createRecord("data-v-e94b2fce", Component.options)
   } else {
-    hotAPI.reload("data-v-37df191f", Component.options)
+    hotAPI.reload("data-v-e94b2fce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 229:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86,27 +86,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '用户',
-                key: 'name',
+                title: '头像',
+                key: 'avatar',
                 render: function render(h, params) {
-                    return h('Tooltip', {
+                    return h('Avatar', {
                         props: {
-                            content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
+                            src: params.row.avatar
                         }
-                    }, [h('Avatar', {
+                    });
+                }
+            }, {
+                title: '用户名',
+                key: 'name'
+            }, {
+                title: '邮箱',
+                key: 'email'
+            }, {
+                title: '状态',
+                key: 'status',
+                render: function render(h, params) {
+                    return h('span', [h('Icon', {
                         props: {
-                            src: params.row.user.avatar
+                            type: 'record'
+                        },
+                        style: {
+                            color: params.row.status == 1 ? 'rgb(142, 180, 203)' : '    color: rgb(191, 83, 41)'
                         }
                     })]);
                 }
             }, {
-                title: '评论类型',
-                key: 'type'
-            }, {
-                title: '评论标题',
-                key: 'commentable'
-            }, {
-                title: '评论时间',
+                title: '创建时间',
                 key: 'created_at'
             }, {
                 title: '操作',
@@ -115,7 +124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/comments/' + params.row.id + '/edit'
+                            to: '/users/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -151,7 +160,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'comments';
+            var url = 'users';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -176,16 +185,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '删除该评论?',
+                title: '改变该用户的状态?',
                 content: '该动作可能会影响一些数据，请三思!',
-                okText: '是,删除它!',
+                okText: '是,改变它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.delete('comments/' + data.row.id).then(function (response) {
+                    _this3.$http.put('users/' + data.row.id + '/status').then(function (response) {
                         _this3.$Modal.remove();
-                        _this3.loadData();
-                        _this3.$Message.success('删除成功');
+                        _this3.$Message.success('修改成功');
+                        _this3.tableData[data.index].status = !data.row.status;
                     });
                 }
             });
@@ -195,7 +204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 230:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -263,7 +272,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-37df191f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-e94b2fce", module.exports)
   }
 }
 

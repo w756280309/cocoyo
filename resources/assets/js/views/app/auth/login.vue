@@ -1,31 +1,48 @@
 <template>
-   <div class="userContainer">
-       <div class="mu-paper login_wrap mu-paper-round mu-paper-3">
-           <div class="login">
-               <div class="login_con">
-                   <div class="main">
-                       <h3>登录</h3>
-                       <v-form v-model="valid" ref="form" lazy-validation>
-                           <v-text-field
-                                   label="邮箱"
-                                   v-model="form.email"
-                                   :rules="emailRule"
-                                   required
-                           ></v-text-field>
-                           <v-text-field
-                                   label="密码"
-                                   v-model="form.password"
-                                   :rules="passwordRule"
-                                   required
-                                   type="password"
-                           ></v-text-field>
-                           <v-btn block @click="submit" color="primary" dark>登录</v-btn>
-                       </v-form>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+    <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md4>
+            <div class="login mu-paper login_wrap mu-paper-round mu-paper-3">
+                <div class="login_con">
+                    <div class="main">
+                        <h3>登录</h3>
+                        <v-form v-model="valid" ref="form" lazy-validation>
+                            <v-text-field
+                                    label="邮箱"
+                                    v-model="form.email"
+                                    :rules="emailRule"
+                                    required
+                            ></v-text-field>
+                            <v-text-field
+                                    label="密码"
+                                    v-model="form.password"
+                                    :rules="passwordRule"
+                                    required
+                                    type="password"
+                            ></v-text-field>
+                            <v-btn block @click="submit" color="primary" dark>登录</v-btn>
+                        </v-form>
+                        <div class="jump_link">
+                            <span class="register">注册</span>
+                            <span class="forget">找回密码</span>
+                        </div>
+                        <div class="wx_login">
+                            <div class="wx_btn">第三方登陆</div>
+                        </div>
+                        <div class="text-xs-center">
+                            <v-btn fab dark small style="background: #00adb5;">
+                                <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
+                            </v-btn>
+
+                            <v-btn fab dark small style="background: #f75b5b;">
+                                <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
+                            </v-btn>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -61,20 +78,11 @@
 </script>
 
 <style scoped>
-    .userContainer {
-        height: 100%;
-        background: #F4F7FD;
-    }
     .login_wrap{
-        width: 510px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
         background: white;
         border-radius: 4px;
         padding-bottom: 40px;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        padding-top: 40px;
     }
     .mu-paper-3{
         box-shadow: 0 6px 20px 5px rgba(40, 120, 255, 0.1), 0 16px 24px 2px rgba(0, 0, 0, 0.05);
@@ -90,24 +98,57 @@
         background-color: #fff;
     }
     .login{
-        width: 510px;
         text-align: center;
+        margin-top:40px;
     }
     .login .login_con{
         width: 280px;
         margin: 0 auto;
     }
     .login .login_con h3{
-        margin: 40px 0 22px 0;
+        margin: 5px 0 22px 0;
         font-size: 20px;
         line-height: 34px;
         color: #0E1726;
     }
-    .userContainer h3 {
+    .login h3 {
         font-size: 20px;
         line-height: 20px;
         color: #222222;
         text-align: center;
-        font-weight: normal;
+    }
+    .login .login_con .jump_link{
+        height: 17px;
+        line-height: 17px;
+        font-size: 12px;
+        margin-top: 16px;
+    }
+    .login .login_con .jump_link .register {
+        float: left;
+        color: #2878FF;
+        cursor: pointer;
+    }
+    .login .login_con .jump_link .forget{
+        float: right;
+        cursor: pointer;
+        color: #9FA2A8;
+    }
+    .login .wx_login {
+        border-top: 1px solid #C9C9C9;
+        margin-top: 40px;
+        position: relative;
+    }
+    .login .wx_login .wx_btn{
+        font-size: 12px;
+        color: #888888;
+        margin: 0 auto;
+        position: relative;
+        top: -10px;
+        left: 0;
+        height: 14px;
+        width: 100px;
+        background: white;
+        padding: 0 20px 0 20px;
+        cursor: pointer;
     }
 </style>

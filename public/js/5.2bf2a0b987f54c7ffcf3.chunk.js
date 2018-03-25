@@ -1,24 +1,24 @@
-webpackJsonp([6],{
+webpackJsonp([5],{
 
-/***/ 104:
+/***/ 114:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(183)
+  __webpack_require__(220)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(185)
+var __vue_script__ = __webpack_require__(222)
 /* template */
-var __vue_template__ = __webpack_require__(186)
+var __vue_template__ = __webpack_require__(223)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-c3b34e4e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\users\\edit.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\add.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d5057da", Component.options)
+    hotAPI.createRecord("data-v-c3b34e4e", Component.options)
   } else {
-    hotAPI.reload("data-v-3d5057da", Component.options)
+    hotAPI.reload("data-v-c3b34e4e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 122:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3680,23 +3680,75 @@ assign(Cropper.prototype, render, preview, events, handlers, change, methods);
 
 /***/ }),
 
-/***/ 183:
+/***/ 128:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(129)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(131)
+/* template */
+var __vue_template__ = __webpack_require__(132)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ImageCover.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02c7d05a", Component.options)
+  } else {
+    hotAPI.reload("data-v-02c7d05a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 129:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(184);
+var content = __webpack_require__(130);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("01d9731d", content, false);
+var update = __webpack_require__(9)("574e50c2", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d5057da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d5057da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02c7d05a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ImageCover.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02c7d05a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ImageCover.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -3707,7 +3759,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 184:
+/***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)(false);
@@ -3715,21 +3767,19 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.cover-avatar {\n  text-align: center;\n}\n.upload-list {\n  display: inline-block;\n  text-align: center;\n  width: 150px;\n  height: 150px;\n  line-height: 60px;\n  border: 1px solid transparent;\n  border-radius: 50%;\n  overflow: hidden;\n  background: #fff;\n  position: relative;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n  margin-right: 4px;\n  margin-bottom: 20px;\n}\n.cover-avatar .upload-list .avatar {\n  width: 100%;\n  height: 100%;\n  transition: transform 0.6s ease-in, -webkit-transform 0.6s ease-in;\n}\n.cover-avatar .upload-list:hover .avatar {\n  -webkit-transform: rotateZ(360deg);\n          transform: rotateZ(360deg);\n}\n.upload-list-cover {\n  display: none;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.6);\n}\n.upload-list:hover .upload-list-cover {\n  display: block;\n}\n.upload-list-cover i {\n  color: #fff;\n  font-size: 20px;\n  cursor: pointer;\n  margin: 0 2px;\n  position: absolute;\n  top: 63px;\n  left: 63px;\n}\n", ""]);
+exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: no-repeat center center/cover;\n  width: 100%;\n}\n.my-uploader .el-upload {\n    width: 100%;\n}\n.my-uploader .upload-compoment {\n    padding-top: 40px;\n    padding-bottom: 20px;\n    text-align: center;\n    font-size: 13px;\n    line-height: 1;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.my-uploader .upload-compoment div {\n      margin-bottom: 20px;\n      margin-top: 25px;\n}\n.my-uploader .upload-compoment small {\n      display: block;\n      margin-bottom: 15px;\n}\n.my-uploader .upload-compoment.hasBg {\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.my-uploader .upload-compoment.hasBg .iconfont {\n        color: #fff;\n}\n.my-uploader .upload-compoment.hasBg small {\n        color: #fff;\n}\n.my-uploader:hover .upload-compoment.hasBg {\n    opacity: 1;\n}\n.ivu-upload-drag {\n  background: none;\n}\n.ivu-upload input[type=file] {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  cursor: pointer;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 185:
+/***/ 131:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_js_cookie__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(123);
 //
 //
 //
@@ -3760,71 +3810,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            form: {},
-            visible: false,
-            cut_avatar: false,
-            cropper: {}
-        };
-    },
-    created: function created() {
-        var _this = this;
+    name: "ImageCover",
+    props: {
+        image: {
+            default: function _default() {
+                return '';
+            },
 
-        this.$http.get('users/' + this.$route.params.id + '/edit').then(function (response) {
-            _this.form = response.data;
-        });
+            type: String
+        },
+        action: {
+            type: String,
+            default: 'upload/image'
+        }
     },
     mounted: function mounted() {
-        var img = document.getElementById('cropimg');
+        var img = document.getElementById('image-cover');
         this.cropper = new __WEBPACK_IMPORTED_MODULE_0_cropperjs__["a" /* default */](img, {
             dragMode: 'move',
             preview: '#preview',
@@ -3835,65 +3840,303 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             toggleDragModeOnDblclick: false
         });
     },
+    data: function data() {
+        return {
+            cropper: {},
+            innerVisible: false
+        };
+    },
 
     methods: {
-        onSubmit: function onSubmit() {
-            var _this2 = this;
-
-            this.$http.put('users/' + this.$route.params.id, this.form).then(function (response) {
-                _this2.$Notice.success({
-                    title: '编辑成功'
-                });
-
-                if (_this2.$route.params.id == _this2.$store.state.user.info.id) {
-                    _this2.$store.commit('profile', response.data);
-                }
-
-                _this2.$router.push('/users');
-            });
-        },
         previewModel: function previewModel(e) {
-            var _this3 = this;
+            var _this = this;
 
             var file = e.target.files[0];
             var reader = new FileReader();
             reader.onload = function () {
-                _this3.cropper.replace(reader.result);
+                _this.cropper.replace(reader.result);
                 reader.onload = null;
             };
 
             reader.readAsDataURL(file);
-            this.cut_avatar = true;
+            this.innerVisible = true;
         },
         handelCut: function handelCut() {
             var vm = this;
             vm.cropper.getCroppedCanvas().toBlob(function (blob) {
-                var _this4 = this;
-
                 var formData = new FormData();
 
                 formData.append('image', blob);
 
-                vm.$http.post('users/' + vm.$route.params.id + '/avatar', formData).then(function (response) {
-                    vm.form.avatar = response.relative_url;
-
-                    if (_this4.$route.params.id == _this4.$store.state.user.info.id) {
-                        vm.$store.commit('modifyAvatar', response.relative_url);
-                    }
-
-                    vm.cut_avatar = false;
+                vm.$http.post(vm.action, formData).then(function (response) {
+                    vm.$emit('successUpload', response);
+                    vm.innerVisible = false;
                 });
             });
+        }
+    }
+
+});
+
+/***/ }),
+
+/***/ 132:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "my-uploader ivu-upload",
+          style: { backgroundImage: "url(" + _vm.image + ")" }
         },
-        handleView: function handleView(name) {
-            this.visible = true;
+        [
+          _c("div", { staticClass: "ivu-upload ivu-upload-drag" }, [
+            _c("input", {
+              staticClass: "ivu-upload-input",
+              attrs: {
+                accept: "image/png, image/jpeg, image/gif, image/jpg",
+                id: "fileinput",
+                type: "file"
+              },
+              on: { change: _vm.previewModel }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "Modal",
+        {
+          attrs: {
+            title: "裁剪图片",
+            "ok-text": "裁剪",
+            loading: true,
+            "mask-closable": false
+          },
+          on: { "on-ok": _vm.handelCut },
+          model: {
+            value: _vm.innerVisible,
+            callback: function($$v) {
+              _vm.innerVisible = $$v
+            },
+            expression: "innerVisible"
+          }
+        },
+        [
+          _c(
+            "Row",
+            { attrs: { gutter: 10 } },
+            [
+              _c(
+                "Col",
+                { staticClass: "image-editor-con", attrs: { span: "14" } },
+                [
+                  _c("div", { staticClass: "cropper" }, [
+                    _c("img", { attrs: { id: "image-cover", alt: "" } })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "Col",
+                { staticClass: "image-editor-con", attrs: { span: "10" } },
+                [
+                  _c(
+                    "Row",
+                    {
+                      staticClass: "image-editor-con-preview-con",
+                      attrs: {
+                        type: "flex",
+                        justify: "center",
+                        align: "middle"
+                      }
+                    },
+                    [_c("div", { attrs: { id: "preview" } })]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "upload-compoment hasBg" }, [
+      _c("i", {
+        staticClass: "ivu-icon ivu-icon-ios-cloud-upload",
+        staticStyle: { "font-size": "52px", color: "rgb(51, 153, 255)" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "el-upload__text" }, [
+        _vm._v("支持png/jpg/gif格式图片，或"),
+        _c("em", [_vm._v("点击上传")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-02c7d05a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 220:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(221);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(9)("546c9a0f", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3b34e4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3b34e4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 221:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 222:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImageCover__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImageCover___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ImageCover__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        ImageCover: __WEBPACK_IMPORTED_MODULE_0__components_ImageCover___default.a
+    },
+    data: function data() {
+        return {
+            form: {
+                image: ''
+            },
+            ruleValidate: {
+                name: [{ required: true, message: '标签不能为空' }],
+                link: [{ required: true, message: '标签描述不能为空' }],
+                image: [{ required: true, message: '请上传logo' }]
+            }
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit(name) {
+            var _this = this;
+
+            this.$refs[name].validate(function (valid) {
+                if (valid) {
+                    _this.$http.post('links', _this.form).then(function (response) {
+                        _this.$Notice.success({
+                            title: '添加友链成功'
+                        });
+                        _this.$router.push('/links');
+                    });
+                } else {
+                    _this.$Message.error('请完善表单信息!');
+                }
+            });
+        },
+        handleImageSuccess: function handleImageSuccess(response) {
+            this.form.image = response.relative_url;
         }
     }
 });
 
 /***/ }),
 
-/***/ 186:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3914,360 +4157,146 @@ var render = function() {
                 "Card",
                 [
                   _c(
-                    "Row",
+                    "Form",
+                    {
+                      ref: "form",
+                      attrs: {
+                        model: _vm.form,
+                        rules: _vm.ruleValidate,
+                        "label-position": "right",
+                        "label-width": 100
+                      }
+                    },
                     [
-                      _c("Col", { attrs: { span: 4, offset: 4 } }, [
-                        _c(
-                          "div",
-                          { staticClass: "cover-avatar" },
-                          [
-                            _c("div", { staticClass: "upload-list" }, [
-                              _c("img", {
-                                staticClass: "avatar",
-                                attrs: { src: _vm.form.avatar }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "upload-list-cover" },
-                                [
-                                  _c("Icon", {
-                                    attrs: { type: "ios-eye-outline" },
-                                    nativeOn: {
-                                      click: function($event) {
-                                        _vm.handleView(_vm.form.avatar)
-                                      }
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "fileinput",
-                              attrs: {
-                                type: "file",
-                                accept:
-                                  "image/png, image/jpeg, image/gif, image/jpg",
-                                id: "fileinput"
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "链接名", prop: "name" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "Enter something..."
+                            },
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
                               },
-                              on: { change: _vm.previewModel }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "filelabe",
-                                attrs: { for: "fileinput" }
-                              },
-                              [
-                                _c("Icon", { attrs: { type: "image" } }),
-                                _vm._v(" 修改头像")
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "Modal",
-                              {
-                                attrs: { title: "头像" },
-                                model: {
-                                  value: _vm.visible,
-                                  callback: function($$v) {
-                                    _vm.visible = $$v
-                                  },
-                                  expression: "visible"
-                                }
-                              },
-                              [
-                                _vm.visible
-                                  ? _c("img", {
-                                      staticStyle: { width: "100%" },
-                                      attrs: { src: _vm.form.avatar }
-                                    })
-                                  : _vm._e()
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "Modal",
-                              {
-                                attrs: {
-                                  title: "裁剪头像",
-                                  "ok-text": "裁剪",
-                                  loading: true,
-                                  "mask-closable": false
-                                },
-                                on: { "on-ok": _vm.handelCut },
-                                model: {
-                                  value: _vm.cut_avatar,
-                                  callback: function($$v) {
-                                    _vm.cut_avatar = $$v
-                                  },
-                                  expression: "cut_avatar"
-                                }
-                              },
-                              [
-                                _c(
-                                  "Row",
-                                  { attrs: { gutter: 10 } },
-                                  [
-                                    _c(
-                                      "Col",
-                                      {
-                                        staticClass: "image-editor-con",
-                                        attrs: { span: "14" }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "cropper" }, [
-                                          _c("img", {
-                                            attrs: { id: "cropimg", alt: "" }
-                                          })
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "Col",
-                                      {
-                                        staticClass: "image-editor-con",
-                                        attrs: { span: "10" }
-                                      },
-                                      [
-                                        _c(
-                                          "Row",
-                                          {
-                                            staticClass:
-                                              "image-editor-con-preview-con",
-                                            attrs: {
-                                              type: "flex",
-                                              justify: "center",
-                                              align: "middle"
-                                            }
-                                          },
-                                          [
-                                            _c("div", {
-                                              attrs: { id: "preview" }
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]),
+                              expression: "form.name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c(
-                        "Col",
-                        { attrs: { span: 10, offset: 1 } },
+                        "FormItem",
+                        { attrs: { label: "链 接", prop: "link" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "Enter something..."
+                            },
+                            model: {
+                              value: _vm.form.link,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "link", $$v)
+                              },
+                              expression: "form.link"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "Row",
                         [
                           _c(
-                            "Form",
-                            {
-                              attrs: {
-                                model: _vm.form,
-                                "label-position": "right",
-                                "label-width": 100
-                              }
-                            },
+                            "Col",
+                            { attrs: { span: 12 } },
                             [
                               _c(
                                 "FormItem",
-                                { attrs: { label: "用户名" } },
+                                {
+                                  attrs: {
+                                    label: "logo",
+                                    prop: "meta_description"
+                                  }
+                                },
                                 [
-                                  _c("Input", {
+                                  _c("image-cover", {
                                     attrs: {
-                                      size: "large",
-                                      disabled: "",
-                                      placeholder: "Enter something..."
+                                      action: "upload/image",
+                                      image: _vm.form.image
                                     },
-                                    model: {
-                                      value: _vm.form.name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "name", $$v)
-                                      },
-                                      expression: "form.name"
+                                    on: {
+                                      successUpload: _vm.handleImageSuccess
                                     }
                                   })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "邮箱" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      disabled: "",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.email,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "email", $$v)
-                                      },
-                                      expression: "form.email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "昵称" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.nickname,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "nickname", $$v)
-                                      },
-                                      expression: "form.nickname"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "Website" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.website,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "website", $$v)
-                                      },
-                                      expression: "form.website"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "微博名" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.weibo_name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "weibo_name", $$v)
-                                      },
-                                      expression: "form.weibo_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "微博主页" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.weibo_link,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "weibo_link", $$v)
-                                      },
-                                      expression: "form.weibo_link"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "GitHub" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.github_url,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "github_url", $$v)
-                                      },
-                                      expression: "form.github_url"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "个人描述" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something...",
-                                      type: "textarea",
-                                      autosize: { minRows: 2, maxRows: 5 }
-                                    },
-                                    model: {
-                                      value: _vm.form.description,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "description", $$v)
-                                      },
-                                      expression: "form.description"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                [
-                                  _c(
-                                    "Button",
-                                    {
-                                      attrs: { type: "success", long: "" },
-                                      on: { click: _vm.onSubmit }
-                                    },
-                                    [_vm._v("更新个人信息")]
-                                  )
                                 ],
                                 1
                               )
                             ],
                             1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "是否开启", prop: "status" } },
+                        [
+                          _c(
+                            "i-switch",
+                            {
+                              attrs: {
+                                size: "large",
+                                "true-value": 1,
+                                "false-value": 0
+                              },
+                              model: {
+                                value: _vm.form.status,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "status", $$v)
+                                },
+                                expression: "form.status"
+                              }
+                            },
+                            [
+                              _c(
+                                "span",
+                                { attrs: { slot: "open" }, slot: "open" },
+                                [_vm._v("是")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { attrs: { slot: "close" }, slot: "close" },
+                                [_vm._v("否")]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        [
+                          _c(
+                            "Button",
+                            {
+                              attrs: { type: "success", long: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.onSubmit("form")
+                                }
+                              }
+                            },
+                            [_vm._v("添加")]
                           )
                         ],
                         1
@@ -4294,7 +4323,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3d5057da", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-c3b34e4e", module.exports)
   }
 }
 
