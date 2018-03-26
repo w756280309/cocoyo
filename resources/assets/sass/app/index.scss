@@ -1,0 +1,52 @@
+.cocoyo {
+  .pannel {
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 1s;
+    width:95%;
+    img {
+      width: 100%;
+      height: 175px;
+    }
+  }
+  .pannel:hover {
+    box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  .pannel-body{
+    padding: 0 15px 15px 15px;
+    .gray{
+      color: #888;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    p{
+      margin: 0;
+    }
+    p.bold{
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 18px;
+    }
+    .person{
+      margin-top: 10px;
+      div{
+        display: inline-block;
+        vertical-align: top;
+        font-size: 14px;
+      }
+      p{
+        line-height: 1.6;
+        margin-left: 15px;
+        color: #888;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
