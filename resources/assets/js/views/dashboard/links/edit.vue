@@ -1,132 +1,86 @@
 <template>
     <div>
-        <form-navbar page_name="编辑友链" menu="友链列表" back="/links"></form-navbar>
-        <div class="list_box">
-            <div class="list_box_content">
-                <div class="list_box_big">
-                    <div class="box_body">
-                        <el-row>
-                            <el-col>
-                                <el-form ref="form" status-icon :rules="rules" :model="form" label-width="80px">
-                                    <el-form-item label="链接名" prop="name">
-                                        <el-input v-model="form.name"></el-input>
-                                    </el-form-item>
+        <Row>
+            <Col :span="24">
+            <Card>
+                <Form :model="form" ref="form" :rules="ruleValidate" label-position="right" :label-width="100">
+                    <FormItem label="链接名" prop="name">
+                        <Input v-model="form.name" size="large" placeholder="Enter something..."></Input>
+                    </FormItem>
+                    <FormItem label="链 接" prop="link">
+                        <Input v-model="form.link" size="large" placeholder="Enter something..."></Input>
+                    </FormItem>
 
-                                    <el-form-item label="链 接" prop="link">
-                                        <el-input v-model="form.link"></el-input>
-                                    </el-form-item>
+                    <Row>
+                        <Col :span="12">
+                            <FormItem label="logo" prop="meta_description">
+                                <image-cover action="upload/image" :image="form.image" @successUpload="handleImageSuccess"></image-cover>
+                            </FormItem>
+                        </Col>
+                    </Row>
 
-                                    <el-form-item label="图片" prop="image">
-                                        <el-upload
-                                                :headers="headers"
-                                                name="image"
-                                                accept="image/*"
-                                                action="/api/dashboard/upload/image"
-                                                :on-success="handleImageSuccess"
-                                                :on-preview="handleImagePreview"
-                                                :file-list="fileLists"
-                                                :limit="limit"
-                                                list-type="picture">
-                                            <el-button size="small" type="primary">点击上传</el-button>
-                                            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-                                        </el-upload>
-                                    </el-form-item>
+                    <FormItem label="是否开启" prop="status">
+                        <i-switch v-model="form.status" size="large" :true-value="1" :false-value="0">
+                            <span slot="open">是</span>
+                            <span slot="close">否</span>
+                        </i-switch>
+                    </FormItem>
 
-                                    <el-form-item label="是否开启" prop="status">
-                                        <el-switch
-                                                v-model="form.status"
-                                                active-color="#13ce66"
-                                                inactive-color="#ff4949">
-                                        </el-switch>
-                                    </el-form-item>
-
-                                    <el-form-item>
-                                        <el-button type="primary" @click="onSubmit('form')">编辑</el-button>
-                                        <el-button @click="handleBack">取消</el-button>
-                                    </el-form-item>
-                                </el-form>
-                            </el-col>
-                        </el-row>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <FormItem>
+                        <Button type="success" @click="onSubmit('form')" long>编辑</Button>
+                    </FormItem>
+                </Form>
+            </Card>
+            </Col>
+        </Row>
     </div>
 </template>
 
 <script>
-    import FormNavbar from '@/components/dashboard/form/navbar'
-    import {getToken} from '@/plugins/auth/auth'
+    import ImageCover from '@/components/ImageCover'
 
     export default {
         components: {
-            FormNavbar,
-        },
-        created() {
-            this.$http.get('links/' + this.$route.params.id + '/edit').then((response) => {
-                this.form = response.data;
-                this.fileLists = [{name:'图片', url : this.form.image}];
-            })
+            ImageCover
         },
         data() {
             return {
-                headers:{
-                    Authorization : getToken().token_type + ' ' + getToken().access_token,
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                limit: 1,
-                fileLists : [],
-                form: {
-                    name: '',
-                    link: '',
-                    image: '',
-                    status: true
-                },
-                rules: {
+                form: {},
+                ruleValidate: {
                     name: [
-                        { required: true, message: '请输入链接名', trigger: 'change' },
-                        { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'change' }
+                        {required: true, message: '标签不能为空'}
                     ],
                     link: [
-                        { required: true, message: '请输入链接', trigger: 'change' }
+                        {required: true, message: '标签描述不能为空'}
                     ],
                     image: [
-                        { required: true, message: '请上传图片', trigger: 'change' }
+                        {required: true, message: '请上传logo'}
                     ]
                 }
             }
         },
+        created() {
+            this.$http.get('links/' + this.$route.params.id + '/edit').then((response) => {
+                this.form = response.data;
+            })
+        },
         methods: {
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
+            onSubmit(name) {
+                this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$http.put('links/' + this.$route.params.id, this.form).then((response) => {
-                            this.$notify({
-                                title: 'success',
-                                message: '编辑成功',
-                                type: 'success'
-                            })
+                            this.$Notice.success({
+                                title: '编辑友链成功',
+                            });
                             this.$router.push('/links')
                         });
-
                     } else {
-                        return false;
+                        this.$Message.error('请完善表单信息!');
                     }
-                });
-
-            },
-            handleBack() {
-                this.$router.push('/links')
-            },
-            handleImageSuccess(res, file) {
-                this.form.image = res.relative_url;
-            },
-            handleImagePreview(file) {
-                this.$alert('<img src="' + file.url + '">', '', {
-                    dangerouslyUseHTMLString: true,
-                    showConfirmButton: false,
-                    customClass : 'alert-preview'
                 })
+            },
+            handleImageSuccess(response) {
+                this.form.image = response.relative_url
             }
         }
     }

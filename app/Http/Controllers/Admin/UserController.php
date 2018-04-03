@@ -31,7 +31,7 @@ class UserController extends Controller
     public function status(User $user, Request $request)
     {
         if ($user->id == $request->user()->id) {
-            return $this->errorUnauthorized('您无法为自己和其他管理员更改状态');
+            return $this->failed('您无法为自己和其他管理员更改状态');
         }
 
         $user->status = ! $user->status;
@@ -57,15 +57,15 @@ class UserController extends Controller
      *
      * @param User $user
      * @param  \Illuminate\Http\Request $request
-     * @return \Response
+     * @return UserResource
      */
     public function update(User $user, Request $request)
     {
-        $user->fill($request->only(['nickname', 'website', 'description']));
+        $user->fill($request->only(['nickname', 'website', 'description', 'github_url', 'weibo_link', 'weibo_name']));
 
         $user->save();
 
-        return $this->noContent();
+        return new UserResource($user);
     }
 
     /**

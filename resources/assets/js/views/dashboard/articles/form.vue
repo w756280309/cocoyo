@@ -1,310 +1,225 @@
 <template>
-    <el-form ref="form" :rules="rules" status-icon :model="form" label-width="120px">
-        <el-form-item label="所属分类" prop="category_id">
-            <el-select v-model="form.category_id" placeholder="请选择所属分类">
-                <el-option v-for="(category, key) in allCategory" :key="key" :label="category.name" :value="category.id"></el-option>
-            </el-select>
-        </el-form-item>
+    <div>
+        <Row>
+            <Form :model="form" ref="form" :rules="ruleValidate" label-position="right" :label-width="50">
+                <Col span="15">
+                <Card>
+                    <FormItem label="标题" prop="title">
+                        <Input icon="android-list" v-model="form.title"/>
+                    </FormItem>
+                    <FormItem label="内容" prop="content">
+                        <markdown-editor :configs="config" ref="markdownEditor" v-model="form.content"></markdown-editor>
+                    </FormItem>
+                </Card>
+                </Col>
+                <Col span="9" style="padding-left: 10px">
+                <Card>
+                    <p slot="title">
+                        <Icon type="paper-airplane"></Icon>
+                        选项
+                    </p>
+                    <FormItem label="分类" prop="category_id">
+                        <Select v-model="form.category_id">
+                            <Option v-for="(category,key) in categories" :value="category.id" :key="key">{{ category.name }}</Option>
+                        </Select>
+                    </FormItem>
+                    <FormItem label="标签" prop="tags">
+                        <Select v-model="form.tags" multiple>
+                            <Option v-for="tag in tags" :value="tag.id" :key="tag.id">{{ tag.tag }}</Option>
+                        </Select>
+                    </FormItem>
+                    <FormItem label="描述" prop="meta_description">
+                        <Input v-model="form.meta_description" type="textarea"></Input>
+                    </FormItem>
+                </Card>
+                <Card style="margin-top: 10px">
+                    <p slot="title">
+                        <Icon type="paper-airplane"></Icon>
+                        发布
+                    </p>
+                    <FormItem label="封面" prop="page_image">
+                        <image-cover action="upload/image" :image="form.page_image" @successUpload="handleImageSuccess"></image-cover>
+                    </FormItem>
+                    <FormItem label="时间" prop="published_at">
+                        <DatePicker formar="datetimerange：yyyy-MM-dd HH:mm:ss" type="datetime" v-model="form.published_at"></DatePicker>
+                    </FormItem>
+                    <Row>
+                        <Col span="11">
+                        <FormItem label="原创?" prop="is_original">
+                            <i-switch v-model="form.is_original" size="large" :true-value="1" :false-value="0">
+                                <span slot="open">是</span>
+                                <span slot="close">否</span>
+                            </i-switch>
+                        </FormItem>
+                        </Col>
+                        <Col span="11">
+                        <FormItem label="草稿?" prop="is_draft">
+                            <i-switch v-model="form.is_draft" size="large" :true-value="1" :false-value="0">
+                                <span slot="open">是</span>
+                                <span slot="close">否</span>
+                            </i-switch>
+                        </FormItem>
+                        </Col>
+                    </Row>
 
-        <el-form-item label="文章标题" prop="title">
-            <el-input v-model="form.title" placeholder="请输入文章标题"></el-input>
-        </el-form-item>
-
-        <el-form-item label="封面图片" prop="page_image">
-            <el-upload
-                    accept="image/*"
-                    name="image"
-                    list-type="picture-card"
-                    :headers="headers"
-                    action="api/dashboard/upload/image"
-                    :on-preview="handlePictureCardPreview"
-                    :on-success="handleUploadSuccess"
-                    :file-list="fileList"
-                    :limit="1">
-                <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog :visible.sync="dialogVisible">
-                <img width="100%" :src="dialogImageUrl" alt="">
-            </el-dialog>
-        </el-form-item>
-
-        <el-form-item label="文章内容" prop="content">
-            <template>
-                <markdown-editor ref="markdownEditor" v-model="form.content"></markdown-editor>
-            </template>
-        </el-form-item>
-
-        <el-form-item label="标签" prop="tags">
-            <multiselect
-                    v-model="tags"
-                    :options="allTags"
-                    :multiple="true"
-                    :searchable="true"
-                    :hide-selected="true"
-                    :close-on-select="false"
-                    :clear-on-select="false"
-                    label="tag"
-                    track-by="tag">
-            </multiselect>
-        </el-form-item>
-
-        <el-form-item label="文章描述" prop="meta_description">
-            <el-input type="textarea" placeholder="请输入文章描述"  v-model="form.meta_description"></el-input>
-        </el-form-item>
-
-        <el-row>
-            <el-col :span="12">
-                <el-form-item label="是否草稿">
-                    <el-switch
-                            v-model="form.is_draft"
-                            active-color="#13ce66"
-                            inactive-color="#ff4949">
-                    </el-switch>
-                </el-form-item>
-            </el-col>
-
-            <el-col :span="12">
-                <el-form-item label="是否原创">
-                    <el-switch
-                            align="right"
-                            v-model="form.is_original"
-                            active-color="#13ce66"
-                            inactive-color="#ff4949">
-                    </el-switch>
-                </el-form-item>
-            </el-col>
-        </el-row>
-
-        <el-form-item label="发布时间" prop="published_at">
-            <el-date-picker
-                    v-model="form.published_at"
-                    type="datetime"
-                    value-format="yyyy-MM-dd HH:mm:ss"
-                    placeholder="选择日期时间">
-            </el-date-picker>
-        </el-form-item>
-
-        <el-form-item>
-            <el-button type="primary" @click="onSubmit('form')">发布文章</el-button>
-            <el-button @click="handleBack">取消</el-button>
-        </el-form-item>
-    </el-form>
+                    <FormItem>
+                        <Button @click="onSubmit('form')" type="success" long>发布</Button>
+                    </FormItem>
+                </Card>
+                </Col>
+            </Form>
+            <Modal title="View Image" v-model="page_image_view">
+                <img :src="form.page_image" v-if="page_image_view" style="width: 100%">
+            </Modal>
+        </Row>
+    </div>
 </template>
 
 <script>
     import markdownEditor from 'vue-simplemde/src/markdown-editor'
-    import Multiselect from 'vue-multiselect'
-    import {getToken} from '@/plugins/auth/auth'
-    import FineUploader from 'fine-uploader/lib/traditional'
+    import ImageCover from '@/components/ImageCover'
 
     export default {
         components: {
             markdownEditor,
-            Multiselect
+            ImageCover
         },
         props: {
             form: {
                 type: Object,
                 default() {
                     return {
-                        page_image: ''
+                        tags: []
                     }
                 }
-            },
-            fileList: null
-        },
-        created() {
-            Promise.all([this.$http.get('category?type=all'), this.$http.get('tags?type=all')]).then((response) => {
-                this.allCategory = response[0].data;
-                this.allTags = response[1].data
-            })
-        },
-        computed: {
-            mode() {
-                return this.form.id ? 'update' : 'create'
-            },
-        },
-        mounted() {
-            this.simplemdeMark = this.$refs.markdownEditor.simplemde
-            this.contentUploader()
-        },
-        watch: {
-            form() {
-                this.selected = this.form.category
-                this.tags     = this.form.tags
             }
         },
         data() {
-           return {
-               selected: null,
-               allCategory: [],
-               tags: [],
-               allTags: [],
-               simplemdeMark: {},
-               dialogImageUrl: '',
-               dialogVisible: false,
-               headers: {
-                   Authorization : getToken().token_type + ' ' + getToken().access_token,
-                   'X-Requested-With': 'XMLHttpRequest'
-               },
-               rules: {
-                   category_id : [
-                       {required: true, message: '请选择分类'}
-                       ],
-                   title: [
-                       {required: true, message: '请输入标题'},
-                       {min:1, max:255, message: '长度在1到255个字符'},
-                   ],
-                   page_image: [
-                       {required: true, message: '请上传封面图片'}
-                   ],
-                   content: [
-                       {required: true, message: '请输入内容'}
-                   ],
-                   meta_description: [
-                       {required: true, message: '请输入文章描述'}
-                   ],
-                   published_at: [
-                       {required: true, message: '请选择发布时间'}
-                   ]
-               }
-           }
+            return {
+                ruleValidate: {
+                    title: [
+                        {required: true, message: '文章标题不能为空'}
+                    ],
+                    content: [
+                        {required: true, message: '文章内容不能为空'}
+                    ],
+                    category_id: [
+                        {required: true, message: '文章分类不能为空'}
+                    ],
+                    tags: [
+                        {required: true, message: '请选择文章标签'}
+                    ],
+                    meta_description: [
+                        {required: true, message: '文章描述不能为空'}
+                    ],
+                    page_image: [
+                        {required: true, message: '文章封面图片不能为空'}
+                    ],
+                    published_at: [
+                        {required: true, message: '请选择文章发布时间'}
+                    ]
+                },
+                simplemdeMark: {},
+                config:{
+                    toolbar: ['bold', 'italic', 'strikethrough', 'heading', 'heading-smaller', 'heading-bigger', 'heading-1', 'heading-2', 'heading-3', '|', 'code', 'quote', 'unordered-list', 'clean-block', '|', 'link', 'image', 'table', 'horizontal-rule', '|', 'preview', 'guide']
+                },
+                categories: {},
+                tags: {},
+                page_image_view: false,
+            }
+        },
+        mounted () {
+            this.simplemdeMark = this.$refs.markdownEditor.simplemde
+        },
+        created() {
+            Promise.all([this.$http.get('categories?type=all'), this.$http.get('tags?type=all')]).then((response) => {
+                this.categories = response[0].data;
+                this.tags = response[1].data
+            })
         },
         methods: {
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
+            onSubmit(name) {
+                this.$refs[name].validate((valid) => {
                     if (valid) {
-                        if (! this.tags.length > 0) {
-                            return  this.$message.error('请选择文章标签');
-                        }
-                        let tagIDs = []
-
-                        let url = 'articles';
-                        if (this.form.id) {
-                            url = 'articles/' + this.form.id
-                        }
-
-                        let method = (this.mode == 'update') ? 'path' : 'post'
-
-                        for(var i = 0 ; i < this.tags.length ; i++) {
-                            tagIDs[i] = this.tags[i].id
-                        }
-
-                        this.form.tags = JSON.stringify(tagIDs)
+                        let url = this.form.id ?  'articles/' + this.form.id : 'articles';
+                        let method = this.form.id ? 'put' : 'post'
 
                         if (method == 'post') {
                             this.$http.post(url, this.form).then((response) => {
-                                this.$notify({
-                                    title: 'success',
-                                    message: '添加成功',
-                                    type: 'success'
-                                })
+                                this.$Notice.success({
+                                    title: '添加文章成功'
+                                });
                                 this.$router.push('/articles')
                             })
                         } else {
                             this.$http.put(url, this.form).then((response) => {
-                                this.$notify({
-                                    title: 'success',
-                                    message: '编辑成功',
-                                    type: 'success'
-                                })
+                                this.$Notice.success({
+                                    title: '编辑文章成功'
+                                });
                                 this.$router.push('/articles')
                             })
                         }
 
                     } else {
-                        return false;
-                    }
-                });
-
-            },
-            handleBack() {
-                this.$router.push('/articles')
-            },
-            handleUploadSuccess(response) {
-               this.form.page_image = response.relative_url
-            },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
-            },
-            contentUploader() {
-                let vm = this
-
-                this.simplemdeMark.codemirror.on('paste', function(editor, event){
-                    if (event.clipboardData.types.indexOf("Files") >= 0) {
-                        event.preventDefault()
-                    }
-                })
-
-                let contentUploader = new FineUploader.FineUploaderBasic({
-                    paste: {
-                        targetElement: document.querySelector('.CodeMirror')
-                    },
-                    request: {
-                        endpoint: '/api/dashboard/upload/image',
-                        inputName: 'image',
-                        customHeaders: {
-                            Authorization : getToken().token_type + ' ' + getToken().access_token,
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        params: {
-                            strategy: 'article'
-                        }
-                    },
-                    validation: {
-                        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
-                    },
-                    callbacks: {
-                        onPasteReceived(file) {
-                            let promise = new FineUploader.Promise()
-
-                            if (file == null || typeof file.type == 'undefined' || file.type.indexOf('image/')) {
-                                toastr.error('Only can upload image!');
-                                return promise.failure('not a image.')
-                            }
-
-                            return promise.then(() => {
-                                vm.createdImageUploading('image.png')
-                            }).success('image')
-                        },
-                        onComplete(id, name, responseJSON) {
-                            vm.replaceImageUploading(responseJSON.filename, responseJSON.relative_url)
-                        },
-                    },
-                });
-
-                let dragAndDropModule = new FineUploader.DragAndDrop({
-                    dropZoneElements: [document.querySelector('.CodeMirror')],
-                    callbacks: {
-                        processingDroppedFilesComplete(files, dropTarget) {
-                            files.forEach((file) => {
-                                vm.createdImageUploading(file.name)
-                            })
-                            contentUploader.addFiles(files); //this submits the dropped files to Fine Uploader
-                        }
+                        this.$Message.error('表单信息不完善!');
                     }
                 })
             },
-            getImageUploading() {
-                return '\n![Uploading ...]()\n'
-            },
-            createdImageUploading(name) {
-                this.simplemdeMark.value(this.simplemdeMark.value() + this.getImageUploading())
-            },
-            replaceImageUploading(name, url) {
-                let result = '\n!['+name+']('+url+')\n'
+            previewModel(e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                reader.onload = () => {
+                    this.cropper.replace(reader.result);
+                    reader.onload = null;
+                };
 
-                this.simplemdeMark.value(this.simplemdeMark.value().replace(this.getImageUploading(), result))
+                reader.readAsDataURL(file);
+                this.cut_avatar = true;
             },
-        }
+            handleImageSuccess(response) {
+                this.form.page_image = response.relative_url;
+            },
+        },
     }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style>
+<style scoped>
     @import '~simplemde-theme-base/dist/simplemde-theme-base.min.css';
-    .el-select{
-        display:block;
+
+    .page_image_show{
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        position: relative;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2);
+        margin-right: 4px;
+    }
+    .page_image_show img{
+        width: 100%;
+        height: 100%;
+    }
+    .page_image_show .upload-list-cover{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.6);
+    }
+    .page_image_show:hover .upload-list-cover{
+        display: block;
+    }
+    .page_image_show .upload-list-cover i{
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 2px;
     }
 </style>

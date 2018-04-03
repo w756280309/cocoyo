@@ -1,58 +1,91 @@
 <template>
-    <div class="mu-paper">
-        <body-header :name="name" :action_add="action_add" add_to_url="/tags/create"></body-header>
-        <div class="body">
-            <el-table
-                    :data="tableData"
-                    highlight-current-row
-                    v-loading="loading"
-                    style="width: 100%">
-                <el-table-column property="id" label="id"></el-table-column>
-                <el-table-column property="tag" label="标签"></el-table-column>
-                <el-table-column property="title" label="标题"></el-table-column>
-                <el-table-column property="meta_description" label="描述"></el-table-column>
-                <el-table-column property="created_at" label="创建时间"></el-table-column>
-                <el-table-column label="操作">
-                    <template slot-scope="scope">
-                        <router-link :to="'tags/' + scope.row.id + '/edit'">
-                            <el-button type="primary" icon="el-icon-edit" round></el-button>
+    <div>
+        <Row>
+            <Col :span="24">
+                <Card>
+                    <p slot="title" style="height:100%;text-align: right;">
+                        <router-link to="/tags/add">
+                            <Button type="primary" icon="android-add-circle">添加标签</Button>
                         </router-link>
-                        <el-button type="danger" @click="handleDelete(scope.row.id)" icon="el-icon-delete" round></el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
-
-            <div class="table-pagination">
-                <el-pagination
-                        layout="prev, pager, next"
-                        @current-change="handleCurrentChange"
-                        :total="meta.total"
-                        :page-size="meta.per_page"
-                        :current-page="meta.current_page">
-                </el-pagination>
-            </div>
-
-        </div>
+                    </p>
+                    <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe></Table>
+                    <div style="margin: 10px;overflow: hidden">
+                        <div style="float: right;">
+                            <Page :total="meta.total" :current="meta.current_page" @on-change="handleCurrentChange"></Page>
+                        </div>
+                    </div>
+                </Card>
+            </Col>
+        </Row>
     </div>
 </template>
-
 <script>
-    import  bodyHeader from '@/components/dashboard/body/header'
     export default {
-        components : {
-            bodyHeader
-        },
-        data() {
+        data () {
             return {
-                loading: true,
-                name : '标签列表',
-                action_add: true,
+                loading: false,
                 tableData: [],
                 meta: {
                     current_page: 1,
                     total : 0,
                     per_page: 10
-                }
+                },
+                tableColumns: [
+                    {
+                        title: 'id',
+                        key: 'id'
+                    },
+                    {
+                        title: '标签',
+                        key: 'tag'
+                    },
+                    {
+                        title: '描述',
+                        key: 'meta_description',
+                    },
+                    {
+                        title: '创建时间',
+                        key: 'created_at'
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('router-link',{
+                                    props: {
+                                        to: '/tags/' + params.row.id + '/edit'
+                                    },
+                                }, [
+                                    h('Button', {
+                                        props: {
+                                            type: 'success',
+                                            shape: 'circle',
+                                            icon: 'edit'
+                                        },
+                                        style: {
+                                            marginRight: '5px'
+                                        },
+                                    }),
+                                ]),
+
+                                h('Button', {
+                                    props: {
+                                        type: 'error',
+                                        shape: 'circle',
+                                        icon: 'android-delete'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.handleDelete(params)
+                                        }
+                                    }
+                                }),
+                            ])
+                        }
+                    }
+                ]
             }
         },
         created() {
@@ -62,7 +95,6 @@
             loadData() {
                 this.loading = true
                 var url = 'tags';
-
                 if (this.meta.current_page > 1) {
                     let page = ''
                     if (url.indexOf('?') != -1) {
@@ -73,7 +105,6 @@
                     url = url + page + this.meta.current_page
                     this.$router.push(page + this.meta.current_page)
                 }
-
                 this.$http.get(url).then((response) => {
                     this.loading = false
                     this.tableData = response.data;
@@ -84,32 +115,22 @@
                 this.meta.current_page = val
                 this.loadData()
             },
-            handleDelete(id) {
-                this.$confirm('您确定要删除该标签吗？请三思!', '是否删除?', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'error',
-                    center: true
-                }).then(() => {
-                    this.$http.delete('tags/' + id ).then((response) => {
-                        this.$notify({
-                            title: 'success',
-                            message: '删除成功',
-                            type: 'success'
+            handleDelete(data) {
+                this.$Modal.confirm({
+                    title: '改变该标签?',
+                    content: '该标签会永久删除，请三思!',
+                    okText: '是,删除它!',
+                    cancelText: '取消',
+                    loading: true,
+                    onOk: () => {
+                        this.$http.delete('tags/' + data.row.id).then((response) => {
+                            this.$Modal.remove();
+                            this.loadData()
+                            this.$Message.success('删除成功');
                         })
-                        this.loadData()
-                    })
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消删除'
-                    });
+                    }
                 });
-            },
+            }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

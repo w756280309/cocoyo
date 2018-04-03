@@ -1,93 +1,60 @@
 <template>
     <div>
-        <form-navbar page_name="编辑标签" menu="标签列表" back="/tags"></form-navbar>
-        <div class="list_box">
-            <div class="list_box_content">
-                <div class="list_box_big">
-                    <div class="box_body">
-                        <el-row>
-                            <el-col>
-                                <el-form ref="form" status-icon :rules="rules" :model="form" label-width="80px">
-                                    <el-form-item label="标签名" prop="tag">
-                                        <el-input v-model="form.tag"></el-input>
-                                    </el-form-item>
+        <Row>
+            <Col :span="24">
+            <Card>
+                <Form :model="form" ref="form" :rules="ruleValidate" label-position="right" :label-width="100">
+                    <FormItem label="标签" prop="tag">
+                        <Input v-model="form.tag" size="large" placeholder="Enter something..."></Input>
+                    </FormItem>
+                    <FormItem label="描述" prop="meta_description">
+                        <Input v-model="form.meta_description" size="large" placeholder="Enter something..." type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
+                    </FormItem>
 
-                                    <el-form-item label="标题" prop="title">
-                                        <el-input v-model="form.title"></el-input>
-                                    </el-form-item>
-
-                                    <el-form-item label="描述" prop="meta_description">
-                                        <el-input type="textarea" v-model="form.meta_description"></el-input>
-                                    </el-form-item>
-
-                                    <el-form-item>
-                                        <el-button type="primary" @click="onSubmit('form')">编辑</el-button>
-                                        <el-button @click="handleBack">取消</el-button>
-                                    </el-form-item>
-                                </el-form>
-                            </el-col>
-                        </el-row>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <FormItem>
+                        <Button type="success" @click="onSubmit('form')" long>编辑标签</Button>
+                    </FormItem>
+                </Form>
+            </Card>
+            </Col>
+        </Row>
     </div>
 </template>
 
 <script>
-    import FormNavbar from '@/components/dashboard/form/navbar'
-
     export default {
-        components: {
-            FormNavbar,
+        data() {
+            return {
+                form: {},
+                ruleValidate: {
+                    tag: [
+                        {required: true, message: '标签不能为空'}
+                    ],
+                    meta_description: [
+                        {required: true, message: '标签描述不能为空'}
+                    ]
+                }
+            }
         },
         created() {
             this.$http.get('tags/' + this.$route.params.id + '/edit').then((response) => {
                 this.form = response.data;
             })
         },
-        data() {
-            return {
-                form: {
-                    tag: '',
-                    title: '',
-                    meta_description: '',
-                },
-                rules: {
-                    tag: [
-                        { required: true, message: '请输入标签名称', trigger: 'change'},
-                        { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'change'}
-                    ],
-                    title: [
-                        { required: true, message: '请输入标题', trigger: 'change' }
-                    ],
-                    meta_description: [
-                        { required: true, message: '请输入描述', trigger: 'change' }
-                    ]
-                }
-            }
-        },
         methods: {
-            onSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
+            onSubmit(name) {
+                this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.$http.put('tags/'+ this.$route.params.id, this.form).then((response) => {
-                            this.$notify({
-                                title: 'success',
-                                message: '编辑成功',
-                                type: 'success'
-                            })
+                        this.$http.put('tags/' + this.$route.params.id, this.form).then((response) => {
+                            this.$Notice.success({
+                                title: '编辑标签成功'
+                            });
                             this.$router.push('/tags')
                         });
-
                     } else {
-                        return false;
+                        this.$Message.error('请完善表单信息!');
                     }
-                });
-
-            },
-            handleBack() {
-                this.$router.push('/tags')
+                })
             }
         }
     }

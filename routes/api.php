@@ -13,20 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-# ==================== Login =----------------------
+# ==================== Auth =----------------------
 Route::group(['namespace' => 'Auth'], function () {
-   Route::post('dashboard/login', 'LoginController@login')->name('user.login');
+   Route::post('login', 'LoginController@login')->name('user.login');
 });
-
-# ==================== Upload =----------------------
-Route::group(['prefix' => 'upload'], function () {
-    Route::post('image', 'UploadController@uploadImage');
-});
-
 
 # ==================== Dashboard =----------------------
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => ['auth:api']], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => 'auth:api'], function () {
 
     # ==================== User Manager =----------------------
     Route::get('statistics', 'DashboardController@statistics');
@@ -43,7 +37,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'dashboard', 'middleware' => [
     Route::resource('comments', 'CommentController', ['except' => ['create', 'show', 'store']]);
 
     # ==================== Category Manager =----------------------
-    Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
+    Route::resource('categories', 'CategoryController', ['except' => ['create', 'show']]);
 
     # ==================== Tags Manager =----------------------
     Route::resource('tags', 'TagController', ['except' => ['create', 'show']]);

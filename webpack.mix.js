@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+let app_mix = require('laravel-mix');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -25,9 +25,21 @@ mix.js('resources/assets/js/dashboard.js', 'public/js')
            filename: '[name].js',
            chunkFilename: 'js/[name].[chunkhash].chunk.js'
        },
+       module: {
+           rules: [
+               {
+                   test: /\.less$/,
+                   use: [
+                       'style-loader',
+                       { loader: 'css-loader', options: { importLoaders: 1 } },
+                       'less-loader'
+                   ]
+               }
+           ]
+       }
     });
 
-mix.js('resources/assets/js/app.js', 'public/js')
+app_mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .webpackConfig({
         resolve: {
@@ -41,4 +53,12 @@ mix.js('resources/assets/js/app.js', 'public/js')
             filename: '[name].js',
             chunkFilename: 'js/[name].[chunkhash].chunk.js'
         },
+        module: {
+            rules: [
+                {
+                    test: /\.css$/,
+                    use: [ 'style-loader', 'css-loader' ]
+                }
+            ]
+        }
     });

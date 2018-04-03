@@ -17,7 +17,6 @@ class Tag extends Resource
         return [
             'id'                => $this->id,
             'tag'               => $this->tag,
-            'title'             => $this->title,
             'meta_description'  => $this->meta_description,
             'created_at'        => $this->created_at->toDateTimeString()
         ];
