@@ -1,20 +1,24 @@
-webpackJsonp([20],{
+webpackJsonp([16],{
 
-/***/ 116:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(233)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(226)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(227)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-501e0628"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -25,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\categories\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\articles\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-111e3c07", Component.options)
+    hotAPI.createRecord("data-v-501e0628", Component.options)
   } else {
-    hotAPI.reload("data-v-111e3c07", Component.options)
+    hotAPI.reload("data-v-501e0628", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +52,49 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 226:
+/***/ 233:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(234);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("95b84134", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-501e0628\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-501e0628\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 234:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(15)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,11 +137,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '分类名',
-                key: 'name'
+                title: '所属分类',
+                key: 'category_name',
+                render: function render(h, params) {
+                    return params.row.category.name;
+                }
             }, {
-                title: '路径',
-                key: 'path'
+                title: '撰写人',
+                key: 'type',
+                render: function render(h, params) {
+                    return h('Tooltip', {
+                        props: {
+                            content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
+                        }
+                    }, [h('Avatar', {
+                        props: {
+                            src: params.row.user.avatar
+                        }
+                    })]);
+                }
+            }, {
+                title: '标题',
+                key: 'title'
+            }, {
+                title: '封面图片',
+                key: 'page_image',
+                render: function render(h, params) {
+                    return h('Avatar', {
+                        props: {
+                            src: params.row.page_image
+                        }
+                    });
+                }
+            }, {
+                title: '发布时间',
+                key: 'published_at'
             }, {
                 title: '创建时间',
                 key: 'created_at'
@@ -106,7 +182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/categories/' + params.row.id + '/edit'
+                            to: '/articles/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -142,7 +218,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'categories';
+            var url = 'articles';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -167,13 +243,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '删除该分类?',
-                content: '该分类会永久删除，请三思!',
+                title: '删除该文章?',
+                content: '该文章会永久删除，请三思!',
                 okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.delete('categories/' + data.row.id).then(function (response) {
+                    _this3.$http.delete('articles/' + data.row.id).then(function (response) {
                         _this3.$Modal.remove();
                         _this3.loadData();
                         _this3.$Message.success('删除成功');
@@ -186,7 +262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 227:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -216,7 +292,7 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: "/categories/add" } },
+                        { attrs: { to: "/articles/add" } },
                         [
                           _c(
                             "Button",
@@ -226,7 +302,7 @@ var render = function() {
                                 icon: "android-add-circle"
                               }
                             },
-                            [_vm._v("添加分类")]
+                            [_vm._v("添加文章")]
                           )
                         ],
                         1
@@ -283,7 +359,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-111e3c07", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-501e0628", module.exports)
   }
 }
 

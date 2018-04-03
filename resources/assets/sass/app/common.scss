@@ -13,6 +13,7 @@ body{
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
   zoom:1;
+  color: #636b6f;
   font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 .application.theme--light{
@@ -23,7 +24,7 @@ body{
   height: 100% !important;
 }
 .main-content{
-  padding: 25px 0px 80px !important;
+  padding: 25px 0px 25px !important;
 }
 
 .footer .contact .qq:hover .qq-qr-code{
