@@ -24,6 +24,10 @@ body {
   font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
+a {
+  color: #15b982 !important;
+}
+
 .application.theme--light {
   background: #f5f5f1 !important;
 }
@@ -64,6 +68,17 @@ body {
 
 .footer .contact div {
   display: inline-block;
+}
+
+.application .theme--light.input-group input,
+.application .theme--light.input-group textarea,
+.theme--light .input-group input,
+.theme--light .input-group textarea {
+  color: #95a5a6;
+}
+
+.input-group__details {
+  display: none;
 }
 
 #article .article-list {
@@ -157,6 +172,75 @@ body {
   font-size: 12px;
   margin-right: 5px;
   color: #9b9b9b;
+}
+
+#article .comment .media {
+  padding-top: 20px;
+  zoom: 1;
+  overflow: hidden;
+}
+
+#article .comment .media .media-left {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+#article .comment .box-body {
+  border: 1px solid #ECF0F1;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #7F8C8D;
+  display: table-cell;
+  vertical-align: top;
+  zoom: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+#article .comment .heading {
+  padding: 10px 20px;
+  background: #ECF0F1;
+}
+
+#article .comment .comment-body {
+  padding: 30px 50px;
+  color: #34495e;
+}
+
+#article .comment .comment-textarea .input-group__input {
+  background-color: #fff !important;
+  border: 2px solid #ccc !important;
+}
+
+#article .comment .primary--text {
+  color: #ccc !important;
+}
+
+#article .comment .icon {
+  margin-right: 5px;
+}
+
+#article .comment .pull-right {
+  float: right;
+}
+
+@media (min-width: 768px) {
+  .container-show {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-show {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-show {
+    width: 1170px;
+  }
 }
 
 .markdown {
