@@ -28,8 +28,29 @@ a {
   color: #15b982 !important;
 }
 
+.application.theme--light .article-pagination a,
+.ivu-page-item a {
+  color: #495060 !important;
+}
+
 .application.theme--light {
   background: #f5f5f1 !important;
+}
+
+.ivu-page-item-jump-next,
+.ivu-page-item-jump-prev,
+.ivu-page-next,
+.ivu-page-prev {
+  border-radius: 50%;
+}
+
+.ivu-page-item {
+  border-radius: 50%;
+}
+
+.ivu-page-item-active {
+  background-color: #fff;
+  border-color: #ff5252;
 }
 
 .nav-container {
@@ -75,10 +96,6 @@ a {
 .theme--light .input-group input,
 .theme--light .input-group textarea {
   color: #95a5a6;
-}
-
-.input-group__details {
-  display: none;
 }
 
 #article .article-list {

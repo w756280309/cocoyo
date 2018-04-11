@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(['namespace' => 'Api'], function () {
+    Route::get('articles', 'ArticleController@index');
+    Route::get('articles/{slug}', 'ArticleController@show');
+
+    Route::get('commentable/{commentableId}/comment', 'CommentController@show');
+    Route::post('comments', 'CommentController@store');
+});
+
+
 # ==================== Auth =----------------------
 Route::group(['namespace' => 'Auth'], function () {
    Route::post('login', 'LoginController@login')->name('user.login');

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Cookies from 'js-cookie';
-import { LoadingBar } from 'iview';
+import { LoadingBar, Spin } from 'iview';
 import {routers} from './router';
 
 Vue.use(VueRouter);
@@ -15,9 +15,11 @@ export const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
     LoadingBar.start()
+    Spin.show()
     next();
 });
 
 router.afterEach((to) => {
     LoadingBar.finish()
+    Spin.hide()
 });

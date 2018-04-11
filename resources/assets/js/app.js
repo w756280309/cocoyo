@@ -11,15 +11,17 @@ import Vue from 'vue'
 
 import Vuetify from 'vuetify'
 import {router} from './router/app/index';
+import store from './store/app';
 import Home from './Home.vue';
 import HttpPlugin from './libs/app_http'
+
 
 Vue.use(Vuetify)
 Vue.use(HttpPlugin);
 
-
 const app = new Vue({
     el: '#app',
+    store: store,
     router: router,
     render: h => h(Home),
 });

@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('category_id')->comment('分类id');
             $table->unsignedInteger('user_id')->comment('用户id');
-            $table->unsignedInteger('last_user_id')->comment('最后一次评论id');
+            $table->unsignedInteger('last_user_id')->nullable()->comment('最后一次评论id');
             $table->string('slug')->unique()->comment('链接');
             $table->string('title')->comment('标题');
             $table->text('content')->comment('内容');

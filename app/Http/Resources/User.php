@@ -21,7 +21,6 @@ class User extends Resource
             'email' => $this->email,
             'avatar' => $this->avatar,
             'status' => $this->status,
-            'is_admin' => $this->is_admin,
             'github_name' => $this->github_name,
             'github_url' => $this->github_url,
             'weibo_name' => $this->weibo_name,

@@ -108,8 +108,8 @@
                         title: '编辑成功'
                     });
 
-                    if (this.$route.params.id == this.$store.state.user.info.id) {
-                        this.$store.commit('profile', response.data);
+                    if (this.$route.params.id == this.$store.state.user.id) {
+                        this.$store.commit('SET_USERINFO', response.data);
                     }
 
                     this.$router.push('/users')

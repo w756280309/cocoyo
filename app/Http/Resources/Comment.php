@@ -22,6 +22,7 @@ class Comment extends Resource
             'commentable'   => isset($this->commentable) ? $this->commentable->title : '',
             'type'          => $this->commentable_type,
             'content_raw'   => $content->raw,
+            'content_html' => $content->html,
             'created_at'    => $this->created_at->toDateTimeString(),
             'create_diff'   => $this->created_at->diffForHumans()
         ];

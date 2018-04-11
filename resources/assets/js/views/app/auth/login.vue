@@ -46,8 +46,6 @@
 </template>
 
 <script>
-    import Cookies from 'js-cookie';
-
     export default {
         data() {
             return {
@@ -66,8 +64,8 @@
             submit () {
                 if (this.$refs.form.validate()) {
                     this.$http.post('login', this.form).then((response) => {
-                        Cookies.set('user', response.data.user);
-                        Cookies.set('token', response.data.token);
+                        this.$store.commit('SET_USERINFO', response.data.user);
+                        this.$store.commit('SET_TOKEN', response.data.token);
 
                         this.$router.push('/');
                     })
