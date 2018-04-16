@@ -4,18 +4,7 @@ import request from '@/libs/app_http'
 const user = {
     state: {
         token: Cookies.getJSON('token'),
-        id: '',
-        name: '',
-        nickname: '',
-        email: '',
-        avatar: '',
-        github_name: '',
-        github_url: '',
-        weibo_name: '',
-        weibo_link: '',
-        website: '',
-        description: '',
-        email_notify_enabled: ''
+        userinfo: Cookies.getJSON('user')
     },
     mutations: {
         SET_TOKEN: (state, token) => {
@@ -27,12 +16,12 @@ const user = {
             Cookies.remove('token')
         },
         SET_USERINFO: (state, userinfo) => {
-            state = Object.assign(state, userinfo)
+            state.userinfo = userinfo
             Cookies.set('user', userinfo);
         },
         modifyAvatar(state, avatar) {
-            state.user.avatar = avatar
-            Cookies.set('user', state.user);
+            state.userinfo.avatar = avatar
+            Cookies.set('user', state.userinfo);
         },
         logout (state, vm) {
             Cookies.remove('user');

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <v-flex md10 offset-md1 class="comment">
-            <v-btn block style="background-color:#F96854 !important;" v-if="!canComment" dark>登陆发表评论</v-btn>
+        <v-flex md12 class="comment">
+            <v-btn to="/login" block style="background-color:#F96854 !important;color: #fff !important;" v-if="!canComment" dark>登陆发表评论</v-btn>
             <v-flex md9 offset-md2>
                 <div class="media" v-for="(comment, index) in comments">
                     <div class="media-left">
@@ -19,10 +19,10 @@
                             <v-icon size="10px">fas fa-clock</v-icon>
                             {{ comment.created_at }}
                             <span class="pull-right operate">
-                            <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.user.name">
+                            <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="userId == comment.user.id" title="删除">
                                   <v-icon size="10px">fas fa-trash</v-icon>
                             </a>
-                            <a href="javascript:;" @click="reply(comment.user.nickname ? comment.user.nickname : comment.user.name)">
+                            <a href="javascript:;" @click="reply(comment.user.nickname ? comment.user.nickname : comment.user.name)" title="回复">
                                  <v-icon size="10px">fas fa-reply</v-icon>
                             </a>
                         </span>
@@ -40,7 +40,7 @@
                             </v-subheader>
                         </v-flex>
                         <v-flex md10>
-                            <v-text-field  v-model="form.content" :rules="contentRule" label="Markdown" textarea class="comment-textarea"></v-text-field>
+                            <textarea class="form-control" rows="5" placeholder="请使用 Markdown 格式书写 ;-)，代码片段黏贴时请注意使用高亮语法。" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 164px;" id="reply_content" name="body" cols="50"></textarea>
                             <v-layout row>
                                 <v-flex md12>
                                     <v-btn dark @click="submit" large style="background-color: #15b982">发布评论</v-btn>
@@ -88,6 +88,9 @@
                     return ''
                 }
             },
+            userId: {
+                type: Number
+            },
             canComment: {
                 type: Boolean,
                 default() {
@@ -134,8 +137,7 @@
 
             },
             reply(name) {
-                $('#content').focus()
-                this.content = '@' + name + ' '
+                this.form.content = '@' + name + ' '
             },
             commentDelete(index, id) {
                 this.$http.delete('comments/' + id)
@@ -151,5 +153,13 @@
 </script>
 
 <style scoped>
-
+    .comment{
+        margin-top:20px;
+    }
+    .comment .avatar img{
+        transition: transform .6s ease-in;
+    }
+    .comment .avatar:hover img{
+        transform: rotateZ(360deg);
+    }
 </style>

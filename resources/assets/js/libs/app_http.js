@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {apiUrl} from '@/config/app'
+import Cookies from "js-cookie";
 
 export const http = axios.create({
     baseURL : apiUrl,
@@ -7,6 +8,17 @@ export const http = axios.create({
         return [200, 201, 204, 422, 401, 400, 404, 429, 403].indexOf(status) !== -1 // 默认的
     },
 })
+
+http.interceptors.request.use(
+    config => {
+        const token = Cookies.getJSON('token');
+        if (token) {
+            config.headers['Authorization'] = token.token_type + ' ' + token.access_token
+        }
+
+        return config;
+    }
+)
 
 http.interceptors.response.use(
     response => {

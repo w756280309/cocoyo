@@ -83,7 +83,7 @@
         },
         computed: {
             name() {
-                return this.$store.state.user.nickname ? this.$store.state.user.nickname : this.$store.state.user.name;
+                return this.$store.state.user.userinfo.nickname ? this.$store.state.user.userinfo.nickname : this.$store.state.user.userinfo.name;
             },
             menuList () {
                 return this.$store.state.app.menuList;
@@ -95,8 +95,7 @@
                 return this.$store.state.app.currentPath; // 当前面包屑数组
             },
             avatarPath () {
-                console.log(this.$store.state.user.avatar)
-                return this.$store.state.user.avatar;
+                return this.$store.state.user.userinfo.avatar;
             },
             cachePage () {
                 return this.$store.state.app.cachePage;
@@ -124,7 +123,7 @@
                 if (name === 'ownSpace') {
                     this.$router.push({
                         name: 'users_edit',
-                        params: {id : this.$store.state.user.id}
+                        params: {id : this.$store.state.user.userinfo.id}
                     });
                 } else if (name === 'loginout') {
                     // 退出登录

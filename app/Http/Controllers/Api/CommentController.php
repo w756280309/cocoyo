@@ -49,8 +49,18 @@ class CommentController extends Controller
         return new CommentResource($comment);
     }
 
+    /**
+     * @param Comment $comment
+     * @return \Response
+     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy(Comment $comment)
     {
+        $this->authorize('destroy', $comment);
 
+        $comment->delete();
+
+        return $this->noContent();
     }
 }

@@ -29,11 +29,14 @@
                     </v-card-text>
                 </v-card>
 
-                <comments username="cocoyo"
-                          user-avatar="https://image.cocoyo.xin/IMG_0347.PNG"
+                <comments :username="username"
+                          :user-avatar="avatar"
+                          :user-id="user_id"
                           commentable-type="App\Models\Article"
-                          :commentable-id="49"
-                          can-comment></comments>
+                          :commentable-id="commentable_id"
+                          :can-comment="can_comment"
+                          v-if="loading_comments"
+                ></comments>
             </v-flex>
         </v-layout>
     </v-container>
@@ -62,6 +65,8 @@
                     user: {}
                 },
                 is_original: false,
+                commentable_id: 0,
+                loading_comments:false
             }
         },
         mounted() {
@@ -70,10 +75,34 @@
         updated() {
             highlightCode()
         },
+        computed: {
+            username() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.nickname ? this.$store.state.user.userinfo.nickname : this.$store.state.user.userinfo.name;
+                }
+                return  ''
+            },
+            avatar() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.avatar
+                }
+                return ''
+            },
+            user_id() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.id
+                }
+            },
+            can_comment() {
+                return this.$store.state.user.token ? true : false
+            }
+        },
         created() {
             this.$http.get('/articles/' + this.$route.params.slug).then((response) => {
                 this.article = response.data;
                 this.is_original = response.data.is_original == 1 ? true : false;
+                this.commentable_id = this.article.id
+                this.loading_comments = true
             })
         }
     }

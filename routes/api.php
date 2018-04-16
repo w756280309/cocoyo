@@ -18,7 +18,10 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('articles/{slug}', 'ArticleController@show');
 
     Route::get('commentable/{commentableId}/comment', 'CommentController@show');
-    Route::post('comments', 'CommentController@store');
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::post('comments', 'CommentController@store');
+        Route::delete('comments/{comment}', 'CommentController@destroy');
+    });
 });
 
 
