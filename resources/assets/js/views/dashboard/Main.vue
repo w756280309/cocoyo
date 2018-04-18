@@ -83,7 +83,7 @@
         },
         computed: {
             name() {
-                return this.$store.state.user.userinfo.nickname ? this.$store.state.user.userinfo.nickname : this.$store.state.user.userinfo.name;
+                return this.$store.state.user.userinfo.name;
             },
             menuList () {
                 return this.$store.state.app.menuList;

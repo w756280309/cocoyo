@@ -108,7 +108,7 @@
                         title: '编辑成功'
                     });
 
-                    if (this.$route.params.id == this.$store.state.user.id) {
+                    if (this.$route.params.id == this.$store.state.user.userinfo.id) {
                         this.$store.commit('SET_USERINFO', response.data);
                     }
 

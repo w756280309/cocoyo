@@ -16,18 +16,24 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->paginate(6);
+        $articles = Article::latest()->valid()->paginate(6);
 
-        $articles->load(['user', 'category']);
+        $articles->load(['user', 'category', 'tags']);
 
         return ArticleResource::collection($articles);
     }
 
+    /**
+     * 文章详情
+     *
+     * @param $slug
+     * @return ArticleResource
+     */
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
 
-        $article->load(['user']);
+        $article->load(['user', 'tags']);
 
         return new ArticleResource($article);
     }

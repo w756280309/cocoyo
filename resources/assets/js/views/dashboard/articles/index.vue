@@ -48,7 +48,7 @@
                             render: (h, params) => {
                                 return h('Tooltip', {
                                     props: {
-                                        content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
+                                        content: params.row.user.name
                                     }
                                 }, [
                                     h('Avatar', {

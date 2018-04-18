@@ -13,11 +13,11 @@
                         </h4>
                         <time>发表于 {{ article.published_individualization }}</time>
                     </div>
-                    <div class="actions">
+                    <div class="actions" v-for="(tag, index) in article.tags">
                         <a href="javascript:;" class="btn-comment">
-                            <i class="ion-pricetag"></i>
+                            <v-icon size="10px">fas fa-tag</v-icon>
                         </a>
-                        <a href="https://www.cocoyo.xin/tag/windows">windows</a>
+                        <a href="https://www.cocoyo.xin/tag/windows">{{ tag.tag }}</a>
                     </div>
                 </div>
                 <v-card>
@@ -78,7 +78,7 @@
         computed: {
             username() {
                 if (this.$store.state.user.token) {
-                    return this.$store.state.user.userinfo.nickname ? this.$store.state.user.userinfo.nickname : this.$store.state.user.userinfo.name;
+                    return this.$store.state.user.userinfo.name;
                 }
                 return  ''
             },

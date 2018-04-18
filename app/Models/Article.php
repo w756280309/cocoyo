@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\MarkDown;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -85,5 +86,17 @@ class Article extends Model
         ];
 
         $this->attributes['content'] = json_encode($data);
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function scopeValid(Builder $query)
+    {
+        return $query->where([
+            ['published_at', '<=', date('Y-m-d H:i:s', time())],
+            ['is_draft', 0]
+        ]);
     }
 }
