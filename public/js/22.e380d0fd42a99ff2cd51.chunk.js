@@ -1,14 +1,14 @@
-webpackJsonp([19],{
+webpackJsonp([22],{
 
-/***/ 120:
+/***/ 129:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(234)
+var __vue_script__ = __webpack_require__(245)
 /* template */
-var __vue_template__ = __webpack_require__(235)
+var __vue_template__ = __webpack_require__(246)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\tags\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\comments\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-13bb9b84", Component.options)
+    hotAPI.createRecord("data-v-37df191f", Component.options)
   } else {
-    hotAPI.reload("data-v-13bb9b84", Component.options)
+    hotAPI.reload("data-v-37df191f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,16 +48,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 234:
+/***/ 245:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -91,13 +86,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '标签',
-                key: 'tag'
+                title: '用户',
+                key: 'name',
+                render: function render(h, params) {
+                    return h('Tooltip', {
+                        props: {
+                            content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
+                        }
+                    }, [h('Avatar', {
+                        props: {
+                            src: params.row.user.avatar
+                        }
+                    })]);
+                }
             }, {
-                title: '描述',
-                key: 'meta_description'
+                title: '评论类型',
+                key: 'type'
             }, {
-                title: '创建时间',
+                title: '评论标题',
+                key: 'commentable'
+            }, {
+                title: '评论时间',
                 key: 'created_at'
             }, {
                 title: '操作',
@@ -106,7 +115,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/tags/' + params.row.id + '/edit'
+                            to: '/comments/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -142,7 +151,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'tags';
+            var url = 'comments';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -167,13 +176,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '改变该标签?',
-                content: '该标签会永久删除，请三思!',
+                title: '删除该评论?',
+                content: '该评论会永久删除，请三思!',
                 okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.delete('tags/' + data.row.id).then(function (response) {
+                    _this3.$http.delete('comments/' + data.row.id).then(function (response) {
                         _this3.$Modal.remove();
                         _this3.loadData();
                         _this3.$Message.success('删除成功');
@@ -186,7 +195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 235:
+/***/ 246:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -206,35 +215,6 @@ var render = function() {
               _c(
                 "Card",
                 [
-                  _c(
-                    "p",
-                    {
-                      staticStyle: { height: "100%", "text-align": "right" },
-                      attrs: { slot: "title" },
-                      slot: "title"
-                    },
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/tags/add" } },
-                        [
-                          _c(
-                            "Button",
-                            {
-                              attrs: {
-                                type: "primary",
-                                icon: "android-add-circle"
-                              }
-                            },
-                            [_vm._v("添加标签")]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
                   _c("Table", {
                     attrs: {
                       loading: _vm.loading,
@@ -283,7 +263,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-13bb9b84", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-37df191f", module.exports)
   }
 }
 

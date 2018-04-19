@@ -13,7 +13,7 @@ body{
   font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 a{
-  color:#15b982 !important;
+  color:#15b982;
 }
 audio, canvas, img, svg, video {
   max-width: 100%;
@@ -36,35 +36,70 @@ audio, canvas, img, svg, video {
   background-color: #fff;
   border-color: #ff5252 ;
 }
+.ivu-select-dropdown{
+  min-width: 120px;
+  padding: 5px 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+}
+.ivu-dropdown-item{
+  display: block;
+  padding: 10px 20px;
+  clear: both;
+  line-height: 1.428571429;
+  white-space: nowrap;
+}
+.ivu-dropdown-item:hover {
+  background: #f3f3f3;
+  background: linear-gradient(90deg,#15b982,#01d18b);
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  color: #fff;
+}
+
 .main-content{
   padding: 25px 0px 25px !important;
 }
 
-.footer .contact .qq:hover .qq-qr-code{
-  display: block !important;
-}
-
-.footer .contact .wechat:hover .wechat-qr-code{
-  display: block !important;
-}
-.qq, .wechat{
-  position: relative;
-}
-.qq-qr-code, .wechat-qr-code {
-  display: none !important;
-  position: absolute;
-  bottom: 100%;
-  right: 50%;
-  -webkit-transform: translate(50%,-10px);
-  transform: translate(50%,-10px);
-  -webkit-box-shadow: 0 4px 6px rgba(0,0,0,.46);
-  box-shadow: 0 4px 6px rgba(0,0,0,.46);
-}
-
-.footer .contact div{
-  display: inline-block;
-}
-
 .application .theme--light.input-group input, .application .theme--light.input-group textarea, .theme--light .input-group input, .theme--light .input-group textarea {
   color: #95a5a6;
+}
+
+.profile-app__KJyN {
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  .base_content .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 768px){
+  .base_content .container {
+    position: relative;
+  }
+}
+
+@media (min-width: 992px) {
+  .base_content .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .base_content .container {
+    width: 1170px;
+  }
+}
+
+.base_content .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }

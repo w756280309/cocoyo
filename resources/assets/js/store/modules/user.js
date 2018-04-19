@@ -24,6 +24,8 @@ const user = {
             Cookies.set('user', state.userinfo);
         },
         logout (state, vm) {
+            state.token = ''
+            state.userinfo = ''
             Cookies.remove('user');
             Cookies.remove('token');
         }

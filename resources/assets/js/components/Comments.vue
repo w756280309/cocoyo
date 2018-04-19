@@ -7,7 +7,7 @@
                     <div class="media-left">
                         <a :href="'/user/' + comment.user.name">
                             <v-avatar class="grey lighten-4" size="60px">
-                                <img :src="comment.user.avatar" alt="avatar">
+                                <img :src="comment.user.avatar" alt="avatar" class="avatar">
                             </v-avatar>
                         </a>
                     </div>
