@@ -54,14 +54,35 @@
                 <div class="side__1bvU">
                     <div class="sidebar-base__2RIZ">
                         <div class="header__2nTK">
-
+                            <span class="banner-profile__twitter">
+                                <a href="javascript:;" title="注册用户">
+                                    <Icon size="15" type="social-vimeo"></Icon>
+                                </a>
+                            </span>
+                            <span class="banner-profile__github">
+                                <a href="" title="微博">
+                                    <Icon size="15" type="chatbubble"></Icon>
+                                </a>
+                            </span>
+                            <span class="banner-profile__github">
+                                <a href="" title="微博">
+                                    <Icon size="15" type="chatbubble"></Icon>
+                                </a>
+                            </span>
+                            <span class="banner-profile__github">
+                                <a href="" title="微博">
+                                    <Icon size="15" type="chatbubble"></Icon>
+                                </a>
+                            </span>
                         </div>
                         <ul>
-                            <li><a aria-current="false" href="/profile/"  class="active__1IwF"><Icon type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复</a></li>
-                            <li><a aria-current="false" href="/profile/points/"><Icon type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户</a></li>
-                            <!--<li><a aria-current="false" href="/profile/submissions/"><i class="fa fa-file-code-o"></i>&nbsp; 提交记录</a></li>-->
-                            <!--<li><a aria-current="true" href="/profile/account/" class="active__1IwF"><i class="fa fa-cog"></i>&nbsp; 账号设置</a></li>-->
-                            <!--<li><a aria-current="false" href="/profile/privacy/"><i class="fa fa-shield"></i>&nbsp; 隐私设置</a></li>-->
+                            <li><a aria-current="false" href="/profile/"  class="active__1IwF">
+                                <Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复</a>
+                            </li>
+                            <li>
+                                <a aria-current="false" href="/profile/points/">
+                                    <Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -87,6 +108,16 @@
         components: {
             Icon,
             Button
+        },
+        data() {
+            return {
+                user:{}
+            }
+        },
+        created() {
+            this.$http.get('users/' + this.$route.params.name).then((response) => {
+                console.log(response)
+            })
         }
     }
 </script>

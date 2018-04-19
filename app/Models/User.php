@@ -50,4 +50,13 @@ class User extends Authenticatable
     {
         return User::valid()->first();
     }
+
+    /**
+     * 评论关联  一对多
+     * @return mixed
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
 }

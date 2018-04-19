@@ -21,6 +21,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('comments', 'CommentController@store');
         Route::delete('comments/{comment}', 'CommentController@destroy');
+
+        Route::get('users/{username}', 'UserController@show');
     });
 });
 
