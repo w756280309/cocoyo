@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(false)->comment('是否管理员');
             $table->string('password')->comment('密码');
             $table->string('github_name')->nullable()->comment('github名字');
-            $table->string('github_url')->nullable()->comment('github链接');
             $table->string('weibo_id')->nullable()->comment('微博id');
             $table->string('weibo_name')->nullable()->comment('微博名称');
             $table->string('weibo_link')->nullable()->comment('微博链接');

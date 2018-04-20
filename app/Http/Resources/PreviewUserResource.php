@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class User extends Resource
+class PreviewUserResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -20,14 +20,15 @@ class User extends Resource
             'nickname' => $this->nickname,
             'email' => $this->email,
             'avatar' => $this->avatar,
-            'status' => $this->status,
             'github_name' => $this->github_name,
             'weibo_name' => $this->weibo_name,
             'weibo_link' => $this->weibo_link,
             'website' => $this->website,
             'description' => $this->description,
-            'email_notify_enabled' => $this->email_notify_enabled,
-            'created_at' => $this->created_at->toDateTimeString()
+            'followings_count' => $this->followings_count,
+            'comments_count' => $this->comments_count,
+            'is_following' => $this->is_following,
+            'created_at' => $this->created_at->toDateTimeString(),
         ];
     }
 }

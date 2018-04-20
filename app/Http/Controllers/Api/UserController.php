@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\ProfileResource;
+use App\Http\Resources\PreviewUserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function show($username)
+    /**
+     * 用户详情
+     *
+     * @param Request $request
+     * @param $username
+     * @return PreviewUserResource
+     */
+    public function show(Request $request, $username)
     {
         $user = User::where('name', $username)->first();
 
         if (!isset($user)) abort(404);
 
-        $user->load(['comments' => function ($query) {
-            return $query->paginate(2);
-        }]);
+        $user->followings_count = $user->followings()->count();
+        $user->comments_count = $user->comments()->count();
+        $user->is_following = $user->isFollowing(optional($request->user())->id);
 
-        return new ProfileResource($user);
+        return new PreviewUserResource($user);
     }
 }

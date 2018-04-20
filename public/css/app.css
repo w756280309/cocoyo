@@ -133,6 +133,12 @@ video {
   margin-left: auto;
 }
 
+.teal {
+  background-color: #15B982 !important;
+  border-color: #15B982 !important;
+  color: #fff !important;
+}
+
 .markdown {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanFollow;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable;
+    use HasApiTokens,Notifiable, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'is_admin', 'avatar', 'password', 'confirm_code',
         'nickname', 'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
-        'weibo_id', 'github_name', 'github_url', 'website', 'description', 'status',
+        'weibo_id', 'github_name', 'website', 'description', 'status',
         'qq_id'
     ];
 
