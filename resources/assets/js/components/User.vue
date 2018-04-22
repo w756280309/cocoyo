@@ -24,7 +24,10 @@
                                 </div>
                                 <div class="action" v-if="is_login">
                                     <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit">编辑资料</v-btn>
-                                    <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="follow">{{ follow ? '关注中' : '关注' }}</v-btn>
+                                    <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ follow ? '关注中' : '关注' }}</v-btn>
+                                </div>
+                                <div class="action" v-else>
+                                    <v-btn color="error" style="margin-left: -2px;" small to="/login">关注</v-btn>
                                 </div>
                             </div>
                         </v-flex>
@@ -60,31 +63,32 @@
                             </span>
                             <span class="banner-profile__github" v-if="user.website">
                                 <a :href="user.website" title="个人网站">
-                                    <Icon size="15" type="earth"></Icon>
+                                    <Icon size="15" type="ios-world"></Icon>
                                 </a>
                             </span>
                             <span class="banner-profile__github" v-if="user.github_name">
                                 <a :href="'https://github.com/' + user.github_name" title="github">
-                                    <Icon size="15" type="chatbubble"></Icon>
+                                    <Icon size="15" type="social-github"></Icon>
                                 </a>
                             </span>
                         </div>
                         <ul>
-                            <li><a aria-current="false" href="/profile/"  class="active__1IwF">
-                                <Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复</a>
+                            <li>
+                                <router-link :to="'/users/' + name" :class="is_active == 'user_replies' ? 'active__1IwF' : ''">
+                                    <Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复
+                                </router-link>
                             </li>
                             <li>
-                                <a aria-current="false" href="/profile/points/">
-                                    <Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户</a>
+                                <router-link :to="'/users/' + name + '/following'" :class="is_active == 'user_following' ? 'active__1IwF' : ''">
+                                    <Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="content-toggled__1rll content__2Ok3">
                     <div class="container__PZyq">
-                        <div class="section__3bS4">
-                            <router-view></router-view>
-                        </div>
+                        <router-view></router-view>
                     </div>
                 </div>
             </div>
@@ -101,10 +105,17 @@
         },
         data() {
             return {
-                user:{}
+                user:{},
+                follow: false,
             }
         },
         computed: {
+            name() {
+                return this.$route.params.name
+            },
+            is_active() {
+                return 'user_replies'
+            },
             is_login() {
                 return this.$store.state.user.token ? true : false
             },
@@ -112,25 +123,39 @@
                 if (this.is_login && (this.$store.state.user.userinfo.id == this.user.id)) {
                     return true;
                 }
-
-                return false;
             },
-            follow() {
+            is_me() {
                 if (this.is_login && ! (this.$store.state.user.userinfo.id == this.user.id)) {
-                    return this.user.is_following
+                    return true
                 }
 
-                return false
             }
         },
         created() {
             this.$http.get('users/' + this.$route.params.name).then((response) => {
                 this.user = response.data
             })
+
+            if (this.is_login && ! (this.$store.state.user.userinfo.id == this.user.id)) {
+                this.$http.get('users/' + this.$route.params.name + '/is-follow').then((response) => {
+                    return this.follow = response.data.is_follow
+                })
+            }
+        },
+        methods: {
+            following(id) {
+                this.$http.post('users/' + id + '/follow').then((response) => {
+                    return this.follow = ! this.follow
+                })
+            },
+            active(data) {
+                console.log(data);
+                this.is_active = data.is_active
+            }
         }
     }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
     @import "../styles/index.less";
 </style>

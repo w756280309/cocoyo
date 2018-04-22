@@ -46,11 +46,12 @@ class User extends Authenticatable
     /**
      * 重写passport查询用户
      *
+     * @param $email
      * @return mixed
      */
-    public function findForPassport()
+    public function findForPassport($email)
     {
-        return User::valid()->first();
+        return User::where('email', $email)->valid()->first();
     }
 
     /**

@@ -5,11 +5,11 @@
             <v-flex md9 offset-md2>
                 <div class="media" v-for="(comment, index) in comments">
                     <div class="media-left">
-                        <a :href="'/user/' + comment.user.name">
+                        <router-link :to="'/users/' + comment.user.name">
                             <v-avatar class="grey lighten-4" size="60px">
                                 <img :src="comment.user.avatar" alt="avatar" class="avatar">
                             </v-avatar>
-                        </a>
+                        </router-link>
                     </div>
                     <div class="media-body box-body">
                         <div class="heading">
@@ -162,8 +162,51 @@
 </script>
 
 <style scoped>
+
     .comment{
         margin-top:20px;
+    }
+    .comment .media{
+        padding-top: 20px;
+        zoom: 1;
+        overflow: hidden;
+    }
+    .comment .media .media-left{
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 10px;
+    }
+    .comment .box-body{
+        border: 1px solid #ECF0F1;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #7F8C8D;
+        display: table-cell;
+        vertical-align: top;
+        zoom: 1;
+        overflow: hidden;
+        width:100%;
+    }
+    .comment .heading{
+        padding: 10px 20px;
+        background: #ECF0F1;
+    }
+    .comment .comment-body{
+        padding: 30px 50px;
+        color: #34495e;
+    }
+    .comment .comment-textarea .input-group__input{
+        background-color:#fff !important;
+        border:2px solid #ccc !important;
+    }
+    .comment .primary--text{
+        color:#ccc !important;
+    }
+    .comment .icon{
+        margin-right: 5px;
+    }
+    .comment .pull-right{
+        float: right;
     }
     .comment .avatar img{
         transition: transform .6s ease-in;

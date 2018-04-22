@@ -1,4 +1,4 @@
-webpackJsonp([18],{
+webpackJsonp([20],{
 
 /***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
@@ -6,13 +6,13 @@ webpackJsonp([18],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(258)
+  __webpack_require__(260)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(260)
+var __vue_script__ = __webpack_require__(262)
 /* template */
-var __vue_template__ = __webpack_require__(261)
+var __vue_template__ = __webpack_require__(263)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,13 +52,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 258:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(259);
+var content = __webpack_require__(261);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 259:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -87,14 +87,14 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n#article .article-list {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n#article .article-list:hover {\n  -webkit-box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n          box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n  -webkit-transform: translateY(-2px);\n  transform: translateY(-2px);\n}\n#article .article-list .extra {\n  max-width: 100%;\n  min-height: 0em !important;\n  -webkit-box-flex: 0;\n  -ms-flex-positive: 0;\n  flex-grow: 0;\n  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;\n  position: static;\n  background: none;\n  width: auto;\n  margin: 0em 0em;\n  padding: 16px;\n  top: 0em;\n  left: 0em;\n  color: rgba(0, 0, 0, 0.4);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: color 0.1s ease;\n  transition: color 0.1s ease;\n}\n#article .pagination .icon {\n  font-size: 10px !important;\n}\n#article .article-title {\n  font-size: 32px;\n  font-weight: 600;\n  text-align: center;\n  margin-bottom: 12px;\n}\n#article .meta {\n  margin-bottom: 15px;\n  margin-top: 10px;\n  text-align: center;\n}\n#article .meta .user-card {\n  display: inline-block;\n  margin-right: 15px;\n}\n#article .meta .user-card h4 {\n  display: inline;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-weight: 400;\n  margin: 0 10px 0 0;\n  font-size: 14px;\n  line-height: 1.66666667;\n  margin-right: 20px;\n}\n#article .meta .user-card .time {\n  vertical-align: middle;\n  font-size: 12px;\n  color: #9b9b9b;\n}\n#article .meta .avatar img {\n  width: 30px;\n  height: 30px;\n  padding: 0;\n  border: 1px solid #fff;\n  background: #fff;\n  padding: 3px;\n  border: 1px solid #c5c5c5;\n  border-radius: 50%;\n}\n#article .meta .actions {\n  display: inline-block;\n}\n#article .meta .actions a {\n  font-size: 12px;\n  margin-right: 5px;\n  color: #9b9b9b;\n}\n#article .comment .media {\n  padding-top: 20px;\n  zoom: 1;\n  overflow: hidden;\n}\n#article .comment .media .media-left {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n}\n#article .comment .box-body {\n  border: 1px solid #ECF0F1;\n  border-radius: 5px;\n  background-color: #fff;\n  color: #7F8C8D;\n  display: table-cell;\n  vertical-align: top;\n  zoom: 1;\n  overflow: hidden;\n  width: 100%;\n}\n#article .comment .heading {\n  padding: 10px 20px;\n  background: #ECF0F1;\n}\n#article .comment .comment-body {\n  padding: 30px 50px;\n  color: #34495e;\n}\n#article .comment .comment-textarea .input-group__input {\n  background-color: #fff !important;\n  border: 2px solid #ccc !important;\n}\n#article .comment .primary--text {\n  color: #ccc !important;\n}\n#article .comment .icon {\n  margin-right: 5px;\n}\n#article .comment .pull-right {\n  float: right;\n}\n@media (min-width: 768px) {\n.container-show {\n    width: 750px;\n}\n}\n@media (min-width: 992px) {\n.container-show {\n    width: 970px;\n}\n}\n@media (min-width: 1200px) {\n.container-show {\n    width: 1170px;\n}\n}\n", ""]);
+exports.push([module.i, "\n#article .article-list {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n#article .article-list:hover {\n  -webkit-box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n          box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n  -webkit-transform: translateY(-2px);\n  transform: translateY(-2px);\n}\n#article .article-list .extra {\n  max-width: 100%;\n  min-height: 0em !important;\n  -webkit-box-flex: 0;\n  -ms-flex-positive: 0;\n  flex-grow: 0;\n  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;\n  position: static;\n  background: none;\n  width: auto;\n  margin: 0em 0em;\n  padding: 16px;\n  top: 0em;\n  left: 0em;\n  color: rgba(0, 0, 0, 0.4);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: color 0.1s ease;\n  transition: color 0.1s ease;\n}\n#article .pagination .icon {\n  font-size: 10px !important;\n}\n#article .article-title {\n  font-size: 32px;\n  font-weight: 600;\n  text-align: center;\n  margin-bottom: 12px;\n}\n#article .meta {\n  margin-bottom: 15px;\n  margin-top: 10px;\n  text-align: center;\n}\n#article .meta .user-card {\n  display: inline-block;\n  margin-right: 15px;\n}\n#article .meta .user-card h4 {\n  display: inline;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-weight: 400;\n  margin: 0 10px 0 0;\n  font-size: 14px;\n  line-height: 1.66666667;\n  margin-right: 20px;\n}\n#article .meta .user-card .time {\n  vertical-align: middle;\n  font-size: 12px;\n  color: #9b9b9b;\n}\n#article .meta .avatar img {\n  width: 30px;\n  height: 30px;\n  padding: 0;\n  border: 1px solid #fff;\n  background: #fff;\n  padding: 3px;\n  border: 1px solid #c5c5c5;\n  border-radius: 50%;\n}\n#article .meta .actions {\n  display: inline-block;\n}\n#article .meta .actions a {\n  font-size: 12px;\n  margin-right: 5px;\n  color: #9b9b9b;\n}\n@media (min-width: 768px) {\n.container-show {\n    width: 750px;\n}\n}\n@media (min-width: 992px) {\n.container-show {\n    width: 970px;\n}\n}\n@media (min-width: 1200px) {\n.container-show {\n    width: 1170px;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -196,7 +196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 261:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

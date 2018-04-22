@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		25: 0
+/******/ 		27: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"68ada7248fc1319eadaf","16":"0090e85af3be52f55a31","17":"1da81aae3e7582280559","18":"b1f26457c65780b8ec9d"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"d8589e90a7f16400e940","16":"559d84d58b99e3de945b","17":"5a1dec689cfe01a8bf1c","18":"5066c2f8e60a73f98c8a","19":"a3d59fcdeea6a84f3250","20":"9c9c11f226fa9ea2fde8"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99467,20 +99467,29 @@ var otherRouter = {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__views_app_Main_vue___default.a,
     children: [{ path: '/', title: '主页', name: 'index', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(18).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(137)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(20).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(137)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: 'articles/:slug', title: '文章详情', name: 'articles.show', component: function component(resolve) {
             return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(138)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: '/login', title: '登陆', name: 'login', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(17).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(139)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(19).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(139)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        } }, { path: '/user/profile', title: '编辑个人资料', name: 'edit_profile', component: function component(resolve) {
+            return void __webpack_require__.e/* require */(17).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(140)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, {
-        path: '/user',
+        path: '/users',
         component: __WEBPACK_IMPORTED_MODULE_1__components_User_vue___default.a,
         children: [{
             path: ':name',
             title: '用户信息',
-            name: 'userinfo',
+            name: 'user_replies',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(16).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(140)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(16).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(141)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            }
+        }, {
+            path: ':name/following',
+            title: '用户关注',
+            name: 'user_following',
+            component: function component(resolve) {
+                return void __webpack_require__.e/* require */(18).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(142)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }]
     }]
@@ -99837,7 +99846,7 @@ var render = function() {
                           [
                             _c(
                               "router-link",
-                              { attrs: { to: "/user/" + _vm.name } },
+                              { attrs: { to: "/users/" + _vm.name } },
                               [
                                 _c(
                                   "DropdownItem",
@@ -100351,7 +100360,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-group-vertical > .btn-group:after,\n.btn-group-vertical > .btn-group:before,\n.btn-toolbar:after,\n.btn-toolbar:before,\n.clearfix:after,\n.clearfix:before,\n.container-fluid:after,\n.container-fluid:before,\n.container:after,\n.container:before,\n.dl-horizontal dd:after,\n.dl-horizontal dd:before,\n.form-horizontal .form-group:after,\n.form-horizontal .form-group:before,\n.modal-footer:after,\n.modal-footer:before,\n.modal-header:after,\n.modal-header:before,\n.nav:after,\n.nav:before,\n.navbar-collapse:after,\n.navbar-collapse:before,\n.navbar-header:after,\n.navbar-header:before,\n.navbar:after,\n.navbar:before,\n.pager:after,\n.pager:before,\n.panel-body:after,\n.panel-body:before,\n.row:after,\n.row:before {\n  display: table;\n  content: \" \";\n}\n.base_content {\n  z-index: 998;\n  color: #fff;\n}\n.header__NyBc {\n  height: 275px;\n  margin-top: -30px;\n}\n.header__NyBc .bg-wrapper__teZt {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  left: 0;\n  height: 387px;\n  width: 100%;\n  overflow: hidden;\n}\n.header__NyBc .background__26YF {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(-150deg, #222 15%, #373737 70%, #3c4859 94%);\n}\n.header__NyBc .container__28Ei {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 65px;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n.avatar-base__19M6 {\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 25%;\n  flex: 0 0 25%;\n  text-align: center;\n  position: relative;\n}\n.avatar__2sMj {\n  cursor: pointer;\n  height: 140px;\n  width: 140px;\n  border: 5px solid #fff;\n  border-radius: 15px;\n}\n.user-info__2aLr {\n  overflow: hidden;\n  margin-left: 20px;\n  margin-right: 20px;\n}\n.user-info__2aLr .name__3EWH {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n.user-info__2aLr .name__3EWH .container__1Mii {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 auto;\n  flex: 0 0 auto;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  max-width: 90%;\n}\n.user-info__2aLr .name-text__1-NA {\n  color: #fff;\n  font-size: 24px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.user-info__2aLr .name__3EWH .right-side__3zuc {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 0 0px;\n  flex: 1 0 0;\n  -webkit-box-pack: start;\n  -ms-flex-pack: start;\n  justify-content: flex-start;\n}\n.user-info__2aLr .public__2p3C {\n  margin-left: 8px;\n  font-size: 16px;\n}\n.user-info__2aLr .header {\n  font-size: 18px;\n  font-weight: bold;\n}\n.user-info__2aLr .description {\n  font-size: 16px;\n  margin: 10px 0;\n}\n.nav__2IK2 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  position: relative;\n}\n.side__1bvU {\n  width: 25%;\n  min-height: 600px;\n}\n.sidebar-base__2RIZ .header__2nTK {\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  margin-left: 20px;\n  position: relative;\n  top: 30px;\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  text-align: center;\n}\n.sidebar-base__2RIZ ul {\n  margin-top: 90px;\n  -webkit-padding-start: 0;\n}\n.sidebar-base__2RIZ ul li {\n  list-style: none;\n  padding-right: 20px;\n  margin: 10px;\n}\n.sidebar-base__2RIZ ul li > a,\n.sidebar-base__2RIZ ul li div {\n  display: block;\n  color: #5a5a5a;\n  padding: 15px 20px;\n  border-radius: 5px;\n  text-decoration: none;\n}\n.sidebar-base__2RIZ ul li > a:hover {\n  background-color: #64b9f9;\n  color: #fff!important;\n}\n.active__1IwF {\n  background-color: #64b9f9;\n  color: #fff!important;\n}\n.content-toggled__1rll {\n  right: 0;\n}\n.content__2Ok3 {\n  width: 75%;\n  -webkit-transition: right 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);\n  -o-transition: right 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);\n}\n.container__PZyq:hover {\n  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);\n}\n.container__PZyq {\n  min-height: 600px;\n  background: #fff;\n  border-radius: 5px;\n  margin-bottom: 50px;\n  font-size: 14px;\n  -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);\n  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);\n  -webkit-transition: -webkit-box-shadow 0.4s;\n  transition: -webkit-box-shadow 0.4s;\n  transition: box-shadow 0.4s;\n  transition: box-shadow 0.4s, -webkit-box-shadow 0.4s;\n}\n.section__3bS4 {\n  padding: 10px 15px;\n  border: none;\n  margin-bottom: 0px;\n  border-bottom: 1px solid #f2f2f2;\n}\n.section__3bS4 a {\n  color: #15b982;\n}\n.experience {\n  right: 0;\n  text-align: right;\n}\n.experience .experience-count {\n  margin: 0;\n  font-size: 60px;\n  color: #15B982;\n}\n.experience .experience-count span {\n  display: block;\n  color: #fff;\n  font-size: .5em;\n  position: relative;\n}\n.sn-inline {\n  list-style: none;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  vertical-align: text-bottom;\n}\n.banner-profile__github {\n  margin: 0 9px 0 0;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.banner-profile__github i {\n  background: #222;\n  color: #fff;\n  padding: 7px 7px 6px;\n  border-radius: 3px;\n  margin-right: 7px;\n}\n.banner-profile__twitter {\n  margin: 0 9px 0 0;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.banner-profile__twitter i {\n  background: #ff5252;\n  color: #fff;\n  padding: 7px 7px 6px;\n  border-radius: 3px;\n  margin-right: 7px;\n}\n", ""]);
+exports.push([module.i, "\n.btn-group-vertical > .btn-group:after,\n.btn-group-vertical > .btn-group:before,\n.btn-toolbar:after,\n.btn-toolbar:before,\n.clearfix:after,\n.clearfix:before,\n.container-fluid:after,\n.container-fluid:before,\n.container:after,\n.container:before,\n.dl-horizontal dd:after,\n.dl-horizontal dd:before,\n.form-horizontal .form-group:after,\n.form-horizontal .form-group:before,\n.modal-footer:after,\n.modal-footer:before,\n.modal-header:after,\n.modal-header:before,\n.nav:after,\n.nav:before,\n.navbar-collapse:after,\n.navbar-collapse:before,\n.navbar-header:after,\n.navbar-header:before,\n.navbar:after,\n.navbar:before,\n.pager:after,\n.pager:before,\n.panel-body:after,\n.panel-body:before,\n.row:after,\n.row:before {\n  display: table;\n  content: \" \";\n}\n.base_content {\n  z-index: 998;\n  color: #fff;\n}\n.header__NyBc {\n  height: 275px;\n  margin-top: -30px;\n}\n.header__NyBc .bg-wrapper__teZt {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  left: 0;\n  height: 387px;\n  width: 100%;\n  overflow: hidden;\n}\n.header__NyBc .background__26YF {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(-150deg, #222 15%, #373737 70%, #3c4859 94%);\n}\n.header__NyBc .container__28Ei {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 65px;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n.avatar-base__19M6 {\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 25%;\n  flex: 0 0 25%;\n  text-align: center;\n  position: relative;\n}\n.avatar__2sMj {\n  cursor: pointer;\n  height: 140px;\n  width: 140px;\n  border: 5px solid #fff;\n  border-radius: 15px;\n}\n.user-info__2aLr {\n  overflow: hidden;\n  margin-left: 20px;\n  margin-right: 20px;\n}\n.user-info__2aLr .name__3EWH {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n.user-info__2aLr .name__3EWH .container__1Mii {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n  -ms-flex: 0 0 auto;\n  flex: 0 0 auto;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  max-width: 90%;\n}\n.user-info__2aLr .name-text__1-NA {\n  color: #fff;\n  font-size: 24px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.user-info__2aLr .name__3EWH .right-side__3zuc {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 0 0px;\n  flex: 1 0 0;\n  -webkit-box-pack: start;\n  -ms-flex-pack: start;\n  justify-content: flex-start;\n}\n.user-info__2aLr .public__2p3C {\n  margin-left: 8px;\n  font-size: 16px;\n}\n.user-info__2aLr .header {\n  font-size: 18px;\n  font-weight: bold;\n}\n.user-info__2aLr .description {\n  font-size: 16px;\n  margin: 10px 0;\n}\n.nav__2IK2 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  position: relative;\n}\n.side__1bvU {\n  width: 25%;\n  min-height: 600px;\n}\n.sidebar-base__2RIZ .header__2nTK {\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  margin-left: 20px;\n  position: relative;\n  top: 30px;\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  text-align: center;\n}\n.sidebar-base__2RIZ ul {\n  margin-top: 90px;\n  -webkit-padding-start: 0;\n}\n.sidebar-base__2RIZ ul li {\n  list-style: none;\n  padding-right: 20px;\n  margin: 10px;\n}\n.sidebar-base__2RIZ ul li > a,\n.sidebar-base__2RIZ ul li div {\n  display: block;\n  color: #5a5a5a;\n  padding: 15px 20px;\n  border-radius: 5px;\n  text-decoration: none;\n}\n.sidebar-base__2RIZ ul li > a:hover {\n  background-color: #64b9f9;\n  color: #fff!important;\n}\n.active__1IwF {\n  background-color: #64b9f9;\n  color: #fff!important;\n}\n.content-toggled__1rll {\n  right: 0;\n}\n.content__2Ok3 {\n  width: 75%;\n  -webkit-transition: right 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);\n  -o-transition: right 0.3s cubic-bezier(0.17, 0.04, 0.03, 0.94);\n}\n.container__PZyq:hover {\n  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);\n}\n.container__PZyq {\n  min-height: 600px;\n  background: #fff;\n  border-radius: 5px;\n  margin-bottom: 50px;\n  font-size: 14px;\n  -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);\n  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);\n  -webkit-transition: -webkit-box-shadow 0.4s;\n  transition: -webkit-box-shadow 0.4s;\n  transition: box-shadow 0.4s;\n  transition: box-shadow 0.4s, -webkit-box-shadow 0.4s;\n  color: #000;\n}\n.section__3bS4 {\n  padding: 10px 15px;\n  border: none;\n  margin-bottom: 0px;\n  border-bottom: 1px solid #f2f2f2;\n}\n.section__3bS4 a {\n  color: #15b982;\n}\n.experience {\n  right: 0;\n  text-align: right;\n}\n.experience .experience-count {\n  margin: 0;\n  font-size: 60px;\n  color: #15B982;\n}\n.experience .experience-count span {\n  display: block;\n  color: #fff;\n  font-size: .5em;\n  position: relative;\n}\n.sn-inline {\n  list-style: none;\n  display: inline;\n  margin: 0;\n  padding: 0;\n  vertical-align: text-bottom;\n}\n.banner-profile__github {\n  margin: 0 9px 0 0;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.banner-profile__github i {\n  background: #222;\n  color: #fff;\n  padding: 7px 7px 6px;\n  border-radius: 3px;\n  margin-right: 7px;\n}\n.banner-profile__twitter {\n  margin: 0 9px 0 0;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.banner-profile__twitter i {\n  background: #ff5252;\n  color: #fff;\n  padding: 7px 7px 6px;\n  border-radius: 3px;\n  margin-right: 7px;\n}\n", ""]);
 
 // exports
 
@@ -100458,6 +100467,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -100467,11 +100480,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            user: {}
+            user: {},
+            follow: false
         };
     },
 
     computed: {
+        name: function name() {
+            return this.$route.params.name;
+        },
+        is_active: function is_active() {
+            return 'user_replies';
+        },
         is_login: function is_login() {
             return this.$store.state.user.token ? true : false;
         },
@@ -100479,15 +100499,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.is_login && this.$store.state.user.userinfo.id == this.user.id) {
                 return true;
             }
-
-            return false;
         },
-        follow: function follow() {
+        is_me: function is_me() {
             if (this.is_login && !(this.$store.state.user.userinfo.id == this.user.id)) {
-                return this.user.is_following;
+                return true;
             }
-
-            return false;
         }
     },
     created: function created() {
@@ -100496,6 +100512,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$http.get('users/' + this.$route.params.name).then(function (response) {
             _this.user = response.data;
         });
+
+        if (this.is_login && !(this.$store.state.user.userinfo.id == this.user.id)) {
+            this.$http.get('users/' + this.$route.params.name + '/is-follow').then(function (response) {
+                return _this.follow = response.data.is_follow;
+            });
+        }
+    },
+
+    methods: {
+        following: function following(id) {
+            var _this2 = this;
+
+            this.$http.post('users/' + id + '/follow').then(function (response) {
+                return _this2.follow = !_this2.follow;
+            });
+        },
+        active: function active(data) {
+            console.log(data);
+            this.is_active = data.is_active;
+        }
     }
 });
 
@@ -100565,7 +100601,7 @@ var render = function() {
                                 )
                               : _vm._e(),
                             _vm._v(" "),
-                            _vm.follow
+                            _vm.is_me
                               ? _c(
                                   "v-btn",
                                   {
@@ -100573,6 +100609,11 @@ var render = function() {
                                     attrs: {
                                       color: _vm.follow ? "teal" : "error",
                                       small: ""
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.following(_vm.user.id)
+                                      }
                                     }
                                   },
                                   [
@@ -100585,7 +100626,25 @@ var render = function() {
                           ],
                           1
                         )
-                      : _vm._e()
+                      : _c(
+                          "div",
+                          { staticClass: "action" },
+                          [
+                            _c(
+                              "v-btn",
+                              {
+                                staticStyle: { "margin-left": "-2px" },
+                                attrs: {
+                                  color: "error",
+                                  small: "",
+                                  to: "/login"
+                                }
+                              },
+                              [_vm._v("关注")]
+                            )
+                          ],
+                          1
+                        )
                   ])
                 ]),
                 _vm._v(" "),
@@ -100654,7 +100713,9 @@ var render = function() {
                     _c(
                       "a",
                       { attrs: { href: _vm.user.website, title: "个人网站" } },
-                      [_c("Icon", { attrs: { size: "15", type: "earth" } })],
+                      [
+                        _c("Icon", { attrs: { size: "15", type: "ios-world" } })
+                      ],
                       1
                     )
                   ])
@@ -100672,7 +100733,7 @@ var render = function() {
                       },
                       [
                         _c("Icon", {
-                          attrs: { size: "15", type: "chatbubble" }
+                          attrs: { size: "15", type: "social-github" }
                         })
                       ],
                       1
@@ -100682,44 +100743,53 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("ul", [
-              _c("li", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "active__1IwF",
-                    attrs: { "aria-current": "false", href: "/profile/" }
-                  },
-                  [
-                    _c("Icon", { attrs: { size: "15", type: "chatbubble" } }),
-                    _vm._v("    Ta发表的回复")
-                  ],
-                  1
-                )
-              ]),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      class:
+                        _vm.is_active == "user_replies" ? "active__1IwF" : "",
+                      attrs: { to: "/users/" + _vm.name }
+                    },
+                    [
+                      _c("Icon", { attrs: { size: "15", type: "chatbubble" } }),
+                      _vm._v("    Ta发表的回复\n                            ")
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("li", [
-                _c(
-                  "a",
-                  {
-                    attrs: { "aria-current": "false", href: "/profile/points/" }
-                  },
-                  [
-                    _c("Icon", {
-                      attrs: { size: "15", type: "happy-outline" }
-                    }),
-                    _vm._v("    Ta关注的用户")
-                  ],
-                  1
-                )
-              ])
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      class:
+                        _vm.is_active == "user_following" ? "active__1IwF" : "",
+                      attrs: { to: "/users/" + _vm.name + "/following" }
+                    },
+                    [
+                      _c("Icon", {
+                        attrs: { size: "15", type: "happy-outline" }
+                      }),
+                      _vm._v("    Ta关注的用户\n                            ")
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "content-toggled__1rll content__2Ok3" }, [
-          _c("div", { staticClass: "container__PZyq" }, [
-            _c("div", { staticClass: "section__3bS4" }, [_c("router-view")], 1)
-          ])
+          _c("div", { staticClass: "container__PZyq" }, [_c("router-view")], 1)
         ])
       ])
     ])

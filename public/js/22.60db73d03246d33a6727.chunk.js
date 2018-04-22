@@ -1,14 +1,14 @@
-webpackJsonp([19],{
+webpackJsonp([22],{
 
-/***/ 131:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(244)
+var __vue_script__ = __webpack_require__(250)
 /* template */
-var __vue_template__ = __webpack_require__(245)
+var __vue_template__ = __webpack_require__(251)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\users\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\tags\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e94b2fce", Component.options)
+    hotAPI.createRecord("data-v-13bb9b84", Component.options)
   } else {
-    hotAPI.reload("data-v-e94b2fce", Component.options)
+    hotAPI.reload("data-v-13bb9b84", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,11 +48,16 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 244:
+/***/ 250:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86,34 +91,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '头像',
-                key: 'avatar',
-                render: function render(h, params) {
-                    return h('Avatar', {
-                        props: {
-                            src: params.row.avatar
-                        }
-                    });
-                }
+                title: '标签',
+                key: 'tag'
             }, {
-                title: '用户名',
-                key: 'name'
-            }, {
-                title: '邮箱',
-                key: 'email'
-            }, {
-                title: '状态',
-                key: 'status',
-                render: function render(h, params) {
-                    return h('span', [h('Icon', {
-                        props: {
-                            type: 'record'
-                        },
-                        style: {
-                            color: params.row.status == 1 ? 'rgb(142, 180, 203)' : '    color: rgb(191, 83, 41)'
-                        }
-                    })]);
-                }
+                title: '描述',
+                key: 'meta_description'
             }, {
                 title: '创建时间',
                 key: 'created_at'
@@ -124,7 +106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/users/' + params.row.id + '/edit'
+                            to: '/tags/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -160,7 +142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'users';
+            var url = 'tags';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -185,16 +167,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '改变该用户的状态?',
-                content: '该动作可能会影响一些数据，请三思!',
-                okText: '是,改变它!',
+                title: '改变该标签?',
+                content: '该标签会永久删除，请三思!',
+                okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.put('users/' + data.row.id + '/status').then(function (response) {
+                    _this3.$http.delete('tags/' + data.row.id).then(function (response) {
                         _this3.$Modal.remove();
-                        _this3.$Message.success('修改成功');
-                        _this3.tableData[data.index].status = !data.row.status;
+                        _this3.loadData();
+                        _this3.$Message.success('删除成功');
                     });
                 }
             });
@@ -204,7 +186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 245:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -224,6 +206,35 @@ var render = function() {
               _c(
                 "Card",
                 [
+                  _c(
+                    "p",
+                    {
+                      staticStyle: { height: "100%", "text-align": "right" },
+                      attrs: { slot: "title" },
+                      slot: "title"
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/tags/add" } },
+                        [
+                          _c(
+                            "Button",
+                            {
+                              attrs: {
+                                type: "primary",
+                                icon: "android-add-circle"
+                              }
+                            },
+                            [_vm._v("添加标签")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c("Table", {
                     attrs: {
                       loading: _vm.loading,
@@ -272,7 +283,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e94b2fce", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-13bb9b84", module.exports)
   }
 }
 

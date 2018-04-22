@@ -20,6 +20,7 @@ class Comment extends Resource
             'id'            => $this->id,
             'user'          => new User($this->whenLoaded('user')),
             'commentable'   => isset($this->commentable) ? $this->commentable->title : '',
+            'commentable_link' => isset($this->commentable) ? $this->commentable->slug : '',
             'type'          => $this->commentable_type,
             'content_raw'   => $content->raw,
             'content_html' => $content->html,

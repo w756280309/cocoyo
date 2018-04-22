@@ -10,7 +10,7 @@
                                 <img :src="article.user.avatar" class="img-circle" style="width: 30px; height: 30px;">
                             </a>
                             <h4>
-                                <a href="">{{ article.user.nickname ? article.user.nickname : article.user.name }}</a>
+                                <router-link :to="'/users/' + article.user.name">{{ article.user.nickname ? article.user.nickname : article.user.name }}</router-link>
                             </h4>
                             <time>发表于 {{ article.published_individualization }}</time>
                         </div>
@@ -111,8 +111,9 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     @import "~highlight.js/styles/atom-one-dark.css";
+    @import "styles/index.less";
 </style>
 
 

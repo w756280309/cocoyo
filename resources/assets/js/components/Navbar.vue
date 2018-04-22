@@ -14,7 +14,7 @@
                             <img :src="avatar" class="avatar img-circle" style="width: 40px;height: 40px;background: #fff;padding: 3px;border: 1px solid #c5c5c5;">
                         </a>
                         <DropdownMenu slot="list">
-                            <router-link :to="'/user/' + name">
+                            <router-link :to="'/users/' + name">
                                 <DropdownItem>
                                     <Icon type="person"></Icon>&nbsp;&nbsp;<span>个人中心</span>
                                 </DropdownItem>
