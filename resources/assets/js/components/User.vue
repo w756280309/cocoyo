@@ -72,18 +72,35 @@
                                 </a>
                             </span>
                         </div>
-                        <ul>
-                            <li>
-                                <router-link :to="'/users/' + name" :class="is_active == 'user_replies' ? 'active__1IwF' : ''">
-                                    <Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复
+                        <div>
+                            <Menu active-name="1" theme="light">
+                                <router-link :to="'/users/' + name" style="color: #495060;">
+                                    <MenuItem name="1">
+                                        <Icon type="chatbubbles"></Icon>
+                                        Ta发表的回复
+                                    </MenuItem>
                                 </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="'/users/' + name + '/following'" :class="is_active == 'user_following' ? 'active__1IwF' : ''">
-                                    <Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户
+                                <router-link :to="'/users/' + name + '/following'" style="color: #495060;">
+                                    <MenuItem name="2">
+                                        <Icon type="happy-outline"></Icon>
+                                        Ta关注的用户
+                                    </MenuItem>
                                 </router-link>
-                            </li>
-                        </ul>
+                            </Menu>
+                        </div>
+
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<router-link :to="'/users/' + name" :class="is_active == 'user_replies' ? 'active__1IwF' : ''">-->
+                                    <!--<Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复-->
+                                <!--</router-link>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<router-link :to="'/users/' + name + '/following'" :class="is_active == 'user_following' ? 'active__1IwF' : ''">-->
+                                    <!--<Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户-->
+                                <!--</router-link>-->
+                            <!--</li>-->
+                        <!--</ul>-->
                     </div>
                 </div>
                 <div class="content-toggled__1rll content__2Ok3">
@@ -97,11 +114,13 @@
 </template>
 
 <script>
-    import { Icon,Button } from 'iview'
+    import { Icon,Button, Menu, MenuItem } from 'iview'
     export default {
         components: {
             Icon,
-            Button
+            Button,
+            Menu,
+            MenuItem
         },
         data() {
             return {
