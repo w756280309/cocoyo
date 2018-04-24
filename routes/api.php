@@ -18,25 +18,39 @@ Route::get('user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::group(['namespace' => 'Api'], function () {
-    Route::get('articles', 'ArticleController@index');
-    Route::get('articles/{slug}', 'ArticleController@show');
-
-    Route::get('commentable/{commentableId}/comment', 'CommentController@show');
-
-    Route::get('users/{username}', 'UserController@show');
-    Route::get('users/{username}/replies', 'UserController@replies');
-    Route::get('users/{username}/following', 'UserController@following');
+    # ------------------- 文章列表 ----------------------------
+    Route::get('articles', 'ArticleController@index')->name('articles.index');
+    # ------------------- 文章详情 ----------------------------
+    Route::get('articles/{slug}', 'ArticleController@show')->name('articles.show');
+    # ------------------- 评论详情 ----------------------------
+    Route::get('commentable/{commentableId}/comment', 'CommentController@show')->name('comments.show');
+    # ------------------- 用户详情 ----------------------------
+    Route::get('users/{username}', 'UserController@show')->name('users.show');
+    # ------------------- 用户评论 ----------------------------
+    Route::get('users/{username}/replies', 'UserController@replies')->name('users.replies');
+    # ------------------- 用户关注 ----------------------------
+    Route::get('users/{username}/following', 'UserController@following')->name('users.following');
+    # ------------------- 需要登录路由 ----------------------------
     Route::group(['middleware' => 'auth:api'], function () {
-        Route::post('users/{user}/follow', 'UserController@doFollow');
-        Route::get('users/{username}/is-follow', 'UserController@isFollowing');
-
-        Route::post('comments', 'CommentController@store');
-        Route::delete('comments/{comment}', 'CommentController@destroy');
+        # ------------------- 用户资料 ----------------------------
+        Route::get('user/profile', 'UserController@edit');
+        # ------------------- 编辑用户资料 ----------------------------
+        Route::put('user/profile', 'UserController@update');
+        # ------------------- 用户资料 ----------------------------
+        Route::post('user/avatar', 'UserController@avatar');
+        # ------------------- 关注用户 ----------------------------
+        Route::post('users/{user}/follow', 'UserController@doFollow')->name('users.doFollow');
+        # ------------------- 当前用户是否关注查看用户 ----------------------------
+        Route::get('users/{username}/is-follow', 'UserController@isFollowing')->name('users.is.follow');
+        # ------------------- 评论 ----------------------------
+        Route::post('comments', 'CommentController@store')->name('comments.store');
+        # ------------------- 删除评论 ----------------------------
+        Route::delete('comments/{comment}', 'CommentController@destroy')->name('Comment.destroy');
     });
 });
 
 
-# ==================== Auth =----------------------
+# ------------------- Auth ----------------------------
 Route::group(['namespace' => 'Auth'], function () {
    Route::post('login', 'LoginController@login')->name('user.login');
 });

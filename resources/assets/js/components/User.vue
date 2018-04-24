@@ -23,7 +23,7 @@
                                     {{ user.description }}
                                 </div>
                                 <div class="action" v-if="is_login">
-                                    <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit">编辑资料</v-btn>
+                                    <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit" to="/user/profile">编辑资料</v-btn>
                                     <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ follow ? '关注中' : '关注' }}</v-btn>
                                 </div>
                                 <div class="action" v-else>
@@ -88,19 +88,6 @@
                                 </router-link>
                             </Menu>
                         </div>
-
-                        <!--<ul>-->
-                            <!--<li>-->
-                                <!--<router-link :to="'/users/' + name" :class="is_active == 'user_replies' ? 'active__1IwF' : ''">-->
-                                    <!--<Icon size="15" type="chatbubble"></Icon>&nbsp;&nbsp;&nbsp; Ta发表的回复-->
-                                <!--</router-link>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<router-link :to="'/users/' + name + '/following'" :class="is_active == 'user_following' ? 'active__1IwF' : ''">-->
-                                    <!--<Icon size="15" type="happy-outline"></Icon>&nbsp;&nbsp;&nbsp; Ta关注的用户-->
-                                <!--</router-link>-->
-                            <!--</li>-->
-                        <!--</ul>-->
                     </div>
                 </div>
                 <div class="content-toggled__1rll content__2Ok3">
@@ -114,14 +101,7 @@
 </template>
 
 <script>
-    import { Icon,Button, Menu, MenuItem } from 'iview'
     export default {
-        components: {
-            Icon,
-            Button,
-            Menu,
-            MenuItem
-        },
         data() {
             return {
                 user:{},

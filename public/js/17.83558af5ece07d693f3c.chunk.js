@@ -1,4 +1,4 @@
-webpackJsonp([16],{
+webpackJsonp([17],{
 
 /***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
@@ -99,8 +99,6 @@ exports.push([module.i, "\n.comment-page {\n  padding: 20px;\n  text-align: righ
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_iview__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_iview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_iview__);
 //
 //
 //
@@ -117,12 +115,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        Page: __WEBPACK_IMPORTED_MODULE_0_iview__["Page"]
-    },
     data: function data() {
         return {
             comments: [],

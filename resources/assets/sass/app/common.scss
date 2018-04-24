@@ -10,7 +10,7 @@ body{
   font-smoothing: antialiased;
   zoom:1;
   color: #636b6f;
-  font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 a{
   color:#15b982;
@@ -71,6 +71,10 @@ audio, canvas, img, svg, video {
 
 .profile-app__KJyN {
   -webkit-font-smoothing: antialiased;
+}
+.ivu-form-item-label{
+  font-size: 14px !important;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {

@@ -18177,8 +18177,6 @@ exports.push([module.i, "\n.comment[data-v-251fea6b]{\n    margin-top:20px;\n}\n
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highlight_js__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highlight_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_highlight_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_iview__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_iview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_iview__);
 //
 //
 //
@@ -18243,7 +18241,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
@@ -18315,7 +18312,7 @@ var highlightCode = function highlightCode() {
             var _this2 = this;
 
             if (!this.form.content) {
-                __WEBPACK_IMPORTED_MODULE_1_iview__["Message"].error('请输入评论内容!');
+                this.$Message.error('请输入评论内容!');
                 return false;
             }
             var data = {
@@ -18336,7 +18333,7 @@ var highlightCode = function highlightCode() {
             var _this3 = this;
 
             this.$http.delete('comments/' + id).then(function (response) {
-                __WEBPACK_IMPORTED_MODULE_1_iview__["Message"].success('删除成功');
+                Message.success('删除成功');
                 _this3.comments.splice(index, 1);
             });
         }

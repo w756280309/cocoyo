@@ -73,7 +73,6 @@
 
 <script>
     import Cropper from 'cropperjs'
-    import Cookies from 'js-cookie';
 
     export default {
         data() {

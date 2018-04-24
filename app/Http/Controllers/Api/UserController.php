@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Resources\FollowingResource;
 use App\Http\Resources\PreviewUserResource;
+use App\Http\Resources\User as UserResource;
 use App\Models\User;
+use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Comment as CommentResource;
@@ -27,6 +30,39 @@ class UserController extends Controller
         $user->comments_count = $user->comments()->count();
 
         return new PreviewUserResource($user);
+    }
+
+    /**
+     * 编辑用户
+     *
+     * @param Request $request
+     * @return UserResource
+     */
+    public function edit(Request $request)
+    {
+        return new UserResource($request->user());
+    }
+
+    /**
+     * 编辑用户信息
+     *
+     * @param UserRequest $request
+     * @return UserResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(UserRequest $request)
+    {
+        $user = $request->user();
+
+        $this->authorize('update', $user);
+
+        $data = $request->only(['nickname', 'website', 'weibo_name', 'weibo_link', 'github_name', 'description']);
+
+        $user->fill($data);
+
+        $user->save();
+
+        return new UserResource($user);
     }
 
     /**
@@ -98,6 +134,32 @@ class UserController extends Controller
         $followings = $user->followings;
 
         return FollowingResource::collection($followings);
+    }
+
+    /**
+     * 上传头像
+     *
+     * @param User $user
+     * @param Request $request
+     * @param BaseManager $manager
+     * @return mixed
+     */
+    public function avatar(Request $request, BaseManager $manager)
+    {
+        $this->validate($request, [
+            'image' => 'required|image'
+        ]);
+
+        $user = $request->user();
+        $path = date('Y') . date('m') . '/' . date('d');
+
+        $resource = $manager->store($request->file('image'), $path);
+
+        $user->avatar = $resource['relative_url'];
+
+        $user->save();
+
+        return $this->respond($resource);
     }
 
     /**

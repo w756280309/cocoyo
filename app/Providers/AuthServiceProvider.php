@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Comment;
+use App\Models\User;
 use App\Policies\CommentPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
@@ -17,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Comment::class => CommentPolicy::class
+        Comment::class => CommentPolicy::class,
+        User::class => UserPolicy::class
     ];
 
     /**

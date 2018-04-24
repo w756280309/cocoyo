@@ -7,8 +7,15 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
-    public function doFollow()
+    /**
+     *  Determine whether the current user can update the user.
+     *
+     * @param User $currentUser
+     * @param User $user
+     * @return bool
+     */
+    public function update(User $currentUser, User $user)
     {
-        
+        return $currentUser->id === $user->id;
     }
 }

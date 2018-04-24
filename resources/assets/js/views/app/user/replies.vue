@@ -15,11 +15,7 @@
 </template>
 
 <script>
-    import { Page } from 'iview'
     export default {
-        components: {
-            Page
-        },
         data() {
             return {
                 comments: [],

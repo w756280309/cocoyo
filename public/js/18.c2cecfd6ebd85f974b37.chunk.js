@@ -147,24 +147,20 @@ var render = function() {
         "div",
         { staticClass: "section__3bS4" },
         [
-          _c(
-            "router-link",
-            { attrs: { to: "/user/" + follow.name + "/replies" } },
-            [
-              _c("img", {
-                staticClass: "avatar img-circle",
-                staticStyle: {
-                  width: "40px",
-                  height: "40px",
-                  background: "rgb(255, 255, 255)",
-                  padding: "3px",
-                  border: "1px solid rgb(197, 197, 197)"
-                },
-                attrs: { src: follow.avatar }
-              }),
-              _vm._v("\n            " + _vm._s(follow.name) + "\n        ")
-            ]
-          ),
+          _c("router-link", { attrs: { to: "/user/" + follow.name } }, [
+            _c("img", {
+              staticClass: "avatar img-circle",
+              staticStyle: {
+                width: "40px",
+                height: "40px",
+                background: "rgb(255, 255, 255)",
+                padding: "3px",
+                border: "1px solid rgb(197, 197, 197)"
+              },
+              attrs: { src: follow.avatar }
+            }),
+            _vm._v("\n            " + _vm._s(follow.name) + "\n        ")
+          ]),
           _vm._v(" "),
           _c("span", { staticClass: "introduction" }, [
             _vm._v(

@@ -1,24 +1,24 @@
-webpackJsonp([7],{
+webpackJsonp([8],{
 
-/***/ 121:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(206)
+  __webpack_require__(460)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(208)
+var __vue_script__ = __webpack_require__(462)
 /* template */
-var __vue_template__ = __webpack_require__(209)
+var __vue_template__ = __webpack_require__(463)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-a2a4f240"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\users\\edit.vue"
+Component.options.__file = "resources\\assets\\js\\views\\app\\user\\profile.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d5057da", Component.options)
+    hotAPI.createRecord("data-v-a2a4f240", Component.options)
   } else {
-    hotAPI.reload("data-v-3d5057da", Component.options)
+    hotAPI.reload("data-v-a2a4f240", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -3680,23 +3680,23 @@ assign(Cropper.prototype, render, preview, events, handlers, change, methods);
 
 /***/ }),
 
-/***/ 206:
+/***/ 460:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(207);
+var content = __webpack_require__(461);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("01d9731d", content, false);
+var update = __webpack_require__(5)("5af5f85e", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d5057da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d5057da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/less-loader/dist/cjs.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a2a4f240\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./profile.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a2a4f240\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./profile.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -3707,7 +3707,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 207:
+/***/ 461:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -3715,21 +3715,19 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.cover-avatar {\n  text-align: center;\n}\n.upload-list {\n  display: inline-block;\n  text-align: center;\n  width: 150px;\n  height: 150px;\n  line-height: 60px;\n  border: 1px solid transparent;\n  border-radius: 50%;\n  overflow: hidden;\n  background: #fff;\n  position: relative;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n  margin-right: 4px;\n  margin-bottom: 20px;\n}\n.cover-avatar .upload-list .avatar {\n  width: 100%;\n  height: 100%;\n  transition: transform 0.6s ease-in, -webkit-transform 0.6s ease-in;\n}\n.cover-avatar .upload-list:hover .avatar {\n  -webkit-transform: rotateZ(360deg);\n          transform: rotateZ(360deg);\n}\n.upload-list-cover {\n  display: none;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.6);\n}\n.upload-list:hover .upload-list-cover {\n  display: block;\n}\n.upload-list-cover i {\n  color: #fff;\n  font-size: 20px;\n  cursor: pointer;\n  margin: 0 2px;\n  position: absolute;\n  top: 63px;\n  left: 63px;\n}\n", ""]);
+exports.push([module.i, "\n.profile .cover-avatar[data-v-a2a4f240] {\n    position: relative;\n}\n.text-center[data-v-a2a4f240] {\n    text-align: center;\n}\n.profile .cover-avatar:hover .avatar[data-v-a2a4f240] {\n    -webkit-transform: rotateZ(360deg);\n    transform: rotateZ(360deg);\n}\n.profile .cover-avatar .avatar[data-v-a2a4f240] {\n    width: 150px !important;\n    height: 150px;\n    border-radius: 50%;\n    transition: -webkit-transform .6s ease-in;\n    -webkit-transition: -webkit-transform .6s ease-in;\n    transition: transform .6s ease-in;\n    transition: transform .6s ease-in, -webkit-transform .6s ease-in;\n    margin-bottom: 20px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 208:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_js_cookie__);
 //
 //
 //
@@ -3795,31 +3793,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             form: {},
-            visible: false,
-            cut_avatar: false,
-            cropper: {}
+            loading: false,
+            cut_avatar: false
         };
     },
     created: function created() {
         var _this = this;
 
-        this.$http.get('users/' + this.$route.params.id + '/edit').then(function (response) {
+        this.$http.get('user/profile').then(function (response) {
             _this.form = response.data;
         });
     },
@@ -3837,19 +3824,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        onSubmit: function onSubmit() {
+        handleSubmit: function handleSubmit() {
             var _this2 = this;
 
-            this.$http.put('users/' + this.$route.params.id, this.form).then(function (response) {
+            this.loading = true;
+            this.$http.put('user/profile', this.form).then(function (response) {
+                _this2.loading = false;
                 _this2.$Notice.success({
-                    title: '编辑成功'
+                    title: '编辑资料',
+                    desc: '编辑成功'
                 });
-
-                if (_this2.$route.params.id == _this2.$store.state.user.userinfo.id) {
-                    _this2.$store.commit('SET_USERINFO', response.data);
-                }
-
-                _this2.$router.push('/users');
             });
         },
         previewModel: function previewModel(e) {
@@ -3868,32 +3852,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handelCut: function handelCut() {
             var vm = this;
             vm.cropper.getCroppedCanvas().toBlob(function (blob) {
-                var _this4 = this;
-
                 var formData = new FormData();
 
                 formData.append('image', blob);
 
-                vm.$http.post('users/' + vm.$route.params.id + '/avatar', formData).then(function (response) {
+                vm.$http.post('user/avatar', formData).then(function (response) {
                     vm.form.avatar = response.relative_url;
-
-                    if (_this4.$route.params.id == _this4.$store.state.user.info.id) {
-                        vm.$store.commit('modifyAvatar', response.relative_url);
-                    }
-
+                    vm.$store.commit('modifyAvatar', response.relative_url);
                     vm.cut_avatar = false;
                 });
             });
-        },
-        handleView: function handleView(name) {
-            this.visible = true;
         }
     }
 });
 
 /***/ }),
 
-/***/ 209:
+/***/ 463:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3901,373 +3876,320 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
+    { staticClass: "main-content base_content" },
     [
       _c(
-        "Row",
+        "v-container",
+        { attrs: { "grid-list-xl": "" } },
         [
           _c(
-            "Col",
-            { attrs: { span: 24 } },
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
             [
               _c(
-                "Card",
+                "v-flex",
+                {
+                  staticClass: "profile",
+                  attrs: { md2: "", "offset-md1": "" }
+                },
                 [
                   _c(
-                    "Row",
+                    "div",
+                    { staticClass: "cover-avatar text-center" },
                     [
-                      _c("Col", { attrs: { span: 4, offset: 4 } }, [
-                        _c(
-                          "div",
-                          { staticClass: "cover-avatar" },
-                          [
-                            _c("div", { staticClass: "upload-list" }, [
-                              _c("img", {
-                                staticClass: "avatar",
-                                attrs: { src: _vm.form.avatar }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "upload-list-cover" },
-                                [
-                                  _c("Icon", {
-                                    attrs: { type: "ios-eye-outline" },
-                                    nativeOn: {
-                                      click: function($event) {
-                                        _vm.handleView(_vm.form.avatar)
-                                      }
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "fileinput",
-                              attrs: {
-                                type: "file",
-                                accept:
-                                  "image/png, image/jpeg, image/gif, image/jpg",
-                                id: "fileinput"
-                              },
-                              on: { change: _vm.previewModel }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
-                              {
-                                staticClass: "filelabe",
-                                attrs: { for: "fileinput" }
-                              },
-                              [
-                                _c("Icon", { attrs: { type: "image" } }),
-                                _vm._v(" 修改头像")
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "Modal",
-                              {
-                                attrs: { title: "头像" },
-                                model: {
-                                  value: _vm.visible,
-                                  callback: function($$v) {
-                                    _vm.visible = $$v
-                                  },
-                                  expression: "visible"
-                                }
-                              },
-                              [
-                                _vm.visible
-                                  ? _c("img", {
-                                      staticStyle: { width: "100%" },
-                                      attrs: { src: _vm.form.avatar }
-                                    })
-                                  : _vm._e()
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "Modal",
-                              {
-                                attrs: {
-                                  title: "裁剪头像",
-                                  "ok-text": "裁剪",
-                                  loading: true,
-                                  "mask-closable": false
-                                },
-                                on: { "on-ok": _vm.handelCut },
-                                model: {
-                                  value: _vm.cut_avatar,
-                                  callback: function($$v) {
-                                    _vm.cut_avatar = $$v
-                                  },
-                                  expression: "cut_avatar"
-                                }
-                              },
-                              [
-                                _c(
-                                  "Row",
-                                  { attrs: { gutter: 10 } },
-                                  [
-                                    _c(
-                                      "Col",
-                                      {
-                                        staticClass: "image-editor-con",
-                                        attrs: { span: "14" }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "cropper" }, [
-                                          _c("img", {
-                                            attrs: { id: "cropimg", alt: "" }
-                                          })
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "Col",
-                                      {
-                                        staticClass: "image-editor-con",
-                                        attrs: { span: "10" }
-                                      },
-                                      [
-                                        _c(
-                                          "Row",
-                                          {
-                                            staticClass:
-                                              "image-editor-con-preview-con",
-                                            attrs: {
-                                              type: "flex",
-                                              justify: "center",
-                                              align: "middle"
-                                            }
-                                          },
-                                          [
-                                            _c("div", {
-                                              attrs: { id: "preview" }
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]),
+                      _c("img", {
+                        staticClass: "avatar",
+                        attrs: { src: _vm.form.avatar }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "fileinput",
+                        attrs: {
+                          type: "file",
+                          accept: "image/png, image/jpeg, image/gif, image/jpg",
+                          id: "fileinput"
+                        },
+                        on: { change: _vm.previewModel }
+                      }),
                       _vm._v(" "),
                       _c(
-                        "Col",
-                        { attrs: { span: 10, offset: 1 } },
+                        "label",
+                        {
+                          staticClass: "filelabe",
+                          attrs: { for: "fileinput" }
+                        },
+                        [
+                          _c("Icon", { attrs: { type: "image" } }),
+                          _vm._v(" 修改头像")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "Modal",
+                        {
+                          attrs: {
+                            title: "裁剪头像",
+                            "ok-text": "裁剪",
+                            loading: true,
+                            "mask-closable": false
+                          },
+                          on: { "on-ok": _vm.handelCut },
+                          model: {
+                            value: _vm.cut_avatar,
+                            callback: function($$v) {
+                              _vm.cut_avatar = $$v
+                            },
+                            expression: "cut_avatar"
+                          }
+                        },
                         [
                           _c(
-                            "Form",
-                            {
-                              attrs: {
-                                model: _vm.form,
-                                "label-position": "right",
-                                "label-width": 100
-                              }
-                            },
+                            "Row",
+                            { attrs: { gutter: 10 } },
                             [
                               _c(
-                                "FormItem",
-                                { attrs: { label: "用户名" } },
+                                "Col",
+                                {
+                                  staticClass: "image-editor-con",
+                                  attrs: { span: "14" }
+                                },
                                 [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      disabled: "",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "name", $$v)
-                                      },
-                                      expression: "form.name"
-                                    }
-                                  })
-                                ],
-                                1
+                                  _c("div", { staticClass: "cropper" }, [
+                                    _c("img", {
+                                      attrs: { id: "cropimg", alt: "" }
+                                    })
+                                  ])
+                                ]
                               ),
                               _vm._v(" "),
                               _c(
-                                "FormItem",
-                                { attrs: { label: "邮箱" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      disabled: "",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.email,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "email", $$v)
-                                      },
-                                      expression: "form.email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "昵称" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.nickname,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "nickname", $$v)
-                                      },
-                                      expression: "form.nickname"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "Website" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.website,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "website", $$v)
-                                      },
-                                      expression: "form.website"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "微博名" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.weibo_name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "weibo_name", $$v)
-                                      },
-                                      expression: "form.weibo_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "微博主页" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.weibo_link,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "weibo_link", $$v)
-                                      },
-                                      expression: "form.weibo_link"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "GitHub" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something..."
-                                    },
-                                    model: {
-                                      value: _vm.form.github_url,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "github_url", $$v)
-                                      },
-                                      expression: "form.github_url"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
-                                { attrs: { label: "个人描述" } },
-                                [
-                                  _c("Input", {
-                                    attrs: {
-                                      size: "large",
-                                      placeholder: "Enter something...",
-                                      type: "textarea",
-                                      autosize: { minRows: 2, maxRows: 5 }
-                                    },
-                                    model: {
-                                      value: _vm.form.description,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.form, "description", $$v)
-                                      },
-                                      expression: "form.description"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "FormItem",
+                                "Col",
+                                {
+                                  staticClass: "image-editor-con",
+                                  attrs: { span: "10" }
+                                },
                                 [
                                   _c(
-                                    "Button",
+                                    "Row",
                                     {
-                                      attrs: { type: "success", long: "" },
-                                      on: { click: _vm.onSubmit }
+                                      staticClass:
+                                        "image-editor-con-preview-con",
+                                      attrs: {
+                                        type: "flex",
+                                        justify: "center",
+                                        align: "middle"
+                                      }
                                     },
-                                    [_vm._v("更新个人信息")]
+                                    [_c("div", { attrs: { id: "preview" } })]
                                   )
                                 ],
                                 1
                               )
                             ],
                             1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { md7: "", "offset-md1": "" } },
+                [
+                  _c(
+                    "Form",
+                    { attrs: { model: _vm.form, "label-width": 80 } },
+                    [
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "用户名" } },
+                        [
+                          _c("Input", {
+                            attrs: { size: "large", disabled: "" },
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
+                              },
+                              expression: "form.name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "邮箱" } },
+                        [
+                          _c("Input", {
+                            attrs: { size: "large", disabled: "" },
+                            model: {
+                              value: _vm.form.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "email", $$v)
+                              },
+                              expression: "form.email"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "昵称" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "请输入您的昵称仅用户展示"
+                            },
+                            model: {
+                              value: _vm.form.nickname,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "nickname", $$v)
+                              },
+                              expression: "form.nickname"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "Website" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "请输入您的个人网站"
+                            },
+                            model: {
+                              value: _vm.form.input,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "input", $$v)
+                              },
+                              expression: "form.input"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "微博名" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "请输入您的weibo名称"
+                            },
+                            model: {
+                              value: _vm.form.weibo_name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "weibo_name", $$v)
+                              },
+                              expression: "form.weibo_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "微博主页" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "请输入您的weibo主页"
+                            },
+                            model: {
+                              value: _vm.form.weibo_link,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "weibo_link", $$v)
+                              },
+                              expression: "form.weibo_link"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "GitHub" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              placeholder: "请输入您的github名称"
+                            },
+                            model: {
+                              value: _vm.form.github_name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "github_name", $$v)
+                              },
+                              expression: "form.github_name"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        { attrs: { label: "Text" } },
+                        [
+                          _c("Input", {
+                            attrs: {
+                              size: "large",
+                              type: "textarea",
+                              autosize: { minRows: 5, maxRows: 10 },
+                              placeholder: "请输入您的描述"
+                            },
+                            model: {
+                              value: _vm.form.description,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "description", $$v)
+                              },
+                              expression: "form.description"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "FormItem",
+                        [
+                          _c(
+                            "Button",
+                            {
+                              staticStyle: {
+                                color: "#fff",
+                                "background-color": "#1abc9c",
+                                "border-color": "#1abc9c"
+                              },
+                              attrs: { loading: _vm.loading, long: "" },
+                              on: { click: _vm.handleSubmit }
+                            },
+                            [
+                              !_vm.loading
+                                ? _c("span", [_vm._v("编辑资料")])
+                                : _c("span", [_vm._v("Loading...")])
+                            ]
                           )
                         ],
                         1
@@ -4294,7 +4216,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3d5057da", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a2a4f240", module.exports)
   }
 }
 

@@ -41,13 +41,7 @@
 </template>
 
 <script>
-    import {Page, Spin} from 'iview';
-
     export default {
-        components: {
-            Page,
-            Spin
-        },
         data() {
             return {
                 articles: [],

@@ -53,15 +53,7 @@
 </template>
 
 <script>
-    import { Dropdown, DropdownMenu, DropdownItem, Icon } from 'iview'
-
     export default {
-        components: {
-            Dropdown,
-            DropdownMenu,
-            DropdownItem,
-            Icon
-        },
         data() {
             return {
 

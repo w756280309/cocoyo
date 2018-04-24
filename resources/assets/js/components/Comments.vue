@@ -64,7 +64,6 @@
 
 <script>
     import hljs from 'highlight.js'
-    import { Message } from 'iview'
 
     const highlightCode = () => {
         const preEl = document.querySelectorAll('pre');
@@ -129,7 +128,7 @@
         methods: {
             submit() {
                 if (! this.form.content) {
-                    Message.error('请输入评论内容!');
+                    this.$Message.error('请输入评论内容!');
                     return false;
                 }
                 const data = {
