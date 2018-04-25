@@ -7,7 +7,7 @@
                     <label class="filelabe" for="fileinput"><Icon type="image"></Icon>&nbsp;上传封面图片</label>
                 </Col>
                 <Col span="3">
-                    <img :src="image" alt="" style="width:100px;-webkit-box-shadow: 0 0 30px #ccc;box-shadow: 0 0 30px #ccc;">
+                    <img :src="image" @click="previewImage" style="width:100px;-webkit-box-shadow: 0 0 30px #ccc;box-shadow: 0 0 30px #ccc;cursor: pointer;">
                 </Col>
             </Row>
         </div>
@@ -24,6 +24,9 @@
                 </Row>
                 </Col>
             </Row>
+        </Modal>
+        <Modal title="View Image" v-model="page_image_view">
+            <img :src="image" v-if="page_image_view" style="width: 100%">
         </Modal>
     </div>
 
@@ -62,6 +65,7 @@
             return {
                 cropper: {},
                 innerVisible: false,
+                page_image_view: false
             }
         },
         methods: {
@@ -89,12 +93,15 @@
                     })
                 });
             },
+            previewImage() {
+                this.page_image_view = true
+            }
         }
 
     }
 </script>
 
-<style lang="scss">
+<style scoped>
     .my-uploader{
         border-radius: 6px;
         background: no-repeat center center/cover;

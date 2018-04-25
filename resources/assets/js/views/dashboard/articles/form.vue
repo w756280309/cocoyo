@@ -86,11 +86,11 @@
         },
         props: {
             form: {
-                page_image: '',
                 type: Object,
                 default() {
                     return {
-                        tags: []
+                        tags: [],
+                        page_image: '',
                     }
                 }
             }
@@ -165,17 +165,6 @@
                         this.$Message.error('表单信息不完善!');
                     }
                 })
-            },
-            previewModel(e) {
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                reader.onload = () => {
-                    this.cropper.replace(reader.result);
-                    reader.onload = null;
-                };
-
-                reader.readAsDataURL(file);
-                this.cut_avatar = true;
             },
             handleImageSuccess(response) {
                 this.form.page_image = response.relative_url;

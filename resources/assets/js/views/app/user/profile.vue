@@ -1,66 +1,69 @@
 <template>
-    <v-content class="main-content base_content">
-        <v-container grid-list-xl>
-            <v-layout row wrap>
-                <v-flex md2 offset-md1 class="profile">
-                    <div class="cover-avatar text-center">
-                        <img :src="form.avatar" class="avatar">
-                        <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="previewModel" id="fileinput" class="fileinput" />
-                        <label class="filelabe" for="fileinput"><Icon type="image"></Icon>&nbsp;修改头像</label>
-                        <Modal title="裁剪头像" ok-text="裁剪" :loading="true" :mask-closable="false" @on-ok="handelCut" v-model="cut_avatar">
-                            <Row :gutter="10">
-                                <Col span="14" class="image-editor-con">
-                                <div class="cropper">
-                                    <img id="cropimg" alt="">
-                                </div>
-                                </Col>
-                                <Col span="10" class="image-editor-con">
-                                <Row type="flex" justify="center" align="middle" class="image-editor-con-preview-con">
-                                    <div id="preview"></div>
-                                </Row>
-                                </Col>
-                            </Row>
-                        </Modal>
-                    </div>
-                </v-flex>
-                <v-flex md7 offset-md1>
-                    <Form :model="form" :label-width="80">
-                        <FormItem label="用户名">
-                            <Input v-model="form.name" size="large" disabled></Input>
-                        </FormItem>
-                        <FormItem label="邮箱">
-                            <Input v-model="form.email" size="large" disabled></Input>
-                        </FormItem>
-                        <FormItem label="昵称">
-                            <Input v-model="form.nickname" size="large" placeholder="请输入您的昵称仅用户展示"></Input>
-                        </FormItem>
-                        <FormItem label="Website">
-                            <Input v-model="form.input" size="large" placeholder="请输入您的个人网站"></Input>
-                        </FormItem>
-                        <FormItem label="微博名">
-                            <Input v-model="form.weibo_name" size="large" placeholder="请输入您的weibo名称"></Input>
-                        </FormItem>
-                        <FormItem label="微博主页">
-                            <Input v-model="form.weibo_link" size="large" placeholder="请输入您的weibo主页"></Input>
-                        </FormItem>
-                        <FormItem label="GitHub">
-                            <Input v-model="form.github_name" size="large" placeholder="请输入您的github名称"></Input>
-                        </FormItem>
-                        <FormItem label="Text">
-                            <Input size="large" v-model="form.description" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入您的描述"></Input>
-                        </FormItem>
-                        <FormItem>
-                            <Button :loading="loading" style="color: #fff;background-color: #1abc9c;border-color: #1abc9c;"  @click="handleSubmit" long>
-                                <span v-if="!loading">编辑资料</span>
-                                <span v-else>Loading...</span>
-                            </Button>
-                        </FormItem>
+    <!--<v-content class="main-content base_content">-->
+        <!--<v-container grid-list-xl>-->
+            <!--<v-layout row wrap>-->
+                <!--<v-flex md2 offset-md1 class="profile">-->
+                    <!--<div class="cover-avatar text-center">-->
+                        <!--<img :src="form.avatar" class="avatar">-->
+                        <!--<input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="previewModel" id="fileinput" class="fileinput" />-->
+                        <!--<label class="filelabe" for="fileinput"><Icon type="image"></Icon>&nbsp;修改头像</label>-->
+                        <!--<Modal title="裁剪头像" ok-text="裁剪" :loading="true" :mask-closable="false" @on-ok="handelCut" v-model="cut_avatar">-->
+                            <!--<Row :gutter="10">-->
+                                <!--<Col span="14" class="image-editor-con">-->
+                                <!--<div class="cropper">-->
+                                    <!--<img id="cropimg" alt="">-->
+                                <!--</div>-->
+                                <!--</Col>-->
+                                <!--<Col span="10" class="image-editor-con">-->
+                                <!--<Row type="flex" justify="center" align="middle" class="image-editor-con-preview-con">-->
+                                    <!--<div id="preview"></div>-->
+                                <!--</Row>-->
+                                <!--</Col>-->
+                            <!--</Row>-->
+                        <!--</Modal>-->
+                    <!--</div>-->
+                <!--</v-flex>-->
+                <!--<v-flex md7 offset-md1>-->
+    <div>
+        <Form :model="form" :label-width="80">
+            <FormItem label="用户名">
+                <Input v-model="form.name" size="large" disabled></Input>
+            </FormItem>
+            <FormItem label="邮箱">
+                <Input v-model="form.email" size="large" disabled></Input>
+            </FormItem>
+            <FormItem label="昵称">
+                <Input v-model="form.nickname" size="large" placeholder="请输入您的昵称仅用户展示"></Input>
+            </FormItem>
+            <FormItem label="Website">
+                <Input v-model="form.input" size="large" placeholder="请输入您的个人网站"></Input>
+            </FormItem>
+            <FormItem label="微博名">
+                <Input v-model="form.weibo_name" size="large" placeholder="请输入您的weibo名称"></Input>
+            </FormItem>
+            <FormItem label="微博主页">
+                <Input v-model="form.weibo_link" size="large" placeholder="请输入您的weibo主页"></Input>
+            </FormItem>
+            <FormItem label="GitHub">
+                <Input v-model="form.github_name" size="large" placeholder="请输入您的github名称"></Input>
+            </FormItem>
+            <FormItem label="Text">
+                <Input size="large" v-model="form.description" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入您的描述"></Input>
+            </FormItem>
+            <FormItem>
+                <Button :loading="loading" style="color: #fff;background-color: #1abc9c;border-color: #1abc9c;"  @click="handleSubmit" long>
+                    <span v-if="!loading">编辑资料</span>
+                    <span v-else>Loading...</span>
+                </Button>
+            </FormItem>
 
-                    </Form>
-                </v-flex>
-            </v-layout>
-        </v-container>
-    </v-content>
+        </Form>
+    </div>
+
+                <!--</v-flex>-->
+            <!--</v-layout>-->
+        <!--</v-container>-->
+    <!--</v-content>-->
 </template>
 
 <script>

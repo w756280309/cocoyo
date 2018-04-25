@@ -1,5 +1,6 @@
 import Main from '@/views/app/Main.vue';
 import User from '@/components/User.vue';
+import SideBar from '@/components/SideBar.vue';
 
 export const otherRouter = {
     path: '/',
@@ -24,6 +25,18 @@ export const otherRouter = {
                     title: '用户关注',
                     name: 'user_following',
                     component: resolve => void(require(['@/views/app/user/following.vue'], resolve)),
+                }
+            ]
+        },
+        {
+            path: '/users',
+            component: SideBar,
+            children: [
+                {
+                    path: ':id/edit',
+                    title: '用户编辑',
+                    name: 'user_edit',
+                    component: resolve => void(require(['@/views/app/user/profile.vue'], resolve)),
                 }
             ]
         }
