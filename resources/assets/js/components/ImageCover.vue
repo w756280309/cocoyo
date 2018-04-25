@@ -1,14 +1,15 @@
 <template>
     <div>
-        <div class="my-uploader ivu-upload"
-             :style="{backgroundImage:`url(${image})`}">
-            <div class="ivu-upload ivu-upload-drag">
-                <input accept="image/png, image/jpeg, image/gif, image/jpg" id="fileinput" @change="previewModel" type="file" class="ivu-upload-input">
-                <div class="upload-compoment hasBg">
-                    <i class="ivu-icon ivu-icon-ios-cloud-upload" style="font-size: 52px; color: rgb(51, 153, 255);"></i>
-                    <div class="el-upload__text">支持png/jpg/gif格式图片，或<em>点击上传</em></div>
-                </div>
-            </div>
+        <div>
+            <Row>
+                <Col span="12">
+                    <input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" @change="previewModel" id="fileinput" class="fileinput" />
+                    <label class="filelabe" for="fileinput"><Icon type="image"></Icon>&nbsp;上传封面图片</label>
+                </Col>
+                <Col span="3">
+                    <img :src="image" alt="" style="width:100px;-webkit-box-shadow: 0 0 30px #ccc;box-shadow: 0 0 30px #ccc;">
+                </Col>
+            </Row>
         </div>
         <Modal title="裁剪图片" ok-text="裁剪" :loading="true" :mask-closable="false" @on-ok="handelCut" v-model="innerVisible">
             <Row :gutter="10">
@@ -147,5 +148,8 @@
         width:100%;
         height:100%;
         opacity: 0;
+    }
+    .filelabe{
+        padding: 2px 15px !important;
     }
 </style>

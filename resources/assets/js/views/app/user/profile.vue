@@ -95,6 +95,7 @@
                 this.loading = true
                 this.$http.put('user/profile', this.form).then((response) => {
                     this.loading = false
+                    this.$store.commit('SET_USERINFO', response.data)
                     this.$Notice.success({
                         title: '编辑资料',
                         desc: '编辑成功',

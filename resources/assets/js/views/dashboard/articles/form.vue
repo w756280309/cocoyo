@@ -86,6 +86,7 @@
         },
         props: {
             form: {
+                page_image: '',
                 type: Object,
                 default() {
                     return {

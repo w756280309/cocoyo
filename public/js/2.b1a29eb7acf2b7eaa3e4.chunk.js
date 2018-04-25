@@ -16221,7 +16221,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: no-repeat center center/cover;\n  width: 100%;\n}\n.my-uploader .el-upload {\n    width: 100%;\n}\n.my-uploader .upload-compoment {\n    padding-top: 40px;\n    padding-bottom: 20px;\n    text-align: center;\n    font-size: 13px;\n    line-height: 1;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.my-uploader .upload-compoment div {\n      margin-bottom: 20px;\n      margin-top: 25px;\n}\n.my-uploader .upload-compoment small {\n      display: block;\n      margin-bottom: 15px;\n}\n.my-uploader .upload-compoment.hasBg {\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.my-uploader .upload-compoment.hasBg .iconfont {\n        color: #fff;\n}\n.my-uploader .upload-compoment.hasBg small {\n        color: #fff;\n}\n.my-uploader:hover .upload-compoment.hasBg {\n    opacity: 1;\n}\n.ivu-upload-drag {\n  background: none;\n}\n.ivu-upload input[type=file] {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  cursor: pointer;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: no-repeat center center/cover;\n  width: 100%;\n}\n.my-uploader .el-upload {\n    width: 100%;\n}\n.my-uploader .upload-compoment {\n    padding-top: 40px;\n    padding-bottom: 20px;\n    text-align: center;\n    font-size: 13px;\n    line-height: 1;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.my-uploader .upload-compoment div {\n      margin-bottom: 20px;\n      margin-top: 25px;\n}\n.my-uploader .upload-compoment small {\n      display: block;\n      margin-bottom: 15px;\n}\n.my-uploader .upload-compoment.hasBg {\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.my-uploader .upload-compoment.hasBg .iconfont {\n        color: #fff;\n}\n.my-uploader .upload-compoment.hasBg small {\n        color: #fff;\n}\n.my-uploader:hover .upload-compoment.hasBg {\n    opacity: 1;\n}\n.ivu-upload-drag {\n  background: none;\n}\n.ivu-upload input[type=file] {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  cursor: pointer;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n}\n.filelabe {\n  padding: 2px 15px !important;\n}\n", ""]);
 
 // exports
 
@@ -16234,6 +16234,7 @@ exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(144);
+//
 //
 //
 //
@@ -16346,25 +16347,47 @@ var render = function() {
     [
       _c(
         "div",
-        {
-          staticClass: "my-uploader ivu-upload",
-          style: { backgroundImage: "url(" + _vm.image + ")" }
-        },
         [
-          _c("div", { staticClass: "ivu-upload ivu-upload-drag" }, [
-            _c("input", {
-              staticClass: "ivu-upload-input",
-              attrs: {
-                accept: "image/png, image/jpeg, image/gif, image/jpg",
-                id: "fileinput",
-                type: "file"
-              },
-              on: { change: _vm.previewModel }
-            }),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ]
+          _c(
+            "Row",
+            [
+              _c("Col", { attrs: { span: "12" } }, [
+                _c("input", {
+                  staticClass: "fileinput",
+                  attrs: {
+                    type: "file",
+                    accept: "image/png, image/jpeg, image/gif, image/jpg",
+                    id: "fileinput"
+                  },
+                  on: { change: _vm.previewModel }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "filelabe", attrs: { for: "fileinput" } },
+                  [
+                    _c("Icon", { attrs: { type: "image" } }),
+                    _vm._v(" 上传封面图片")
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("Col", { attrs: { span: "3" } }, [
+                _c("img", {
+                  staticStyle: {
+                    width: "100px",
+                    "-webkit-box-shadow": "0 0 30px #ccc",
+                    "box-shadow": "0 0 30px #ccc"
+                  },
+                  attrs: { src: _vm.image, alt: "" }
+                })
+              ])
+            ],
+            1
+          )
+        ],
+        1
       ),
       _vm._v(" "),
       _c(
@@ -16429,24 +16452,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "upload-compoment hasBg" }, [
-      _c("i", {
-        staticClass: "ivu-icon ivu-icon-ios-cloud-upload",
-        staticStyle: { "font-size": "52px", color: "rgb(51, 153, 255)" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "el-upload__text" }, [
-        _vm._v("支持png/jpg/gif格式图片，或"),
-        _c("em", [_vm._v("点击上传")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -22781,6 +22787,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     props: {
         form: {
+            page_image: '',
             type: Object,
             default: function _default() {
                 return {

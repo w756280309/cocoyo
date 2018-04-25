@@ -1,24 +1,24 @@
-webpackJsonp([6],{
+webpackJsonp([5],{
 
-/***/ 130:
+/***/ 129:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(242)
+  __webpack_require__(238)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(244)
+var __vue_script__ = __webpack_require__(240)
 /* template */
-var __vue_template__ = __webpack_require__(245)
+var __vue_template__ = __webpack_require__(241)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-c3b34e4e"
+var __vue_scopeId__ = "data-v-5b292cfc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\add.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\edit.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c3b34e4e", Component.options)
+    hotAPI.createRecord("data-v-5b292cfc", Component.options)
   } else {
-    hotAPI.reload("data-v-c3b34e4e", Component.options)
+    hotAPI.reload("data-v-5b292cfc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -3767,7 +3767,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: no-repeat center center/cover;\n  width: 100%;\n}\n.my-uploader .el-upload {\n    width: 100%;\n}\n.my-uploader .upload-compoment {\n    padding-top: 40px;\n    padding-bottom: 20px;\n    text-align: center;\n    font-size: 13px;\n    line-height: 1;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.my-uploader .upload-compoment div {\n      margin-bottom: 20px;\n      margin-top: 25px;\n}\n.my-uploader .upload-compoment small {\n      display: block;\n      margin-bottom: 15px;\n}\n.my-uploader .upload-compoment.hasBg {\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.my-uploader .upload-compoment.hasBg .iconfont {\n        color: #fff;\n}\n.my-uploader .upload-compoment.hasBg small {\n        color: #fff;\n}\n.my-uploader:hover .upload-compoment.hasBg {\n    opacity: 1;\n}\n.ivu-upload-drag {\n  background: none;\n}\n.ivu-upload input[type=file] {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  cursor: pointer;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: no-repeat center center/cover;\n  width: 100%;\n}\n.my-uploader .el-upload {\n    width: 100%;\n}\n.my-uploader .upload-compoment {\n    padding-top: 40px;\n    padding-bottom: 20px;\n    text-align: center;\n    font-size: 13px;\n    line-height: 1;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.my-uploader .upload-compoment div {\n      margin-bottom: 20px;\n      margin-top: 25px;\n}\n.my-uploader .upload-compoment small {\n      display: block;\n      margin-bottom: 15px;\n}\n.my-uploader .upload-compoment.hasBg {\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.my-uploader .upload-compoment.hasBg .iconfont {\n        color: #fff;\n}\n.my-uploader .upload-compoment.hasBg small {\n        color: #fff;\n}\n.my-uploader:hover .upload-compoment.hasBg {\n    opacity: 1;\n}\n.ivu-upload-drag {\n  background: none;\n}\n.ivu-upload input[type=file] {\n  display: block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  cursor: pointer;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n}\n.filelabe {\n  padding: 2px 15px !important;\n}\n", ""]);
 
 // exports
 
@@ -3780,6 +3780,7 @@ exports.push([module.i, "\n.my-uploader {\n  border-radius: 6px;\n  background: 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(144);
+//
 //
 //
 //
@@ -3892,25 +3893,47 @@ var render = function() {
     [
       _c(
         "div",
-        {
-          staticClass: "my-uploader ivu-upload",
-          style: { backgroundImage: "url(" + _vm.image + ")" }
-        },
         [
-          _c("div", { staticClass: "ivu-upload ivu-upload-drag" }, [
-            _c("input", {
-              staticClass: "ivu-upload-input",
-              attrs: {
-                accept: "image/png, image/jpeg, image/gif, image/jpg",
-                id: "fileinput",
-                type: "file"
-              },
-              on: { change: _vm.previewModel }
-            }),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ]
+          _c(
+            "Row",
+            [
+              _c("Col", { attrs: { span: "12" } }, [
+                _c("input", {
+                  staticClass: "fileinput",
+                  attrs: {
+                    type: "file",
+                    accept: "image/png, image/jpeg, image/gif, image/jpg",
+                    id: "fileinput"
+                  },
+                  on: { change: _vm.previewModel }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "filelabe", attrs: { for: "fileinput" } },
+                  [
+                    _c("Icon", { attrs: { type: "image" } }),
+                    _vm._v(" 上传封面图片")
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("Col", { attrs: { span: "3" } }, [
+                _c("img", {
+                  staticStyle: {
+                    width: "100px",
+                    "-webkit-box-shadow": "0 0 30px #ccc",
+                    "box-shadow": "0 0 30px #ccc"
+                  },
+                  attrs: { src: _vm.image, alt: "" }
+                })
+              ])
+            ],
+            1
+          )
+        ],
+        1
       ),
       _vm._v(" "),
       _c(
@@ -3975,24 +3998,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "upload-compoment hasBg" }, [
-      _c("i", {
-        staticClass: "ivu-icon ivu-icon-ios-cloud-upload",
-        staticStyle: { "font-size": "52px", color: "rgb(51, 153, 255)" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "el-upload__text" }, [
-        _vm._v("支持png/jpg/gif格式图片，或"),
-        _c("em", [_vm._v("点击上传")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -4004,23 +4010,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 242:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(243);
+var content = __webpack_require__(239);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("546c9a0f", content, false);
+var update = __webpack_require__(5)("1bffa699", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3b34e4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3b34e4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5b292cfc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5b292cfc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./edit.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -4031,7 +4037,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 243:
+/***/ 239:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -4039,14 +4045,14 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 244:
+/***/ 240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4100,9 +4106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            form: {
-                image: ''
-            },
+            form: {},
             ruleValidate: {
                 name: [{ required: true, message: '标签不能为空' }],
                 link: [{ required: true, message: '标签描述不能为空' }],
@@ -4110,21 +4114,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+    created: function created() {
+        var _this = this;
+
+        this.$http.get('links/' + this.$route.params.id + '/edit').then(function (response) {
+            _this.form = response.data;
+        });
+    },
 
     methods: {
         onSubmit: function onSubmit(name) {
-            var _this = this;
+            var _this2 = this;
 
             this.$refs[name].validate(function (valid) {
                 if (valid) {
-                    _this.$http.post('links', _this.form).then(function (response) {
-                        _this.$Notice.success({
-                            title: '添加友链成功'
+                    _this2.$http.put('links/' + _this2.$route.params.id, _this2.form).then(function (response) {
+                        _this2.$Notice.success({
+                            title: '编辑友链成功'
                         });
-                        _this.$router.push('/links');
+                        _this2.$router.push('/links');
                     });
                 } else {
-                    _this.$Message.error('请完善表单信息!');
+                    _this2.$Message.error('请完善表单信息!');
                 }
             });
         },
@@ -4136,7 +4147,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 245:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4296,7 +4307,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("添加")]
+                            [_vm._v("编辑")]
                           )
                         ],
                         1
@@ -4323,7 +4334,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c3b34e4e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5b292cfc", module.exports)
   }
 }
 

@@ -3830,6 +3830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.loading = true;
             this.$http.put('user/profile', this.form).then(function (response) {
                 _this2.loading = false;
+                _this2.$store.commit('SET_USERINFO', response.data);
                 _this2.$Notice.success({
                     title: '编辑资料',
                     desc: '编辑成功'
