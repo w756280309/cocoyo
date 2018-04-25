@@ -115,6 +115,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -171,65 +176,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._l(_vm.comments, function(comment, index) {
-        return _c("div", { staticClass: "section__3bS4" }, [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 0" } },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/articles/" + comment.commentable_link } },
-                [_vm._v(_vm._s(comment.commentable))]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "meta",
-                  staticStyle: { color: "#a9a7a7", "font-size": "12px" }
-                },
-                [
-                  _vm._v("at "),
-                  _c("span", { staticClass: "timeago" }, [
-                    _vm._v(_vm._s(comment.create_diff))
-                  ])
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "markdown",
-            domProps: { innerHTML: _vm._s(comment.content_html) }
-          })
+  return _c("div", [
+    _vm.comments.length
+      ? _c(
+          "div",
+          [
+            _vm._l(_vm.comments, function(comment, index) {
+              return _c("div", { staticClass: "section__3bS4" }, [
+                _c(
+                  "div",
+                  { staticStyle: { padding: "10px 0" } },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: { to: "/articles/" + comment.commentable_link }
+                      },
+                      [_vm._v(_vm._s(comment.commentable))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "meta",
+                        staticStyle: { color: "#a9a7a7", "font-size": "12px" }
+                      },
+                      [
+                        _vm._v("at "),
+                        _c("span", { staticClass: "timeago" }, [
+                          _vm._v(_vm._s(comment.create_diff))
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "markdown",
+                  domProps: { innerHTML: _vm._s(comment.content_html) }
+                })
+              ])
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "comment-page" },
+              [
+                _c("Page", {
+                  attrs: {
+                    size: "small",
+                    "show-total": "",
+                    total: _vm.meta.total,
+                    current: _vm.meta.current_page,
+                    "page-size": _vm.meta.per_page
+                  },
+                  on: { "on-change": _vm.handleCurrentChange }
+                })
+              ],
+              1
+            )
+          ],
+          2
+        )
+      : _c("div", { staticStyle: { "text-align": "center" } }, [
+          _c("img", { attrs: { src: "/images/comment.png" } })
         ])
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "comment-page" },
-        [
-          _c("Page", {
-            attrs: {
-              size: "small",
-              "show-total": "",
-              total: _vm.meta.total,
-              current: _vm.meta.current_page,
-              "page-size": _vm.meta.per_page
-            },
-            on: { "on-change": _vm.handleCurrentChange }
-          })
-        ],
-        1
-      )
-    ],
-    2
-  )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,15 +1,20 @@
 <template>
     <div>
-        <div class="section__3bS4" v-for="(comment, index) in comments">
-            <div style="padding: 10px 0">
-                <router-link :to="'/articles/' + comment.commentable_link">{{ comment.commentable }}</router-link>
-                <span class="meta" style="color: #a9a7a7;font-size: 12px;">at <span class="timeago">{{ comment.create_diff }}</span></span>
+        <div v-if="comments.length">
+            <div class="section__3bS4" v-for="(comment, index) in comments">
+                <div style="padding: 10px 0">
+                    <router-link :to="'/articles/' + comment.commentable_link">{{ comment.commentable }}</router-link>
+                    <span class="meta" style="color: #a9a7a7;font-size: 12px;">at <span class="timeago">{{ comment.create_diff }}</span></span>
+                </div>
+                <div class="markdown" v-html="comment.content_html"></div>
             </div>
-            <div class="markdown" v-html="comment.content_html"></div>
+            <div class="comment-page">
+                <Page size="small" show-total :total="meta.total" :current="meta.current_page" :page-size="meta.per_page"
+                      @on-change="handleCurrentChange"></Page>
+            </div>
         </div>
-        <div class="comment-page">
-            <Page size="small" show-total :total="meta.total" :current="meta.current_page" :page-size="meta.per_page"
-                  @on-change="handleCurrentChange"></Page>
+        <div style="text-align: center" v-else>
+            <img src="/images/comment.png">
         </div>
     </div>
 </template>

@@ -87,7 +87,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -99,6 +99,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -140,40 +146,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.follows, function(follow, index) {
-      return _c(
-        "div",
-        { staticClass: "section__3bS4" },
-        [
-          _c("router-link", { attrs: { to: "/user/" + follow.name } }, [
-            _c("img", {
-              staticClass: "avatar img-circle",
-              staticStyle: {
-                width: "40px",
-                height: "40px",
-                background: "rgb(255, 255, 255)",
-                padding: "3px",
-                border: "1px solid rgb(197, 197, 197)"
-              },
-              attrs: { src: follow.avatar }
-            }),
-            _vm._v("\n            " + _vm._s(follow.name) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "introduction" }, [
-            _vm._v(
-              "\n                - " +
-                _vm._s(follow.description) +
-                "\n            "
+  return _c("div", [
+    _vm.follows.length
+      ? _c(
+          "div",
+          _vm._l(_vm.follows, function(follow, index) {
+            return _c(
+              "div",
+              { staticClass: "section__3bS4" },
+              [
+                _c("router-link", { attrs: { to: "/user/" + follow.name } }, [
+                  _c("img", {
+                    staticClass: "avatar img-circle",
+                    staticStyle: {
+                      width: "40px",
+                      height: "40px",
+                      background: "rgb(255, 255, 255)",
+                      padding: "3px",
+                      border: "1px solid rgb(197, 197, 197)"
+                    },
+                    attrs: { src: follow.avatar }
+                  }),
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(follow.name) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "introduction" }, [
+                  _vm._v(
+                    "\n                - " +
+                      _vm._s(follow.description) +
+                      "\n            "
+                  )
+                ])
+              ],
+              1
             )
-          ])
-        ],
-        1
-      )
-    })
-  )
+          })
+        )
+      : _c("div", { staticStyle: { "text-align": "center" } }, [
+          _c("img", { attrs: { src: "/images/following.png" } })
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
