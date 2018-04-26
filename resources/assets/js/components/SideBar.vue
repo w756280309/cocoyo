@@ -5,28 +5,28 @@
                 <v-flex md3>
                     <div class="box">
                         <div class="padding-md">
-                            <Menu active-name="1" theme="light">
-                                <router-link to="/" style="color: #495060;">
+                            <Menu active-name="1" theme="light" class="text-xs-center user-sidebar">
+                                <router-link :to="'/users/' + name + '/edit'" style="color: #495060;">
                                     <MenuItem name="1">
-                                        <Icon type="chatbubbles"></Icon>
+                                        <Icon type="card"></Icon>
                                         个人信息
                                     </MenuItem>
                                 </router-link>
-                                <router-link to="/" style="color: #495060;">
+                                <router-link :to="'/users/' + name + '/edit_avatar'" style="color: #495060;">
                                     <MenuItem name="2">
-                                        <Icon type="happy-outline"></Icon>
+                                        <Icon type="images"></Icon>
                                         修改头像
                                     </MenuItem>
                                 </router-link>
-                                <router-link to="/" style="color: #495060;">
+                                <router-link :to="'/users/' + name + '/edit_email_notify'" style="color: #495060;">
                                     <MenuItem name="3">
-                                        <Icon type="happy-outline"></Icon>
+                                        <Icon type="android-notifications"></Icon>
                                         消息通知
                                     </MenuItem>
                                 </router-link>
-                                <router-link to="/" style="color: #495060;">
+                                <router-link :to="'/users/' + name + '/edit_password'" style="color: #495060;">
                                     <MenuItem name="4">
-                                        <Icon type="happy-outline"></Icon>
+                                        <Icon type="locked"></Icon>
                                         修改密码
                                     </MenuItem>
                                 </router-link>
@@ -35,7 +35,11 @@
                     </div>
                 </v-flex>
                 <v-flex md9 style="padding-left: 15px;">
-                    <router-view></router-view>
+                    <div class="panel panel-default padding-md">
+                        <div class="panel-body">
+                            <router-view></router-view>
+                        </div>
+                    </div>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -44,19 +48,14 @@
 
 <script>
     export default {
-        name: "side-bar"
+        computed: {
+            name() {
+                return this.$route.params.name
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .box {
-        background-color: #fff;
-        padding: 10px;
-        margin: 0 0 20px 0;
-        -webkit-box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
-        box-shadow: 0 0.2em 0 0 #ddd, 0 0 0 1px #ddd;
-    }
-    .padding-md {
-        padding: 15px;
-    }
+    @import "../styles/user.less";
 </style>

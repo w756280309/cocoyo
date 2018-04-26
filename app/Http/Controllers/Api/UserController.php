@@ -137,29 +137,66 @@ class UserController extends Controller
     }
 
     /**
-     * 上传头像
+     * 修改头像
      *
-     * @param User $user
      * @param Request $request
-     * @param BaseManager $manager
+     * @param $username
      * @return mixed
      */
-    public function avatar(Request $request, BaseManager $manager)
+    public function avatar(Request $request, $username)
+    {
+       $this->validate($request, [
+           'avatar' => 'required|string'
+       ]);
+
+        $user = $request->user();
+
+        $user->avatar = $request->input('avatar');
+        $user->save();
+
+        return $this->success('success');
+    }
+
+    /**
+     * 修改消息通知
+     *
+     * @param Request $request
+     * @param $username
+     * @return mixed
+     */
+    public function email_notify_enabled(Request $request, $username)
     {
         $this->validate($request, [
-            'image' => 'required|image'
+            'email_notify_enabled' => 'required|boolean'
         ]);
 
         $user = $request->user();
-        $path = date('Y') . date('m') . '/' . date('d');
 
-        $resource = $manager->store($request->file('image'), $path);
-
-        $user->avatar = $resource['relative_url'];
-
+        $user->email_notify_enabled = $request->input('email_notify_enabled') ? 'yes' : 'no';
         $user->save();
 
-        return $this->respond($resource);
+        return $this->success('success');
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param Request $request
+     * @param $username
+     * @return mixed
+     */
+    public function edit_password(Request $request, $username)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:8|max:16|confirmed'
+        ]);
+
+        $user = $request->user();
+
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return $this->success('success');
     }
 
     /**

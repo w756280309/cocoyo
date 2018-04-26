@@ -19,11 +19,11 @@
                                     <Icon type="person"></Icon>&nbsp;&nbsp;<span>个人中心</span>
                                 </DropdownItem>
                             </router-link>
-                            <DropdownItem>
-                                <router-link to="/">
+                            <router-link :to="'/users/' + name + '/edit'">
+                                <DropdownItem>
                                     <Icon type="gear-a"></Icon>&nbsp;&nbsp;<span>个人设置</span>
-                                </router-link>
-                            </DropdownItem>
+                                </DropdownItem>
+                            </router-link>
                             <DropdownItem disabled>
                                 <Icon type="university"></Icon>&nbsp;&nbsp;<span>我的小说</span>
                             </DropdownItem>

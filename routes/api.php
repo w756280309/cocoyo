@@ -17,6 +17,9 @@ Route::get('user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+# ---------------------------- Upload Manager ----------------------------
+Route::post('upload/image', 'UploadController@uploadImage');
+
 Route::group(['namespace' => 'Api'], function () {
     # ------------------- 文章列表 ----------------------------
     Route::get('articles', 'ArticleController@index')->name('articles.index');
@@ -30,14 +33,19 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('users/{username}/replies', 'UserController@replies')->name('users.replies');
     # ------------------- 用户关注 ----------------------------
     Route::get('users/{username}/following', 'UserController@following')->name('users.following');
+
     # ------------------- 需要登录路由 ----------------------------
     Route::group(['middleware' => 'auth:api'], function () {
         # ------------------- 用户资料 ----------------------------
-        Route::get('user/profile', 'UserController@edit');
+        Route::get('users/{username}/profile', 'UserController@edit');
         # ------------------- 编辑用户资料 ----------------------------
-        Route::put('user/profile', 'UserController@update');
-        # ------------------- 用户资料 ----------------------------
-        Route::post('user/avatar', 'UserController@avatar');
+        Route::put('users/{username}/profile', 'UserController@update');
+        # ------------------- 修改头像 ----------------------------
+        Route::put('users/{username}/avatar', 'UserController@avatar');
+        # ------------------- 修改邮件通知 ----------------------------
+        Route::put('users/{username}/email_notify_enabled', 'UserController@email_notify_enabled');
+        # ------------------- 修改密码 ----------------------------
+        Route::put('users/{username}/edit_password', 'UserController@edit_password');
         # ------------------- 关注用户 ----------------------------
         Route::post('users/{user}/follow', 'UserController@doFollow')->name('users.doFollow');
         # ------------------- 当前用户是否关注查看用户 ----------------------------

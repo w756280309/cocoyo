@@ -23,8 +23,13 @@
                                     {{ user.description }}
                                 </div>
                                 <div class="action" v-if="is_login">
-                                    <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit" to="/user/profile">编辑资料</v-btn>
-                                    <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ follow ? '关注中' : '关注' }}</v-btn>
+                                    <span>
+                                          <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit" :to="'/users/' + name + '/edit'">编辑资料</v-btn>
+                                    </span>
+                                  <span>
+                                       <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ follow ? '关注中' : '关注' }}</v-btn>
+                                  </span>
+
                                 </div>
                                 <div class="action" v-else>
                                     <v-btn color="error" style="margin-left: -2px;" small to="/login">关注</v-btn>
@@ -148,7 +153,6 @@
                 })
             },
             active(data) {
-                console.log(data);
                 this.is_active = data.is_active
             }
         }

@@ -23,6 +23,10 @@ const user = {
             state.userinfo.avatar = avatar
             Cookies.set('user', state.userinfo);
         },
+        modifyEmailNotify(state, email_notify_enabled) {
+            state.userinfo.email_notify_enabled = email_notify_enabled
+            Cookies.set('user', state.userinfo);
+        },
         logout (state, vm) {
             state.token = ''
             state.userinfo = ''
