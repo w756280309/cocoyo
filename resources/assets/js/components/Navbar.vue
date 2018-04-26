@@ -27,6 +27,11 @@
                             <DropdownItem disabled>
                                 <Icon type="university"></Icon>&nbsp;&nbsp;<span>我的小说</span>
                             </DropdownItem>
+                            <DropdownItem v-if="is_admin">
+                                <div @click="jumpDashboard">
+                                    <Icon type="university"></Icon>&nbsp;&nbsp;<span>控制面板</span>
+                                </div>
+                            </DropdownItem>
                             <DropdownItem @cilck="logout">
                                 <Icon type="log-out"></Icon>&nbsp;&nbsp;<span>退出登录</span>
                             </DropdownItem>
@@ -72,12 +77,20 @@
                 if (this.is_login) {
                     return this.$store.state.user.userinfo.avatar;
                 }
+            },
+            is_admin() {
+                if (this.is_login) {
+                    return this.$store.state.user.userinfo.is_admin;
+                }
             }
         },
         methods: {
             logout() {
                 this.$store.commit('logout')
                 return this.$router.push('/');
+            },
+            jumpDashboard() {
+                window.location.href = '/dashboard'
             }
         }
     }

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import iView from 'iview';
 import Util from '../../libs/util';
 import VueRouter from 'vue-router';
-import Cookies from 'js-cookie';
+import {getToken} from '@/utils/auth';
 import {routers, otherRouter, appRouter} from './router';
 
 Vue.use(VueRouter);
@@ -18,8 +18,10 @@ router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
 
-    if (!Cookies.get('user')) { // 判断是否已经登录且前往的页面不是登录页
-       window.location.href = '/';
+    let token = getToken()
+
+    if (! token) { // 判断是否已经登录
+       window.location.href = '/#/login';
     }
 
     Util.toDefaultPage([otherRouter, ...appRouter], to.name, router, next);

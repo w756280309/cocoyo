@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {apiUrl} from '@/config/app'
-import Cookies from "js-cookie";
+import {getToken} from '@/utils/auth';
 
 export const http = axios.create({
     baseURL : apiUrl,
@@ -11,7 +11,7 @@ export const http = axios.create({
 
 http.interceptors.request.use(
     config => {
-        const token = Cookies.getJSON('token');
+        let token = getToken();
         if (token) {
             config.headers['Authorization'] = token.token_type + ' ' + token.access_token
         }

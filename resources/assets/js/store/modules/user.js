@@ -1,37 +1,36 @@
-import Cookies from 'js-cookie';
-import request from '@/libs/app_http'
+import {getToken, getUser, setToken, setUser, removeToken, removeUser} from '@/utils/auth';
 
 const user = {
     state: {
-        token: Cookies.getJSON('token'),
-        userinfo: Cookies.getJSON('user')
+        token: getToken(),
+        userinfo: getUser()
     },
     mutations: {
         SET_TOKEN: (state, token) => {
             state.token = token
-            Cookies.set('token', token);
+            setToken(token)
         },
         REMOVE_TOKEN: (state) => {
             state.token = ''
-            Cookies.remove('token')
+            removeToken()
         },
         SET_USERINFO: (state, userinfo) => {
             state.userinfo = userinfo
-            Cookies.set('user', userinfo);
+            setUser(userinfo)
         },
         modifyAvatar(state, avatar) {
             state.userinfo.avatar = avatar
-            Cookies.set('user', state.userinfo);
+            setUser(state.userinfo)
         },
         modifyEmailNotify(state, email_notify_enabled) {
             state.userinfo.email_notify_enabled = email_notify_enabled
-            Cookies.set('user', state.userinfo);
+            setUser(state.userinfo)
         },
         logout (state, vm) {
             state.token = ''
             state.userinfo = ''
-            Cookies.remove('user');
-            Cookies.remove('token');
+            removeToken()
+            removeUser()
         }
     },
     actions: {

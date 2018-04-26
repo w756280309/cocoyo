@@ -33,6 +33,8 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+        http_response_code(500);
+
         $data = array_merge($request->all(), [
             'user_id' => $request->user()->id,
             'last_user_id' => $request->user()->id
@@ -40,7 +42,7 @@ class ArticleController extends Controller
 
         $article = Article::create($data);
 
-        $article->tags()->sync(json_decode($request->input('tags')));
+        $article->tags()->sync($request->input('tags'));
 
         return $this->noContent();
     }
@@ -76,7 +78,7 @@ class ArticleController extends Controller
 
         $article->save();
 
-        $article->tags()->sync(json_decode($request->get('tags')));
+        $article->tags()->sync($request->get('tags'));
 
         return $this->noContent();
     }

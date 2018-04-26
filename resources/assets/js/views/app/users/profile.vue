@@ -53,18 +53,6 @@
                 this.form = response.data
             })
         },
-        mounted() {
-            let img = document.getElementById('cropimg');
-            this.cropper = new Cropper(img, {
-                dragMode: 'move',
-                preview: '#preview',
-                restore: false,
-                center: false,
-                highlight: false,
-                cropBoxMovable: false,
-                toggleDragModeOnDblclick: false
-            });
-        },
         methods: {
             handleSubmit() {
                 this.loading = true

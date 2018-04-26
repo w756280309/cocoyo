@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 153:
+/***/ 155:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3628,12 +3628,12 @@ assign(Cropper.prototype, render, preview, events, handlers, change, methods);
 
 /***/ }),
 
-/***/ 469:
+/***/ 471:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(155);
 //
 //
 //
@@ -3691,18 +3691,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.form = response.data;
         });
     },
-    mounted: function mounted() {
-        var img = document.getElementById('cropimg');
-        this.cropper = new __WEBPACK_IMPORTED_MODULE_0_cropperjs__["a" /* default */](img, {
-            dragMode: 'move',
-            preview: '#preview',
-            restore: false,
-            center: false,
-            highlight: false,
-            cropBoxMovable: false,
-            toggleDragModeOnDblclick: false
-        });
-    },
 
     methods: {
         handleSubmit: function handleSubmit() {
@@ -3723,7 +3711,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 470:
+/***/ 472:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3945,9 +3933,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(469)
+var __vue_script__ = __webpack_require__(471)
 /* template */
-var __vue_template__ = __webpack_require__(470)
+var __vue_template__ = __webpack_require__(472)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

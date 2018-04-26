@@ -1,18 +1,18 @@
 webpackJsonp([8],{
 
-/***/ 128:
+/***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(215)
+  __webpack_require__(217)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(217)
+var __vue_script__ = __webpack_require__(219)
 /* template */
-var __vue_template__ = __webpack_require__(218)
+var __vue_template__ = __webpack_require__(220)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 153:
+/***/ 155:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3680,17 +3680,17 @@ assign(Cropper.prototype, render, preview, events, handlers, change, methods);
 
 /***/ }),
 
-/***/ 215:
+/***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(216);
+var content = __webpack_require__(218);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("01d9731d", content, false);
+var update = __webpack_require__(4)("01d9731d", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -3707,10 +3707,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 216:
+/***/ 218:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -3722,12 +3722,12 @@ exports.push([module.i, "\n.cover-avatar {\n  text-align: center;\n}\n.upload-li
 
 /***/ }),
 
-/***/ 217:
+/***/ 219:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs__ = __webpack_require__(155);
 //
 //
 //
@@ -3865,8 +3865,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handelCut: function handelCut() {
             var vm = this;
             vm.cropper.getCroppedCanvas().toBlob(function (blob) {
-                var _this4 = this;
-
                 var formData = new FormData();
 
                 formData.append('image', blob);
@@ -3874,7 +3872,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.$http.post('users/' + vm.$route.params.id + '/avatar', formData).then(function (response) {
                     vm.form.avatar = response.relative_url;
 
-                    if (_this4.$route.params.id == _this4.$store.state.user.info.id) {
+                    if (vm.$route.params.id == vm.$store.state.user.userinfo.id) {
                         vm.$store.commit('modifyAvatar', response.relative_url);
                     }
 
@@ -3890,7 +3888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 218:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4215,11 +4213,11 @@ var render = function() {
                                       placeholder: "Enter something..."
                                     },
                                     model: {
-                                      value: _vm.form.github_url,
+                                      value: _vm.form.github_name,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.form, "github_url", $$v)
+                                        _vm.$set(_vm.form, "github_name", $$v)
                                       },
-                                      expression: "form.github_url"
+                                      expression: "form.github_name"
                                     }
                                   })
                                 ],

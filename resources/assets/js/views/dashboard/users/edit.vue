@@ -54,7 +54,7 @@
                                     <Input v-model="form.weibo_link" size="large" placeholder="Enter something..."></Input>
                                 </FormItem>
                                 <FormItem label="GitHub">
-                                    <Input v-model="form.github_url" size="large" placeholder="Enter something..."></Input>
+                                    <Input v-model="form.github_name" size="large" placeholder="Enter something..."></Input>
                                 </FormItem>
                                 <FormItem label="个人描述">
                                     <Input v-model="form.description" size="large" placeholder="Enter something..." type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
@@ -135,7 +135,7 @@
                     vm.$http.post('users/' + vm.$route.params.id + '/avatar', formData).then((response) => {
                         vm.form.avatar = response.relative_url;
 
-                        if (this.$route.params.id == this.$store.state.user.info.id) {
+                        if (vm.$route.params.id == vm.$store.state.user.userinfo.id) {
                             vm.$store.commit('modifyAvatar', response.relative_url);
                         }
 

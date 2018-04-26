@@ -41,7 +41,7 @@
                         <image-cover action="upload/image" :image="form.page_image" @successUpload="handleImageSuccess"></image-cover>
                     </FormItem>
                     <FormItem label="时间" prop="published_at">
-                        <DatePicker formar="datetimerange：yyyy-MM-dd HH:mm:ss" type="datetime" v-model="form.published_at"></DatePicker>
+                        <DatePicker format="yyyy-MM-dd HH:mm:ss" type="datetime" @on-change="changeDate"></DatePicker>
                     </FormItem>
                     <Row>
                         <Col span="11">
@@ -91,6 +91,8 @@
                     return {
                         tags: [],
                         page_image: '',
+                        is_original: 1,
+                        is_draft: 0
                     }
                 }
             }
@@ -169,6 +171,9 @@
             handleImageSuccess(response) {
                 this.form.page_image = response.relative_url;
             },
+            changeDate(date) {
+                this.form.published_at = date
+            }
         },
     }
 </script>
