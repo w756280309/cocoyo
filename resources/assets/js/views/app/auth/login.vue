@@ -1,48 +1,52 @@
 <template>
-    <v-layout align-center justify-center>
-        <v-flex xs12 sm8 md4>
-            <div class="login mu-paper login_wrap mu-paper-round mu-paper-3">
-                <div class="login_con">
-                    <div class="main">
-                        <h3>登录</h3>
-                        <v-form v-model="valid" ref="form" lazy-validation>
-                            <v-text-field
-                                    label="邮箱"
-                                    v-model="form.email"
-                                    :rules="emailRule"
-                                    required
-                            ></v-text-field>
-                            <v-text-field
-                                    label="密码"
-                                    v-model="form.password"
-                                    :rules="passwordRule"
-                                    required
-                                    type="password"
-                            ></v-text-field>
-                            <v-btn block @click="submit" color="primary" dark>登录</v-btn>
-                        </v-form>
-                        <div class="jump_link">
-                            <span class="register">注册</span>
-                            <span class="forget">找回密码</span>
-                        </div>
-                        <div class="wx_login">
-                            <div class="wx_btn">第三方登陆</div>
-                        </div>
-                        <div class="text-xs-center">
-                            <v-btn fab dark small style="background: #00adb5;">
-                                <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
-                            </v-btn>
+    <v-content class="main-content base_content">
+        <v-container grid-list-xl>
+            <v-layout align-center justify-center>
+            <v-flex md7>
+                <div class="login mu-paper login_wrap mu-paper-round mu-paper-3">
+                    <div class="login_con">
+                        <div class="main">
+                            <h3>登录</h3>
+                            <v-form v-model="valid" ref="form" lazy-validation>
+                                <v-text-field
+                                        label="邮箱"
+                                        v-model="form.email"
+                                        :rules="emailRule"
+                                        required
+                                ></v-text-field>
+                                <v-text-field
+                                        label="密码"
+                                        v-model="form.password"
+                                        :rules="passwordRule"
+                                        required
+                                        type="password"
+                                ></v-text-field>
+                                <v-btn block @click="submit" color="primary" dark>登录</v-btn>
+                            </v-form>
+                            <div class="jump_link">
+                                <span class="register">注册</span>
+                                <span class="forget">找回密码</span>
+                            </div>
+                            <div class="wx_login">
+                                <div class="wx_btn">第三方登陆</div>
+                            </div>
+                            <div class="text-xs-center">
+                                <v-btn fab dark small style="background: #00adb5;">
+                                    <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
+                                </v-btn>
 
-                            <v-btn fab dark small style="background: #f75b5b;">
-                                <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
-                            </v-btn>
+                                <v-btn fab dark small style="background: #f75b5b;">
+                                    <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
+                                </v-btn>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </v-flex>
-    </v-layout>
+            </v-flex>
+        </v-layout>
+        </v-container>
+    </v-content>
 </template>
 
 <script>
@@ -67,7 +71,12 @@
                         this.$store.commit('SET_USERINFO', response.data.user);
                         this.$store.commit('SET_TOKEN', response.data.token);
 
-                        this.$router.push('/');
+                        let redirect = this.$route.query.redirect;
+                        if (redirect) {
+                            this.$router.push(redirect);
+                        } else {
+                            this.$router.push('/');
+                        }
                     })
                 }
             },

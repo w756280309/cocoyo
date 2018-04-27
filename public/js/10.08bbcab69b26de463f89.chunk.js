@@ -1,24 +1,24 @@
-webpackJsonp([16],{
+webpackJsonp([10],{
 
-/***/ 132:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(225)
+  __webpack_require__(233)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(227)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(228)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-6e8dcf96"
+var __vue_scopeId__ = "data-v-a9f22b5a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\categories\\add.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\tags\\add.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e8dcf96", Component.options)
+    hotAPI.createRecord("data-v-a9f22b5a", Component.options)
   } else {
-    hotAPI.reload("data-v-6e8dcf96", Component.options)
+    hotAPI.reload("data-v-a9f22b5a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +52,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 225:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(226);
+var content = __webpack_require__(234);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("30508657", content, false);
+var update = __webpack_require__(4)("52a90b52", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8dcf96\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8dcf96\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a9f22b5a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a9f22b5a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./add.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 226:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -94,7 +94,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-/***/ 227:
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -128,8 +128,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             form: {},
             ruleValidate: {
-                name: [{ required: true, message: '分类名不能为空' }],
-                description: [{ required: true, message: '分类描述不能为空' }]
+                tag: [{ required: true, message: '标签不能为空' }],
+                meta_description: [{ required: true, message: '标签描述不能为空' }]
             }
         };
     },
@@ -140,11 +140,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$refs[name].validate(function (valid) {
                 if (valid) {
-                    _this.$http.post('categories', _this.form).then(function (response) {
+                    _this.$http.post('tags', _this.form).then(function (response) {
                         _this.$Notice.success({
-                            title: '添加分类成功'
+                            title: '添加标签成功'
                         });
-                        _this.$router.push('/categories');
+                        _this.$router.push('/tags');
                     });
                 } else {
                     _this.$Message.error('请完善表单信息!');
@@ -156,7 +156,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 228:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -190,7 +190,7 @@ var render = function() {
                     [
                       _c(
                         "FormItem",
-                        { attrs: { label: "分类名", prop: "name" } },
+                        { attrs: { label: "标签", prop: "tag" } },
                         [
                           _c("Input", {
                             attrs: {
@@ -198,11 +198,11 @@ var render = function() {
                               placeholder: "Enter something..."
                             },
                             model: {
-                              value: _vm.form.name,
+                              value: _vm.form.tag,
                               callback: function($$v) {
-                                _vm.$set(_vm.form, "name", $$v)
+                                _vm.$set(_vm.form, "tag", $$v)
                               },
-                              expression: "form.name"
+                              expression: "form.tag"
                             }
                           })
                         ],
@@ -211,7 +211,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "FormItem",
-                        { attrs: { label: "描述", prop: "description" } },
+                        { attrs: { label: "描述", prop: "meta_description" } },
                         [
                           _c("Input", {
                             attrs: {
@@ -221,11 +221,11 @@ var render = function() {
                               autosize: { minRows: 2, maxRows: 5 }
                             },
                             model: {
-                              value: _vm.form.description,
+                              value: _vm.form.meta_description,
                               callback: function($$v) {
-                                _vm.$set(_vm.form, "description", $$v)
+                                _vm.$set(_vm.form, "meta_description", $$v)
                               },
-                              expression: "form.description"
+                              expression: "form.meta_description"
                             }
                           })
                         ],
@@ -245,7 +245,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("添加分类")]
+                            [_vm._v("添加标签")]
                           )
                         ],
                         1
@@ -272,7 +272,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6e8dcf96", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a9f22b5a", module.exports)
   }
 }
 

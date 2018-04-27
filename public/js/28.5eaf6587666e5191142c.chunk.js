@@ -1,14 +1,14 @@
-webpackJsonp([27],{
+webpackJsonp([28],{
 
-/***/ 143:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(263)
+var __vue_script__ = __webpack_require__(259)
 /* template */
-var __vue_template__ = __webpack_require__(264)
+var __vue_template__ = __webpack_require__(260)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\comments\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\categories\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37df191f", Component.options)
+    hotAPI.createRecord("data-v-111e3c07", Component.options)
   } else {
-    hotAPI.reload("data-v-37df191f", Component.options)
+    hotAPI.reload("data-v-111e3c07", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,11 +48,16 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 263:
+/***/ 259:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86,27 +91,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '用户',
-                key: 'name',
-                render: function render(h, params) {
-                    return h('Tooltip', {
-                        props: {
-                            content: params.row.user.name
-                        }
-                    }, [h('Avatar', {
-                        props: {
-                            src: params.row.user.avatar
-                        }
-                    })]);
-                }
+                title: '分类名',
+                key: 'name'
             }, {
-                title: '评论类型',
-                key: 'type'
+                title: '路径',
+                key: 'path'
             }, {
-                title: '评论标题',
-                key: 'commentable'
-            }, {
-                title: '评论时间',
+                title: '创建时间',
                 key: 'created_at'
             }, {
                 title: '操作',
@@ -115,7 +106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/comments/' + params.row.id + '/edit'
+                            to: '/categories/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -151,7 +142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'comments';
+            var url = 'categories';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -176,13 +167,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '删除该评论?',
-                content: '该评论会永久删除，请三思!',
+                title: '删除该分类?',
+                content: '该分类会永久删除，请三思!',
                 okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.delete('comments/' + data.row.id).then(function (response) {
+                    _this3.$http.delete('categories/' + data.row.id).then(function (response) {
                         _this3.$Modal.remove();
                         _this3.loadData();
                         _this3.$Message.success('删除成功');
@@ -195,7 +186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 264:
+/***/ 260:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -215,6 +206,35 @@ var render = function() {
               _c(
                 "Card",
                 [
+                  _c(
+                    "p",
+                    {
+                      staticStyle: { height: "100%", "text-align": "right" },
+                      attrs: { slot: "title" },
+                      slot: "title"
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/categories/add" } },
+                        [
+                          _c(
+                            "Button",
+                            {
+                              attrs: {
+                                type: "primary",
+                                icon: "android-add-circle"
+                              }
+                            },
+                            [_vm._v("添加分类")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c("Table", {
                     attrs: {
                       loading: _vm.loading,
@@ -263,7 +283,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-37df191f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-111e3c07", module.exports)
   }
 }
 

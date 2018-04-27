@@ -1,6 +1,6 @@
-webpackJsonp([22],{
+webpackJsonp([21],{
 
-/***/ 148:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -146,6 +146,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -173,7 +177,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.$store.commit('SET_USERINFO', response.data.user);
                     _this.$store.commit('SET_TOKEN', response.data.token);
 
-                    _this.$router.push('/');
+                    var redirect = _this.$route.query.redirect;
+                    if (redirect) {
+                        _this.$router.push(redirect);
+                    } else {
+                        _this.$router.push('/');
+                    }
                 });
             }
         }
@@ -190,141 +199,166 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-layout",
-    { attrs: { "align-center": "", "justify-center": "" } },
+    "v-content",
+    { staticClass: "main-content base_content" },
     [
-      _c("v-flex", { attrs: { xs12: "", sm8: "", md4: "" } }, [
-        _c(
-          "div",
-          {
-            staticClass: "login mu-paper login_wrap mu-paper-round mu-paper-3"
-          },
-          [
-            _c("div", { staticClass: "login_con" }, [
-              _c(
-                "div",
-                { staticClass: "main" },
-                [
-                  _c("h3", [_vm._v("登录")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-form",
-                    {
-                      ref: "form",
-                      attrs: { "lazy-validation": "" },
-                      model: {
-                        value: _vm.valid,
-                        callback: function($$v) {
-                          _vm.valid = $$v
-                        },
-                        expression: "valid"
-                      }
-                    },
-                    [
-                      _c("v-text-field", {
-                        attrs: {
-                          label: "邮箱",
-                          rules: _vm.emailRule,
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.email,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "email", $$v)
-                          },
-                          expression: "form.email"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          label: "密码",
-                          rules: _vm.passwordRule,
-                          required: "",
-                          type: "password"
-                        },
-                        model: {
-                          value: _vm.form.password,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "password", $$v)
-                          },
-                          expression: "form.password"
-                        }
-                      }),
-                      _vm._v(" "),
+      _c(
+        "v-container",
+        { attrs: { "grid-list-xl": "" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { "align-center": "", "justify-center": "" } },
+            [
+              _c("v-flex", { attrs: { md7: "" } }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "login mu-paper login_wrap mu-paper-round mu-paper-3"
+                  },
+                  [
+                    _c("div", { staticClass: "login_con" }, [
                       _c(
-                        "v-btn",
-                        {
-                          attrs: { block: "", color: "primary", dark: "" },
-                          on: { click: _vm.submit }
-                        },
-                        [_vm._v("登录")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "jump_link" }, [
-                    _c("span", { staticClass: "register" }, [_vm._v("注册")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "forget" }, [_vm._v("找回密码")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "wx_login" }, [
-                    _c("div", { staticClass: "wx_btn" }, [_vm._v("第三方登陆")])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "text-xs-center" },
-                    [
-                      _c(
-                        "v-btn",
-                        {
-                          staticStyle: { background: "#00adb5" },
-                          attrs: { fab: "", dark: "", small: "" }
-                        },
+                        "div",
+                        { staticClass: "main" },
                         [
+                          _c("h3", [_vm._v("登录")]),
+                          _vm._v(" "),
                           _c(
-                            "v-icon",
+                            "v-form",
                             {
-                              staticStyle: { "padding-top": "6px" },
-                              attrs: { dark: "" }
+                              ref: "form",
+                              attrs: { "lazy-validation": "" },
+                              model: {
+                                value: _vm.valid,
+                                callback: function($$v) {
+                                  _vm.valid = $$v
+                                },
+                                expression: "valid"
+                              }
                             },
-                            [_vm._v("fab fa-qq")]
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "邮箱",
+                                  rules: _vm.emailRule,
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "email", $$v)
+                                  },
+                                  expression: "form.email"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "密码",
+                                  rules: _vm.passwordRule,
+                                  required: "",
+                                  type: "password"
+                                },
+                                model: {
+                                  value: _vm.form.password,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "password", $$v)
+                                  },
+                                  expression: "form.password"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: {
+                                    block: "",
+                                    color: "primary",
+                                    dark: ""
+                                  },
+                                  on: { click: _vm.submit }
+                                },
+                                [_vm._v("登录")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "jump_link" }, [
+                            _c("span", { staticClass: "register" }, [
+                              _vm._v("注册")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "forget" }, [
+                              _vm._v("找回密码")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "wx_login" }, [
+                            _c("div", { staticClass: "wx_btn" }, [
+                              _vm._v("第三方登陆")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "text-xs-center" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticStyle: { background: "#00adb5" },
+                                  attrs: { fab: "", dark: "", small: "" }
+                                },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticStyle: { "padding-top": "6px" },
+                                      attrs: { dark: "" }
+                                    },
+                                    [_vm._v("fab fa-qq")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  staticStyle: { background: "#f75b5b" },
+                                  attrs: { fab: "", dark: "", small: "" }
+                                },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticStyle: { "padding-top": "6px" },
+                                      attrs: { dark: "" }
+                                    },
+                                    [_vm._v("fab fa-weibo")]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          staticStyle: { background: "#f75b5b" },
-                          attrs: { fab: "", dark: "", small: "" }
-                        },
-                        [
-                          _c(
-                            "v-icon",
-                            {
-                              staticStyle: { "padding-top": "6px" },
-                              attrs: { dark: "" }
-                            },
-                            [_vm._v("fab fa-weibo")]
-                          )
-                        ],
-                        1
                       )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ])
+                    ])
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )

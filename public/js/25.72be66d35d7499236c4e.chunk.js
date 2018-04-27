@@ -1,4 +1,4 @@
-webpackJsonp([28],{
+webpackJsonp([25],{
 
 /***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
@@ -6,9 +6,9 @@ webpackJsonp([28],{
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(259)
+var __vue_script__ = __webpack_require__(261)
 /* template */
-var __vue_template__ = __webpack_require__(260)
+var __vue_template__ = __webpack_require__(262)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\categories\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\tags\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-111e3c07", Component.options)
+    hotAPI.createRecord("data-v-13bb9b84", Component.options)
   } else {
-    hotAPI.reload("data-v-111e3c07", Component.options)
+    hotAPI.reload("data-v-13bb9b84", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 259:
+/***/ 261:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,11 +91,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: '分类名',
-                key: 'name'
+                title: '标签',
+                key: 'tag'
             }, {
-                title: '路径',
-                key: 'path'
+                title: '描述',
+                key: 'meta_description'
             }, {
                 title: '创建时间',
                 key: 'created_at'
@@ -106,7 +106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 render: function render(h, params) {
                     return h('div', [h('router-link', {
                         props: {
-                            to: '/categories/' + params.row.id + '/edit'
+                            to: '/tags/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -142,7 +142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'categories';
+            var url = 'tags';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -167,13 +167,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '删除该分类?',
-                content: '该分类会永久删除，请三思!',
+                title: '改变该标签?',
+                content: '该标签会永久删除，请三思!',
                 okText: '是,删除它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this3.$http.delete('categories/' + data.row.id).then(function (response) {
+                    _this3.$http.delete('tags/' + data.row.id).then(function (response) {
                         _this3.$Modal.remove();
                         _this3.loadData();
                         _this3.$Message.success('删除成功');
@@ -186,7 +186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -216,7 +216,7 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: "/categories/add" } },
+                        { attrs: { to: "/tags/add" } },
                         [
                           _c(
                             "Button",
@@ -226,7 +226,7 @@ var render = function() {
                                 icon: "android-add-circle"
                               }
                             },
-                            [_vm._v("添加分类")]
+                            [_vm._v("添加标签")]
                           )
                         ],
                         1
@@ -283,7 +283,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-111e3c07", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-13bb9b84", module.exports)
   }
 }
 

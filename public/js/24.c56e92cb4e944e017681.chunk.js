@@ -1,14 +1,14 @@
-webpackJsonp([26],{
+webpackJsonp([24],{
 
-/***/ 145:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(269)
+var __vue_script__ = __webpack_require__(257)
 /* template */
-var __vue_template__ = __webpack_require__(270)
+var __vue_template__ = __webpack_require__(258)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\dashboard\\links\\index.vue"
+Component.options.__file = "resources\\assets\\js\\views\\dashboard\\users\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-868cfeec", Component.options)
+    hotAPI.createRecord("data-v-e94b2fce", Component.options)
   } else {
-    hotAPI.reload("data-v-868cfeec", Component.options)
+    hotAPI.reload("data-v-e94b2fce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,16 +48,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 269:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -91,21 +86,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'id',
                 key: 'id'
             }, {
-                title: 'logo',
-                key: 'image',
+                title: '头像',
+                key: 'avatar',
                 render: function render(h, params) {
                     return h('Avatar', {
                         props: {
-                            src: params.row.image
+                            src: params.row.avatar
                         }
                     });
                 }
             }, {
-                title: '名字',
+                title: '用户名',
                 key: 'name'
             }, {
-                title: '链接',
-                key: 'link'
+                title: '邮箱',
+                key: 'email'
             }, {
                 title: '状态',
                 key: 'status',
@@ -115,7 +110,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             type: 'record'
                         },
                         style: {
-                            color: params.row.status == 1 ? 'rgb(142, 180, 203)' : 'color: rgb(191, 83, 41)'
+                            color: params.row.status == 1 ? 'rgb(142, 180, 203)' : '    color: rgb(191, 83, 41)'
                         }
                     })]);
                 }
@@ -127,23 +122,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 key: 'action',
                 align: 'center',
                 render: function render(h, params) {
-                    return h('div', [h('Button', {
+                    return h('div', [h('router-link', {
                         props: {
-                            type: 'primary',
-                            shape: 'circle',
-                            icon: params.row.status == 1 ? 'load-c' : 'ios-circle-outline'
-                        },
-                        style: {
-                            marginRight: '5px'
-                        },
-                        on: {
-                            click: function click() {
-                                _this.handleStatus(params.row.id, params.row.status);
-                            }
-                        }
-                    }), h('router-link', {
-                        props: {
-                            to: '/links/' + params.row.id + '/edit'
+                            to: '/users/' + params.row.id + '/edit'
                         }
                     }, [h('Button', {
                         props: {
@@ -179,7 +160,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            var url = 'links';
+            var url = 'users';
             if (this.meta.current_page > 1) {
                 var page = '';
                 if (url.indexOf('?') != -1) {
@@ -204,40 +185,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this3 = this;
 
             this.$Modal.confirm({
-                title: '是否删除该友链?',
-                content: '该友链会永久删除，请三思!',
-                okText: '是,删除它!',
-                cancelText: '取消',
-                loading: true,
-                onOk: function onOk() {
-                    _this3.$http.delete('links/' + data.row.id).then(function (response) {
-                        _this3.$Modal.remove();
-                        _this3.loadData();
-                        _this3.$Message.success('删除成功');
-                    });
-                }
-            });
-        },
-        handleStatus: function handleStatus(id, status) {
-            var _this4 = this;
-
-            var tip = '是否启用该友链?';
-
-            if (status == 1) {
-                tip = '是否禁用该友链?';
-            }
-
-            this.$Modal.confirm({
-                title: tip,
+                title: '改变该用户的状态?',
                 content: '该动作可能会影响一些数据，请三思!',
                 okText: '是,改变它!',
                 cancelText: '取消',
                 loading: true,
                 onOk: function onOk() {
-                    _this4.$http.put('links/' + id + '/status').then(function (response) {
-                        _this4.$Modal.remove();
-                        _this4.loadData();
-                        _this4.$Message.success('修改成功');
+                    _this3.$http.put('users/' + data.row.id + '/status').then(function (response) {
+                        _this3.$Modal.remove();
+                        _this3.$Message.success('修改成功');
+                        _this3.tableData[data.index].status = !data.row.status;
                     });
                 }
             });
@@ -247,7 +204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 270:
+/***/ 258:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -267,35 +224,6 @@ var render = function() {
               _c(
                 "Card",
                 [
-                  _c(
-                    "p",
-                    {
-                      staticStyle: { height: "100%", "text-align": "right" },
-                      attrs: { slot: "title" },
-                      slot: "title"
-                    },
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/links/add" } },
-                        [
-                          _c(
-                            "Button",
-                            {
-                              attrs: {
-                                type: "primary",
-                                icon: "android-add-circle"
-                              }
-                            },
-                            [_vm._v("添加友链")]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
                   _c("Table", {
                     attrs: {
                       loading: _vm.loading,
@@ -344,7 +272,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-868cfeec", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-e94b2fce", module.exports)
   }
 }
 

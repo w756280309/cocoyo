@@ -32,8 +32,10 @@
                                     <Icon type="university"></Icon>&nbsp;&nbsp;<span>控制面板</span>
                                 </div>
                             </DropdownItem>
-                            <DropdownItem @cilck="logout">
-                                <Icon type="log-out"></Icon>&nbsp;&nbsp;<span>退出登录</span>
+                            <DropdownItem>
+                                <div>
+                                    <Icon type="log-out"></Icon>&nbsp;&nbsp;<span @cilck="loginOut">退出登录</span>
+                                </div>
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -85,13 +87,14 @@
             }
         },
         methods: {
-            logout() {
-                this.$store.commit('logout')
-                return this.$router.push('/');
-            },
             jumpDashboard() {
                 window.location.href = '/dashboard'
-            }
+            },
+            loginOut() {
+                console.log('asd')
+                // this.$store.commit('logout', this)
+                // this.$router.push('/');
+            },
         }
     }
 </script>
