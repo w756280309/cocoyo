@@ -81,9 +81,10 @@
                 }
             },
             socialiteQQ() {
-                this.$http.get('auth/qq').then((response) => {
-                    console.log(response)
-                })
+                window.open('/api/auth/qq')
+                // this.$http.get('auth/qq').then((response) => {
+                //     console.log(response)
+                // })
             }
         }
     }
