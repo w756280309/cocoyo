@@ -11,6 +11,13 @@
 |
 */
 
+Route::group(['namespace' => 'Auth'], function () {
+    Route::group(['prefix' => 'auth/qq'], function () {
+        Route::get('/', 'SocialiteAuthController@redirectToProvider');
+        Route::get('callback', 'SocialiteAuthController@handleProviderCallback');
+    });
+});
+
 Route::get('/', 'IndexController@index')->name('index');
 
 Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');

@@ -61,10 +61,6 @@ Route::group(['namespace' => 'Api'], function () {
 # ------------------- Auth ----------------------------
 Route::group(['namespace' => 'Auth'], function () {
    Route::post('login', 'LoginController@login')->name('user.login');
-    Route::group(['prefix' => 'auth/qq'], function () {
-        Route::get('/', 'SocialiteAuthController@redirectToProvider');
-        Route::get('callback', 'SocialiteAuthController@handleProviderCallback');
-    });
 });
 
 # ------------------- Dashboard ----------------------------
