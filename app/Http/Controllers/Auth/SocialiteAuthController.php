@@ -10,7 +10,7 @@ class SocialiteAuthController extends Controller
 {
     public function redirectToProvider()
     {
-        return Socialite::driver('qq')->stateless()->redirect();
+        return Socialite::driver('qq')->redirect();
     }
 
     public function handleProviderCallback()
