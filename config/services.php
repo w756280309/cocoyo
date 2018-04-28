@@ -39,4 +39,9 @@ return [
         'appKey' => env('YOUDAO_APP_KEY'),
         'appSecret' => env('YOUDAO_APP_SECRET'),
     ],
+    'qq' => [
+        'client_id' => env('QQ_KEY'),
+        'client_secret' => env('QQ_SECRET'),
+        'redirect' => env('QQ_REDIRECT_URI'),
+    ],
 ];

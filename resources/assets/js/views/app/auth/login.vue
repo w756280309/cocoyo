@@ -31,7 +31,7 @@
                                 <div class="wx_btn">第三方登陆</div>
                             </div>
                             <div class="text-xs-center">
-                                <v-btn fab dark small style="background: #00adb5;">
+                                <v-btn fab dark small style="background: #00adb5;" @click="socialiteQQ">
                                     <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
                                 </v-btn>
 
@@ -80,6 +80,11 @@
                     })
                 }
             },
+            socialiteQQ() {
+                this.$http.get('auth/qq').then((response) => {
+                    console.log(response)
+                })
+            }
         }
     }
 </script>
