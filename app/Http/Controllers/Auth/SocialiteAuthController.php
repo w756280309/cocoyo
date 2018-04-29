@@ -17,7 +17,21 @@ class SocialiteAuthController extends Controller
     {
         $user = Socialite::driver('qq')->user();
 
-        http_response_code(500);
+//        http_response_code(500);
+//        dd($user->getId(),
+//        $user->getNickname(),
+//        $user->getName(),
+//        $user->getEmail(),
+//        $user->getAvatar());
+
+        return view('auth.test');
+    }
+
+    public function test()
+    {
+        $user = Socialite::driver('qq')->user();
+
+                http_response_code(500);
         dd($user->getId(),
         $user->getNickname(),
         $user->getName(),

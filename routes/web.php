@@ -15,6 +15,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::group(['prefix' => 'auth/qq'], function () {
         Route::get('/', 'SocialiteAuthController@redirectToProvider');
         Route::get('callback', 'SocialiteAuthController@handleProviderCallback');
+        Route::get('test', 'SocialiteAuthController@test');
     });
 });
 

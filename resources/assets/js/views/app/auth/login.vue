@@ -81,6 +81,7 @@
                 }
             },
             socialiteQQ() {
+                window.showModelDialog('/auth/qq')
                 window.open('/auth/qq')
                 // this.$http.get('auth/qq').then((response) => {
                 //     console.log(response)
