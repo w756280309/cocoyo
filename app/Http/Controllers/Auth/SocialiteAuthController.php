@@ -32,7 +32,7 @@ class SocialiteAuthController extends Controller
 
     public function test()
     {
-        $user = Socialite::driver('qq')->userFormToken('D6D835F5CB83479816088C3ACE0D23E5');
+        $user = Socialite::driver('qq')->userFromToken('D6D835F5CB83479816088C3ACE0D23E5');
 
         dd($user->getId(),
         $user->getNickname(),
