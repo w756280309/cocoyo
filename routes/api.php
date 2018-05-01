@@ -61,6 +61,8 @@ Route::group(['namespace' => 'Api'], function () {
 # ------------------- Auth ----------------------------
 Route::group(['namespace' => 'Auth'], function () {
    Route::post('login', 'LoginController@login')->name('user.login');
+   Route::post('register', 'RegisterController@register')->name('user.register');
+   Route::put('register/confirmed', 'RegisterController@confirmed')->name('user.register.confirmed');
 });
 
 # ------------------- Dashboard ----------------------------

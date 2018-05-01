@@ -1,6 +1,7 @@
 import Main from '@/views/app/Main.vue';
 import User from '@/components/User.vue';
 import SideBar from '@/components/SideBar.vue';
+import AuthCommon from '@/views/app/auth/common.vue'
 
 export const otherRouter = {
     path: '/',
@@ -8,7 +9,15 @@ export const otherRouter = {
     children: [
         { path: '/', title: '主页', name: 'index', component: resolve => void(require(['@/views/app/articles/index.vue'], resolve)) },
         { path: 'articles/:slug', title: '文章详情', name: 'articles.show', component: resolve => void(require(['@/views/app/articles/show.vue'], resolve)) },
-        { path: '/login', title: '登陆', name: 'login', component: resolve => void(require(['@/views/app/auth/login.vue'], resolve)) },
+        {
+            path: '/',
+            component: AuthCommon,
+            children: [
+                { path: '/login', title: '登陆', name: 'login', component: resolve => void(require(['@/views/app/auth/login.vue'], resolve)) },
+                { path: '/register', title: '注册', name: 'register', component: resolve => void(require(['@/views/app/auth/register.vue'], resolve)) },
+                { path: '/register/confirmed', title: '注册验证', name: 'register_confirmed', component: resolve => void(require(['@/views/app/auth/confirmed.vue'], resolve)) },
+            ]
+        },
         {
             path: '/users',
             component: User,

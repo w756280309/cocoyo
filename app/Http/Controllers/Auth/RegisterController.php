@@ -2,70 +2,92 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Http\Requests\RegisterConfirmedRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Notifications\UserRegisterVerficationCode;
+use App\Traits\PassportToken;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
+    use PassportToken;
 
     /**
-     * Where to redirect users after registration.
+     * 用户注册
      *
-     * @var string
+     * @param RegisterRequest $request
+     * @return \App\Http\Resources\User
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function register(RegisterRequest $request)
     {
-        $this->middleware('guest');
+        //创建用户
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'avatar' => '/images/default_avatar.png'
+        ]);
+
+        //发送验证码
+        $user->notify(new UserRegisterVerficationCode($user));
+
+        return new \App\Http\Resources\User($user);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * 确认邮箱
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param RegisterConfirmedRequest $request
+     * @return \App\Http\Resources\User|\App\Traits\json|mixed
      */
-    protected function validator(array $data)
+    public function confirmed(RegisterConfirmedRequest $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+        $code = Cache::get($request->input('email'));
+
+        if (! $code) {
+            return $this->formError(['email' => '验证链接已失效']);
+        }
+
+        if (! hash_equals($code, $request->input('code'))) {
+            return $this->formError('验证链接错误');
+        }
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        $user->status = 1;
+        $user->save();
+
+        // 清除验证码缓存
+        Cache::forget($request->input('email'));
+
+        return $this->respond([
+            'data' => [
+                'token' => $this->getBearerTokenByUser($user, 1, false),
+                'user' => new \App\Http\Resources\User($user)
+            ]
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * 发送注册邮件
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param Request $request
+     * @return \Response
      */
-    protected function create(array $data)
+    public function sendRegisterEmail(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $this->validate($request, [
+            'email' => 'required|email|exists:users,email'
         ]);
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        //发送验证码
+        $user->notify(new UserRegisterVerficationCode($user));
+
+        return $this->success('success');
     }
 }

@@ -170,6 +170,7 @@ return [
          * Package Service Providers...
          */
         Overtrue\LaravelFollow\FollowServiceProvider::class,
+        Naux\Mail\SendCloudServiceProvider::class,
         /*
          * Application Service Providers...
          */
