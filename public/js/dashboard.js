@@ -80723,13 +80723,13 @@ if (inBrowser && window.Vue) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return storageUtil; });
 var storageUtil = {
     /**
-     * 根据键值获取sessionStorage
+     * 根据键值获取localStorage
      * @param key 键
      * @returns 失败false,成功对象
      */
     get: function get(key) {
         if (typeof Storage !== 'undefined' || typeof key !== 'string') {
-            var value = sessionStorage.getItem(key);
+            var value = localStorage.getItem(key);
             try {
                 value = JSON.parse(value);
             } catch (e) {
@@ -80742,7 +80742,7 @@ var storageUtil = {
     },
 
     /**
-     * 设置sessionStorage
+     * 设置localStorage
      * @param key 键
      * @param value 值   String或者JSON或者ARRAY
      * @returns {boolean}
@@ -80752,7 +80752,7 @@ var storageUtil = {
             if (typeof value !== 'string') {
                 value = JSON.stringify(value);
             }
-            sessionStorage.setItem(key, value);
+            localStorage.setItem(key, value);
             return true;
         } else {
             return false;
@@ -80760,13 +80760,13 @@ var storageUtil = {
     },
 
     /**
-     * 移除sessionStorage
+     * 移除localStorage
      * @param key
      * @returns {boolean}
      */
     remove: function remove(key) {
         if (typeof Storage !== 'undefined' || typeof key !== 'string') {
-            sessionStorage.removeItem(key);
+            localStorage.removeItem(key);
             return true;
         } else {
             return false;
@@ -80779,7 +80779,7 @@ var storageUtil = {
      */
     clearSession: function clearSession() {
         if (typeof Storage !== 'undefined') {
-            sessionStorage.clear();
+            localStorage.clear();
             return true;
         } else {
             return false;
