@@ -60,9 +60,14 @@ Route::group(['namespace' => 'Api'], function () {
 
 # ------------------- Auth ----------------------------
 Route::group(['namespace' => 'Auth'], function () {
+    # ------------------- 用户登录 ----------------------------
    Route::post('login', 'LoginController@login')->name('user.login');
+    # ------------------- 用户注册 ----------------------------
    Route::post('register', 'RegisterController@register')->name('user.register');
+    # ------------------- 确认邮箱 ----------------------------
    Route::put('register/confirmed', 'RegisterController@confirmed')->name('user.register.confirmed');
+    # ------------------- 重新发送确认邮箱 ----------------------------
+   Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->name('user.register.send.register.email');
 });
 
 # ------------------- Dashboard ----------------------------

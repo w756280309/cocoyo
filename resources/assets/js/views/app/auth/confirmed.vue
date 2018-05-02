@@ -14,7 +14,8 @@
             <h3>邮箱验证失败</h3>
             <div class="send_suc_box">
                 <p class="text">您的邮箱 <strong>{{ email }}</strong>验证失败,{{ message }}。</p>
-                <v-btn block color="error">点击重新发送验证链接</v-btn>
+                <v-btn block color="error" v-show="show" @click="getCode">点击重新发送验证链接</v-btn>
+                <v-btn block depressed v-show="!show">{{count}}秒后重新发送</v-btn>
             </div>
         </div>
     </div>
@@ -27,7 +28,10 @@
             return {
                 confirmed : true,
                 email: '',
-                message: '验证链接已过期'
+                message: '验证链接已过期',
+                show: true,
+                count: '',
+                timer: null,
             }
         },
         created() {
@@ -45,6 +49,28 @@
                 vm.confirmed = false
                 vm.message = '验证链接已失效'
             })
+        },
+        methods: {
+            getCode(){
+                this.$http.put('register/send-register-email', {email: this.email}).then((response) => {
+                   this.$Message.success('发送成功');
+                    const TIME_COUNT = 60;
+                    if (!this.timer) {
+                        this.count = TIME_COUNT;
+                        this.show = false;
+                        this.timer = setInterval(() => {
+                            if (this.count > 0 && this.count <= TIME_COUNT) {
+                                this.count--;
+                            } else {
+                                this.show = true;
+                                clearInterval(this.timer);
+                                this.timer = null;
+                            }
+                        }, 1000)
+                    }
+                })
+
+            }
         }
     }
 </script>

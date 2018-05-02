@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a0c3eb5cd9f6d0e49fdf","8":"60f79cacefddada46de9","17":"d79a1847094e60f14625","18":"0f03c4115b0eec3e313b","19":"9d529946f3be21125aea","20":"1353bad95d3cdd2013e3","21":"8c1348deacf07a4dec2d","22":"8ea4c05d7fce489e5f22","23":"719cfdda6127ad0d4cc4","24":"9fe831b7df606ae52197","25":"4bc0d402f7127fc2bff8"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a0c3eb5cd9f6d0e49fdf","8":"60f79cacefddada46de9","17":"d79a1847094e60f14625","18":"0f03c4115b0eec3e313b","19":"9d529946f3be21125aea","20":"1353bad95d3cdd2013e3","21":"8c1348deacf07a4dec2d","22":"8ea4c05d7fce489e5f22","23":"516022b469a1b4f1b3d4","24":"9fe831b7df606ae52197","25":"4bc0d402f7127fc2bff8"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99321,19 +99321,19 @@ router.beforeEach(function (to, from, next) {
                 path: '/login',
                 query: { redirect: to.fullPath //把要跳转的地址作为参数传到下一步
                 } });
-        } else {
-            next();
-        }
-    } else {
-        if (Object(__WEBPACK_IMPORTED_MODULE_4__utils_auth__["a" /* getToken */])() && to.name == 'login') {
-            next({
-                path: '/'
-            });
-        } else {
-            next();
         }
     }
-    // next();
+    if (to.matched.some(function (record) {
+        return record.meta.requiresNotAuth;
+    })) {
+        if (Object(__WEBPACK_IMPORTED_MODULE_4__utils_auth__["a" /* getToken */])()) {
+            next({
+                path: '/',
+                query: { redirect: to.fullPath //把要跳转的地址作为参数传到下一步
+                } });
+        }
+    }
+    next();
 });
 
 router.afterEach(function (to) {
@@ -99367,20 +99367,47 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var otherRouter = {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__views_app_Main_vue___default.a,
-    children: [{ path: '/', title: '主页', name: 'index', component: function component(resolve) {
+    children: [{
+        path: '/',
+        title: '主页',
+        name: 'index',
+        component: function component(resolve) {
             return void __webpack_require__.e/* require */(24).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(149)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-        } }, { path: 'articles/:slug', title: '文章详情', name: 'articles.show', component: function component(resolve) {
+        }
+    }, {
+        path: 'articles/:slug',
+        title: '文章详情',
+        name: 'articles.show', component: function component(resolve) {
             return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(150)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-        } }, {
+        }
+    }, {
         path: '/',
         component: __WEBPACK_IMPORTED_MODULE_3__views_app_auth_common_vue___default.a,
-        children: [{ path: '/login', title: '登陆', name: 'login', component: function component(resolve) {
+        children: [{
+            path: '/login',
+            title: '登陆',
+            name: 'login',
+            component: function component(resolve) {
                 return void __webpack_require__.e/* require */(22).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(151)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-            } }, { path: '/register', title: '注册', name: 'register', component: function component(resolve) {
+            },
+            meta: { requiresNotAuth: true }
+        }, {
+            path: '/register',
+            title: '注册',
+            name: 'register',
+            component: function component(resolve) {
                 return void __webpack_require__.e/* require */(21).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(152)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-            } }, { path: '/register/confirmed', title: '注册验证', name: 'register_confirmed', component: function component(resolve) {
+            },
+            meta: { requiresNotAuth: true }
+        }, {
+            path: '/register/confirmed',
+            title: '注册验证',
+            name: 'register_confirmed',
+            component: function component(resolve) {
                 return void __webpack_require__.e/* require */(23).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(153)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-            } }]
+            },
+            meta: { requiresNotAuth: true }
+        }]
     }, {
         path: '/users',
         component: __WEBPACK_IMPORTED_MODULE_1__components_User_vue___default.a,
@@ -100028,7 +100055,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.footer .contact .qq:hover .qq-qr-code[data-v-0ae3fb5c]{\n    display: block !important;\n}\n.footer .contact .wechat:hover .wechat-qr-code[data-v-0ae3fb5c]{\n    display: block !important;\n}\n.qq[data-v-0ae3fb5c], .wechat[data-v-0ae3fb5c]{\n    position: relative;\n}\n.qq-qr-code[data-v-0ae3fb5c], .wechat-qr-code[data-v-0ae3fb5c] {\n    display: none !important;\n    position: absolute;\n    bottom: 100%;\n    right: 50%;\n    -webkit-transform: translate(50%,-10px);\n    transform: translate(50%,-10px);\n    -webkit-box-shadow: 0 4px 6px rgba(0,0,0,.46);\n    box-shadow: 0 4px 6px rgba(0,0,0,.46);\n}\n.footer .contact div[data-v-0ae3fb5c]{\n    display: inline-block;\n}\n", ""]);
+exports.push([module.i, "\n.footer-bar[data-v-0ae3fb5c]{\n    margin-top: 64px;\n    padding-top: 40px;\n    padding-bottom: 40px;\n    border-bottom: none;\n    background: #1B1C1D;\n    color: rgba(255, 255, 255, 0.9);\n    border: none;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    max-height: 340px;\n    -webkit-box-flex: 1;\n    margin: 0em;\n    padding-left: 0em;\n    padding-right: 0em;\n}\n.ui.grid[data-v-0ae3fb5c] {\n    width:100%;\n    margin-top: -1rem;\n    margin-bottom: -1rem;\n    margin-left: -1rem;\n    margin-right: -1rem;\n}\n.ui.grid[data-v-0ae3fb5c] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -ms-flex-direction: row;\n    flex-direction: row;\n    -ms-flex-wrap: wrap;\n    flex-wrap: wrap;\n    -webkit-box-align: stretch;\n    -ms-flex-align: stretch;\n    align-items: stretch;\n    padding: 0em;\n}\n.ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .column[data-v-0ae3fb5c]:not(.row):first-child, .ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .row > .column[data-v-0ae3fb5c]:first-child {\n    -webkit-box-shadow: none;\n    box-shadow: none;\n}\n.ui.inverted.header[data-v-0ae3fb5c] {\n    color: #FFFFFF;\n}\n.ui.header[data-v-0ae3fb5c]:first-child {\n    margin-top: -0.14285em;\n}\nh4.ui.header[data-v-0ae3fb5c] {\n    font-size: 1.071rem;\n}\n.ui.header[data-v-0ae3fb5c] {\n    border: none;\n    margin: calc(2rem - 0.14285em) 0em 1rem;\n    padding: 0em 0em;\n    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    font-weight: bold;\n    line-height: 1.2857em;\n    text-transform: none;\n    color: rgba(0, 0, 0, 0.87);\n}\nul.ui.link[data-v-0ae3fb5c]:last-child, ol.ui.link[data-v-0ae3fb5c]:last-child, .ui.link[data-v-0ae3fb5c]:last-child {\n    margin-bottom: 0em;\n    padding-bottom: 0em;\n}\n.ui.link[data-v-0ae3fb5c] {\n    font-size: 1em;\n}\nul.ui.link[data-v-0ae3fb5c], ol.ui.link[data-v-0ae3fb5c], .ui.link[data-v-0ae3fb5c] {\n    list-style-type: none;\n    margin: 1em 0em;\n    padding: 0em 0em;\n}\n.ui.inverted.link .item[data-v-0ae3fb5c], .ui.inverted.link a.item[data-v-0ae3fb5c], .ui.inverted.link .item a[data-v-0ae3fb5c]:not(.ui) {\n    color: rgba(255, 255, 255, 0.5);\n    line-height: 22px;\n    padding-top: 0em;\n    -webkit-transition: 0.1s color ease;\n    transition: 0.1s color ease;\n    cursor: pointer;\n}\nul.ui.link li[data-v-0ae3fb5c], ol.ui.link li[data-v-0ae3fb5c], .ui.link > .item[data-v-0ae3fb5c], .ui.link .link > .item[data-v-0ae3fb5c] {\n    display: list-item;\n    table-layout: fixed;\n    list-style-type: none;\n    list-style-position: outside;\n    padding: 0.21428571em 0em;\n    line-height: 1.14285714em;\n}\n.ui.grid > .row > [class*=\"four wide\"].column[data-v-0ae3fb5c], .ui.grid > .column.row > [class*=\"four wide\"].column[data-v-0ae3fb5c], .ui.grid > [class*=\"four wide\"].column[data-v-0ae3fb5c], .ui.column.grid > [class*=\"four wide\"].column[data-v-0ae3fb5c] {\n    width: 30% !important;\n}\n.ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .column[data-v-0ae3fb5c]:not(.row):first-child, .ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .row > .column[data-v-0ae3fb5c]:first-child {\n    -webkit-box-shadow: none;\n    box-shadow: none;\n}\n.ui.grid > .column[data-v-0ae3fb5c]:not(.row) {\n    padding-top: 1rem;\n    padding-bottom: 1rem;\n}\n.ui.grid > .column[data-v-0ae3fb5c]:not(.row), .ui.grid > .row > .column[data-v-0ae3fb5c] {\n    position: relative;\n    display: inline-block;\n    width: 6.25%;\n    padding-left: 1rem;\n    padding-right: 1rem;\n    vertical-align: top;\n}\n.ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .column[data-v-0ae3fb5c]:not(.row), .ui.inverted.divided.grid:not([class*=\"vertically divided\"]) > .row > .column[data-v-0ae3fb5c] {\n    -webkit-box-shadow: -1px 0px 0px 0px rgba(255, 255, 255, 0.1);\n    box-shadow: -1px 0px 0px 0px rgba(255, 255, 255, 0.1);\n}\n.ui.grid > .row > [class*=\"eight wide\"].column[data-v-0ae3fb5c], .ui.grid > .column.row > [class*=\"eight wide\"].column[data-v-0ae3fb5c], .ui.grid > [class*=\"eight wide\"].column[data-v-0ae3fb5c], .ui.column.grid > [class*=\"eight wide\"].column[data-v-0ae3fb5c] {\n    width: 40% !important;\n}\n.web-description[data-v-0ae3fb5c]{\n    font-size: 0.9em;\n    margin-top: 20px;\n    margin-bottom: -8px;\n    color: rgb(137, 137, 140);\n    line-height: 25px;\n}\n", ""]);
 
 // exports
 
@@ -100039,6 +100066,10 @@ exports.push([module.i, "\n.footer .contact .qq:hover .qq-qr-code[data-v-0ae3fb5
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -100089,113 +100120,166 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-footer",
-    { attrs: { height: "auto" } },
+    "div",
+    { staticClass: "footer-bar" },
     [
       _c(
-        "v-card",
+        "v-content",
         {
-          staticClass:
-            "lighten-1 white--text text-xs-center blue-grey darken-4",
-          staticStyle: { width: "100%" },
-          attrs: { flat: "", tile: "" }
+          staticClass: "main-content base_content",
+          staticStyle: { padding: "0px !important" }
         },
         [
-          _c("v-card-text", { staticClass: "contact" }, [
-            _c(
-              "div",
-              { staticClass: "github" },
-              [
+          _c(
+            "v-container",
+            { staticClass: "text-md-center", attrs: { "grid-list-xl": "" } },
+            [
+              _c("v-layout", { attrs: { row: "", wrap: "" } }, [
                 _c(
-                  "v-btn",
-                  {
-                    staticClass: "mx-3 white--text",
-                    attrs: { icon: "" },
-                    on: {
-                      click: function($event) {
-                        _vm.window.location.href =
-                          "https://github.com/ningge123"
-                      }
-                    }
-                  },
+                  "div",
+                  { staticClass: "ui stackable inverted divided grid" },
                   [
-                    _c("v-icon", { attrs: { size: "24px" } }, [
-                      _vm._v("fab fa-github")
+                    _c("div", { staticClass: "four wide column" }, [
+                      _c("h4", { staticClass: "ui inverted header" }, [
+                        _vm._v("友站")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ui inverted link" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://laravel-china.org/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("Laravel China 社区")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://easywechat.org/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("EasyWechat")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://yousails.com/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("优帆远扬")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "four wide column" }, [
+                      _c("h4", { staticClass: "ui inverted header" }, [
+                        _vm._v("友站")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ui inverted link" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://laravel-china.org/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("Laravel China 社区")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://easywechat.org/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("EasyWechat")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "item",
+                            attrs: {
+                              href: "https://yousails.com/",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v("优帆远扬")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "eight wide column" }, [
+                      _c("h4", { staticClass: "ui inverted  header" }, [
+                        _vm._v("PHP / Laravel 社区文档")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                            社区驱动的文档，涵盖话题包括 PHP 和 Laravel 等服务器开发知识\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              staticStyle: {
+                                "background-color": "#F96854 !important"
+                              },
+                              attrs: { color: "success" }
+                            },
+                            [
+                              _c("Icon", { attrs: { type: "ios-lightbulb" } }),
+                              _vm._v("  联系我")
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ])
-                  ],
-                  1
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticStyle: { width: "100%", padding: "25px 0 0 0" } },
+                  [
+                    _c("p", { staticClass: "web-description" }, [
+                      _vm._v("©2006-2018 "),
+                      _c("strong", [
+                        _vm._v(
+                          "cocoyo . All rights reserved. 粤ICP备17015096号"
+                        )
+                      ])
+                    ])
+                  ]
                 )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "qq" },
-              [
-                _c(
-                  "v-btn",
-                  { staticClass: "mx-3 white--text", attrs: { icon: "" } },
-                  [
-                    _c("v-icon", { attrs: { size: "24px" } }, [
-                      _vm._v("fab fa-qq")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "qq-qr-code" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/qq.JPG",
-                      alt: "cocoyo QQ",
-                      width: "160"
-                    }
-                  })
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "wechat" },
-              [
-                _c(
-                  "v-btn",
-                  { staticClass: "mx-3 white--text", attrs: { icon: "" } },
-                  [
-                    _c("v-icon", { attrs: { size: "24px" } }, [
-                      _vm._v("fab fa-weixin")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "wechat-qr-code" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/weixin.JPG",
-                      alt: "cocoyo 微信",
-                      width: "160"
-                    }
-                  })
-                ])
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("v-card-text", { staticClass: "white--text pt-0" }, [
-            _vm._v("\n            一个快乐的极客\n        ")
-          ]),
-          _vm._v(" "),
-          _c("v-card-text", { staticClass: "white--text" }, [
-            _vm._v("\n            ©2018 — "),
-            _c("strong", [
-              _vm._v("cocoyo . All rights reserved. 粤ICP备17015096号")
-            ])
-          ])
+              ])
+            ],
+            1
+          )
         ],
         1
       )

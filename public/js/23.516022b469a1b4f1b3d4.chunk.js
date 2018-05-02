@@ -122,13 +122,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             confirmed: true,
             email: '',
-            message: '验证链接已过期'
+            message: '验证链接已过期',
+            show: true,
+            count: '',
+            timer: null
         };
     },
     created: function created() {
@@ -148,6 +152,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             vm.confirmed = false;
             vm.message = '验证链接已失效';
         });
+    },
+
+    methods: {
+        getCode: function getCode() {
+            var _this2 = this;
+
+            this.$http.put('register/send-register-email', { email: this.email }).then(function (response) {
+                _this2.$Message.success('发送成功');
+                var TIME_COUNT = 60;
+                if (!_this2.timer) {
+                    _this2.count = TIME_COUNT;
+                    _this2.show = false;
+                    _this2.timer = setInterval(function () {
+                        if (_this2.count > 0 && _this2.count <= TIME_COUNT) {
+                            _this2.count--;
+                        } else {
+                            _this2.show = true;
+                            clearInterval(_this2.timer);
+                            _this2.timer = null;
+                        }
+                    }, 1000);
+                }
+            });
+        }
     }
 });
 
@@ -212,9 +240,38 @@ var render = function() {
                 _vm._v("验证失败," + _vm._s(_vm.message) + "。")
               ]),
               _vm._v(" "),
-              _c("v-btn", { attrs: { block: "", color: "error" } }, [
-                _vm._v("点击重新发送验证链接")
-              ])
+              _c(
+                "v-btn",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.show,
+                      expression: "show"
+                    }
+                  ],
+                  attrs: { block: "", color: "error" },
+                  on: { click: _vm.getCode }
+                },
+                [_vm._v("点击重新发送验证链接")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.show,
+                      expression: "!show"
+                    }
+                  ],
+                  attrs: { block: "", depressed: "" }
+                },
+                [_vm._v(_vm._s(_vm.count) + "秒后重新发送")]
+              )
             ],
             1
           )
