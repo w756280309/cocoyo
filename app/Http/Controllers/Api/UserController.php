@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\FollowingResource;
 use App\Http\Resources\PreviewUserResource;
-use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Comment as CommentResource;
+use App\Http\Resources\CommentResource;
 
 
 class UserController extends Controller

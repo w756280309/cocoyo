@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Comment;
-use App\Http\Resources\Comment as CommentResource;
+use App\Http\Resources\CommentResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

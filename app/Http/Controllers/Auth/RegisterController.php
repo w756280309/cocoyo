@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\RegisterConfirmedRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Notifications\UserRegisterVerficationCode;
@@ -19,7 +20,7 @@ class RegisterController extends Controller
      * 用户注册
      *
      * @param RegisterRequest $request
-     * @return \App\Http\Resources\User
+     * @return \App\Http\Resources\UserResource
      */
     public function register(RegisterRequest $request)
     {
@@ -34,14 +35,14 @@ class RegisterController extends Controller
         //发送验证码
         $user->notify(new UserRegisterVerficationCode($user));
 
-        return new \App\Http\Resources\User($user);
+        return new UserResource($user);
     }
 
     /**
      * 确认邮箱
      *
      * @param RegisterConfirmedRequest $request
-     * @return \App\Http\Resources\User|\App\Traits\json|mixed
+     * @return \App\Http\Resources\UserResource|\App\Traits\json|mixed
      */
     public function confirmed(RegisterConfirmedRequest $request)
     {
@@ -66,7 +67,7 @@ class RegisterController extends Controller
         return $this->respond([
             'data' => [
                 'token' => $this->getBearerTokenByUser($user, 1, false),
-                'user' => new \App\Http\Resources\User($user)
+                'user' => new UserResource($user)
             ]
         ]);
     }

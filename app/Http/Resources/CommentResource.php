@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class Comment extends Resource
+class CommentResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,7 @@ class Comment extends Resource
 
         return [
             'id'            => $this->id,
-            'user'          => new User($this->whenLoaded('user')),
+            'user'          => new UserResource($this->whenLoaded('user')),
             'commentable'   => isset($this->commentable) ? $this->commentable->title : '',
             'commentable_link' => isset($this->commentable) ? $this->commentable->slug : '',
             'type'          => $this->commentable_type,

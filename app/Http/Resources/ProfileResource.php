@@ -28,7 +28,7 @@ class ProfileResource extends Resource
             'website' => $this->website,
             'description' => $this->description,
             'created_at' => $this->created_at->toDateTimeString(),
-            'comment' => Comment::collection($this->whenLoaded('comments'))
+            'comment' => CommentResource::collection($this->whenLoaded('comments'))
         ];
     }
 }

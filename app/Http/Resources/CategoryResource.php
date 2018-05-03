@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class Visitor extends Resource
+class CategoryResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,12 @@ class Visitor extends Resource
     {
         return [
             'id'            => $this->id,
-            'article'       => '', //ToDO Post::collection($this->whenLoaded('posts')) 避免N+1查询
-            'ip'            => $this->ip,
-            'country'       => $this->country,
-            'clicks'        => $this->clicks,
-            'created_at'    => $this->created_at->toDateTimeString(),
+            'parent_id'     => $this->parent_id,
+            'name'          => $this->name,
+            'path'          => $this->path,
+            'description'   => $this->description,
+            'image_url'     => $this->image_url,
+            'created_at'    => $this->created_at->toDateTimeString()
         ];
     }
 }
