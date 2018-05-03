@@ -33,9 +33,17 @@ class AuthorizationsController extends Controller
 
         $driver = Socialite::driver($type);
 
-        $response = $driver->getAccessTokenResponse($request->input('code'));
-        http_response_code(500);
-        dd($response);
-        $token = array_get($response, 'access_token');
+        try {
+            if ($code = $request->input('code')) {
+                $response = $driver->getAccessTokenResponse($request->input('code'));
+                $token = array_get($response, 'access_token');
+            } else {
+                $token = $request->input('access_token');
+            }
+            $oauthUser = $driver->userFromToken($token);
+        } catch (\Exception $exception) {
+            return $this->errorUnauthorized('参数错误，未获取用户信息');
+        }
+
     }
 }
