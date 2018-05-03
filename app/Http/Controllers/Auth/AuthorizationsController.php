@@ -18,11 +18,11 @@ class AuthorizationsController extends Controller
      */
     public function redirectToProvider($driver)
     {
-        if (in_array($driver, ['qq', 'weibo'])) {
+        if (!in_array($driver, ['qq', 'weibo'])) {
             abort(404);
         }
 
-        return Socialite::driver('$driver')->redirect();
+        return Socialite::driver($driver)->redirect();
     }
 
     public function socialStore($type, SocialAuthorizationRequest $request)
