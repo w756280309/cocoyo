@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a0c3eb5cd9f6d0e49fdf","8":"60f79cacefddada46de9","17":"d79a1847094e60f14625","18":"0f03c4115b0eec3e313b","19":"9d529946f3be21125aea","20":"1353bad95d3cdd2013e3","21":"8c1348deacf07a4dec2d","22":"8ea4c05d7fce489e5f22","23":"516022b469a1b4f1b3d4","24":"9fe831b7df606ae52197","25":"4bc0d402f7127fc2bff8"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a0c3eb5cd9f6d0e49fdf","8":"60f79cacefddada46de9","17":"d79a1847094e60f14625","18":"0f03c4115b0eec3e313b","19":"9d529946f3be21125aea","20":"1353bad95d3cdd2013e3","21":"b8e1506a7203a6568c99","22":"cffb1ba70c292b509ffe","23":"516022b469a1b4f1b3d4","24":"9fe831b7df606ae52197","25":"4bc0d402f7127fc2bff8"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99739,9 +99739,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.location.href = '/dashboard';
         },
         loginOut: function loginOut() {
-            console.log('asd');
-            // this.$store.commit('logout', this)
-            // this.$router.push('/');
+            var _this = this;
+
+            this.$http.post('logout').then(function (response) {
+                _this.$store.commit('logout', _this);
+                _this.$router.push('/');
+            });
         }
     }
 });
@@ -99885,12 +99888,11 @@ var render = function() {
                             _c("DropdownItem", [
                               _c(
                                 "div",
+                                { on: { click: _vm.loginOut } },
                                 [
                                   _c("Icon", { attrs: { type: "log-out" } }),
                                   _vm._v("  "),
-                                  _c("span", { on: { cilck: _vm.loginOut } }, [
-                                    _vm._v("退出登录")
-                                  ])
+                                  _c("span", [_vm._v("退出登录")])
                                 ],
                                 1
                               )
@@ -99935,7 +99937,7 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { attrs: { to: "/login" } },
+                      { attrs: { to: "/register" } },
                       [
                         _c(
                           "v-btn",
@@ -100185,7 +100187,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "four wide column" }, [
                       _c("h4", { staticClass: "ui inverted header" }, [
-                        _vm._v("友站")
+                        _vm._v("资源")
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "ui inverted link" }, [
@@ -100206,11 +100208,12 @@ var render = function() {
                           {
                             staticClass: "item",
                             attrs: {
-                              href: "https://easywechat.org/",
+                              href:
+                                "https://laravel-china.org/docs/php-design-patterns/2018",
                               target: "_blank"
                             }
                           },
-                          [_vm._v("EasyWechat")]
+                          [_vm._v("PHP 设计模式全集")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -100218,23 +100221,24 @@ var render = function() {
                           {
                             staticClass: "item",
                             attrs: {
-                              href: "https://yousails.com/",
+                              href:
+                                "https://laravel-china.github.io/php-the-right-way/",
                               target: "_blank"
                             }
                           },
-                          [_vm._v("优帆远扬")]
+                          [_vm._v("PHP之道")]
                         )
                       ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "eight wide column" }, [
                       _c("h4", { staticClass: "ui inverted  header" }, [
-                        _vm._v("PHP / Laravel 社区文档")
+                        _vm._v("cocoyo ` Blog")
                       ]),
                       _vm._v(" "),
                       _c("p", [
                         _vm._v(
-                          "\n                            社区驱动的文档，涵盖话题包括 PHP 和 Laravel 等服务器开发知识\n                        "
+                          "\n                            热爱生活、热爱代码,努力成为一个优秀程序员,并且是一个快乐的极客!\n                        "
                         )
                       ]),
                       _vm._v(" "),

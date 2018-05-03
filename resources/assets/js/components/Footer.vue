@@ -13,17 +13,17 @@
                             </div>
                         </div>
                         <div class="four wide column">
-                            <h4 class="ui inverted header">友站</h4>
+                            <h4 class="ui inverted header">资源</h4>
                             <div class="ui inverted link">
                                 <a href="https://laravel-china.org/" class="item" target="_blank">Laravel China 社区</a>
-                                <a href="https://easywechat.org/" class="item" target="_blank">EasyWechat</a>
-                                <a class="item" href="https://yousails.com/" target="_blank">优帆远扬</a>
+                                <a href="https://laravel-china.org/docs/php-design-patterns/2018" class="item" target="_blank">PHP 设计模式全集</a>
+                                <a class="item" href="https://laravel-china.github.io/php-the-right-way/" target="_blank">PHP之道</a>
                             </div>
                         </div>
                         <div class="eight wide column">
-                            <h4 class="ui inverted  header">PHP / Laravel 社区文档</h4>
+                            <h4 class="ui inverted  header">cocoyo ` Blog</h4>
                             <p>
-                                社区驱动的文档，涵盖话题包括 PHP 和 Laravel 等服务器开发知识
+                                热爱生活、热爱代码,努力成为一个优秀程序员,并且是一个快乐的极客!
                             </p>
 
                             <p>

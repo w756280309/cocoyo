@@ -32,7 +32,9 @@
                 <v-btn block @click="submit" color="primary" dark>注册</v-btn>
             </v-form>
             <div class="jump_link">
-                <span class="register">已有账号?</span>
+                <router-link to="/login">
+                    <span class="register">已有账号?</span>
+                </router-link>
                 <span class="forget">找回密码</span>
             </div>
         </div>

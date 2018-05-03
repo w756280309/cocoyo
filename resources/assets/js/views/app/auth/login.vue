@@ -57,6 +57,13 @@
                 ]
             }
         },
+        created() {
+            if (this.$route.query.code) {
+                this.$http.post('socials/qq/authorizations', {code: this.$route.query.code}).then((response) => {
+                    console.log(response)
+                })
+            }
+        },
         methods: {
             submit () {
                 if (this.$refs.form.validate()) {
@@ -74,7 +81,6 @@
                 }
             },
             socialiteQQ() {
-                window.showModelDialog('/auth/qq')
                 window.open('/auth/qq')
                 // this.$http.get('auth/qq').then((response) => {
                 //     console.log(response)

@@ -12,11 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
-
 # ---------------------------- Upload Manager ----------------------------
 Route::post('upload/image', 'UploadController@uploadImage');
 
@@ -61,13 +56,17 @@ Route::group(['namespace' => 'Api'], function () {
 # ------------------- Auth ----------------------------
 Route::group(['namespace' => 'Auth'], function () {
     # ------------------- 用户登录 ----------------------------
-   Route::post('login', 'LoginController@login')->name('user.login');
+    Route::post('login', 'LoginController@login')->name('login');
+    # ------------------- 第三方登录 ----------------------------
+    Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->name('socials.authorizations.store');
     # ------------------- 用户注册 ----------------------------
-   Route::post('register', 'RegisterController@register')->name('user.register');
+   Route::post('register', 'RegisterController@register')->name('register');
+    # ------------------- 退出登录 ----------------------------
+    Route::post('logout', 'LoginController@logout')->name('logout')->middleware('auth:api');
     # ------------------- 确认邮箱 ----------------------------
-   Route::put('register/confirmed', 'RegisterController@confirmed')->name('user.register.confirmed');
+   Route::put('register/confirmed', 'RegisterController@confirmed')->name('register.confirmed');
     # ------------------- 重新发送确认邮箱 ----------------------------
-   Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->name('user.register.send.register.email');
+   Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->name('register.send.register.email');
 });
 
 # ------------------- Dashboard ----------------------------

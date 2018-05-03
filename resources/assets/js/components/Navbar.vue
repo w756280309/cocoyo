@@ -32,11 +32,11 @@
                                     <Icon type="university"></Icon>&nbsp;&nbsp;<span>控制面板</span>
                                 </div>
                             </DropdownItem>
-                            <DropdownItem>
-                                <div>
-                                    <Icon type="log-out"></Icon>&nbsp;&nbsp;<span @cilck="loginOut">退出登录</span>
-                                </div>
-                            </DropdownItem>
+                                <DropdownItem>
+                                    <div @click="loginOut">
+                                        <Icon type="log-out"></Icon>&nbsp;&nbsp;<span>退出登录</span>
+                                    </div>
+                                </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
@@ -49,7 +49,7 @@
                     </router-link>
                 </div>
                 <div class="uk-navbar-content">
-                    <router-link to="/login">
+                    <router-link to="/register">
                         <v-btn depressed class="white--text" color="pink">注册</v-btn>
                     </router-link>
                 </div>
@@ -91,9 +91,10 @@
                 window.location.href = '/dashboard'
             },
             loginOut() {
-                console.log('asd')
-                // this.$store.commit('logout', this)
-                // this.$router.push('/');
+                this.$http.post('logout').then((response) => {
+                    this.$store.commit('logout', this)
+                    this.$router.push('/');
+                })
             },
         }
     }

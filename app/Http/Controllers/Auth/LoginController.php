@@ -57,4 +57,17 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
     }
+
+    /**
+     * 退出登录
+     *
+     * @param Request $request
+     * @return \Response
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        return $this->noContent();
+    }
 }
