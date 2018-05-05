@@ -105,7 +105,7 @@ class AuthorizationsController extends Controller
             'data' => [
                 'code' => 1003, //授权成功
                 'user' => new UserResource($user),
-                'token' => $this->getBearerTokenByUser($user, 1)
+                'token' => $this->getBearerTokenByUser($user, 1, false)
             ]
         ]);
     }
