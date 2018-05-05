@@ -87,6 +87,7 @@
             },
             avatar() {
                 if (this.$store.state.user.token) {
+                    console.log(this.$store.state.user.userinfo.avatar)
                     return this.$store.state.user.userinfo.avatar
                 }
                 return ''

@@ -38,7 +38,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         $data = array_merge($request->all(), [
-            'user_id' => 1
+            'user_id' => $request->user()->id
         ]);
 
         $comment = Comment::create($data);

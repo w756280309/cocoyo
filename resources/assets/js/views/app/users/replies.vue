@@ -31,8 +31,12 @@
                 }
             }
         },
+        watch: {
+            '$route' (to, from) {
+                this.loadData()
+            }
+        },
         created() {
-            this.$emit('active', 'asd');
             this.loadData()
         },
         methods: {

@@ -117,9 +117,6 @@
             name() {
                 return this.$route.params.name
             },
-            is_active() {
-                return 'user_replies'
-            },
             is_login() {
                 return this.$store.state.user.token ? true : false
             },
@@ -135,16 +132,13 @@
 
             }
         },
-        created() {
-            this.$http.get('users/' + this.$route.params.name).then((response) => {
-                this.user = response.data
-            })
-
-            if (this.is_login && ! (this.$store.state.user.userinfo.id == this.user.id)) {
-                this.$http.get('users/' + this.$route.params.name + '/is-follow').then((response) => {
-                    return this.follow = response.data.is_follow
-                })
+        watch: {
+            '$route' (to, from) {
+                this.loadData()
             }
+        },
+        created() {
+           this.loadData()
         },
         methods: {
             following(id) {
@@ -152,10 +146,17 @@
                     return this.follow = ! this.follow
                 })
             },
-            active(data) {
-                this.is_active = data.is_active
+            loadData() {
+                this.$http.get('users/' + this.$route.params.name).then((response) => {
+                    this.user = response.data
+                    if (this.is_login && ! (this.$store.state.user.userinfo.id == this.user.id)) {
+                        this.$http.get('users/' + this.$route.params.name + '/is-follow').then((response) => {
+                            return this.follow = response.data.is_follow
+                        })
+                    }
+                })
             }
-        }
+        },
     }
 </script>
 

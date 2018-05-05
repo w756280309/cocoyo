@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"4387848f5c012d9a919c","8":"bbcaeb9e4786c32b0f6e","17":"7418df75dff4c04fd260","18":"b0163ebf564938854ffc","19":"464bd8b823a67a205b61","20":"5bafe760705ca8d5bfc1","21":"7130adc01ccaef3e05ce","22":"a9bc17820171060abb63","23":"015f6ecb0d97215e07e3","24":"de76ce903bff7d6ea290","25":"01963c1264a2ee7d1064","26":"48ec81cf5ba0f9830c8c","27":"4dc2758ae483d08fca6b"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"9f13d825a66671abfffd","8":"bbcaeb9e4786c32b0f6e","17":"5f75f69b59227442b4c5","18":"4da463b5ea35c8d211b0","19":"464bd8b823a67a205b61","20":"5bafe760705ca8d5bfc1","21":"7130adc01ccaef3e05ce","22":"a9bc17820171060abb63","23":"015f6ecb0d97215e07e3","24":"de76ce903bff7d6ea290","25":"01963c1264a2ee7d1064","26":"48ec81cf5ba0f9830c8c","27":"4dc2758ae483d08fca6b"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99395,6 +99395,7 @@ var otherRouter = {
             path: '/socialite/:driver',
             title: '授权登陆',
             name: 'socialite',
+            meta: { requiresNotAuth: true },
             component: function component(resolve) {
                 return void __webpack_require__.e/* require */(21).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(152)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
@@ -100562,9 +100563,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: function name() {
             return this.$route.params.name;
         },
-        is_active: function is_active() {
-            return 'user_replies';
-        },
         is_login: function is_login() {
             return this.$store.state.user.token ? true : false;
         },
@@ -100579,30 +100577,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         }
     },
-    created: function created() {
-        var _this = this;
-
-        this.$http.get('users/' + this.$route.params.name).then(function (response) {
-            _this.user = response.data;
-        });
-
-        if (this.is_login && !(this.$store.state.user.userinfo.id == this.user.id)) {
-            this.$http.get('users/' + this.$route.params.name + '/is-follow').then(function (response) {
-                return _this.follow = response.data.is_follow;
-            });
+    watch: {
+        '$route': function $route(to, from) {
+            this.loadData();
         }
+    },
+    created: function created() {
+        this.loadData();
     },
 
     methods: {
         following: function following(id) {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.post('users/' + id + '/follow').then(function (response) {
-                return _this2.follow = !_this2.follow;
+                return _this.follow = !_this.follow;
             });
         },
-        active: function active(data) {
-            this.is_active = data.is_active;
+        loadData: function loadData() {
+            var _this2 = this;
+
+            this.$http.get('users/' + this.$route.params.name).then(function (response) {
+                _this2.user = response.data;
+                if (_this2.is_login && !(_this2.$store.state.user.userinfo.id == _this2.user.id)) {
+                    _this2.$http.get('users/' + _this2.$route.params.name + '/is-follow').then(function (response) {
+                        return _this2.follow = response.data.is_follow;
+                    });
+                }
+            });
         }
     }
 });

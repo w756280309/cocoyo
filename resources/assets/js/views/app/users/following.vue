@@ -26,11 +26,20 @@
                 follows: []
             }
         },
+        watch: {
+            '$route' (to, from) {
+                this.loadData()
+            }
+        },
         created() {
-            this.$emit('active', {is_active: this.$route.name});
-            this.$http.get('users/' + this.$route.params.name + '/following').then((response) => {
-                this.follows = response.data;
-            })
+           this.loadData()
+        },
+        methods: {
+            loadData() {
+                this.$http.get('users/' + this.$route.params.name + '/following').then((response) => {
+                    this.follows = response.data;
+                })
+            }
         }
     }
 </script>
