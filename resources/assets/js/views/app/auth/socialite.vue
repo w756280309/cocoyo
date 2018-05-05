@@ -59,7 +59,7 @@
            }
        },
         created() {
-           this.$http.post('socials/'+ this.$route.query.driver +'/authorizations', {code: this.$route.query.code}).then((response) => {
+           this.$http.post('socials/'+ this.$route.params.driver +'/authorizations', {code: this.$route.query.code}).then((response) => {
                this.code = response.data.code
 
                if (this.code == '1001') {
