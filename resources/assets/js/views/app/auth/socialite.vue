@@ -18,7 +18,7 @@
                 <v-text-field label="邮箱" v-model="form.email" :rules="emailRule" required></v-text-field>
                 <v-text-field label="密码" v-model="form.password" :rules="passwordRule" required type="password"></v-text-field>
                 <v-text-field label="确认密码" v-model="form.password_confirmation" :rules="passwordConfirmationRule" required type="password"></v-text-field>
-                <v-btn block @click="submit" color="primary" dark>登录</v-btn>
+                <v-btn block @click="submit" color="primary" dark>注册</v-btn>
             </v-form>
         </div>
     </div>
