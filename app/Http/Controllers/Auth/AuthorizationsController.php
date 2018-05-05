@@ -55,6 +55,7 @@ class AuthorizationsController extends Controller
             }
             $oauthUser = $driver->userFromToken($token);
         } catch (\Exception $exception) {
+
             return $this->errorUnauthorized('参数错误，未获取用户信息');
         }
 
@@ -68,12 +69,12 @@ class AuthorizationsController extends Controller
     /**
      * 处理响应
      *
-     * @param User $user
+     * @param $user
      * @param $oauthUser
      * @param $socialMapping
      * @return mixed
      */
-    protected function handleResponse(User $user, $oauthUser, $socialMapping)
+    protected function handleResponse($user, $oauthUser, $socialMapping)
     {
         if (! $user) {
             return $this->respond([
