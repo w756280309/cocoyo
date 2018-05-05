@@ -1,20 +1,26 @@
 <template>
-    <div >
-        <div class="main" v-if="confirmed">
-            <h3>邮箱验证成功</h3>
-            <div class="send_suc_box">
-                <p class="text">您的邮箱 <strong>{{ email }}</strong> 已经验证成功,开启愉快之旅吧。</p>
-                <v-btn block color="error">邮箱验证成功&nbsp;&nbsp;<Icon type="checkmark-round"></Icon></v-btn>
-                <div class="back">
-                    <router-link to="/">返回主页</router-link>
-                </div>
-            </div>
+    <div>
+        <div class="error404-body-con-title">
+            <span  v-if="confirmed">
+                <Icon type="checkmark-circled"></Icon>
+            </span>
+            <span v-else>
+                <Icon type="close-circled"></Icon>
+            </span>
         </div>
-        <div class="main" v-else>
-            <h3>邮箱验证失败</h3>
-            <div class="send_suc_box">
-                <p class="text">您的邮箱 <strong>{{ email }}</strong>验证失败,{{ message }}。</p>
-                <v-btn block color="error" v-show="show" @click="getCode">点击重新发送验证链接</v-btn>
+        <p class="error404-body-con-message">
+            您的邮箱 <strong>{{ email }}</strong>
+            <span  v-if="confirmed">已经验证成功,开启愉快之旅吧</span>
+            <span v-else>
+                验证失败,{{ message }}。
+            </span>
+        </p>
+        <div class="error404-btn-con">
+            <div v-if="confirmed">
+                <v-btn block color="success" to="/">返回主页</v-btn>
+            </div>
+            <div v-else>
+                <v-btn block color="success" v-show="show" @click="getCode" style="background-color: #F96854 !important">重新发送验证链接</v-btn>
                 <v-btn block depressed v-show="!show">{{count}}秒后重新发送</v-btn>
             </div>
         </div>
@@ -75,18 +81,9 @@
     }
 </script>
 
-<style scoped>
-    .login .main .send_suc_box{
-        width: 310px;
-        margin: 0 auto;
-    }
-    .login .main .send_suc_box .text{
-        color: #797D85;
-        font-size: 14px;
-        line-height: 23px;
-        padding-top: 50px;
-    }
-    .login .main .send_suc_box .back{
+<style lang="less">
+    @import '../../../styles/socialite.less';
+     .back{
         font-size: 14px;
         text-align: center;
         margin-top: 26px;

@@ -66,7 +66,7 @@ Route::group(['namespace' => 'Auth'], function () {
     # ------------------- 确认邮箱 ----------------------------
    Route::put('register/confirmed', 'RegisterController@confirmed')->name('register.confirmed');
     # ------------------- 重新发送确认邮箱 ----------------------------
-   Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->name('register.send.register.email');
+   Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->middleware('throttle:2,1')->name('register.send.register.email');
 });
 
 # ------------------- Dashboard ----------------------------

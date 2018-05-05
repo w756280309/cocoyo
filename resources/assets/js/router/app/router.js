@@ -30,6 +30,18 @@ export const otherRouter = {
                     meta: {requiresNotAuth: true}
                 },
                 {
+                    path: '/socialite',
+                    title: '授权登陆',
+                    name: 'socialite',
+                    component: resolve => void(require(['@/views/app/auth/socialite.vue'], resolve)),
+                },
+                {
+                    path: '/register_success',
+                    title: '注册提示',
+                    name: 'register_tip',
+                    component: resolve => void(require(['@/views/app/auth/register_success.vue'], resolve)),
+                },
+                {
                     path: '/register',
                     title: '注册',
                     name: 'register',

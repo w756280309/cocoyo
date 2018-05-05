@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="main" v-if="registering">
+        <div class="main">
             <h3>注册</h3>
             <v-form v-model="valid" ref="form" lazy-validation>
                 <v-text-field
@@ -38,14 +38,6 @@
                 <span class="forget">找回密码</span>
             </div>
         </div>
-        <div class="main" v-else>
-            <h3>注册邮件已发送</h3>
-            <div class="send_suc_box">
-                <p class="text">邮件已发送至你的邮箱 <strong>{{ form.email }}</strong> 快去查收邮件吧</p>
-                <v-btn block color="error">邮件已发送&nbsp;&nbsp;<Icon type="checkmark-round"></Icon></v-btn>
-                <div class="back" @click="back">返回</div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -54,7 +46,6 @@
         data() {
             return {
                 valid:true,
-                registering: true,
                 form: {
                     name: '',
                     password: '',
@@ -84,12 +75,12 @@
             submit () {
                 if (this.$refs.form.validate()) {
                     this.$http.post('register', this.form).then((response) => {
-                        this.registering = false
+                        this.$router.push({
+                            path: '/register_success',
+                            query: {email: this.form.email}
+                        })
                     })
                 }
-            },
-            back() {
-                this.registering = true
             }
         }
     }

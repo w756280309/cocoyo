@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		32: 0
+/******/ 		33: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a0c3eb5cd9f6d0e49fdf","8":"60f79cacefddada46de9","17":"d79a1847094e60f14625","18":"0f03c4115b0eec3e313b","19":"9d529946f3be21125aea","20":"1353bad95d3cdd2013e3","21":"b8e1506a7203a6568c99","22":"cffb1ba70c292b509ffe","23":"516022b469a1b4f1b3d4","24":"9fe831b7df606ae52197","25":"4bc0d402f7127fc2bff8"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"34":"cd6cc6d7288e64833df9","35":"8530bffbc653f6a663d7","36":"ca63f4f24a4c18b5d9c0","37":"4acb64d70fa0e2abb618","38":"35dbed819235ede8c595","39":"9e9435e8f165e562d4c3","40":"a22cf5edbf3947fdfec6","41":"9c8b49eb6e32d955561f","42":"31c0a0e65cead465c52a","43":"7b1a7abf99a4be057077","44":"ea6156e23fef4bd9835e","45":"876dce5be55007b62b86","46":"4ac61d5e73a4ec7a9e42"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -11713,6 +11713,57 @@ module.exports = g;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getToken;
+/* harmony export (immutable) */ __webpack_exports__["e"] = setToken;
+/* harmony export (immutable) */ __webpack_exports__["c"] = removeToken;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getUser;
+/* harmony export (immutable) */ __webpack_exports__["f"] = setUser;
+/* harmony export (immutable) */ __webpack_exports__["d"] = removeUser;
+/* unused harmony export setSocialiteToken */
+/* unused harmony export getSocialiteToken */
+/* unused harmony export removeSocialiteToken */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__ = __webpack_require__(43);
+
+
+var TokenKey = 'token';
+var UserKey = 'user';
+var SocialiteToken = 'socialite';
+function getToken() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(TokenKey);
+}
+
+function setToken(token) {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(TokenKey, token);
+}
+
+function removeToken() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(TokenKey);
+}
+
+function getUser() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(UserKey);
+}
+function setUser(userinfo) {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(UserKey, userinfo);
+}
+function removeUser() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(UserKey);
+}
+function setSocialiteToken(access_token) {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(SocialiteToken, access_token);
+}
+function getSocialiteToken() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(SocialiteToken);
+}
+function removeSocialiteToken() {
+    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(SocialiteToken);
+}
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11810,57 +11861,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = getToken;
-/* harmony export (immutable) */ __webpack_exports__["e"] = setToken;
-/* harmony export (immutable) */ __webpack_exports__["c"] = removeToken;
-/* harmony export (immutable) */ __webpack_exports__["b"] = getUser;
-/* harmony export (immutable) */ __webpack_exports__["f"] = setUser;
-/* harmony export (immutable) */ __webpack_exports__["d"] = removeUser;
-/* unused harmony export setSocialiteToken */
-/* unused harmony export getSocialiteToken */
-/* unused harmony export removeSocialiteToken */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__ = __webpack_require__(43);
-
-
-var TokenKey = 'token';
-var UserKey = 'user';
-var SocialiteToken = 'socialite';
-function getToken() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(TokenKey);
-}
-
-function setToken(token) {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(TokenKey, token);
-}
-
-function removeToken() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(TokenKey);
-}
-
-function getUser() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(UserKey);
-}
-function setUser(userinfo) {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(UserKey, userinfo);
-}
-function removeUser() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(UserKey);
-}
-function setSocialiteToken(access_token) {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].set(SocialiteToken, access_token);
-}
-function getSocialiteToken() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].get(SocialiteToken);
-}
-function removeSocialiteToken() {
-    return __WEBPACK_IMPORTED_MODULE_0__tools_storageUtil__["a" /* storageUtil */].remove(SocialiteToken);
-}
 
 /***/ }),
 /* 8 */
@@ -76708,7 +76708,7 @@ if (typeof jQuery === 'undefined') {
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(11);
 var Axios = __webpack_require__(24);
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(7);
 
 /**
  * Create an instance of Axios
@@ -76791,7 +76791,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(7);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(33);
 var dispatchRequest = __webpack_require__(34);
@@ -77332,7 +77332,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(35);
 var isCancel = __webpack_require__(15);
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(7);
 var isAbsoluteURL = __webpack_require__(36);
 var combineURLs = __webpack_require__(37);
 
@@ -81521,7 +81521,7 @@ var index_esm = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_auth__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_auth__ = __webpack_require__(6);
 
 
 var user = {
@@ -99292,7 +99292,7 @@ function install(Vue) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_iview__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_iview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_iview__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_auth__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_auth__ = __webpack_require__(6);
 
 
 
@@ -99372,13 +99372,13 @@ var otherRouter = {
         title: '主页',
         name: 'index',
         component: function component(resolve) {
-            return void __webpack_require__.e/* require */(24).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(149)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(45).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(149)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
         path: 'articles/:slug',
         title: '文章详情',
         name: 'articles.show', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(150)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(34).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(150)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
         path: '/',
@@ -99388,15 +99388,29 @@ var otherRouter = {
             title: '登陆',
             name: 'login',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(22).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(151)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(43).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(151)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             },
             meta: { requiresNotAuth: true }
+        }, {
+            path: '/socialite',
+            title: '授权登陆',
+            name: 'socialite',
+            component: function component(resolve) {
+                return void __webpack_require__.e/* require */(41).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(152)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            }
+        }, {
+            path: '/register_success',
+            title: '注册提示',
+            name: 'register_tip',
+            component: function component(resolve) {
+                return void __webpack_require__.e/* require */(36).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(536)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            }
         }, {
             path: '/register',
             title: '注册',
             name: 'register',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(21).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(152)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(42).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(153)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             },
             meta: { requiresNotAuth: true }
         }, {
@@ -99404,7 +99418,7 @@ var otherRouter = {
             title: '注册验证',
             name: 'register_confirmed',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(23).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(153)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(44).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(154)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             },
             meta: { requiresNotAuth: true }
         }]
@@ -99416,14 +99430,14 @@ var otherRouter = {
             title: '用户信息',
             name: 'user_replies',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(17).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(154)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(37).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(155)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }, {
             path: ':name/following',
             title: '用户关注',
             name: 'user_following',
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(18).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(155)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(38).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(156)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }]
     }, {
@@ -99435,7 +99449,7 @@ var otherRouter = {
             name: 'user_edit',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(25).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(156)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(46).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(157)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }, {
             path: ':name/edit_avatar',
@@ -99443,7 +99457,7 @@ var otherRouter = {
             name: 'user_avatar_edit',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(157)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(35).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(158)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }, {
             path: ':name/edit_email_notify',
@@ -99451,7 +99465,7 @@ var otherRouter = {
             name: 'edit_email_notify',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(20).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(158)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(40).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(159)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }, {
             path: ':name/edit_password',
@@ -99459,7 +99473,7 @@ var otherRouter = {
             name: 'edit_password',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(19).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(159)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(39).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(160)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }]
     }]
@@ -101495,7 +101509,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_app__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_auth__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_auth__ = __webpack_require__(6);
 var _this = this;
 
 
