@@ -88,6 +88,10 @@ class RegisterController extends Controller
 
         $user = User::where('email', $request->input('email'))->first();
 
+        if ($user->status) {
+            return $this->failed('您已经确认过邮箱');
+        }
+
         //发送验证码
         $user->notify(new UserRegisterVerficationCode($user));
 

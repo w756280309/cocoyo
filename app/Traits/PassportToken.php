@@ -98,7 +98,7 @@ trait PassportToken
         $response->setAccessToken($accessToken);
         $response->setRefreshToken($refreshToken);
 
-        $privateKey = new CryptKey('file://'.Passport::keyPath('oauth-private.key'), null, false);
+        $privateKey = new CryptKey('file://'.Passport::keyPath('oauth-private.key'));
 
         $response->setPrivateKey($privateKey);
         $response->setEncryptionKey(app('encrypter')->getKey());

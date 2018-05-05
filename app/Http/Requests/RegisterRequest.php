@@ -32,4 +32,24 @@ class RegisterRequest extends FormRequest
             'weibo_id' => 'nullable|string|min:1|max:255',
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function messages() : array
+    {
+        return [
+            'name.required' => '名称不能为空',
+            'name.min' => '名称最小3个字符',
+            'name.max' => '名称最大10个字符',
+            'name.unique' => '名称已存在',
+            'email.required' => '邮箱不能为空',
+            'email.email' => '无效的邮箱',
+            'name.unique' => '邮箱已存在',
+            'password.required' => '密码不能为空',
+            'password.min' => '密码最小为6个字符',
+            'password.max' => '密码最大为10个字符',
+            'password.confirmed' => '两次密码不一致',
+        ];
+    }
 }
