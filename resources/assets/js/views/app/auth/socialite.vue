@@ -11,7 +11,7 @@
             <v-form v-model="valid" ref="form" lazy-validation>
                 <div class="avatar-base__19M6">
                     <a>
-                        <img alt="Avatar" class="avatar__2sMj" src="form.avatar">
+                        <img alt="Avatar" class="avatar__2sMj" :src="form.avatar">
                     </a>
                 </div>
                 <v-text-field label="用户名" v-model="form.name" :rules="nameRules" required></v-text-field>

@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'avatar' => '/images/default_avatar.png'
+            'avatar' => $request->input('avatar') ?: '/images/default_avatar.png'
         ]);
 
         //发送验证码
