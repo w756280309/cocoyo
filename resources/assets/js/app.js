@@ -15,7 +15,14 @@ import {router} from './router/app/index'
 import store from './store/app'
 import Home from './Home.vue'
 import HttpPlugin from './libs/app_http'
+import hljs from 'highlight.js'
 
+Vue.directive('highlight',function (el) {
+    let blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block)=>{
+        hljs.highlightBlock(block)
+    })
+})
 
 Vue.use(Vuetify)
 Vue.use(iview)

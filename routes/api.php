@@ -67,6 +67,10 @@ Route::group(['namespace' => 'Auth'], function () {
    Route::put('register/confirmed', 'RegisterController@confirmed')->name('register.confirmed');
     # ------------------- 重新发送确认邮箱 ----------------------------
    Route::put('register/send-register-email', 'RegisterController@sendRegisterEmail')->middleware('throttle:2,1')->name('register.send.register.email');
+    # ------------------- 发送重置密码链接 ----------------------------
+    Route::post('send-forget-password-mail', 'ForgotPasswordController@sendForgetPasswordMail')->name('send.forget.password.mail');
+    # ------------------- 重置密码 ----------------------------
+    Route::post('forget-password', 'ForgotPasswordController@forgetPassword')->name('forget.password');
 });
 
 # ------------------- Dashboard ----------------------------

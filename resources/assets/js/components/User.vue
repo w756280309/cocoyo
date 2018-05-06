@@ -40,16 +40,16 @@
                             <v-layout row wrap>
                                 <v-flex md4>
                                     <div class="experience">
-                                        <h4 class="experience-count">
-                                            {{ user.followings_count }}
-                                            <span>关注</span></h4>
+                                        <count-up :id-name="followings_name" :end-val="user.followings_count">
+                                            <span slot="intro">关注</span>
+                                        </count-up>
                                     </div>
                                 </v-flex>
                                 <v-flex md4>
                                     <div class="experience">
-                                        <h4 class="experience-count">
-                                            {{ user.comments_count }}
-                                            <span>评论数</span></h4>
+                                        <count-up :id-name="comments_name" :end-val="user.comments_count">
+                                            <span slot="intro">评论数</span>
+                                        </count-up>
                                     </div>
                                 </v-flex>
                             </v-layout>
@@ -106,11 +106,21 @@
 </template>
 
 <script>
+    import countUp from '@/components/countUp.vue';
+
     export default {
+        components: {
+            countUp
+        },
         data() {
             return {
-                user:{},
+                user:{
+                    followings_count: 0,
+                    comments_count: 0,
+                },
                 follow: false,
+                comments_name: 'comments_name',
+                followings_name: 'followings_name',
             }
         },
         computed: {

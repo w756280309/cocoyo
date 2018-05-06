@@ -23,7 +23,9 @@
                     <span class="register">注册</span>
                 </router-link>
 
-                <span class="forget">找回密码</span>
+                <router-link to="/forgetpassword">
+                    <span class="forget">找回密码</span>
+                </router-link>
             </div>
             <div class="wx_login">
                 <div class="wx_btn">第三方登陆</div>

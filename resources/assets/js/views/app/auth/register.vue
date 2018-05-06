@@ -35,7 +35,9 @@
                 <router-link to="/login">
                     <span class="register">已有账号?</span>
                 </router-link>
-                <span class="forget">找回密码</span>
+                <router-link to="/forgetpassword">
+                    <span class="forget">找回密码</span>
+                </router-link>
             </div>
         </div>
     </div>

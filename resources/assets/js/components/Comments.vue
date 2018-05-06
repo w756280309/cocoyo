@@ -27,7 +27,7 @@
                             </a>
                         </span>
                         </div>
-                        <div class="comment-body markdown" v-html="comment.content_html"></div>
+                        <div class="comment-body markdown" style="max-width: 584px" v-html="comment.content_html" v-highlight></div>
                     </div>
                 </div>
                 <v-form v-if="canComment" style="margin-top:20px">
@@ -63,15 +63,6 @@
 </template>
 
 <script>
-    import hljs from 'highlight.js'
-
-    const highlightCode = () => {
-        const preEl = document.querySelectorAll('pre');
-        preEl.forEach((el) => {
-            hljs.highlightBlock(el)
-        })
-    }
-
     export default {
         props: {
             commentableId: {
@@ -122,8 +113,6 @@
             }).then((response) => {
                 this.comments = response.data
             })
-
-            highlightCode()
         },
         methods: {
             submit() {
@@ -153,15 +142,12 @@
                         this.comments.splice(index, 1)
                     })
             }
-        },
-        updated() {
-            highlightCode()
-        },
+        }
     }
 </script>
 
 <style scoped>
-
+    @import "~highlight.js/styles/atom-one-dark.css";
     .comment{
         margin-top:20px;
     }

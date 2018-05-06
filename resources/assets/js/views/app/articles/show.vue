@@ -23,7 +23,7 @@
                     </div>
                     <v-card>
                         <v-card-text class="markdown elevation-8" style="padding: 15px 20px 1px 30px;">
-                            <div v-html="article.content_html">
+                            <div v-html="article.content_html" v-highlight>
                                 {{ article.content_html }}
                             </div>
                             <license :name="article.user.nickname ? article.user.nickname : article.user.name"
@@ -46,16 +46,8 @@
 </template>
 
 <script>
-    import hljs from 'highlight.js'
     import license from '@/components/license'
     import Comments from '@/components/Comments'
-
-    const highlightCode = () => {
-        const preEl = document.querySelectorAll('pre');
-        preEl.forEach((el) => {
-            hljs.highlightBlock(el)
-        })
-    }
 
     export default {
         components: {
@@ -71,12 +63,6 @@
                 commentable_id: 0,
                 loading_comments: false
             }
-        },
-        mounted() {
-            highlightCode()
-        },
-        updated() {
-            highlightCode()
         },
         computed: {
             username() {

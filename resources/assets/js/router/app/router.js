@@ -56,6 +56,20 @@ export const otherRouter = {
                     component: resolve => void(require(['@/views/app/auth/confirmed.vue'], resolve)),
                     meta: {requiresNotAuth: true}
                 },
+                {
+                    path: '/forgetpassword',
+                    title: '忘记密码',
+                    name: 'forgetpassword',
+                    component: resolve => void(require(['@/views/app/auth/forgetpassword.vue'], resolve)),
+                    meta: {requiresNotAuth: true}
+                },
+                {
+                    path: '/forgetverify',
+                    title: '重置密码',
+                    name: 'forgetverify',
+                    component: resolve => void(require(['@/views/app/auth/forgetverify.vue'], resolve)),
+                    meta: {requiresNotAuth: true}
+                },
             ]
         },
         {
