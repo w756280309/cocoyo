@@ -43,8 +43,6 @@ Route::group(['namespace' => 'Api'], function () {
         Route::put('users/{username}/edit_password', 'UserController@edit_password');
         # ------------------- 关注用户 ----------------------------
         Route::post('users/{user}/follow', 'UserController@doFollow')->name('users.doFollow');
-        # ------------------- 当前用户是否关注查看用户 ----------------------------
-        Route::get('users/{username}/is-follow', 'UserController@isFollowing')->name('users.is.follow');
         # ------------------- 评论 ----------------------------
         Route::post('comments', 'CommentController@store')->name('comments.store');
         # ------------------- 删除评论 ----------------------------

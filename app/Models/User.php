@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\LastActivedAtHelper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,7 @@ use Overtrue\LaravelFollow\Traits\CanFollow;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable, CanFollow, CanBeFollowed;
+    use HasApiTokens,Notifiable, CanFollow, CanBeFollowed, LastActivedAtHelper;
 
     /**
      * The attributes that are mass assignable.

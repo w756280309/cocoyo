@@ -13,6 +13,9 @@
                                     <img :src="user.avatar" alt="Avatar" class="avatar__2sMj">
                                 </a>
                             </div>
+                            <div style="color: #aaa;margin: 5px 0 0 0;text-align:center;">
+                                最后活跃于{{ user.last_actived_at }}
+                            </div>
                         </v-flex>
                         <v-flex md3>
                             <div class="user-info__2aLr">
@@ -27,7 +30,7 @@
                                           <v-btn color="warning" style="margin-left: -2px;" small v-if="user_edit" :to="'/users/' + name + '/edit'">编辑资料</v-btn>
                                     </span>
                                   <span>
-                                       <v-btn :color="follow ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ follow ? '关注中' : '关注' }}</v-btn>
+                                       <v-btn :color="user.is_following ? 'teal' : 'error'" style="margin-left: -2px;" small v-if="is_me" @click="following(user.id)">{{ user.is_following ? '关注中' : '关注' }}</v-btn>
                                   </span>
 
                                 </div>
@@ -117,8 +120,8 @@
                 user:{
                     followings_count: 0,
                     comments_count: 0,
+                    is_following: false
                 },
-                follow: false,
                 comments_name: 'comments_name',
                 followings_name: 'followings_name',
             }
@@ -153,17 +156,12 @@
         methods: {
             following(id) {
                 this.$http.post('users/' + id + '/follow').then((response) => {
-                    return this.follow = ! this.follow
+                    return this.user.is_following = ! this.user.is_following
                 })
             },
             loadData() {
                 this.$http.get('users/' + this.$route.params.name).then((response) => {
                     this.user = response.data
-                    if (this.is_login && ! (this.$store.state.user.userinfo.id == this.user.id)) {
-                        this.$http.get('users/' + this.$route.params.name + '/is-follow').then((response) => {
-                            return this.follow = response.data.is_follow
-                        })
-                    }
                 })
             }
         },

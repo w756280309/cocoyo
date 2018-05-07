@@ -29,6 +29,14 @@ class UserController extends Controller
         $user->followings_count = $user->followings()->count();
         $user->comments_count = $user->comments()->count();
 
+        $currentAuthUser = \Auth::guard('api');
+
+        if ($currentAuthUser->check()) {
+            if ($currentAuthUser->user()->id != $user->id) {
+                $user->is_following = $currentAuthUser->user()->isFollowing($user->id);
+            }
+        }
+
         return new PreviewUserResource($user);
     }
 
@@ -63,22 +71,6 @@ class UserController extends Controller
         $user->save();
 
         return new UserResource($user);
-    }
-
-    /**
-     * 判断当前登录用户使用关注查看的用户
-     *
-     * @param Request $request
-     * @param $username
-     * @return mixed
-     */
-    public function isFollowing(Request $request, $username)
-    {
-        $user = $this->getUserByName($username);
-
-        return $this->respond(['data' => [
-            'is_follow' => $request->user()->isFollowing($user->id)
-        ]]);
     }
 
     /**
@@ -203,6 +195,7 @@ class UserController extends Controller
      * 获取用户
      *
      * @param $username
+     * @return mixed
      */
     protected function getUserByName($username)
     {

@@ -6,7 +6,7 @@
                     <router-link :to="'/articles/' + comment.commentable_link">{{ comment.commentable }}</router-link>
                     <span class="meta" style="color: #a9a7a7;font-size: 12px;">at <span class="timeago">{{ comment.create_diff }}</span></span>
                 </div>
-                <div class="markdown" v-html="comment.content_html"></div>
+                <div class="markdown" v-html="comment.content_html" v-highlight></div>
             </div>
             <div class="comment-page">
                 <Page size="small" show-total :total="meta.total" :current="meta.current_page" :page-size="meta.per_page"
@@ -69,6 +69,7 @@
 </script>
 
 <style lang="less">
+    @import "~highlight.js/styles/atom-one-dark.css";
     .comment-page{
         padding:20px;
         text-align:right;

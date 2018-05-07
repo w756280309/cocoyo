@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // 每日零时执行一次 同步redis最后用户访问时间到数据库
+        $schedule->command('cocoyo:sync-user-actived-at')->dailyAt('00:00');
     }
 
     /**

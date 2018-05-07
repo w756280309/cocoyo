@@ -27,7 +27,8 @@ class PreviewUserResource extends Resource
             'description' => $this->description,
             'followings_count' => $this->followings_count,
             'comments_count' => $this->comments_count,
-            'is_following' => $this->is_following,
+            'is_following' => $this->is_following ?: false,
+            'last_actived_at' => $this->last_actived_at->diffForHumans(),
             'created_at' => $this->created_at->toDateTimeString(),
         ];
     }
