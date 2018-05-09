@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		38: 0
+/******/ 		39: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a3dbd7dd6df2540b6a88","4":"4e249ac2ee9283374b6a","9":"28b9927efc8525a9ee66","10":"0515a53399318f762aba","19":"60bddcfdf92974aa6078","20":"7b643181a86c7271835e","21":"11f0c84511300817773f","22":"6f736235496889493c64","23":"2232ccfc39fac0e878a4","24":"46c054921c8a3d8b0bef","25":"380b77c17bafb59086aa","26":"1adb58e47e56326fe0cd","27":"4f0976986baaaa84b136","28":"4380e679fa3489034efc","29":"7ae30e72f632fe39d11c","30":"aa8a4596bb70b11082fb","31":"5c533437e75dbb252223","32":"ac7b0eb29c8aad7e38d5"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"42d66d6596c8a9b7541a","4":"a1a6f07a8f534882f523","9":"9f3623b090b2ab406453","10":"1a00bda2b10bbcbb3879","19":"1c8b81a6c16b9b730072","20":"9f54cd5f6c3f4536b4e9","21":"4a0e92912a1708cae4cd","22":"ea8f56c88dd53ce84f37","23":"049c2be67de032df3953","24":"a03b70b2fbea44634c15","25":"ad7acbac52109577c5ad","26":"752349055910f8ae3c97","27":"fc3c69d11080cdca6d91","28":"34c587f76bb6beb82647","29":"838f090a22ece215032b","30":"88068696fba191ef0b65","31":"86484cea2a08d1f2275e","32":"504ea697f854099ec0bb","33":"f9556a66ead790749e6f"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99535,7 +99535,7 @@ var otherRouter = {
             name: 'user_edit',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(32).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(347)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(33).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(347)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }, {
             path: ':name/edit_avatar',
@@ -99562,6 +99562,12 @@ var otherRouter = {
                 return void __webpack_require__.e/* require */(20).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(350)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }]
+    }, {
+        path: '/contact',
+        title: '联系我',
+        name: 'articles.show', component: function component(resolve) {
+            return void __webpack_require__.e/* require */(32).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(351)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        }
     }]
 };
 
@@ -100351,7 +100357,7 @@ var render = function() {
                               staticStyle: {
                                 "background-color": "#F96854 !important"
                               },
-                              attrs: { color: "success" }
+                              attrs: { color: "success", to: "/contact" }
                             },
                             [
                               _c("Icon", { attrs: { type: "ios-lightbulb" } }),

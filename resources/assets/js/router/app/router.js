@@ -159,7 +159,12 @@ export const otherRouter = {
                     component: resolve => void(require(['@/views/app/users/edit_password.vue'], resolve)),
                 }
             ]
-        }
+        },
+        {
+            path: '/contact',
+            title: '联系我',
+            name: 'articles.show', component: resolve => void(require(['@/views/app/about/contact.vue'], resolve))
+        },
     ]
 };
 

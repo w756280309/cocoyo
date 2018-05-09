@@ -27,7 +27,7 @@
                             </p>
 
                             <p>
-                                <v-btn color="success" style="background-color: #F96854 !important"><Icon type="ios-lightbulb"></Icon>&nbsp;&nbsp;联系我</v-btn>
+                                <v-btn color="success" style="background-color: #F96854 !important" to="/contact"><Icon type="ios-lightbulb"></Icon>&nbsp;&nbsp;联系我</v-btn>
                             </p>
                         </div>
                     </div>
