@@ -28,6 +28,10 @@ Vue.use(Vuetify)
 Vue.use(iview)
 Vue.use(HttpPlugin);
 
+Vue.component('comment_post', require('./components/comments/Comment_Post.vue'));
+Vue.component('comment_root', require('./components/comments/Comment_root.vue'));
+Vue.component('comment_child', require('./components/comments/Comment_child.vue'));
+
 const app = new Vue({
     el: '#app',
     store: store,

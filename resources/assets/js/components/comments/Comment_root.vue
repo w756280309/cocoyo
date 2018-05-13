@@ -1,17 +1,21 @@
 <template>
     <div style="margin-top: 20px;">
-        <div v-for="comment in collections">
-            <comment_child :post_id="post_id" :user_id="user_id" :comments="comments" :comment="comment" :collections="collections"></comment_child>
+        <div v-for="(comment, key) in collections">
+            <comment_child
+                    :commentable_id="commentable_id"
+                    :comment_key="key"
+                    :user_id="user_id"
+                    :commentable_type="commentable_type"
+                    :canComment="canComment"
+                    :comments="comments"
+                    :comment="comment">
+            </comment_child>
         </div>
     </div>
 
 </template>
 <script>
-    import Comment_child from './Comment_child'
     export default{
-        components: {
-            Comment_child
-        },
-        props:['collections','comments','user_id','post_id'],
+        props:['collections','comments','user_id','commentable_id', 'commentable_type', 'canComment']
     }
 </script>

@@ -35,6 +35,8 @@ class ArticleController extends Controller
 
         $article->load(['user', 'tags']);
 
+        $article->recordVisit();
+
         return new ArticleResource($article);
     }
 }

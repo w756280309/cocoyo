@@ -1,26 +1,38 @@
 <template>
     <div class="ui threaded comments trigger">
         <v-flex md12 class="comment">
-            <a class="avatar avatar-large"><img width="60px" src="/images/default_avatar.png" class="b-lazy b-loaded"></a>
-            <div :class="{ padding : show_level }" class="comment_content">
+            <router-link :to="'/users/' + comment.reply_user.name" class="avatar avatar-large" v-if="comment['reply_user']">
+                <img width="60px" :src="comment['reply_user'].avatar" class="b-lazy b-loaded">
+            </router-link>
+            <router-link :to="'/users/' + comment.user.name" class="avatar avatar-large"  v-else>
+                <img width="60px" :src="comment['user'].avatar" class="b-lazy b-loaded">
+            </router-link>
+            <div class="comment_content">
 
-                <a href="/user/Tomoe" class="author">{{comment['owner'].name}}</a>
+                 <span v-if="comment['reply_user']">
+                     <router-link :to="'/users/' + comment['reply_user'].name" class="author">{{ comment['reply_user'].name }}</router-link> 回复
+                </span>
+
+                <router-link :to="'/users/' + comment['user'].name" class="author">{{ comment['user'].name }}</router-link>
 
                 <div class="metadata">
                     <span class="date" style="font-weight: 700;">
-                    1年前
+                    {{ comment.created_at.created_diff }}
                     </span>
                 </div>
                 <div class="text Post-body">
                     <div style="margin-top: 2px;">
                         <div>
-                            <p>{{comment.body}} 😃</p>
+                            <div class="markdown" v-html="comment.content.html" v-highlight></div>
                         </div>
                     </div>
                 </div>
                 <div class="actions">
                     <a class="reply" v-if="get_is_show_reply()" @click="show_relpy">
                         回复
+                    </a>
+                    <a class="reply" v-if="get_is_show_delete()" @click="show_delete(comment_key)">
+                        删除
                     </a>
                 </div>
 
@@ -30,50 +42,32 @@
                             <Input v-model="comment_content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..."></Input>
                         </FormItem>
                         <FormItem>
-                            <Button type="primary">立即回复</Button>
+                            <Button type="primary" @click="post_comment">立即回复</Button>
                             <Button type="ghost" @click="show_relpy()" style="margin-left: 8px">取消回复</Button>
                         </FormItem>
                     </Form>
-                    <!--<form >-->
-                        <!--<div class="form-group">-->
-                            <!--<textarea v-model="" id="body" name="body" class="form-control" required="required"></textarea>-->
-                        <!--</div>-->
-                        <!--<button type="submit" class="btn btn-success">立即回复</button>-->
-                        <!--<button  type="submit" class="btn btn-default">取消回复</button>-->
-                    <!--</form>-->
                 </div>
-                <div v-if="is_follow()">
-                    <comment_root :post_id="post_id" :user_id="user_id" :collections="get_child_list()"
-                                  :comments="real_comments"></comment_root>
+                <div v-if="is_follow() && show_level < 2">
+                    <comment_root :commentable_id="commentable_id" :canComment="canComment" :user_id="user_id" :commentable_type="commentable_type" :collections="get_child_list()" :comments="real_comments"></comment_root>
                 </div>
-
-                <!--<v-btn to="/login" block style="background-color:#F96854 !important;color: #fff !important;" v-if="!canComment" dark>登陆发表评论</v-btn>-->
+            </div>
+            <div v-if="is_follow() && show_level >= 2">
+                <comment_root :canComment="canComment" :commentable_id="commentable_id" :user_id="user_id" :commentable_type="commentable_type" :collections="get_child_list()" :comments="real_comments"></comment_root>
             </div>
         </v-flex>
     </div>
 </template>
 
 <script>
-    import Comment_root from './Comment_root'
+
     export default {
-        components: {
-            Comment_root
-        },
-        props:['comment','comments','user_id','post_id'],
+        props:['comment','comments','user_id','commentable_id', 'commentable_type', 'canComment', 'comment_key'],
         data() {
             return {
-                canComment:false,
-                show_level:true,
+                show_level: this.comment.level,
                 is_show:false,
                 comment_content:'',
                 real_comments:this.comments,
-            }
-        },
-        mounted(){
-            if(this.comment.level >2){
-                this.show_level=false;
-            }else{
-                this.show_level=true;
             }
         },
         methods: {
@@ -90,19 +84,62 @@
                 return this.comments[this.comment.id];
             },
             get_is_show_reply(){
-                return this.user_id!=this.comment['owner'].id;
+                if (this.canComment) {
+                    if (this.comment['reply_user']) {
+                        return this.user_id != this.comment['reply_user'].id
+                    }
+
+                    return this.user_id != this.comment['user'].id;
+                }
+                return false
+            },
+            get_is_show_delete() {
+                if (this.canComment) {
+                    if (this.comment['reply_user']) {
+                        return this.user_id == this.comment['reply_user'].id
+                    }
+
+                    return this.user_id == this.comment['user'].id;
+                }
+                return false
+            },
+            show_delete(comment_key) {
+                this.$Modal.confirm({
+                    title: '删除该评论?',
+                    content: '该评论下的所有子评论会被删除!',
+                    okText: '确定',
+                    cancelText: '取消',
+                    onOk: () => {
+                        this.$http.delete('comments/' + this.comment.id).then((response) => {
+                            if(typeof(this.real_comments['' + this.comment.parent_id]) != 'undefined'){
+                                this.real_comments[this.comment.parent_id].splice(comment_key, 1);
+                            } else {
+                                this.real_comments['root'].splice(comment_key, 1);
+                            }
+                        });
+                    },
+                });
+
             },
             post_comment(){
-                axios.post('/post/'+this.post_id+'/comments',{'parent_id':this.comment.id,'body':this.comment_content}).then((response)=>{
-                    if(response.data.success){
-                        this.comment_content='';
-                        this.is_show=!this.is_show;
-                        if(typeof(this.real_comments[''+response.data.reply_block.parent_id])!='undefined'){
-                            this.real_comments[response.data.reply_block.parent_id].push(response.data.reply_block);
-                        }else{
-                            this.real_comments[this.comment.id]=new Array();
-                            this.real_comments[this.comment.id].push(response.data.reply_block);
-                        }
+                if (! this.comment_content) {
+                    this.$Message.error('请输入评论内容!');
+                    return false;
+                }
+                let data = {
+                    parent_id : this.comment.id,
+                    content : this.comment_content,
+                    commentable_id: this.commentable_id,
+                    commentable_type: this.commentable_type,
+                }
+                this.$http.post('comments', data).then((response) => {
+                    this.comment_content = '';
+                    this.is_show = !this.is_show;
+                    if(typeof(this.real_comments[''+response.data.parent_id])!='undefined'){
+                        this.real_comments[response.data.parent_id].push(response.data);
+                    }else{
+                        this.real_comments[this.comment.id]=new Array();
+                        this.real_comments[this.comment.id].push(response.data);
                     }
                 });
             }
@@ -122,7 +159,7 @@
     }
     .ui.comments {
         margin: 1.5em 0;
-        padding-bottom: 30px;
+        padding-bottom: 15px;
     }
     .comments {
         clear: both;

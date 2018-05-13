@@ -6,7 +6,10 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\FollowingResource;
 use App\Http\Resources\PreviewUserResource;
 use App\Http\Resources\UserResource;
+use App\Models\Comment;
 use App\Models\User;
+use App\Notifications\FollowedUserNotification;
+use App\Notifications\Messages\UserNotificationMessage;
 use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -82,16 +85,18 @@ class UserController extends Controller
      */
     public function doFollow(Request $request, User $user)
     {
-        if ($request->user()->id === $user->id) {
+        $oauthUser = $request->user();
+        if ($oauthUser->id === $user->id) {
             return $this->failed('你不能对自己进行关注操作');
         }
 
-        if ($request->user()->isFollowing($user->id)) {
-            $request->user()->unfollow($user->id);
-            //TODO 消息通知
+        if ($oauthUser->isFollowing($user->id)) {
+            $oauthUser->unfollow($user->id);
         } else {
-            $request->user()->follow($user->id);
-            //TODO 消息通知
+            $oauthUser->follow($user->id);
+
+            //发送关注消息通知
+            $user->followedUserNotification($oauthUser);
         }
 
         return $this->success('success');
@@ -108,9 +113,22 @@ class UserController extends Controller
     {
         $user = $this->getUserByName($username);
 
-        $comments = $user->comments()->latest()->paginate(10);
+        $comments = Comment::where([
+            ['user_id', $user->id],
+            ['parent_id', 0]
+        ])->orWhere([
+            ['reply_user_id', $user->id],
+            ['parent_id', '<>', 0]
+        ])
+            ->with(['user' => function ($query) {
+                return $query->select('id', 'name', 'avatar');
+            }, 'reply_user' => function ($query) {
+                return $query->select('id', 'name', 'avatar');
+            }, 'commentable'])
+            ->latest()
+            ->paginate(10);
 
-        return CommentResource::collection($comments);
+        return $this->respond($comments);
     }
 
     /**
@@ -126,6 +144,19 @@ class UserController extends Controller
         $followings = $user->followings;
 
         return FollowingResource::collection($followings);
+    }
+
+    public function notifications($username)
+    {
+        $user = $this->getUserByName($username);
+
+        // 获取通知消息列表
+        $notifications = $user->notifications()->paginate(20);
+
+        // 全部设置为已读
+        $user->unreadNotifications->markAsRead();
+
+        return $this->respond(['data' => $notifications]);
     }
 
     /**

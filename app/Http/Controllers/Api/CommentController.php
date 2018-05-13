@@ -20,13 +20,36 @@ class CommentController extends Controller
      */
     public function show(Request $request, $commentableId)
     {
-        $commentableType = $request->input('commentable_type');
+        //获取评论类型  评论是多态  限制返回类型
+        $commentableType = $request->input('commentable_type') ?: 'article';
 
-        $comments = Comment::where('commentable_id', $commentableId)->where('commentable_type', $commentableType)->get();
+        if ($commentableType == 'article') {
+            $commentableType = 'App\Models\Article';
+        }
 
-        $comments->load('user');
+        //获取评论列表
+        $comments = Comment::where('commentable_id', $commentableId)
+            ->where('commentable_type', $commentableType)
+            ->with(['user' => function ($query) {
+                return $query->select('id', 'name', 'avatar');
+            }, 'reply_user' => function ($query) {
+                return $query->select('id', 'name', 'avatar');
+            }])
+            ->get()
+            ->groupBy('parent_id');
 
-        return CommentResource::collection($comments);
+        //评论不为空  对数据做处理
+        if (! $comments->isEmpty()) {
+            $comments['root'] = $comments[0];
+            unset($comments[0]);
+        }
+
+        //获取总评论数
+        $comments['count'] = Comment::where('commentable_id', $commentableId)
+            ->where('commentable_type', $commentableType)
+            ->count();
+
+        return $this->respond(['data' => $comments]);
     }
 
     /**
@@ -37,16 +60,44 @@ class CommentController extends Controller
      */
     public function store(CommentRequest $request)
     {
+        // 判断是否有父id
+        if ($request->has('parent_id')) {
+            //获取父评论详情
+            $real_comment = Comment::findOrFail($request->input('parent_id'));
+            // 当前评论等级+1
+            $level = $real_comment->level + 1;
+            //获取评论用户id
+            $user_id = $real_comment->reply_user_id ?: $real_comment->user_id;
+            //当父等级大于0时评论人应该是回复用户id
+            if ($real_comment->level > 0) {
+                $user_id = $real_comment->reply_user_id;
+            }
+
+            //限制等级只为2
+            if ($level >= 2) {
+                $level = 2;
+            }
+        }
+
+        // 合并所需数据
         $data = array_merge($request->all(), [
-            'user_id' => $request->user()->id
+            'user_id' => isset($user_id) ? $user_id : $request->user()->id,
+            'level' => isset($level) ? $level : 0,
+            'commentable_type' => $request->input('commentable_type') == 'article' ? 'App\Models\Article' : '',
+            'parent_id' => $request->input('parent_id', 0),
+            'reply_user_id' => isset($user_id) ? $request->user()->id : 0
         ]);
 
         $comment = Comment::create($data);
 
         //TODO 发消息给用户
-        $comment->load('user');
+        $comment->load(['user' => function ($query) {
+            return $query->select('id', 'name', 'avatar');
+        }, 'reply_user' => function ($query) {
+            return $query->select('id', 'name', 'avatar');
+        }]);
 
-        return new CommentResource($comment);
+        return $this->respond(['data' => $comment]);
     }
 
     /**
@@ -59,8 +110,30 @@ class CommentController extends Controller
     {
         $this->authorize('destroy', $comment);
 
-        $comment->delete();
+        $this->recursive($comment);
 
         return $this->noContent();
+    }
+
+    /**
+     * 递归删除评论
+     *
+     * @param Comment $comment
+     * @return bool
+     * @throws \Exception
+     */
+    protected function recursive(Comment $comment)
+    {
+        $comment->delete();
+
+        $child_comment = Comment::where('parent_id', $comment->id)->first();
+
+        if (! $child_comment) {
+            return true;
+        }
+
+        $child_comment->delete();
+
+        return $this->recursive($child_comment);
     }
 }

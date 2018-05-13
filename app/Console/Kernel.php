@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // 每日零时执行一次 同步redis最后用户访问时间到数据库
         $schedule->command('cocoyo:sync-user-actived-at')->dailyAt('00:00');
+        // 每周六零时执行一次 同步redis 访问数至数据库
+        $schedule->command('cocoyo:sync-database-visit')->weekly()->saturdays()->dailyAt('00:00');;
     }
 
     /**

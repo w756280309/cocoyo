@@ -10,6 +10,6 @@ class CommentPolicy
 {
     public function destroy(User $user, Comment $comment)
     {
-        return $user->id == $comment->user_id;
+        return ($user->id == $comment->user_id) || ($user->id == $comment->reply_user_id);
    }
 }

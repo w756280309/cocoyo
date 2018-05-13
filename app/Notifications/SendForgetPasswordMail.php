@@ -55,7 +55,9 @@ class SendForgetPasswordMail extends Notification
 
         $url = request()->root() . '/#/forgetverify?token=' . $code . '&from_user=' . $this->user->email;
 
-        return (new MailMessage)->greeting('Hi,' . $this->user->name . '')
+        return (new MailMessage)
+            ->subject('Cocoyo’Blog 消息提醒')
+            ->greeting('Hi,' . $this->user->name . '')
             ->line('我们收到了你重置密码的申请，请点击下方按钮进行重置密码,30分钟内有效!')
             ->action('重置密码', $url)
             ->line('感谢您使用我们的应用程序!');

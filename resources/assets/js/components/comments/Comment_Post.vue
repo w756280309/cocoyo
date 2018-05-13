@@ -4,57 +4,90 @@
             <div>
                 <Icon type="chatbubbles" class="EventPost-icon"></Icon>
                 <div class="EventPost-info">
-                    <a href="" class="EventPost-user">
-                        <span class="username">共24条回复</span>
+                    <a class="EventPost-user">
+                        <span class="username">共{{ comment_count }}条回复</span>
                     </a>
                 </div>
             </div>
         </article>
 
-        <comment_root :post_id="post_id" :user_id="user_id" :comments="comments" :collections="comment_list"></comment_root>
+        <comment_root :commentable_id="commentableId" :canComment="canComment" :user_id="user_id" :comments="comments" :commentable_type="commentableType" :collections="root"></comment_root>
 
-        <Form>
-            <FormItem>
-                <Input v-model="comment_content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="请填写您的评论"></Input>
-            </FormItem>
-            <FormItem>
-                <Button type="primary">提交评论</Button>
-            </FormItem>
-        </Form>
-        <!--<form method="POST" @submit.prevent="post_comment" accept-charset="UTF-8">-->
-            <!--<div class="form-group">-->
-                <!--<label for="comment" class="control-label">Info:</label>-->
-                <!--<textarea v-model="comment_content" id="comment" name="comment" rows="4" class="form-control"-->
-                          <!--placeholder="请填写您的评论"-->
-                          <!--required="required"></textarea>-->
-            <!--</div>-->
-            <!--<button type="submit" class="btn btn-success form-control">提交评论</button>-->
-        <!--</form>-->
+        <div v-if="! canComment">
+            <v-btn to="/login"  block style="background-color:#F96854 !important;color: #fff !important;" dark>登陆发表评论</v-btn>
+        </div>
+      <div v-else>
+          <Form>
+              <FormItem>
+                  <Input v-model="comment_content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="请填写您的评论"></Input>
+              </FormItem>
+              <FormItem>
+                  <Button type="primary" @click="post_comment">提交评论</Button>
+              </FormItem>
+          </Form>
+      </div>
+
     </div>
 </template>
 <script>
-    import Comment_root from './Comment_root'
-
     export default{
-        components: {
-            Comment_root
+        props: {
+            commentableId: {
+                type: Number,
+            },
+            commentableType: {
+                type: String,
+                default() {
+                    return 'article'
+                }
+            },
+            user_id: {
+                type: Number
+            },
+            canComment: {
+                type: Boolean,
+                default() {
+                    return false
+                }
+            },
         },
-        props:['post_id','collections','comments','user_id'],
         data(){
             return{
                 comment_content:'',
-                comment_list:this.collections,
+                comments: {},
+                root: [],
+                comment_count: 0
             }
+        },
+        created() {
+            //获取评论内容
+            var url = 'commentable/' + this.commentableId + '/comment'
+            this.$http.get(url, {
+                params: {
+                    commentable_type: this.commentableType
+                }
+            }).then((response) => {
+                this.comments = response.data
+                this.root = response.data.root
+                this.comment_count = response.data.count
+            })
         },
         methods:{
             post_comment(){
-                axios.post('/post/'+this.post_id+'/comments',{'body':this.comment_content}).then((response)=>{
-                    if(response.data.success){
-                        this.comment_list.push(response.data.reply_block);
-                        this.comment_content='';
-                        console.log('asd')
-                    }
-                });
+                if (! this.comment_content) {
+                    this.$Message.error('请输入评论内容!');
+                    return false;
+                }
+                const data = {
+                    content: this.comment_content,
+                    commentable_id: this.commentableId,
+                    commentable_type: this.commentableType,
+                }
+                this.$http.post('comments', data).then((response) => {
+                    this.root.push(response.data);
+                    this.comment_content = '';
+                    this.comment_count++
+                })
             },
         },
     }

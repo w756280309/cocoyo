@@ -56,7 +56,9 @@ class UserRegisterVerficationCode extends Notification
 
         $url = request()->root() . '/#/register/confirmed?token=' . $code . '&from_user=' . $this->user->email;
 
-        return (new MailMessage) ->greeting('Hi,' . $this->user->name . '')
+        return (new MailMessage)
+            ->subject('Cocoyo’Blog 消息提醒')
+            ->greeting('Hi,' . $this->user->name . '')
             ->line('我们收到了你注册的申请，请点击下方按钮进行注册,30分钟内有效!')
             ->action('确认邮箱', $url)
             ->line('感谢您使用我们的应用程序!');

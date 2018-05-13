@@ -8,10 +8,10 @@
                 <div class="uk-navbar-content">
                     <Dropdown>
                         <a href="javascript:void(0)">
+                            <img :src="avatar" class="avatar img-circle" style="width: 40px;height: 40px;background: #fff;padding: 3px;border: 1px solid #c5c5c5;">
                             {{ name }}
                             <Icon type="arrow-down-b"></Icon>
                             <b class="caret"></b>&nbsp;&nbsp;
-                            <img :src="avatar" class="avatar img-circle" style="width: 40px;height: 40px;background: #fff;padding: 3px;border: 1px solid #c5c5c5;">
                         </a>
                         <DropdownMenu slot="list">
                             <router-link :to="'/users/' + name">
@@ -39,6 +39,14 @@
                                 </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
+                </div>
+            </div>
+
+            <div class="uk-navbar-flip uk-hidden-small" v-if="is_login">
+                <div class="uk-navbar-content">
+                    <router-link to="/">
+                        <Icon type="chatbubbles" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
+                    </router-link>
                 </div>
             </div>
 
@@ -91,10 +99,18 @@
                 window.location.href = '/dashboard'
             },
             loginOut() {
-                this.$http.post('logout').then((response) => {
-                    this.$store.commit('logout', this)
-                    this.$router.push('/');
-                })
+                this.$Modal.confirm({
+                    title: '退出登录?',
+                    content: '客官何不留下再看看!',
+                    okText: '确定',
+                    cancelText: '取消',
+                    onOk: () => {
+                        this.$http.post('logout').then((response) => {
+                            this.$store.commit('logout', this)
+                            this.$router.push('/');
+                        })
+                    },
+                });
             },
         }
     }
@@ -115,6 +131,7 @@
     .uk-navbar-flip {
         float: right;
         height:100%;
+        padding: 0.9em 1.5em;
     }
     .uk-navbar-content{
         box-sizing: border-box;

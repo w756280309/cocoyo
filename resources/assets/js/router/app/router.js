@@ -12,14 +12,6 @@ export const page404 = {
     component: resolve => void(require(['@/views/app/error-page/404.vue'], resolve))
 };
 
-export const resource404 = {
-    path: '/404',
-    name: 'error-404',
-    meta: {
-        title: '404-页面不存在'
-    },
-    component: resolve => void(require(['@/views/app/error-page/404.vue'], resolve))
-};
 
 export const page403 = {
     path: '/403',
@@ -123,6 +115,13 @@ export const otherRouter = {
                     title: '用户关注',
                     name: 'user_following',
                     component: resolve => void(require(['@/views/app/users/following.vue'], resolve)),
+                },
+                {
+                    path: ':name/notifications',
+                    title: '用户消息通知',
+                    name: 'user_notifications',
+                    meta: { requiresAuth: true },
+                    component: resolve => void(require(['@/views/app/users/notifications.vue'], resolve)),
                 }
             ]
         },
@@ -163,7 +162,7 @@ export const otherRouter = {
         {
             path: '/contact',
             title: '联系我',
-            name: 'articles.show', component: resolve => void(require(['@/views/app/about/contact.vue'], resolve))
+            name: 'contact', component: resolve => void(require(['@/views/app/about/contact.vue'], resolve))
         },
     ]
 };
@@ -180,5 +179,4 @@ export const routers = [
     page403,
     page500,
     page404,
-    resource404
 ];
