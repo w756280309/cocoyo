@@ -2,6 +2,7 @@ import Main from '@/views/app/Main.vue';
 import User from '@/components/User.vue';
 import SideBar from '@/components/SideBar.vue';
 import AuthCommon from '@/views/app/auth/common.vue'
+import Message from '@/components/Message.vue';
 
 export const page404 = {
     path: '/*',
@@ -115,13 +116,6 @@ export const otherRouter = {
                     title: '用户关注',
                     name: 'user_following',
                     component: resolve => void(require(['@/views/app/users/following.vue'], resolve)),
-                },
-                {
-                    path: ':name/notifications',
-                    title: '用户消息通知',
-                    name: 'user_notifications',
-                    meta: { requiresAuth: true },
-                    component: resolve => void(require(['@/views/app/users/notifications.vue'], resolve)),
                 }
             ]
         },
@@ -156,6 +150,19 @@ export const otherRouter = {
                     name: 'edit_password',
                     meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/edit_password.vue'], resolve)),
+                }
+            ]
+        },
+        {
+            path: '/',
+            component: Message,
+            children: [
+                {
+                    path: 'notifications',
+                    title: '消息通知',
+                    name: 'user_notifications',
+                    meta: { requiresAuth: true },
+                    component: resolve => void(require(['@/views/app/users/notifications.vue'], resolve)),
                 }
             ]
         },

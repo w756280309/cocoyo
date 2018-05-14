@@ -96,7 +96,7 @@ class UserController extends Controller
             $oauthUser->follow($user->id);
 
             //发送关注消息通知
-            $user->followedUserNotification($oauthUser);
+            $user->notify(new FollowedUserNotification($oauthUser));
         }
 
         return $this->success('success');

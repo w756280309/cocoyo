@@ -13,7 +13,7 @@ use Overtrue\LaravelFollow\Traits\CanFollow;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable, CanFollow, CanBeFollowed, LastActivedAtHelper, UserNotificationHelper;
+    use HasApiTokens,Notifiable, CanFollow, CanBeFollowed, LastActivedAtHelper;
 
     /**
      * The attributes that are mass assignable.

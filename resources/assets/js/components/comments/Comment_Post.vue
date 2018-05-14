@@ -68,7 +68,9 @@
                 }
             }).then((response) => {
                 this.comments = response.data
-                this.root = response.data.root
+                if(typeof(response.data.root) != 'undefined'){
+                    this.root = response.data.root
+                }
                 this.comment_count = response.data.count
             })
         },
@@ -84,6 +86,7 @@
                     commentable_type: this.commentableType,
                 }
                 this.$http.post('comments', data).then((response) => {
+                    console.log(this.root);
                     this.root.push(response.data);
                     this.comment_content = '';
                     this.comment_count++

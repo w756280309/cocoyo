@@ -13,26 +13,15 @@ class FollowedUserNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * @var UserNotificationMessage
-     */
-    protected $message;
-
-    /**
-     * @var boolean
-     */
-    protected $mail;
+    protected $user;
 
     /**
      * Create a new notification instance.
-     *
-     * @param UserNotificationMessage $message
-     * @param bool $mail 是否邮件发送
+     * @param User $user
      */
-    public function __construct(UserNotificationMessage $message, $mail = true)
+    public function __construct(User $user)
     {
-        $this->message = $message;
-        $this->mail = $mail;
+        $this->user = $user;
     }
 
     /**
@@ -43,7 +32,7 @@ class FollowedUserNotification extends Notification
      */
     public function via($notifiable)
     {
-        if ($this->mail) {
+        if ($notifiable->email_notify_enabled == 'yes') {
             return ['database', 'mail'];
         }
 
@@ -59,10 +48,10 @@ class FollowedUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Cocoyo’Blog 消息提醒')
-            ->greeting($this->message->getSubject())
-            ->line($this->message->getContent())
-            ->line('感谢您使用我们的应用程序!');
+            ->subject(config('app.name') . '消息提醒')
+            ->view('mails.followed_user', [
+                'follow_user' => $this->user
+            ]);
     }
 
     /**
@@ -73,6 +62,6 @@ class FollowedUserNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return $this->message->toArray();
+        return $this->user->toArray();
     }
 }

@@ -26,8 +26,8 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Comment $comment
+     * @return CommentResource
      */
     public function edit(Comment $comment)
     {
@@ -39,8 +39,8 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Comment $comment
+     * @param  \Illuminate\Http\Request $request
      * @return \Response
      */
     public function update(Comment $comment, Request $request)

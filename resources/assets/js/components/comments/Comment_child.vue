@@ -9,11 +9,11 @@
             </router-link>
             <div class="comment_content">
 
-                 <span v-if="comment['reply_user']">
-                     <router-link :to="'/users/' + comment['reply_user'].name" class="author">{{ comment['reply_user'].name }}</router-link> 回复
-                </span>
+                <router-link :to="'/users/' + comment['reply_user'].name" class="author">{{ comment['reply_user'].name }}</router-link>
 
-                <router-link :to="'/users/' + comment['user'].name" class="author">{{ comment['user'].name }}</router-link>
+                <span v-if="comment['parent_id']">
+                    回复 <router-link :to="'/users/' + comment['user'].name" class="author">{{ comment['user'].name }}</router-link>
+                </span>
 
                 <div class="metadata">
                     <span class="date" style="font-weight: 700;">

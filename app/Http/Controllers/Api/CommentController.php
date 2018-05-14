@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\CommentRequest;
 use App\Models\Article;
 use App\Models\Comment;
+use App\Notifications\ReceivedCommentNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CommentResource;
@@ -89,15 +90,26 @@ class CommentController extends Controller
         ]);
 
         $comment = Comment::create($data);
+        // 对评论数据进行修正
+        if (! $comment->parent_id) {
+            $comment->fill([
+                'user_id' => $comment->commentable->user->id,
+                'reply_user_id' => $comment->user_id
+            ]);
 
-        //TODO 发消息给用户
-        $comment->load(['user' => function ($query) {
+            $comment->save();
+        }
+
+        $new_comment = Comment::where('id', $comment->id)->with(['user' => function ($query) {
             return $query->select('id', 'name', 'avatar');
         }, 'reply_user' => function ($query) {
             return $query->select('id', 'name', 'avatar');
-        }]);
+        }])->first();
 
-        return $this->respond(['data' => $comment]);
+        // 发送消息
+        $comment->user->notify(new ReceivedCommentNotification($comment));
+
+        return $this->respond(['data' => $new_comment]);
     }
 
     /**

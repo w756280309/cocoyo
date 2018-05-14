@@ -52,7 +52,7 @@ class Comment extends Model
      */
     public function getContentAttribute($value)
     {
-        return $this->attributes['content'] = json_decode($value);
+        return $this->attributes['content'] = json_decode($value, true);
     }
 
     /**

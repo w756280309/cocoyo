@@ -45,7 +45,7 @@
             <div class="uk-navbar-flip uk-hidden-small" v-if="is_login">
                 <div class="uk-navbar-content">
                     <router-link to="/">
-                        <Icon type="chatbubbles" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
+                        <Icon type="android-notifications" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
                     </router-link>
                 </div>
             </div>

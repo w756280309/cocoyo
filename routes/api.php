@@ -48,7 +48,9 @@ Route::group(['namespace' => 'Api'], function () {
         # ------------------- 评论 ----------------------------
         Route::post('comments', 'CommentController@store')->name('comments.store');
         # ------------------- 删除评论 ----------------------------
-        Route::delete('comments/{comment}', 'CommentController@destroy')->name('Comment.destroy');
+        Route::delete('comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
+        # ------------------- 消息列表 ----------------------------
+        Route::get('notifications', 'NotificationController@index')->name('user.notifications');
     });
 });
 

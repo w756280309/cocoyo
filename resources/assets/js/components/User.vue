@@ -94,12 +94,6 @@
                                         Ta关注的用户
                                     </MenuItem>
                                 </router-link>
-                                <router-link :to="'/users/' + name + '/notifications'" style="color: #495060;">
-                                    <MenuItem name="3">
-                                        <Icon type="happy-outline"></Icon>
-                                        我的消息提醒
-                                    </MenuItem>
-                                </router-link>
                             </Menu>
                         </div>
                     </div>
