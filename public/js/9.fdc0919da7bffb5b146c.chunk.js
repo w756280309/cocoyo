@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 408:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -99,7 +99,7 @@ if(false) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // imports
-exports.i(__webpack_require__(408), "");
+exports.i(__webpack_require__(403), "");
 
 // module
 exports.push([module.i, "\n.comment-page {\n  padding: 20px;\n  text-align: right;\n  color: #5a5a5a;\n}\n", ""]);

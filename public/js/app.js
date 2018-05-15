@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"4":"1f2ef44fc13351e238d7","7":"d3d45f10d396da18abd5","9":"52ff4c1028ad1dbb3e28","10":"0fe6aa91f23d76478f1d","19":"fb7b4c0a780cb998774b","20":"ef8d72222da140067a04","21":"1337be2d7f3d15039039","22":"ce94282e7bbef5b3afad","23":"8981fe30ddc55a9d43c3","24":"a79f319bf4c321fc849b","25":"574b5c946f2fd4de2e9f","26":"e62c1964675a62e6eb4e","27":"143eafad24a8a55cf527","28":"31d9ea6f834ececd1361","29":"5398ba73b03cf315decf","30":"e43c4b942432bbb181c7","31":"5a8fc248b13f4953c758","32":"6ac6cfe00c5cbde0c964","33":"2db81e6a43d6d74b5fc2","34":"2426f615f09177436f90"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"3":"d848c7c8e815e2b49c3b","5":"72791646f0b669c371f7","9":"fdc0919da7bffb5b146c","10":"0fe6aa91f23d76478f1d","19":"fb7b4c0a780cb998774b","20":"ef8d72222da140067a04","21":"1337be2d7f3d15039039","22":"ce94282e7bbef5b3afad","23":"8981fe30ddc55a9d43c3","24":"a79f319bf4c321fc849b","25":"574b5c946f2fd4de2e9f","26":"e62c1964675a62e6eb4e","27":"143eafad24a8a55cf527","28":"31d9ea6f834ececd1361","29":"5398ba73b03cf315decf","30":"e43c4b942432bbb181c7","31":"5a8fc248b13f4953c758","32":"6ac6cfe00c5cbde0c964","33":"783c36caff8ae0c96afb","34":"2426f615f09177436f90"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -99455,7 +99455,7 @@ var otherRouter = {
         path: 'articles/:slug',
         title: '文章详情',
         name: 'articles.show', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(355)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(355)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }, {
         path: '/',
@@ -99579,7 +99579,7 @@ var otherRouter = {
             name: 'user_notifications',
             meta: { requiresAuth: true },
             component: function component(resolve) {
-                return void __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(369)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                return void __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(369)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }]
     }, {
@@ -100059,7 +100059,7 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { attrs: { to: "/" } },
+                      { attrs: { to: "/notifications" } },
                       [
                         _c("Icon", {
                           staticStyle: {

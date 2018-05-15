@@ -23,6 +23,9 @@ class NotificationController extends Controller
             $notification->created_diff = $notification->created_at->diffForHumans();
         }
 
+        //全部设为已读
+        $request->user()->unreadNotifications->markAsRead();
+
         return $this->respond(['data' => $notifications]);
     }
 }

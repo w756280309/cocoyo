@@ -47,6 +47,7 @@ class ReceivedCommentNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return $this->comment->toArray();
+        $comment = $this->comment->load('commentable', 'reply_user');
+        return $comment->toArray();
     }
 }

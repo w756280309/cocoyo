@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"61d720317797ef522b12","1":"5d41452510ab6ace02e9","2":"4a4d515a0951c3c24b47","3":"56d28c273f418ccf849f","5":"a4b6d90b305d24009ba0","6":"e5e2fa317a4d827f26bc","8":"58c3d6ab9f779a1cfbba","11":"716654f3cfba690f4412","12":"fe27949ba6d2472e0346","13":"ea897998ac1a3ef73695","14":"db9f42dbf2c2eabe999b","15":"22c730afa1a7e20dac58","16":"874ecc87e850860933f2","17":"509ea7cfbfa34f7d727e","18":"334184858f96c4802c4e","35":"39614875e58200a89a93","36":"745dd865ea985a67ad0a","37":"e932c26b25a082e5411f","38":"b10352d38cf5b077675f","39":"8c257003ed901d4ba30d"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"a472b86b401b81b1313a","1":"e0f5f7f8a0c4b1c2dc5f","2":"4a4d515a0951c3c24b47","4":"015b80c5a3920455e694","6":"4422408691bc8eb1bec9","7":"844d7153662517be60b5","8":"58c3d6ab9f779a1cfbba","11":"716654f3cfba690f4412","12":"fe27949ba6d2472e0346","13":"ea897998ac1a3ef73695","14":"db9f42dbf2c2eabe999b","15":"22c730afa1a7e20dac58","16":"874ecc87e850860933f2","17":"509ea7cfbfa34f7d727e","18":"334184858f96c4802c4e","35":"39614875e58200a89a93","36":"745dd865ea985a67ad0a","37":"e932c26b25a082e5411f","38":"b10352d38cf5b077675f","39":"8c257003ed901d4ba30d"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -80841,7 +80841,7 @@ var otherRouter = {
     redirect: '/home',
     component: __WEBPACK_IMPORTED_MODULE_0__views_dashboard_Main_vue___default.a,
     children: [{ path: 'home', title: '主页', name: 'home_index', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(334)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(334)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: 'users/:id/edit', title: '编辑用户', name: 'users_edit', component: function component(resolve) {
             return void __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(335)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: 'categories/:id/edit', title: '编辑分类', name: 'categories_edit', component: function component(resolve) {
@@ -80859,9 +80859,9 @@ var otherRouter = {
         } }, { path: 'articles/:id/edit', title: '编辑文章', name: 'articles_edit', component: function component(resolve) {
             return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(342)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: 'links/:id/edit', title: '编辑友链', name: 'links_edit', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(343)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(343)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }, { path: 'links/add', title: '添加友链', name: 'links_add', component: function component(resolve) {
-            return void __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(344)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(344)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         } }]
 };
 

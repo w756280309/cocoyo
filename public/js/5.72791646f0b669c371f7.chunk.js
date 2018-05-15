@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackJsonp([5],{
 
 /***/ 355:
 /***/ (function(module, exports, __webpack_require__) {
@@ -52,7 +52,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 408:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -99,7 +99,7 @@ if(false) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // imports
-exports.i(__webpack_require__(408), "");
+exports.i(__webpack_require__(403), "");
 
 // module
 exports.push([module.i, "\n#article .article-list[data-v-790d7e24] {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n#article .article-list[data-v-790d7e24]:hover {\n  -webkit-box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n          box-shadow: 8px 8px 8px -8px rgba(0, 0, 0, 0.5);\n  -webkit-transform: translateY(-2px);\n  transform: translateY(-2px);\n}\n#article .article-list .extra[data-v-790d7e24] {\n  max-width: 100%;\n  min-height: 0em !important;\n  -webkit-box-flex: 0;\n  -ms-flex-positive: 0;\n  flex-grow: 0;\n  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;\n  position: static;\n  background: none;\n  width: auto;\n  margin: 0em 0em;\n  padding: 16px;\n  top: 0em;\n  left: 0em;\n  color: rgba(0, 0, 0, 0.4);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  -webkit-transition: color 0.1s ease;\n  transition: color 0.1s ease;\n}\n#article .pagination .icon[data-v-790d7e24] {\n  font-size: 10px !important;\n}\n#article .article-title[data-v-790d7e24] {\n  font-size: 32px;\n  font-weight: 600;\n  text-align: center;\n  margin-bottom: 12px;\n}\n#article .meta[data-v-790d7e24] {\n  margin-bottom: 15px;\n  margin-top: 10px;\n  text-align: center;\n}\n#article .meta .user-card[data-v-790d7e24] {\n  display: inline-block;\n  margin-right: 15px;\n}\n#article .meta .user-card h4[data-v-790d7e24] {\n  display: inline;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-weight: 400;\n  margin: 0 10px 0 0;\n  font-size: 14px;\n  line-height: 1.66666667;\n  margin-right: 20px;\n}\n#article .meta .user-card .time[data-v-790d7e24] {\n  vertical-align: middle;\n  font-size: 12px;\n  color: #9b9b9b;\n}\n#article .meta .avatar img[data-v-790d7e24] {\n  width: 30px;\n  height: 30px;\n  padding: 0;\n  border: 1px solid #fff;\n  background: #fff;\n  padding: 3px;\n  border: 1px solid #c5c5c5;\n  border-radius: 50%;\n}\n#article .meta .actions[data-v-790d7e24] {\n  display: inline-block;\n}\n#article .meta .actions a[data-v-790d7e24] {\n  font-size: 12px;\n  margin-right: 5px;\n  color: #9b9b9b;\n}\n@media (min-width: 768px) {\n.container-show[data-v-790d7e24] {\n    width: 750px;\n}\n}\n@media (min-width: 992px) {\n.container-show[data-v-790d7e24] {\n    width: 970px;\n}\n}\n@media (min-width: 1200px) {\n.container-show[data-v-790d7e24] {\n    width: 1170px;\n}\n}\n", ""]);
