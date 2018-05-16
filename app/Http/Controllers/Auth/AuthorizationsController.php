@@ -28,7 +28,7 @@ class AuthorizationsController extends Controller
             abort(404);
         }
 
-        return Socialite::driver($driver)->with(['driver' => $driver])->redirect();
+        return Socialite::driver($driver)->redirect();
     }
 
     /**

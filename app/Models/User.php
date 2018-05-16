@@ -53,7 +53,7 @@ class User extends Authenticatable
      */
     public function findForPassport($email)
     {
-        return User::where('email', $email)->valid()->first();
+        return User::where('email', $email)->first();
     }
 
     /**

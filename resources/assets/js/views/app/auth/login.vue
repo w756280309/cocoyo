@@ -35,7 +35,7 @@
                     <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
                 </v-btn>
 
-                <v-btn fab dark small style="background: #f75b5b;">
+                <v-btn fab dark small style="background: #f75b5b;" @click="socialiteWeibo">
                     <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
                 </v-btn>
 
@@ -59,17 +59,16 @@
                 ]
             }
         },
-        created() {
-            if (this.$route.query.code) {
-                this.$http.post('socials/qq/authorizations', {code: this.$route.query.code}).then((response) => {
-                    console.log(response)
-                })
-            }
-        },
         methods: {
             submit () {
                 if (this.$refs.form.validate()) {
                     this.$http.post('login', this.form).then((response) => {
+                        if (typeof(response.code) != 'undefined' && response.code == 0) {
+                            this.$router.push({
+                                path: '/register_success',
+                                query: {email: this.form.email}
+                            })
+                        }
                         this.$store.commit('SET_USERINFO', response.data.user);
                         this.$store.commit('SET_TOKEN', response.data.token);
 
@@ -83,10 +82,10 @@
                 }
             },
             socialiteQQ() {
-                window.open('/auth/qq')
-                // this.$http.get('auth/qq').then((response) => {
-                //     console.log(response)
-                // })
+                window.location = '/auth/qq';
+            },
+            socialiteWeibo() {
+                window.location = '/auth/weibo';
             }
         }
     }

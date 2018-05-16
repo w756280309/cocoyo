@@ -10,9 +10,9 @@
                                 <img :src="article.user.avatar" class="img-circle" style="width: 30px; height: 30px;">
                             </a>
                             <h4>
-                                <router-link :to="'/users/' + article.user.name">{{ article.user.nickname ? article.user.nickname : article.user.name }}</router-link>
+                                <router-link style="color: #15b982;" :to="'/users/' + article.user.name">{{ article.user.nickname ? article.user.nickname : article.user.name }}</router-link>
                             </h4>
-                            <time>发表于 {{ article.published_individualization }}</time>
+                            <time style="vertical-align: middle;font-size: 12px;color: #9b9b9b;">发表于 {{ article.published_individualization }}</time>
                         </div>
                         <div class="actions" v-for="(tag, index) in article.tags">
                             <a href="javascript:;" class="btn-comment">
@@ -31,14 +31,6 @@
                         </v-card-text>
                     </v-card>
 
-                    <!--<comments :username="username"-->
-                              <!--:user-avatar="avatar"-->
-                              <!--:user-id="user_id"-->
-                              <!--commentable-type="App\Models\Article"-->
-                              <!--:commentable-id="commentable_id"-->
-                              <!--:can-comment="can_comment"-->
-                              <!--v-if="loading_comments"-->
-                    <!--&gt;</comments>-->
                     <div v-if="commentable_id">
                         <comment_post :canComment="can_comment" :user_id="user_id" :username="username" :commentableId="commentable_id"></comment_post>
                     </div>

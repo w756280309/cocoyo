@@ -162,13 +162,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }]
         };
     },
-    created: function created() {
-        if (this.$route.query.code) {
-            this.$http.post('socials/qq/authorizations', { code: this.$route.query.code }).then(function (response) {
-                console.log(response);
-            });
-        }
-    },
 
     methods: {
         submit: function submit() {
@@ -176,6 +169,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.$refs.form.validate()) {
                 this.$http.post('login', this.form).then(function (response) {
+                    if (typeof response.code != 'undefined' && response.code == 0) {
+                        _this.$router.push({
+                            path: '/register_success',
+                            query: { email: _this.form.email }
+                        });
+                    }
                     _this.$store.commit('SET_USERINFO', response.data.user);
                     _this.$store.commit('SET_TOKEN', response.data.token);
 
@@ -189,10 +188,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         socialiteQQ: function socialiteQQ() {
-            window.open('/auth/qq');
-            // this.$http.get('auth/qq').then((response) => {
-            //     console.log(response)
-            // })
+            window.location = '/auth/qq';
+        },
+        socialiteWeibo: function socialiteWeibo() {
+            window.location = '/auth/weibo';
         }
     }
 });
@@ -311,7 +310,8 @@ var render = function() {
               "v-btn",
               {
                 staticStyle: { background: "#f75b5b" },
-                attrs: { fab: "", dark: "", small: "" }
+                attrs: { fab: "", dark: "", small: "" },
+                on: { click: _vm.socialiteWeibo }
               },
               [
                 _c(

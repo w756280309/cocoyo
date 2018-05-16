@@ -159,14 +159,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -467,6 +459,7 @@ var render = function() {
                             _c(
                               "router-link",
                               {
+                                staticStyle: { color: "#15b982" },
                                 attrs: { to: "/users/" + _vm.article.user.name }
                               },
                               [
@@ -483,12 +476,22 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c("time", [
-                          _vm._v(
-                            "发表于 " +
-                              _vm._s(_vm.article.published_individualization)
-                          )
-                        ])
+                        _c(
+                          "time",
+                          {
+                            staticStyle: {
+                              "vertical-align": "middle",
+                              "font-size": "12px",
+                              color: "#9b9b9b"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "发表于 " +
+                                _vm._s(_vm.article.published_individualization)
+                            )
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
                       _vm._l(_vm.article.tags, function(tag, index) {

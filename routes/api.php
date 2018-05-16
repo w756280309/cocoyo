@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 Route::post('upload/image', 'UploadController@uploadImage');
 
 Route::group(['namespace' => 'Api'], function () {
+    # ------------------- 友链 ----------------------------
+    Route::get('links', 'LinkController@index')->name('links.index');
     # ------------------- 文章列表 ----------------------------
     Route::get('articles', 'ArticleController@index')->name('articles.index');
     # ------------------- 文章详情 ----------------------------

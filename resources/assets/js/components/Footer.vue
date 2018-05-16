@@ -7,9 +7,7 @@
                         <div class="four wide column">
                             <h4 class="ui inverted header">友站</h4>
                             <div class="ui inverted link">
-                                <a href="https://laravel-china.org/" class="item" target="_blank">Laravel China 社区</a>
-                                <a href="https://easywechat.org/" class="item" target="_blank">EasyWechat</a>
-                                <a class="item" href="https://yousails.com/" target="_blank">优帆远扬</a>
+                                <a v-for="link in links" :href="link.link" class="item" target="_blank">{{ link.name }}</a>
                             </div>
                         </div>
                         <div class="four wide column">
@@ -32,7 +30,7 @@
                         </div>
                     </div>
                   <div style="width: 100%;padding: 25px 0 0 0;">
-                      <p class="web-description">&copy;2006-2018 <strong>cocoyo . All rights reserved. 粤ICP备17015096号</strong></p>
+                      <p class="web-description">&copy;2016-2018 <strong>cocoyo . All rights reserved. 粤ICP备17015096号</strong></p>
                   </div>
                 </v-layout>
             </v-container>
@@ -42,7 +40,16 @@
 
 <script>
     export default {
-
+        data() {
+            return {
+                links: []
+            }
+        },
+        created() {
+            this.$http.get('links').then((response) => {
+                this.links = response.data
+            })
+        }
     }
 </script>
 

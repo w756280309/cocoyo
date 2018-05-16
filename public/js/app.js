@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"3":"d848c7c8e815e2b49c3b","5":"72791646f0b669c371f7","9":"fdc0919da7bffb5b146c","10":"0fe6aa91f23d76478f1d","19":"fb7b4c0a780cb998774b","20":"ef8d72222da140067a04","21":"1337be2d7f3d15039039","22":"ce94282e7bbef5b3afad","23":"8981fe30ddc55a9d43c3","24":"a79f319bf4c321fc849b","25":"574b5c946f2fd4de2e9f","26":"e62c1964675a62e6eb4e","27":"143eafad24a8a55cf527","28":"31d9ea6f834ececd1361","29":"5398ba73b03cf315decf","30":"e43c4b942432bbb181c7","31":"5a8fc248b13f4953c758","32":"6ac6cfe00c5cbde0c964","33":"783c36caff8ae0c96afb","34":"2426f615f09177436f90"}[chunkId] + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"3":"d848c7c8e815e2b49c3b","5":"d2741b99160ab45aae21","9":"fdc0919da7bffb5b146c","10":"0fe6aa91f23d76478f1d","19":"fb7b4c0a780cb998774b","20":"ef8d72222da140067a04","21":"1337be2d7f3d15039039","22":"ce94282e7bbef5b3afad","23":"8981fe30ddc55a9d43c3","24":"a79f319bf4c321fc849b","25":"574b5c946f2fd4de2e9f","26":"e62c1964675a62e6eb4e","27":"143eafad24a8a55cf527","28":"a8e98782f2022739be98","29":"5398ba73b03cf315decf","30":"e43c4b942432bbb181c7","31":"5a8fc248b13f4953c758","32":"6ac6cfe00c5cbde0c964","33":"783c36caff8ae0c96afb","34":"2426f615f09177436f90"}[chunkId] + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -100277,10 +100277,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            links: []
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$http.get('links').then(function (response) {
+            _this.links = response.data;
+        });
+    }
+});
 
 /***/ }),
 /* 109 */
@@ -100315,43 +100326,20 @@ var render = function() {
                         _vm._v("友站")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "ui inverted link" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "item",
-                            attrs: {
-                              href: "https://laravel-china.org/",
-                              target: "_blank"
-                            }
-                          },
-                          [_vm._v("Laravel China 社区")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "item",
-                            attrs: {
-                              href: "https://easywechat.org/",
-                              target: "_blank"
-                            }
-                          },
-                          [_vm._v("EasyWechat")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "item",
-                            attrs: {
-                              href: "https://yousails.com/",
-                              target: "_blank"
-                            }
-                          },
-                          [_vm._v("优帆远扬")]
-                        )
-                      ])
+                      _c(
+                        "div",
+                        { staticClass: "ui inverted link" },
+                        _vm._l(_vm.links, function(link) {
+                          return _c(
+                            "a",
+                            {
+                              staticClass: "item",
+                              attrs: { href: link.link, target: "_blank" }
+                            },
+                            [_vm._v(_vm._s(link.name))]
+                          )
+                        })
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "four wide column" }, [
@@ -100440,7 +100428,7 @@ var render = function() {
                   { staticStyle: { width: "100%", padding: "25px 0 0 0" } },
                   [
                     _c("p", { staticClass: "web-description" }, [
-                      _vm._v("©2006-2018 "),
+                      _vm._v("©2016-2018 "),
                       _c("strong", [
                         _vm._v(
                           "cocoyo . All rights reserved. 粤ICP备17015096号"

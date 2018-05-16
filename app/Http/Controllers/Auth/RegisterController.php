@@ -34,7 +34,7 @@ class RegisterController extends Controller
             'weibo_id' => $request->input('weibo_id') ?: '',
         ]);
 
-        //发送验证码
+        // 发送验证链接
         $user->notify(new UserRegisterVerficationCode($user));
 
         return new UserResource($user);

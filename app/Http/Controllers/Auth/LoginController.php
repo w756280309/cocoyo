@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Notifications\UserRegisterVerficationCode;
 use App\Traits\ProxyHelpers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -38,6 +39,14 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         $user = User::where($this->username(), $request->input($this->username()))->first();
+
+        // 如果邮箱没有验证
+        if (!$user->status) {
+            // 发送验证链接
+            $user->notify(new UserRegisterVerficationCode($user));
+
+            return $this->respond(['code' => 0]);
+        }
 
         $tokens = $this->authenticate();
 
