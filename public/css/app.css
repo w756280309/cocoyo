@@ -154,6 +154,10 @@ video {
   color: #fff !important;
 }
 
+.ivu-badge-count {
+  top: -1px;
+}
+
 .markdown {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

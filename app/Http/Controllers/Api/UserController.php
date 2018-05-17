@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\NotificationPushEvent;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\FollowingResource;
 use App\Http\Resources\PreviewUserResource;
@@ -97,6 +98,8 @@ class UserController extends Controller
 
             //发送关注消息通知
             $user->notify(new FollowedUserNotification($oauthUser));
+            // 推送事件
+            broadcast(new NotificationPushEvent($user));
         }
 
         return $this->success('success');

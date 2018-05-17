@@ -45,7 +45,9 @@
             <div class="uk-navbar-flip uk-hidden-small" v-if="is_login">
                 <div class="uk-navbar-content">
                     <router-link to="/notifications">
-                        <Icon type="android-notifications" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
+                        <Badge :count="notification_count">
+                            <Icon type="android-notifications" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
+                        </Badge>
                     </router-link>
                 </div>
             </div>
@@ -68,6 +70,8 @@
 </template>
 
 <script>
+    import Echo from 'laravel-echo'
+
     export default {
         data() {
             return {
@@ -91,6 +95,27 @@
             is_admin() {
                 if (this.is_login) {
                     return this.$store.state.user.userinfo.is_admin;
+                }
+            },
+            notification_count() {
+                if (this.is_login) {
+                   var echo = new Echo({
+                        broadcaster: 'pusher',
+                        key: '65f5c4e6ce56d46ab2c6',
+                        cluster: 'ap1',
+                        encrypted: true,
+                        auth: {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Authorization' : 'Bearer ' + this.$store.state.user.token.access_token
+                            }
+                        }
+                    });
+
+                    echo.private('user_room_' + this.$store.state.user.userinfo.id)
+                        .listen('.notification.push', (e) => {
+                            console.log(e)
+                        })
                 }
             }
         },

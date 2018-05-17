@@ -11,6 +11,12 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
+//Broadcast::channel('App.User.{id}', function ($user, $id) {
+//    return (int) $user->id === (int) $id;
+//});
+
+Broadcast::channel('user_room_{id}', function ($user, $id) {
+    logger($user);
+    logger($id);
     return (int) $user->id === (int) $id;
 });

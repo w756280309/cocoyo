@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\NotificationPushEvent;
 use App\Http\Requests\CommentRequest;
 use App\Models\Article;
 use App\Models\Comment;
@@ -108,6 +109,8 @@ class CommentController extends Controller
 
         // 发送消息
         $comment->user->notify(new ReceivedCommentNotification($comment));
+        // 推送事件
+        broadcast(new NotificationPushEvent($comment->user));
 
         return $this->respond(['data' => $new_comment]);
     }
