@@ -71,6 +71,7 @@
                         }
                         this.$store.commit('SET_USERINFO', response.data.user);
                         this.$store.commit('SET_TOKEN', response.data.token);
+                        this.$store.commit('getNotificationCount');
 
                         let redirect = this.$route.query.redirect;
                         if (redirect) {

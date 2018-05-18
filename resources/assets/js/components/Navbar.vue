@@ -44,11 +44,11 @@
 
             <div class="uk-navbar-flip uk-hidden-small" v-if="is_login">
                 <div class="uk-navbar-content">
-                    <router-link to="/notifications">
-                        <Badge :count="notification_count">
+                    <a @click="jumpNotification">
+                        <Badge :count="count" :class="notification_count">
                             <Icon type="android-notifications" style="font-size:25px;line-height: 1.7;color:#8590a6"></Icon>
                         </Badge>
-                    </router-link>
+                    </a>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
     export default {
         data() {
             return {
-
+                count: 0
             }
         },
         computed: {
@@ -99,23 +99,10 @@
             },
             notification_count() {
                 if (this.is_login) {
-                   var echo = new Echo({
-                        broadcaster: 'pusher',
-                        key: '65f5c4e6ce56d46ab2c6',
-                        cluster: 'ap1',
-                        encrypted: true,
-                        auth: {
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'Authorization' : 'Bearer ' + this.$store.state.user.token.access_token
-                            }
-                        }
-                    });
-
-                    echo.private('user_room_' + this.$store.state.user.userinfo.id)
-                        .listen('.notification.push', (e) => {
-                            console.log(e)
-                        })
+                    this.getSocketNotification();
+                    this.$http.get('/notifications/count').then((response) => {
+                        this.count = response.count;
+                    })
                 }
             }
         },
@@ -137,6 +124,28 @@
                     },
                 });
             },
+            getSocketNotification() {
+                var echo = new Echo({
+                    broadcaster: 'pusher',
+                    key: '65f5c4e6ce56d46ab2c6',
+                    cluster: 'ap1',
+                    encrypted: true,
+                    auth: {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Authorization' : 'Bearer ' + this.$store.state.user.token.access_token
+                        }
+                    }
+                });
+                echo.private('user_room_' + this.$store.state.user.userinfo.id)
+                    .listen('.notification.push', (e) => {
+                        this.count = e.count
+                    })
+            },
+            jumpNotification() {
+                this.count = 0;
+                this.$router.push('/notifications');
+            }
         }
     }
 </script>

@@ -11,12 +11,7 @@
 |
 */
 
-//Broadcast::channel('App.User.{id}', function ($user, $id) {
-//    return (int) $user->id === (int) $id;
-//});
-
+// 对私有频道进行监听
 Broadcast::channel('user_room_{id}', function ($user, $id) {
-    logger($user);
-    logger($id);
     return (int) $user->id === (int) $id;
 });

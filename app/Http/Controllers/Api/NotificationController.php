@@ -28,4 +28,15 @@ class NotificationController extends Controller
 
         return $this->respond(['data' => $notifications]);
     }
+
+    /**
+     * 获取未读消息数
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getUnReadCount(Request $request)
+    {
+        return $this->respond(['count' => $request->user()->unreadNotifications->count()]);
+    }
 }

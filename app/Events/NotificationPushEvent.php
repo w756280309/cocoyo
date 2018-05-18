@@ -16,14 +16,14 @@ class NotificationPushEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var User
-     */
-    public $user;
-
-    /**
      * @var int
      */
     public $count;
+
+    /**
+     * @var User
+     */
+    protected $user;
 
     /**
      * Create a new event instance.

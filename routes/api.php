@@ -53,6 +53,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::delete('comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
         # ------------------- 消息列表 ----------------------------
         Route::get('notifications', 'NotificationController@index')->name('user.notifications');
+        # ------------------- 未读消息数 ----------------------------
+        Route::get('notifications/count', 'NotificationController@getUnReadCount')->name('user.notifications.unread.count');
     });
 });
 

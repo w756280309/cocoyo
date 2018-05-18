@@ -1,9 +1,10 @@
 import {getToken, getUser, setToken, setUser, removeToken, removeUser} from '@/utils/auth';
 
+
 const user = {
     state: {
         token: getToken(),
-        userinfo: getUser()
+        userinfo: getUser(),
     },
     mutations: {
         SET_TOKEN: (state, token) => {

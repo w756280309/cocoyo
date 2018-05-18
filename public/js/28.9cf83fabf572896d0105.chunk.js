@@ -177,6 +177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                     _this.$store.commit('SET_USERINFO', response.data.user);
                     _this.$store.commit('SET_TOKEN', response.data.token);
+                    _this.$store.commit('getNotificationCount');
 
                     var redirect = _this.$route.query.redirect;
                     if (redirect) {
