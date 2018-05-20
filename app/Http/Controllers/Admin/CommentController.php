@@ -12,13 +12,15 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        $comments = Comment::latest()->paginate(10);
+        $parent_id = $request->input('parent_id', 0);
+        $comments = Comment::latest()->where('parent_id', $parent_id)->paginate(10);
 
-        $comments->load('user');
+        $comments->load(['user', 'reply_user', 'commentable']);
 
         return CommentResource::collection($comments);
     }
@@ -45,7 +47,7 @@ class CommentController extends Controller
      */
     public function update(Comment $comment, Request $request)
     {
-        $comment->fill(['content' => $request->input('content_raw')]);
+        $comment->fill(['content' => $request->input('content')]);
 
         $comment->save();
 
@@ -55,13 +57,36 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Comment $comment
+     * @return \Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        Comment::destroy($id);
+        $this->recursive($comment);
 
         return $this->noContent();
+    }
+
+    /**
+     * 递归删除评论
+     *
+     * @param Comment $comment
+     * @return bool
+     * @throws \Exception
+     */
+    protected function recursive(Comment $comment)
+    {
+        $comment->delete();
+
+        $child_comment = Comment::where('parent_id', $comment->id)->first();
+
+        if (! $child_comment) {
+            return true;
+        }
+
+        $child_comment->delete();
+
+        return $this->recursive($child_comment);
     }
 }

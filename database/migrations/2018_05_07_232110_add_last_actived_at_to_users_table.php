@@ -14,7 +14,7 @@ class AddLastActivedAtToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('last_actived_at')->nullable()->comment('最后用户登录时间');
+            $table->timestamp('last_actived_at')->nullable()->comment('最后用户活跃时间');
         });
     }
 

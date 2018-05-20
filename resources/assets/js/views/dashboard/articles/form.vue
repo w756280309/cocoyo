@@ -41,7 +41,7 @@
                         <image-cover action="upload/image" :image="form.page_image" @successUpload="handleImageSuccess"></image-cover>
                     </FormItem>
                     <FormItem label="时间" prop="published_at">
-                        <DatePicker format="yyyy-MM-dd HH:mm:ss" type="datetime" @on-change="changeDate"></DatePicker>
+                        <DatePicker format="yyyy-MM-dd HH:mm:ss" :value="form.published_at" type="datetime" @on-change="changeDate"></DatePicker>
                     </FormItem>
                     <Row>
                         <Col span="11">

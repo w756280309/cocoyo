@@ -2,22 +2,24 @@
     <div>
         <Row>
             <Col :span="24">
-                <Card>
-                    <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe></Table>
-                    <div style="margin: 10px;overflow: hidden">
-                        <div style="float: right;">
-                            <Page :total="meta.total" :current="meta.current_page" @on-change="handleCurrentChange"></Page>
-                        </div>
+            <Card>
+                <Table :loading="loading" :data="tableData" :columns="tableColumns" stripe></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="meta.total" :current="meta.current_page" @on-change="handleCurrentChange"></Page>
                     </div>
-                </Card>
+                </div>
+            </Card>
             </Col>
         </Row>
     </div>
 </template>
+
 <script>
-    import expandRow from './table-expand.vue';
     export default {
-        components: { expandRow },
+        props: {
+            comment_id: 0,
+        },
         data () {
             return {
                 loading: false,
@@ -28,24 +30,6 @@
                     per_page: 10
                 },
                 tableColumns: [
-                    {
-                        type: 'expand',
-                        width: 50,
-                        render: (h, params) => {
-                            return h(expandRow, {
-                                props: {
-                                    comment_id : params.row.id
-                                }
-                            })
-                        }
-                    },
-                    {
-                        title: '文章',
-                        key: 'title',
-                        render: (h, params) => {
-                            return params.row.commentable.title
-                        }
-                    },
                     {
                         title: '内容',
                         key: 'content.html',
@@ -62,7 +46,7 @@
                     },
                     {
                         title: '昵称',
-                        key: 'name',
+                        key: 'user.name',
                         render: (h, params) => {
                             return params.row.user.name
                         }
@@ -121,7 +105,7 @@
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'comments';
+                var url = 'comments?parent_id=' + this.comment_id;
                 if (this.meta.current_page > 1) {
                     let page = ''
                     if (url.indexOf('?') != -1) {
@@ -161,3 +145,7 @@
         }
     }
 </script>
+
+<style scoped>
+
+</style>

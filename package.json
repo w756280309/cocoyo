@@ -33,6 +33,7 @@
         "vue-markdown-loader": "^2.4.1",
         "vue-router": "^3.0.1",
         "vue-simplemde": "^0.4.6",
+        "vue-social-share": "0.0.3",
         "vuetify": "^1.0.8",
         "vuex": "^3.0.1"
     }

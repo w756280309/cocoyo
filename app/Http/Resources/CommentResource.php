@@ -14,18 +14,13 @@ class CommentResource extends Resource
      */
     public function toArray($request)
     {
-        $content = json_decode($this->content);
-
         return [
             'id'            => $this->id,
             'user'          => new UserResource($this->whenLoaded('user')),
-            'commentable'   => isset($this->commentable) ? $this->commentable->title : '',
-            'commentable_link' => isset($this->commentable) ? $this->commentable->slug : '',
-            'type'          => $this->commentable_type,
-            'content_raw'   => $content->raw,
-            'content_html' => $content->html,
-            'created_at'    => $this->created_at->toDateTimeString(),
-            'create_diff'   => $this->created_at->diffForHumans()
+            'reply_user'    => new UserResource($this->whenLoaded('reply_user')),
+            'commentable'   => new ArticleResource($this->commentable),
+            'content'       => $this->content,
+            'created_at'    => $this->created_at,
         ];
     }
 }

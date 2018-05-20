@@ -15,10 +15,10 @@
                             <time style="vertical-align: middle;font-size: 12px;color: #9b9b9b;">发表于 {{ article.published_individualization }}</time>
                         </div>
                         <div class="actions" v-for="(tag, index) in article.tags">
-                            <a href="javascript:;" class="btn-comment">
+                            <a  class="btn-comment">
                                 <v-icon size="10px">fas fa-tag</v-icon>
                             </a>
-                            <a href="https://www.cocoyo.xin/tag/windows">{{ tag.tag }}</a>
+                            <a href="javascript:;">{{ tag.tag }}</a>
                         </div>
                     </div>
                     <v-card>
@@ -28,6 +28,9 @@
                             </div>
                             <license :name="article.user.nickname ? article.user.nickname : article.user.name"
                                      :is_original="is_original"></license>
+                            <div v-if="commentable_id" style="padding: 10px 0;">
+                                <share :config="config"></share>
+                            </div>
                         </v-card-text>
                     </v-card>
 
@@ -56,7 +59,14 @@
                 is_original: false,
                 commentable_id: 0,
                 commentableType: 'article',
-                comment_count: 0
+                comment_count: 0,
+                config: {
+                    'source'              : 'https://www.cocoyo.xin',
+                    'title'               : '', // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+                    'description'         : '', // 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+                    'image'               : '', // 图片, 默认取网页中第一个img标签
+                    'wechatQrcodeTitle'   : '微信扫一扫：分享', // 微信二维码提示文字
+                }
             }
         },
         computed: {
@@ -86,6 +96,9 @@
                 this.article = response.data;
                 this.is_original = response.data.is_original == 1 ? true : false;
                 this.commentable_id = this.article.id
+                this.config.title = response.data.title
+                this.config.description = response.data.meta_description
+                this.config.image = response.data.page_image
             })
         }
     }
@@ -94,6 +107,7 @@
 <style scoped lang="less">
     @import "~highlight.js/styles/atom-one-dark.css";
     @import "styles/index.less";
+    @import "~vue-social-share/dist/client.css";
 </style>
 
 

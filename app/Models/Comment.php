@@ -6,6 +6,7 @@ use App\Services\Markdown;
 use App\Services\Mention;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
@@ -83,5 +84,13 @@ class Comment extends Model
         ];
 
         $this->attributes['content'] = json_encode($data);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hasManyChildren() : HasMany
+    {
+        return $this->hasMany(get_class($this), 'parent_id', 'id');
     }
 }

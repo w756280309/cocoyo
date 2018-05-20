@@ -14,10 +14,14 @@
         </Row>
     </div>
 </template>
+
 <script>
-    import expandRow from './table-expand.vue';
+    import expandChild from './table-child.vue';
     export default {
-        components: { expandRow },
+        components: { expandChild },
+        props: {
+            comment_id: 0,
+        },
         data () {
             return {
                 loading: false,
@@ -32,18 +36,11 @@
                         type: 'expand',
                         width: 50,
                         render: (h, params) => {
-                            return h(expandRow, {
+                            return h(expandChild, {
                                 props: {
                                     comment_id : params.row.id
                                 }
                             })
-                        }
-                    },
-                    {
-                        title: '文章',
-                        key: 'title',
-                        render: (h, params) => {
-                            return params.row.commentable.title
                         }
                     },
                     {
@@ -62,7 +59,7 @@
                     },
                     {
                         title: '昵称',
-                        key: 'name',
+                        key: 'user.name',
                         render: (h, params) => {
                             return params.row.user.name
                         }
@@ -121,7 +118,7 @@
         methods: {
             loadData() {
                 this.loading = true
-                var url = 'comments';
+                var url = 'comments?parent_id=' + this.comment_id;
                 if (this.meta.current_page > 1) {
                     let page = ''
                     if (url.indexOf('?') != -1) {
@@ -161,3 +158,7 @@
         }
     }
 </script>
+
+<style scoped>
+
+</style>

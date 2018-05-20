@@ -16,6 +16,7 @@ import store from './store/app'
 import Home from './Home.vue'
 import HttpPlugin from './libs/app_http'
 import hljs from 'highlight.js'
+import Share from 'vue-social-share'
 
 Vue.directive('highlight',function (el) {
     let blocks = el.querySelectorAll('pre code');
@@ -27,6 +28,7 @@ Vue.directive('highlight',function (el) {
 Vue.use(Vuetify)
 Vue.use(iview)
 Vue.use(HttpPlugin);
+Vue.use(Share)
 
 Vue.component('comment_post', require('./components/comments/Comment_Post.vue'));
 Vue.component('comment_root', require('./components/comments/Comment_root.vue'));
