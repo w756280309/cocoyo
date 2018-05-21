@@ -7,9 +7,6 @@
                     <FormItem label="分类名" prop="name">
                         <Input v-model="form.name" size="large" placeholder="Enter something..."></Input>
                     </FormItem>
-                    <FormItem label="路径" prop="path">
-                        <Input v-model="form.path" size="large" placeholder="Enter something..."></Input>
-                    </FormItem>
                     <FormItem label="描述" prop="description">
                         <Input v-model="form.description" size="large" placeholder="Enter something..." type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
                     </FormItem>
@@ -32,9 +29,6 @@
                 ruleValidate: {
                     name: [
                         {required: true, message: '分类名不能为空'}
-                    ],
-                    path: [
-                        {required: true, message: '路径不能为空'}
                     ],
                     description: [
                         {required: true, message: '分类描述不能为空'}

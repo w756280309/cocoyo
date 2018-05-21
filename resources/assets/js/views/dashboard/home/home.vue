@@ -93,19 +93,18 @@
         },
         created() {
             this.$http.get('statistics').then((response) => {
-                console.log(response);
                 this.count = response.data;
             })
         },
         computed: {
             name() {
-                return this.$store.state.user.info.nickname ? this.$store.state.user.info.nickname : this.$store.state.user.info.name;
+                return this.$store.state.user.userinfo.nickname ? this.$store.state.user.userinfo.nickname : this.$store.state.user.userinfo.name;
             },
             avatar() {
-                return  this.$store.state.user.info.avatar;
+                return  this.$store.state.user.userinfo.avatar;
             },
             user_description() {
-                return  this.$store.state.user.info.description;
+                return  this.$store.state.user.userinfo.description;
             }
         }
     }

@@ -82,3 +82,63 @@
     }
   }
 }
+
+#article{
+  .comment{
+    .media{
+      padding-top: 20px;
+      zoom: 1;
+      overflow: hidden;
+      .media-left{
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 10px;
+      }
+    }
+    .box-body {
+      border: 1px solid #ECF0F1;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #7F8C8D;
+      display: table-cell;
+      vertical-align: top;
+      zoom: 1;
+      overflow: hidden;
+      width:100%;
+    }
+    .heading {
+      padding: 10px 20px;
+      background: #ECF0F1;
+    }
+    .comment-body {
+      padding: 30px 50px;
+      color: #34495e;
+    }
+    .comment-textarea .input-group__input{
+      background-color:#fff !important;
+      border:2px solid #ccc !important;
+    }
+    .primary--text{
+      color:#ccc !important;
+    }
+    .icon{
+      margin-right: 5px;
+    }
+    .pull-right{
+      float: right;
+    }
+  }
+
+}
+
+.container-show {
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+  @media (min-width:1200px) {
+    width: 1170px
+  }
+}

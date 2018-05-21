@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
-        $user->fill($request->only(['nickname', 'website', 'description', 'github_url', 'weibo_link', 'weibo_name']));
+        $user->fill($request->only(['nickname', 'website', 'description', 'github_name', 'weibo_link', 'weibo_name']));
 
         $user->save();
 

@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use App\Services\MarkDown;
+use App\Traits\VisitsHelper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use VisitsHelper;
+
     /**
      * @var string
      */
@@ -81,9 +85,21 @@ class Article extends Model
     {
         $data = [
             'raw' => $value,
-            'html' => (new MarkDown)->convertMarkdownToHtml($value)
+            'html' => (new MarkDown)->convertMarkdownToHtml(emoji($value))
         ];
 
         $this->attributes['content'] = json_encode($data);
+    }
+
+    /**
+     * @param Builder $query
+     * @return $this
+     */
+    public function scopeValid(Builder $query)
+    {
+        return $query->where([
+            ['published_at', '<=', date('Y-m-d H:i:s', time())],
+            ['is_draft', 0]
+        ]);
     }
 }

@@ -31,7 +31,9 @@
         data () {
             return {
                 unit: '',
-                demo: {}
+                demo: {
+                    update() {}
+                }
             };
         },
         name: 'countUp',

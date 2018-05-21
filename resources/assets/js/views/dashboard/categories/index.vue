@@ -40,8 +40,8 @@
                         key: 'name'
                     },
                     {
-                        title: '路径',
-                        key: 'path',
+                        title: '描述',
+                        key: 'description',
                     },
                     {
                         title: '创建时间',

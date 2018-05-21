@@ -11,7 +11,14 @@
         "jellybool/translug": "^2.0",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "naux/sendcloud": "^1.1",
+        "overtrue/laravel-emoji": "^1.0",
+        "overtrue/laravel-follow": "^1.1",
+        "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "~3.0",
+        "socialiteproviders/qq": "^3.0",
+        "socialiteproviders/weibo": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",

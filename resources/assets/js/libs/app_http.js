@@ -1,5 +1,7 @@
 import axios from 'axios'
 import {apiUrl} from '@/config/app'
+import {getToken} from '@/utils/auth';
+import { Message,Notice } from 'iview';
 
 export const http = axios.create({
     baseURL : apiUrl,
@@ -7,6 +9,17 @@ export const http = axios.create({
         return [200, 201, 204, 422, 401, 400, 404, 429, 403].indexOf(status) !== -1 // 默认的
     },
 })
+
+http.interceptors.request.use(
+    config => {
+        let token = getToken();
+        if (token) {
+            config.headers['Authorization'] = token.token_type + ' ' + token.access_token
+        }
+
+        return config;
+    }
+)
 
 http.interceptors.response.use(
     response => {
@@ -19,26 +32,28 @@ http.interceptors.response.use(
             return response.data
         }
         if ([422].indexOf(status) !== -1) {
+            Object.keys(res.errors).forEach(value => {
+                Message.error(res.errors[value][0])
+            })
             return Promise.reject(res)
         }
-        if ([400, 404, 429, 403].indexOf(status) !== -1) {
-            this.$Notice.error({
+        if ([404].indexOf(status) !== -1){
+            window.location = '/#/404'
+        }
+        if ([400, 429, 403].indexOf(status) !== -1) {
+            Notice.error({
                 title: 'error',
                 desc: res.message,
             });
             return Promise.reject(res.message)
         }
         if ([401].indexOf(status) !== -1) {
-            this.$router.push('/login')
+            window.location = '/#/login'
         }
 
     },
     error => {
-
-        this.$Notice.error({
-            title: 'server error',
-            desc: 'false'
-        });
+        window.location = '/#/500'
 
         return Promise.reject(error)
     }

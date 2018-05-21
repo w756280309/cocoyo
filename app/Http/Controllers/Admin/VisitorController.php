@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Resources\Visitor as VisitorResource;
+use App\Http\Resources\VisitorResource;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

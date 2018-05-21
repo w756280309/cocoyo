@@ -1,52 +1,88 @@
 <template>
-    <v-container id="article">
-        <v-layout row wrap>
-            <v-flex md4 v-for="i in 6" :key="`4${i}`" class="px-2 py-2">
-                <router-link to="/login">
-                    <v-card class="article-list">
-                        <v-card-media
-                                class="white--text"
-                                height="200px"
-                                src="https://image.cocoyo.xin/cover/201801/25/f75e7f9489cd69d1625e5326665f247b.jpg"
-                        >
-                            <v-container fill-height fluid>
-                                <v-layout fill-height>
-                                    <v-flex xs12 align-end flexbox>
-                                        <span class="headline">laravel-passport的使用(二)</span>
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                        </v-card-media>
-                        <v-card-title>
-                            <p class="grey--text text-sm-left" style="width:100%">
-                                <span>Sat, Jan 6, 2018 10:30 PM</span>
-                                <span style="float:right;margin-left: 10px;"><v-icon size="10px">fas fa-eye</v-icon>&nbsp;&nbsp;100</span>
-                                <span style="float:right;"><v-icon size="10px">fas fa-user</v-icon>&nbsp;&nbsp;cocoyo</span>
-                            </p>
-                        </v-card-title>
-                        <div class="extra content">
-                            Laravel 中文文档，由社区用户翻译和维护，将会保持一直更新
-                        </div>
-                    </v-card>
-                </router-link>
-
-            </v-flex>
-        </v-layout>
-        <div class="text-xs-center" style="padding-top: 10px;">
-            <v-pagination :length="4" v-model="page" prev-icon="fas fa-chevron-left" next-icon="fas fa-chevron-right" style="font-size: 10px;" circle></v-pagination>
-        </div>
-    </v-container>
+    <v-content class="main-content">
+        <v-container id="article">
+            <v-layout row wrap>
+                <v-flex md4 v-for="article in articles" :key="article.id" class="px-2 py-2">
+                    <router-link :to="'/articles/' + article.slug">
+                        <v-card class="article-list">
+                            <v-card-media
+                                    class="white--text"
+                                    height="200px"
+                                    :src="article.page_image"
+                            >
+                                <v-container fill-height fluid>
+                                    <v-layout fill-height>
+                                        <v-flex xs12 align-end flexbox>
+                                            <span class="headline">{{ article.title }}</span>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </v-card-media>
+                            <v-card-title>
+                                <p class="grey--text text-sm-left" style="width:100%">
+                                    <span>{{ article.published_time }}</span>
+                                    <span style="float:right;margin-left: 10px;"><v-icon size="10px">fas fa-eye</v-icon>&nbsp;&nbsp;{{ article.visitors }}</span>
+                                    <span style="float:right;"><v-icon size="10px">fas fa-user</v-icon>&nbsp;&nbsp;{{ article.user.nickname ? article.user.nickname : article.user.name }}</span>
+                                </p>
+                            </v-card-title>
+                            <div class="extra content">
+                                {{ article.meta_description }}
+                            </div>
+                        </v-card>
+                    </router-link>
+                </v-flex>
+            </v-layout>
+            <div class="text-xs-center" style="padding-top: 10px;">
+                <Page :total="meta.total" :current="meta.current_page" :page-size="meta.per_page"
+                      @on-change="handleCurrentChange" class="article-pagination"></Page>
+            </div>
+        </v-container>
+    </v-content>
 </template>
 
 <script>
     export default {
-        data () {
+        data() {
             return {
-                page: 1
+                articles: [],
+                page: 1,
+                loading: false,
+                meta: {
+                    total: 0,
+                    current_page: 1,
+                    per_page: 0
+                }
             }
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            loadData() {
+                var url = 'articles';
+                if (this.meta.current_page > 1) {
+                    let page = ''
+                    if (url.indexOf('?') != -1) {
+                        page = '&page='
+                    } else {
+                        page = '?page='
+                    }
+                    url = url + page + this.meta.current_page
+                    this.$router.push(page + this.meta.current_page)
+                }
+                this.$http.get(url).then((response) => {
+                    this.articles = response.data;
+                    this.meta = response.meta
+                })
+            },
+            handleCurrentChange(val) {
+                this.meta.current_page = val
+                this.loadData()
+            },
         }
     }
 </script>
 
-<style scoped>
+<style lang="less">
+    @import "styles/index.less";
 </style>

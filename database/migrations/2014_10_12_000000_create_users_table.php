@@ -19,12 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('nickname')->nullable()->comment('显示名称');
             $table->text('avatar')->nullable()->comment('头像');
             $table->string('email')->unique()->comment('邮箱');
-            $table->string('confirm_code', 64)->unique()->nullable()->comment('邮箱验证码');
             $table->tinyInteger('status')->default(false)->comment('状态');
             $table->boolean('is_admin')->default(false)->comment('是否管理员');
             $table->string('password')->comment('密码');
             $table->string('github_name')->nullable()->comment('github名字');
-            $table->string('github_url')->nullable()->comment('github链接');
             $table->string('weibo_id')->nullable()->comment('微博id');
             $table->string('weibo_name')->nullable()->comment('微博名称');
             $table->string('weibo_link')->nullable()->comment('微博链接');

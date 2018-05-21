@@ -39,7 +39,7 @@
                            <DropdownItem name="loginout" divided>退出登录</DropdownItem>
                         </DropdownMenu>
                      </Dropdown>
-                     <Avatar :src="avatorPath" style="background: #619fe7;margin-left: 10px;"></Avatar>
+                     <Avatar :src="avatarPath" style="background: #619fe7;margin-left: 10px;"></Avatar>
                   </Row>
                </div>
             </div>
@@ -83,7 +83,7 @@
         },
         computed: {
             name() {
-                return this.$store.state.user.info.nickname ? this.$store.state.user.info.nickname : this.$store.state.user.info.name;
+                return this.$store.state.user.userinfo.name;
             },
             menuList () {
                 return this.$store.state.app.menuList;
@@ -94,8 +94,8 @@
             currentPath () {
                 return this.$store.state.app.currentPath; // 当前面包屑数组
             },
-            avatorPath () {
-                return this.$store.state.user.info.avatar;
+            avatarPath () {
+                return this.$store.state.user.userinfo.avatar;
             },
             cachePage () {
                 return this.$store.state.app.cachePage;
@@ -123,7 +123,7 @@
                 if (name === 'ownSpace') {
                     this.$router.push({
                         name: 'users_edit',
-                        params: {id : this.$store.state.user.info.id}
+                        params: {id : this.$store.state.user.userinfo.id}
                     });
                 } else if (name === 'loginout') {
                     // 退出登录

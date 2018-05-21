@@ -15,7 +15,9 @@
     </div>
 </template>
 <script>
+    import expandRow from './table-expand.vue';
     export default {
+        components: { expandRow },
         data () {
             return {
                 loading: false,
@@ -27,37 +29,50 @@
                 },
                 tableColumns: [
                     {
-                        title: 'id',
-                        key: 'id'
-                    },
-                    {
-                        title: '用户',
-                        key: 'name',
+                        type: 'expand',
+                        width: 50,
                         render: (h, params) => {
-                            return h('Tooltip', {
+                            return h(expandRow, {
                                 props: {
-                                    content: params.row.user.nickname ? params.row.user.nickname : params.row.user.name
+                                    comment_id : params.row.id
                                 }
-                            }, [
-                                h('Avatar', {
-                                    props: {
-                                        src: params.row.user.avatar
-                                    }
-                                })
-                            ])
+                            })
                         }
                     },
                     {
-                        title: '评论类型',
-                        key: 'type'
+                        title: '文章',
+                        key: 'title',
+                        render: (h, params) => {
+                            return params.row.commentable.title
+                        }
                     },
                     {
-                        title: '评论标题',
-                        key: 'commentable'
+                        title: '内容',
+                        key: 'content.html',
+                        render: (h, params) => {
+                            return h(
+                                'div',
+                                {
+                                    domProps: {
+                                        innerHTML: params.row.content.html
+                                    }
+                                }
+                            )
+                        }
+                    },
+                    {
+                        title: '昵称',
+                        key: 'name',
+                        render: (h, params) => {
+                            return params.row.user.name
+                        }
                     },
                     {
                         title: '评论时间',
-                        key: 'created_at'
+                        key: 'created_at',
+                        render: (h, params) => {
+                            return params.row.created_at.created_diff
+                        }
                     },
                     {
                         title: '操作',
@@ -130,8 +145,8 @@
             handleDelete(data) {
                 this.$Modal.confirm({
                     title: '删除该评论?',
-                    content: '该评论会永久删除，请三思!',
-                    okText: '是,删除它!',
+                    content: '评论下所有的子评论会删除',
+                    okText: '确定',
                     cancelText: '取消',
                     loading: true,
                     onOk: () => {

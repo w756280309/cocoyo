@@ -3,30 +3,71 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use App\Http\Requests\ForgetPasswordRequest;
+use App\Models\User;
+use App\Notifications\SendForgetPasswordMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ForgotPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
-    |
-    */
+    /**
+     * 发送充值密码链接
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function sendForgetPasswordMail(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|exists:users,email'
+        ], $this->messages());
 
-    use SendsPasswordResetEmails;
+        $user = User::where('email', $request->input('email'))->first();
+
+        $user->notify(new SendForgetPasswordMail($user));
+
+        return $this->success('success');
+    }
 
     /**
-     * Create a new controller instance.
+     * 重置密码
      *
-     * @return void
+     * @param ForgetPasswordRequest $request
+     * @return mixed
      */
-    public function __construct()
+    public function forgetPassword(ForgetPasswordRequest $request)
     {
-        $this->middleware('guest');
+        $code = Cache::get($request->input('email'));
+
+        if (! $code) {
+            return $this->formError(['email' => '验证链接已失效']);
+        }
+
+        if (! hash_equals($code, $request->input('code'))) {
+            return $this->formError('验证链接错误');
+        }
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        // 清除验证码缓存
+        Cache::forget($request->input('email'));
+
+        return $this->success('success');
+    }
+    
+    /**
+     * @return array
+     */
+    protected function messages() : array
+    {
+        return [
+            'email.required' => '请输入邮箱',
+            'email.email' => '无效的邮箱',
+            'email.exists' => '邮箱不存在',
+        ];
     }
 }

@@ -58,6 +58,15 @@ app_mix.js('resources/assets/js/app.js', 'public/js')
                 {
                     test: /\.css$/,
                     use: [ 'style-loader', 'css-loader' ]
+                },
+                {
+                    test: /\.md$/,
+                    loader: 'vue-markdown-loader',
+                    options: {
+                        preset: 'default',
+                        breaks: true,
+                        preventExtract: true
+                    }
                 }
             ]
         }

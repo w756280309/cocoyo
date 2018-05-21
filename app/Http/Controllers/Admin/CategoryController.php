@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,7 +39,6 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:1|max:15',
-            'path' => 'required',
             'description' => 'required'
         ]);
 
@@ -70,7 +69,6 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:1|max:15',
-            'path' => 'required',
             'description' => 'required'
         ]);
 

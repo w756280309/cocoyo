@@ -1,67 +1,114 @@
 <template>
-    <v-container grid-list-xl id="article">
-        <v-layout row wrap>
-            <v-flex xs8 offset-xs2>
-                <h1 class="article-title">Browsersync的使用</h1>
-                <div class="meta" style="text-align: center;">
-                    <div class="user-card size60">
-                        <a href="https://www.cocoyo.xin/user/cocoyo" class="avatar">
-                            <img alt=" cocoyo" src="https://image.cocoyo.xin/IMG_0347.PNG" class="img-circle" style="width: 30px; height: 30px;">
-                        </a>
-                        <h4>
-                            <a href="https://www.cocoyo.xin/user/cocoyo">cocoyo</a>
-                        </h4>
-                        <time>发表于 2个月前</time>
+    <v-content class="main-content">
+        <v-container grid-list-xl class="container-show" id="article">
+            <v-layout row wrap>
+                <v-flex md10 offset-md1>
+                    <h1 class="article-title">{{ article.title }}</h1>
+                    <div class="meta" style="text-align: center;">
+                        <div class="user-card size60">
+                            <a href="https://www.cocoyo.xin/user/cocoyo" class="avatar">
+                                <img :src="article.user.avatar" class="img-circle" style="width: 30px; height: 30px;">
+                            </a>
+                            <h4>
+                                <router-link style="color: #15b982;" :to="'/users/' + article.user.name">{{ article.user.nickname ? article.user.nickname : article.user.name }}</router-link>
+                            </h4>
+                            <time style="vertical-align: middle;font-size: 12px;color: #9b9b9b;">发表于 {{ article.published_individualization }}</time>
+                        </div>
+                        <div class="actions" v-for="(tag, index) in article.tags">
+                            <a  class="btn-comment">
+                                <v-icon size="10px">fas fa-tag</v-icon>
+                            </a>
+                            <a href="javascript:;">{{ tag.tag }}</a>
+                        </div>
                     </div>
-                    <div class="actions">
-                        <a href="javascript:;" class="btn-comment">
-                            <i class="ion-pricetag"></i>
-                        </a>
-                        <a href="https://www.cocoyo.xin/tag/windows">windows</a>
+                    <v-card>
+                        <v-card-text class="markdown elevation-8" style="padding: 15px 20px 1px 30px;">
+                            <div v-html="article.content_html" v-highlight>
+                                {{ article.content_html }}
+                            </div>
+                            <license :name="article.user.nickname ? article.user.nickname : article.user.name"
+                                     :is_original="is_original"></license>
+                            <div v-if="commentable_id" style="padding: 10px 0;">
+                                <share :config="config"></share>
+                            </div>
+                        </v-card-text>
+                    </v-card>
+
+                    <div v-if="commentable_id">
+                        <comment_post :canComment="can_comment" :user_id="user_id" :username="username" :commentableId="commentable_id"></comment_post>
                     </div>
-                </div>
-                <v-card>
-                    <v-card-text class="markdown elevation-8">
-                        <h3 id="-">前言</h3>
-                            <p>学前端页面时难免每次修改代码都需要<code>F5</code>刷新一下，作为一名极客怎么可能忍受得了，搜索了一下发现<code>Browsersync</code>这个好东西，使用起来真的很方便。</p>
-                            <h3 id="-">安装</h3>
-                            <h4 id="1-node-js">1. 安装 Node.js</h4>
-                            <p>BrowserSync是基于Node.js的, 是一个Node模块， 如果您想要快速使用它，也许您需要先安装一下Node.js 。</p>
-                            <h4 id="2-browsersync">2安装 BrowserSync</h4>
-                            <p>全局安装</p>
-                            <pre><code class="hljs sql">npm <span class="hljs-keyword">install</span> -g browser-<span class="hljs-keyword">sync</span>
-</code></pre><h3 id="-">使用</h3>
-                            <p>具体的使用和命令我这里就不说那么多了，可以看官方文档<a href="http://www.browsersync.cn/">http://www.browsersync.cn/</a></p>
-                            <p>我这里使用的是动态网站，进入所需监听的目录</p>
-                            <pre><code class="hljs apache">
-<span class="hljs-attribute">browser</span>-sync start --proxy <span class="hljs-string">"seekers.test"</span> --files <span class="hljs-string">"public/css/*.css,app/Http/controllers/,resources/views/ "</span>
-</code></pre><p>可以看到如下界面</p>
-                            <p><img src="https://image.cocoyo.xin/article/201801/25/6ae71f2c551348abf8148d3189179e02.png" alt="V]NL9{T8YB9220R8KG~A%I0.png"></p>
-                            <p>每次文件改变都会自动帮你刷新。</p>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-            <v-flex xs8 offset-xs2>
-                <v-btn block style="background-color:#F96854 !important;" dark>登陆发表评论</v-btn>
-                <v-flex xs8 offset-xs2>
-                    <v-text-field
-                            name="input-1"
-                            label="Label Text"
-                            textarea
-                            dark
-                    ></v-text-field>
+
                 </v-flex>
-            </v-flex>
-        </v-layout>
-    </v-container>
+            </v-layout>
+        </v-container>
+    </v-content>
 </template>
 
 <script>
-    import CommentGrid from 'vue-comment-grid'
+    import license from '@/components/license'
+
     export default {
         components: {
-            CommentGrid
+            license,
+        },
+        data() {
+            return {
+                article: {
+                    user: {}
+                },
+                is_original: false,
+                commentable_id: 0,
+                commentableType: 'article',
+                comment_count: 0,
+                config: {
+                    'source'              : 'https://www.cocoyo.xin',
+                    'title'               : '', // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+                    'description'         : '', // 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+                    'image'               : '', // 图片, 默认取网页中第一个img标签
+                    'wechatQrcodeTitle'   : '微信扫一扫：分享', // 微信二维码提示文字
+                }
+            }
+        },
+        computed: {
+            username() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.name;
+                }
+                return ''
+            },
+            avatar() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.avatar
+                }
+                return ''
+            },
+            user_id() {
+                if (this.$store.state.user.token) {
+                    return this.$store.state.user.userinfo.id
+                }
+            },
+            can_comment() {
+                return this.$store.state.user.token ? true : false
+            }
+        },
+        created() {
+            this.$http.get('/articles/' + this.$route.params.slug).then((response) => {
+                this.article = response.data;
+                this.is_original = response.data.is_original == 1 ? true : false;
+                this.commentable_id = this.article.id
+                this.config.title = response.data.title
+                this.config.description = response.data.meta_description
+                this.config.image = response.data.page_image
+            })
         }
     }
 </script>
+
+<style scoped lang="less">
+    @import "~highlight.js/styles/atom-one-dark.css";
+    @import "styles/index.less";
+    @import "~vue-social-share/dist/client.css";
+</style>
+
+
 

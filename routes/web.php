@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace' => 'Auth'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::get('/{driver}', 'AuthorizationsController@redirectToProvider');
+    });
+});
 
 Route::get('/', 'IndexController@index')->name('index');
 

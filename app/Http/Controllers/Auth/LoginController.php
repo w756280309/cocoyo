@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Notifications\UserRegisterVerficationCode;
 use App\Traits\ProxyHelpers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -39,6 +40,14 @@ class LoginController extends Controller
 
         $user = User::where($this->username(), $request->input($this->username()))->first();
 
+        // 如果邮箱没有验证
+        if (!$user->status) {
+            // 发送验证链接
+            $user->notify(new UserRegisterVerficationCode($user));
+
+            return $this->respond(['code' => 0]);
+        }
+
         $tokens = $this->authenticate();
 
         return $this->respond(['data' => ['token' => $tokens, 'user' => new UserResource($user)]]);
@@ -56,5 +65,18 @@ class LoginController extends Controller
             $this->username() => 'required|string|exists:users,'. $this->username(),
             'password' => 'required|string',
         ]);
+    }
+
+    /**
+     * 退出登录
+     *
+     * @param Request $request
+     * @return \Response
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        return $this->noContent();
     }
 }

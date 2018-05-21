@@ -4,7 +4,7 @@
             <Col :span="24">
             <Card>
                 <Form :model="form" label-position="right" :label-width="100">
-                    <markdown-editor :configs="config" ref="markdownEditor" v-model="form.content_raw"></markdown-editor>
+                    <markdown-editor :configs="config" ref="markdownEditor" v-model="form.content"></markdown-editor>
 
                     <FormItem style="text-align:center">
                         <Button type="success" @click="onSubmit('form')">编辑评论</Button>
@@ -25,7 +25,9 @@
         },
         data() {
             return {
-                form: {},
+                form: {
+                    content: ''
+                },
                 simplemdeMark: {},
                 config:{
                     toolbar: ['bold', 'italic', 'strikethrough', 'heading', 'heading-smaller', 'heading-bigger', 'heading-1', 'heading-2', 'heading-3', '|', 'code', 'quote', 'unordered-list', 'clean-block', '|', 'link', 'image', 'table', 'horizontal-rule', '|', 'preview', 'guide']
@@ -34,7 +36,8 @@
         },
         created() {
             this.$http.get('comments/' + this.$route.params.id + '/edit').then((response) => {
-                this.form = response.data;
+                this.form.content = response.data.content.raw;
+                console.log(this.form.content)
             })
         },
         mounted () {
@@ -42,7 +45,7 @@
         },
         methods: {
             onSubmit(name) {
-                if (this.form.content_raw) {
+                if (this.form.content) {
                     this.$http.put('comments/' + this.$route.params.id, this.form).then((response) => {
                         this.$Notice.success({
                             title: '编辑评论成功'

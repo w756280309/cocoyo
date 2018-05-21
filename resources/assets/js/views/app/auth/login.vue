@@ -1,53 +1,50 @@
 <template>
-    <v-layout align-center justify-center>
-        <v-flex xs12 sm8 md4>
-            <div class="login mu-paper login_wrap mu-paper-round mu-paper-3">
-                <div class="login_con">
-                    <div class="main">
-                        <h3>登录</h3>
-                        <v-form v-model="valid" ref="form" lazy-validation>
-                            <v-text-field
-                                    label="邮箱"
-                                    v-model="form.email"
-                                    :rules="emailRule"
-                                    required
-                            ></v-text-field>
-                            <v-text-field
-                                    label="密码"
-                                    v-model="form.password"
-                                    :rules="passwordRule"
-                                    required
-                                    type="password"
-                            ></v-text-field>
-                            <v-btn block @click="submit" color="primary" dark>登录</v-btn>
-                        </v-form>
-                        <div class="jump_link">
-                            <span class="register">注册</span>
-                            <span class="forget">找回密码</span>
-                        </div>
-                        <div class="wx_login">
-                            <div class="wx_btn">第三方登陆</div>
-                        </div>
-                        <div class="text-xs-center">
-                            <v-btn fab dark small style="background: #00adb5;">
-                                <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
-                            </v-btn>
+    <div>
+        <div class="main">
+            <h3>登录</h3>
+            <v-form v-model="valid" ref="form" lazy-validation>
+                <v-text-field
+                        label="邮箱"
+                        v-model="form.email"
+                        :rules="emailRule"
+                        required
+                ></v-text-field>
+                <v-text-field
+                        label="密码"
+                        v-model="form.password"
+                        :rules="passwordRule"
+                        required
+                        type="password"
+                ></v-text-field>
+                <v-btn block @click="submit" color="primary" dark>登录</v-btn>
+            </v-form>
+            <div class="jump_link">
+                <router-link to="/register">
+                    <span class="register">注册</span>
+                </router-link>
 
-                            <v-btn fab dark small style="background: #f75b5b;">
-                                <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
-                            </v-btn>
-
-                        </div>
-                    </div>
-                </div>
+                <router-link to="/forgetpassword">
+                    <span class="forget">找回密码</span>
+                </router-link>
             </div>
-        </v-flex>
-    </v-layout>
+            <div class="wx_login">
+                <div class="wx_btn">第三方登陆</div>
+            </div>
+            <div class="text-xs-center">
+                <v-btn fab dark small style="background: #00adb5;" @click="socialiteQQ">
+                    <v-icon dark style="padding-top: 6px;">fab fa-qq</v-icon>
+                </v-btn>
+
+                <v-btn fab dark small style="background: #f75b5b;" @click="socialiteWeibo">
+                    <v-icon dark style="padding-top: 6px;">fab fa-weibo</v-icon>
+                </v-btn>
+
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-    import Cookies from 'js-cookie';
-
     export default {
         data() {
             return {
@@ -66,45 +63,36 @@
             submit () {
                 if (this.$refs.form.validate()) {
                     this.$http.post('login', this.form).then((response) => {
-                        Cookies.set('user', response.data.user);
-                        Cookies.set('token', response.data.token);
+                        if (typeof(response.code) != 'undefined' && response.code == 0) {
+                            this.$router.push({
+                                path: '/register_success',
+                                query: {email: this.form.email}
+                            })
+                        }
+                        this.$store.commit('SET_USERINFO', response.data.user);
+                        this.$store.commit('SET_TOKEN', response.data.token);
+                        this.$store.commit('getNotificationCount');
 
-                        this.$router.push('/');
+                        let redirect = this.$route.query.redirect;
+                        if (redirect) {
+                            this.$router.push(redirect);
+                        } else {
+                            this.$router.push('/');
+                        }
                     })
                 }
             },
+            socialiteQQ() {
+                window.location = '/auth/qq';
+            },
+            socialiteWeibo() {
+                window.location = '/auth/weibo';
+            }
         }
     }
 </script>
 
 <style scoped>
-    .login_wrap{
-        background: white;
-        border-radius: 4px;
-        padding-bottom: 40px;
-        padding-top: 40px;
-    }
-    .mu-paper-3{
-        box-shadow: 0 6px 20px 5px rgba(40, 120, 255, 0.1), 0 16px 24px 2px rgba(0, 0, 0, 0.05);
-    }
-    .mu-paper {
-        background-color: #ffffff;
-        color: rgba(0, 0, 0, 0.87);
-    }
-    .mu-paper {
-        -webkit-transition: all .45s cubic-bezier(.23,1,.32,1);
-        transition: all .45s cubic-bezier(.23,1,.32,1);
-        color: rgba(0,0,0,.87);
-        background-color: #fff;
-    }
-    .login{
-        text-align: center;
-        margin-top:40px;
-    }
-    .login .login_con{
-        width: 280px;
-        margin: 0 auto;
-    }
     .login .login_con h3{
         margin: 5px 0 22px 0;
         font-size: 20px;
