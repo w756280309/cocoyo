@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/test', function () {
-    return view('mails.followed_user');
-});
-
 Route::group(['namespace' => 'Auth'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::get('/{driver}', 'AuthorizationsController@redirectToProvider');
