@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="php,个人博客,LINUX，html5,css,javascript,心情,laravel5">
     <meta name="description" content="一个小小的博客网站,记录一些技术和分享一些心情">
+    <link href="/favicon.ico" rel="shortcut icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
