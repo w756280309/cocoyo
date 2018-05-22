@@ -78,6 +78,7 @@
 <script>
     import markdownEditor from 'vue-simplemde/src/markdown-editor'
     import ImageCover from '@/components/ImageCover'
+    import FineUploader from 'fine-uploader/lib/traditional'
 
     export default {
         components: {
@@ -133,6 +134,7 @@
         },
         mounted () {
             this.simplemdeMark = this.$refs.markdownEditor.simplemde
+            this.contentUploader()
         },
         created() {
             Promise.all([this.$http.get('categories?type=all'), this.$http.get('tags?type=all')]).then((response) => {
@@ -173,7 +175,69 @@
             },
             changeDate(date) {
                 this.form.published_at = date
-            }
+            },
+            contentUploader() {
+                let vm = this
+                this.simplemdeMark.codemirror.on('paste', function(editor, event){
+                    if (event.clipboardData.types.indexOf("Files") >= 0) {
+                        event.preventDefault()
+                    }
+                })
+                let contentUploader = new FineUploader.FineUploaderBasic({
+                    paste: {
+                        targetElement: document.querySelector('.CodeMirror')
+                    },
+                    request: {
+                        endpoint: '/api/upload/image',
+                        inputName: 'image',
+                        customHeaders: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        params: {
+                            strategy: 'article'
+                        }
+                    },
+                    validation: {
+                        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
+                    },
+                    callbacks: {
+                        onPasteReceived(file) {
+                            let promise = new FineUploader.Promise()
+                            if (file == null || typeof file.type == 'undefined' || file.type.indexOf('image/')) {
+                                toastr.error('Only can upload image!');
+                                return promise.failure('not a image.')
+                            }
+                            return promise.then(() => {
+                                vm.createdImageUploading('image.png')
+                            }).success('image')
+                        },
+                        onComplete(id, name, responseJSON) {
+                            vm.replaceImageUploading(name, responseJSON.relative_url)
+                        },
+                    },
+                });
+                let dragAndDropModule = new FineUploader.DragAndDrop({
+                    dropZoneElements: [document.querySelector('.CodeMirror')],
+                    callbacks: {
+                        processingDroppedFilesComplete(files, dropTarget) {
+                            files.forEach((file) => {
+                                vm.createdImageUploading(file.name)
+                            })
+                            contentUploader.addFiles(files); //this submits the dropped files to Fine Uploader
+                        }
+                    }
+                })
+            },
+            getImageUploading() {
+                return '\n![Uploading ...]()\n'
+            },
+            createdImageUploading(name) {
+                this.simplemdeMark.value(this.simplemdeMark.value() + this.getImageUploading())
+            },
+            replaceImageUploading(name, url) {
+                let result = '\n!['+name+']('+url+')\n'
+                this.simplemdeMark.value(this.simplemdeMark.value().replace(this.getImageUploading(), result))
+            },
         },
     }
 </script>

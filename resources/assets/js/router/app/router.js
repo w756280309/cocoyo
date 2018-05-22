@@ -148,37 +148,37 @@ export const otherRouter = {
                 {
                     path: ':name/edit',
                     meta: {
-                        title: '编辑个人资料 | cocoyo'
+                        title: '编辑个人资料 | cocoyo',
+                        requiresAuth: true
                     },
                     name: 'user_edit',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/profile.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_avatar',
                     meta: {
-                        title: '编辑头像 | cocoyo'
+                        title: '编辑头像 | cocoyo',
+                        requiresAuth: true
                     },
                     name: 'user_avatar_edit',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/avatar.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_email_notify',
                     meta: {
-                        title: '修改消息通知 | cocoyo'
+                        title: '修改消息通知 | cocoyo',
+                        requiresAuth: true
                     },
                     name: 'edit_email_notify',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/edit_email_notify.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_password',
                     meta: {
-                        title: '修改密码 | cocoyo'
+                        title: '修改密码 | cocoyo',
+                        requiresAuth: true
                     },
                     name: 'edit_password',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/edit_password.vue'], resolve)),
                 }
             ]
@@ -190,10 +190,10 @@ export const otherRouter = {
                 {
                     path: 'notifications',
                     meta: {
-                        title: '我的提醒 | cocoyo'
+                        title: '我的提醒 | cocoyo',
+                        requiresAuth: true
                     },
                     name: 'user_notifications',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/notifications.vue'], resolve)),
                 }
             ]
