@@ -39,6 +39,11 @@ return [
         'appKey' => env('YOUDAO_APP_KEY'),
         'appSecret' => env('YOUDAO_APP_SECRET'),
     ],
+    'weibo' => [
+        'client_id' => env('WEIBO_KEY'),
+        'client_secret' => env('WEIBO_SECRET'),
+        'redirect' => env('WEIBO_REDIRECT_URI'),
+    ],
     'qq' => [
         'client_id' => env('QQ_KEY'),
         'client_secret' => env('QQ_SECRET'),
