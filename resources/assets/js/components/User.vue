@@ -162,6 +162,7 @@
             loadData() {
                 this.$http.get('users/' + this.$route.params.name).then((response) => {
                     this.user = response.data
+                    document.title = this.user.name + ' 个人信息 | cocoyo'
                 })
             }
         },

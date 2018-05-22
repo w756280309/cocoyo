@@ -38,13 +38,17 @@ export const otherRouter = {
     children: [
         {
             path: '/',
-            title: '主页',
+            meta: {
+                title: 'cocoyo'
+            },
             name: 'index',
             component: resolve => void(require(['@/views/app/articles/index.vue'], resolve))
         },
         {
             path: 'articles/:slug',
-            title: '文章详情',
+            meta: {
+                title: '文章详情 | cocoyo'
+            },
             name: 'articles.show', component: resolve => void(require(['@/views/app/articles/show.vue'], resolve))
         },
         {
@@ -53,51 +57,65 @@ export const otherRouter = {
             children: [
                 {
                     path: '/login',
-                    title: '登陆',
                     name: 'login',
                     component: resolve => void(require(['@/views/app/auth/login.vue'], resolve)),
-                    meta: {requiresNotAuth: true}
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '用户登录 | cocoyo'
+                    }
                 },
                 {
                     path: '/socialite/:driver',
-                    title: '授权登陆',
                     name: 'socialite',
-                    meta: {requiresNotAuth: true},
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '第三方授权登录 | cocoyo'
+                    },
                     component: resolve => void(require(['@/views/app/auth/socialite.vue'], resolve)),
                 },
                 {
                     path: '/register_success',
-                    title: '注册提示',
+                    meta: {
+                        title: '用户注册提示 | cocoyo'
+                    },
                     name: 'register_tip',
                     component: resolve => void(require(['@/views/app/auth/register_success.vue'], resolve)),
                 },
                 {
                     path: '/register',
-                    title: '注册',
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '用户注册 | cocoyo'
+                    },
                     name: 'register',
                     component: resolve => void(require(['@/views/app/auth/register.vue'], resolve)),
-                    meta: {requiresNotAuth: true}
                 },
                 {
                     path: '/register/confirmed',
-                    title: '注册验证',
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '用户注册验证 | cocoyo'
+                    },
                     name: 'register_confirmed',
                     component: resolve => void(require(['@/views/app/auth/confirmed.vue'], resolve)),
-                    meta: {requiresNotAuth: true}
                 },
                 {
                     path: '/forgetpassword',
-                    title: '忘记密码',
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '忘记密码 | cocoyo'
+                    },
                     name: 'forgetpassword',
                     component: resolve => void(require(['@/views/app/auth/forgetpassword.vue'], resolve)),
-                    meta: {requiresNotAuth: true}
                 },
                 {
                     path: '/forgetverify',
-                    title: '重置密码',
+                    meta: {
+                        requiresNotAuth: true,
+                        title: '重置密码 | cocoyo'
+                    },
                     name: 'forgetverify',
                     component: resolve => void(require(['@/views/app/auth/forgetverify.vue'], resolve)),
-                    meta: {requiresNotAuth: true}
                 },
             ]
         },
@@ -107,13 +125,17 @@ export const otherRouter = {
             children: [
                 {
                     path: ':name',
-                    title: '用户信息',
+                    meta: {
+                        title: ':name 个人信息 | cocoyo'
+                    },
                     name: 'user_replies',
                     component: resolve => void(require(['@/views/app/users/replies.vue'], resolve)),
                 },
                 {
                     path: ':name/following',
-                    title: '用户关注',
+                    meta: {
+                        title: ':name 关注信息 | cocoyo'
+                    },
                     name: 'user_following',
                     component: resolve => void(require(['@/views/app/users/following.vue'], resolve)),
                 }
@@ -125,30 +147,38 @@ export const otherRouter = {
             children: [
                 {
                     path: ':name/edit',
-                    title: '用户编辑',
+                    meta: {
+                        title: '编辑个人资料 | cocoyo',
+                        requiresAuth: true
+                    },
                     name: 'user_edit',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/profile.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_avatar',
-                    title: '编辑头像',
+                    meta: {
+                        title: '编辑头像 | cocoyo',
+                        requiresAuth: true
+                    },
                     name: 'user_avatar_edit',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/avatar.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_email_notify',
-                    title: '修改消息通知',
+                    meta: {
+                        title: '修改消息通知 | cocoyo',
+                        requiresAuth: true
+                    },
                     name: 'edit_email_notify',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/edit_email_notify.vue'], resolve)),
                 },
                 {
                     path: ':name/edit_password',
-                    title: '修改密码',
+                    meta: {
+                        title: '修改密码 | cocoyo',
+                        requiresAuth: true
+                    },
                     name: 'edit_password',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/edit_password.vue'], resolve)),
                 }
             ]
@@ -159,16 +189,20 @@ export const otherRouter = {
             children: [
                 {
                     path: 'notifications',
-                    title: '消息通知',
+                    meta: {
+                        title: '我的提醒 | cocoyo',
+                        requiresAuth: true
+                    },
                     name: 'user_notifications',
-                    meta: { requiresAuth: true },
                     component: resolve => void(require(['@/views/app/users/notifications.vue'], resolve)),
                 }
             ]
         },
         {
             path: '/contact',
-            title: '联系我',
+            meta: {
+                title: '关于我 | cocoyo'
+            },
             name: 'contact', component: resolve => void(require(['@/views/app/about/contact.vue'], resolve))
         },
     ]
