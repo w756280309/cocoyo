@@ -99,6 +99,7 @@
                 this.config.title = response.data.title
                 this.config.description = response.data.meta_description
                 this.config.image = response.data.page_image
+                document.title = this.article.title + ' | cocoyo'
             })
         }
     }
