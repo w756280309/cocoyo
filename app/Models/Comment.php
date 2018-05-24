@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\Markdown;
+use App\Services\MarkDown;
 use App\Services\Mention;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -80,7 +80,7 @@ class Comment extends Model
 
         $data = [
             'raw' => $content,
-            'html' => (new Markdown)->convertMarkdownToHtml(emoji($content))
+            'html' => (new MarkDown)->convertMarkdownToHtml(emoji($content))
         ];
 
         $this->attributes['content'] = json_encode($data);
