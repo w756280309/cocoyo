@@ -212,7 +212,7 @@
                             }).success('image')
                         },
                         onComplete(id, name, responseJSON) {
-                            vm.replaceImageUploading(name, responseJSON.relative_url)
+                            vm.replaceImageUploading(name, responseJSON.full_relative_url)
                         },
                     },
                 });

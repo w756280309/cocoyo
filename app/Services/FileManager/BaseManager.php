@@ -75,6 +75,7 @@ class BaseManager
             'mime' => $mime,
             'size' => $file->getClientSize(),
             'relative_url' => '/storage/' . $realName,
+            'full_relative_url' => url('/storage/' . $realName)
         ];
     }
 }

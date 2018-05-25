@@ -25,7 +25,6 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'is_admin' => $faker->randomNumber([1, 2]),
         'password' => bcrypt(123456),
         'remember_token' => str_random(10),
-        'confirm_code' => str_random(10),
         'description' => $faker->sentence,
         'created_at' => $now,
         'updated_at' => $now,
