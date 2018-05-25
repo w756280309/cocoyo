@@ -65,6 +65,8 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('login', 'LoginController@login')->name('login');
     # ------------------- 第三方登录 ----------------------------
     Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->name('socials.authorizations.store');
+    # ------------------- 小程序登录 ----------------------------
+    Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')->name('weapp.authorizations.store');
     # ------------------- 用户注册 ----------------------------
    Route::post('register', 'RegisterController@register')->name('register');
     # ------------------- 退出登录 ----------------------------

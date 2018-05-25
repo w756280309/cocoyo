@@ -24,7 +24,7 @@ class User extends Authenticatable
         'name', 'email', 'is_admin', 'avatar', 'password', 'nickname',
         'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
         'weibo_id', 'github_name', 'website', 'description', 'status',
-        'qq_id'
+        'qq_id','weixin_session_key', 'weapp_openid'
     ];
 
     /**
