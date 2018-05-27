@@ -20,6 +20,17 @@ use App\Http\Resources\CommentResource;
 class UserController extends Controller
 {
     /**
+     * 获取用户信息
+     *
+     * @param Request $request
+     * @return UserResource
+     */
+    public function index(Request $request)
+    {
+        return new UserResource($request->user());
+    }
+
+    /**
      * 用户详情
      *
      * @param Request $request

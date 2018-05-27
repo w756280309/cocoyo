@@ -33,6 +33,8 @@ Route::group(['namespace' => 'Api'], function () {
 
     # ------------------- 需要登录路由 ----------------------------
     Route::group(['middleware' => 'auth:api'], function () {
+        # ------------------- 用户信息 ----------------------------
+        Route::get('user', 'UserController@index')->name('users.index');
         # ------------------- 用户消息 ----------------------------
         Route::get('users/{username}/notifications', 'UserController@notifications')->name('users.notifications');
         # ------------------- 用户资料 ----------------------------
