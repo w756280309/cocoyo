@@ -33,8 +33,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        http_response_code(500);
-
         $data = array_merge($request->all(), [
             'user_id' => $request->user()->id,
             'last_user_id' => $request->user()->id
