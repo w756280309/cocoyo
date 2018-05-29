@@ -79,7 +79,7 @@ class UserController extends Controller
 
         $this->authorize('update', $user);
 
-        $data = $request->only(['nickname', 'website', 'weibo_name', 'weibo_link', 'github_name', 'description']);
+        $data = $request->only(['nickname', 'avatar', 'website', 'weibo_name', 'weibo_link', 'github_name', 'description']);
 
         $user->fill($data);
 
