@@ -28,6 +28,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('cocoyo:sync-user-actived-at')->dailyAt('00:00');
         // 每周六零时执行一次 同步redis 访问数至数据库
         $schedule->command('cocoyo:sync-database-visit')->weekly()->saturdays()->dailyAt('00:00');
+        // 从神马租车抢购优惠券
+        $schedule->command('cocoyo:rush')->dailyAt('10:00');
+        // 从神马租车抢购优惠券
+        $schedule->command('cocoyo:rush')->dailyAt('14:00');
     }
 
     /**
