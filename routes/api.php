@@ -24,6 +24,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('articles/{slug}', 'ArticleController@show')->name('articles.show');
     # ------------------- 评论详情 ----------------------------
     Route::get('commentable/{commentableId}/comment', 'CommentController@show')->name('comments.show');
+    # ------------------- 评论详情 ----------------------------
+    Route::get('commentable/{commentableId}/wxapp', 'CommentController@wxappShow')->name('comments.wxapp.show');
     # ------------------- 用户详情 ----------------------------
     Route::get('users/{username}', 'UserController@show')->name('users.show');
     # ------------------- 用户评论 ----------------------------
