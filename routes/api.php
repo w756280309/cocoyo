@@ -43,6 +43,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::put('users/{username}/profile', 'UserController@update');
         # ------------------- 修改头像 ----------------------------
         Route::put('users/{username}/avatar', 'UserController@avatar');
+        # ------------------- 小程序修改头像 ----------------------------
+        Route::post('users/{username}/wx_avatar', 'UserController@wx_avatar');
         # ------------------- 修改邮件通知 ----------------------------
         Route::put('users/{username}/email_notify_enabled', 'UserController@email_notify_enabled');
         # ------------------- 修改密码 ----------------------------
