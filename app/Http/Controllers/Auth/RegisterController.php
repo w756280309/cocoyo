@@ -124,16 +124,15 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'status' => 1,
             'weapp_openid' => $data['openid'],
             'weixin_session_key' => $data['session_key'],
-            'avatar' => $request->input('avatar') ? url($request->input('avatar')) : url('/images/default_avatar.png'),
+            'avatar' => $request->input('avatar') ?: '/images/default_avatar.png',
         ]);
 
         return $this->respond([
-            'data' => [
-                'token' => $this->getBearerTokenByUser($user, 1, false),
-                'user' => new UserResource($user)
-            ]
+            'token' => $this->getBearerTokenByUser($user, 1, false),
+            'user' => new UserResource($user)
         ]);
     }
 }

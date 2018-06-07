@@ -29,10 +29,11 @@ class ArticleResource extends Resource
             'is_original'       => $this->is_original,
             'is_draft'          => $this->is_draft,
             'visitors'          => $this->view_count,
+            'comments_count'    => $this->comments_count,
             'published_at'      => $this->published_at->toDateTimeString(),
             'published_time'    => $this->published_at->toDayDateTimeString(),
             'published_individualization' => $this->published_at->diffForHumans(),
-            'created_at'        => $this->created_at->toDateTimeString(),
+            'created_at'        => $this->created_at->toDateString(),
         ];
     }
 }
