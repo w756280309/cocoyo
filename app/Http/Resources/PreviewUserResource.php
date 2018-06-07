@@ -29,6 +29,7 @@ class PreviewUserResource extends Resource
             'comments_count' => $this->comments_count,
             'is_following' => $this->is_following ?: false,
             'last_actived_at' => $this->last_actived_at->diffForHumans(),
+            'wx_bg' => $this->wx_bg,
             'created_at' => $this->created_at->toDateTimeString(),
         ];
     }

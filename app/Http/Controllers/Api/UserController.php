@@ -240,9 +240,17 @@ class UserController extends Controller
         $resource = $manager->store($request->file('image'), $path);
 
         $user = $request->user();
-        // 更新用户头像
-        $user->avatar = $resource['relative_url'];
-        $user->save();
+
+        switch ($request->input('type')) {
+            case 'avatar':
+                $user->avatar = $resource['relative_url'];
+                $user->save();
+                break;
+            case 'wx_bg':
+                $user->wx_bg = $resource['relative_url'];
+                $user->save();
+                break;
+        }
 
         return $this->respond($resource);
     }

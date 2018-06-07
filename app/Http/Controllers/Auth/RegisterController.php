@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'avatar' => $request->input('avatar') ? url($request->input('avatar')) : url('/images/default_avatar.png'),
+            'avatar' => $request->input('avatar') ? $request->input('avatar') : rand_avatar(),
             'qq_id' => $request->input('qq_id') ?: '',
             'weibo_id' => $request->input('weibo_id') ?: '',
         ]);
@@ -127,7 +127,7 @@ class RegisterController extends Controller
             'status' => 1,
             'weapp_openid' => $data['openid'],
             'weixin_session_key' => $data['session_key'],
-            'avatar' => $request->input('avatar') ?: '/images/default_avatar.png',
+            'avatar' => $request->input('avatar') ?: rand_avatar(),
         ]);
 
         return $this->respond([
