@@ -17,6 +17,7 @@ class CommentResource extends Resource
         return [
             'id'            => $this->id,
             'user'          => new UserResource($this->whenLoaded('user')),
+            'parent_id'     => $this->parent_id,
             'reply_user'    => new UserResource($this->whenLoaded('reply_user')),
             'parent_id'     => $this->parent_id,
             'content'       => $this->content,

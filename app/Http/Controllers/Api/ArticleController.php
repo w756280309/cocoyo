@@ -16,8 +16,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->withCount('comments')->valid()->paginate(6);
-
+        $articles = Article::latest()->valid()->withCount('comments')->paginate(6);
+        
         $articles->load(['user', 'category', 'tags']);
 
         return ArticleResource::collection($articles);
@@ -31,7 +31,7 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        $article = Article::where('slug', $slug)->first();
+        $article = Article::where('slug', $slug)->withCount('comments')->first();
 
         $article->load(['user', 'tags']);
 

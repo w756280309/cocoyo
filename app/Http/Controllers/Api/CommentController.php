@@ -126,18 +126,14 @@ class CommentController extends Controller
             $comment->save();
         }
 
-        $new_comment = Comment::where('id', $comment->id)->with(['user' => function ($query) {
-            return $query->select('id', 'name', 'avatar');
-        }, 'reply_user' => function ($query) {
-            return $query->select('id', 'name', 'avatar');
-        }])->first();
+        $new_comment = Comment::where('id', $comment->id)->with(['user', 'reply_user'])->first();
 
         // 发送消息
         $comment->user->notify(new ReceivedCommentNotification($comment));
         // 推送事件
         broadcast(new NotificationPushEvent($comment->user));
 
-        return $this->respond(['data' => $new_comment]);
+        return new CommentResource($new_comment);
     }
 
     /**
@@ -175,5 +171,30 @@ class CommentController extends Controller
         $child_comment->delete();
 
         return $this->recursive($child_comment);
+    }
+
+    /**
+     * 小程序评论列表
+     *
+     * @param Request $request
+     * @param $commentableId
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function wxshow(Request $request, $commentableId)
+    {
+        //获取评论类型  评论是多态  限制返回类型
+        $commentableType = $request->input('commentable_type') ?: 'article';
+
+        if ($commentableType == 'article') {
+            $commentableType = 'App\Models\Article';
+        }
+
+        //获取评论列表
+        $comments = Comment::where('commentable_id', $commentableId)
+            ->where('commentable_type', $commentableType)
+            ->with('user' , 'reply_user')
+            ->get();
+
+        return CommentResource::collection($comments);
     }
 }

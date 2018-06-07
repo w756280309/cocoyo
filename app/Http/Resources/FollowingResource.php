@@ -19,7 +19,8 @@ class FollowingResource extends Resource
             'name' => $this->name,
             'nickname' => $this->nickname,
             'avatar' => $this->avatar,
-            'description' => $this->description
+            'description' => $this->description,
+            'created_at' => $this->pivot->created_at->diffForHumans()
         ];
     }
 }

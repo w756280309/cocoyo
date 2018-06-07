@@ -25,11 +25,11 @@ class UserRequest extends FormRequest
     {
         return [
             'nickname' => 'nullable|min:1|max:10',
-            'website' => 'nullable|active_url',
+            'website' => 'nullable|min:1|max:255',
             'weibo_name' => 'nullable|min:1|max:10',
             'weibo_link' => 'nullable|active_url',
             'github_name' => 'nullable|min:1|max:10',
-            'description' => 'nullable|min:1|max:255'
+            'description' => 'nullable|min:1|max:20'
         ];
     }
 
@@ -47,7 +47,7 @@ class UserRequest extends FormRequest
             'github_name.min' => 'github最小为1个字符',
             'github_name.max' => 'github最大为10个字符',
             'description.min' => '描述最小为1个字符',
-            'description.max' => '描述最大为255个字符',
+            'description.max' => '描述最大为20个字符',
         ];
     }
 }
