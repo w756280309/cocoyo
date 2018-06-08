@@ -17,7 +17,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->valid()->withCount('comments')->paginate(6);
-        
+
         $articles->load(['user', 'category', 'tags']);
 
         return ArticleResource::collection($articles);
