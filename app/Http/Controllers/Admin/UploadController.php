@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic;
 
 class UploadController extends Controller
 {
@@ -38,6 +39,32 @@ class UploadController extends Controller
 
         $resource = $this->manager->store($request->file('image'), $path);
 
+        // 对文章封面进行裁剪
+        if ($request->input('type') == 'article') {
+            $this->reduceArticleSize(public_path($resource['relative_url']), $resource['filename']);
+        }
+
         return $this->respond($resource);
+    }
+
+    /**
+     * 对文章封面图片进行裁剪 PC 和小程序中显示
+     *
+     * @param $file_path 文件绝对路径
+     * @param $filename 文件名
+     */
+    public function reduceArticleSize($file_path, $filename)
+    {
+        // 先实例化，传参是文件的磁盘物理路径
+        $image = ImageManagerStatic::make($file_path);
+
+        // 进行大小调整的操作 PC端显示
+        $image->resize(568, 200)->save($file_path);
+
+        // 进行大小调整的操作 小程序端显示
+        $image->resize(372, 110)->save($file_path . '_372x110px' . strrchr($filename, '.'));
+
+        // 进行大小调整的操作 小程序分享显示
+        $image->resize(500, 400)->save($file_path . '_500x400px' . strrchr($filename, '.'));
     }
 }

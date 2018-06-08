@@ -38,7 +38,7 @@
                         发布
                     </p>
                     <FormItem label="封面" prop="page_image">
-                        <image-cover action="upload/image" :image="form.page_image" @successUpload="handleImageSuccess"></image-cover>
+                        <image-cover action="upload/image" :image="form.page_image" params="article" @successUpload="handleImageSuccess"></image-cover>
                     </FormItem>
                     <FormItem label="时间" prop="published_at">
                         <DatePicker format="yyyy-MM-dd HH:mm:ss" :value="form.published_at" type="datetime" @on-change="changeDate"></DatePicker>
@@ -191,7 +191,7 @@
                         endpoint: '/api/upload/image',
                         inputName: 'image',
                         customHeaders: {
-                            'X-Requested-With': 'XMLHttpRequest'
+                            'X-Requested-With': 'XMLHttpRequest',
                         },
                         params: {
                             strategy: 'article'

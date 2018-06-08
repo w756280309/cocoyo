@@ -25,6 +25,8 @@ class ArticleResource extends Resource
             'content'           => collect(json_decode($this->content))->get('raw'),
             'content_html'      => collect(json_decode($this->content))->get('html'),
             'page_image'        => $this->page_image,
+            'wx_image'          => $this->page_image . '_372x110px' . strrchr($this->page_image, '.'),
+            'share_wx_image'    => $this->page_image . '_500x400px' . strrchr($this->page_image, '.'),
             'meta_description'  => $this->meta_description,
             'is_original'       => $this->is_original,
             'is_draft'          => $this->is_draft,
