@@ -55,6 +55,31 @@ class CommentController extends Controller
     }
 
     /**
+     * 小程序评论显示
+     *
+     * @param Request $request
+     * @param $commentableId
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function wxappShow(Request $request, $commentableId)
+    {
+        //获取评论类型  评论是多态  限制返回类型
+        $commentableType = $request->input('commentable_type') ?: 'article';
+
+        if ($commentableType == 'article') {
+            $commentableType = 'App\Models\Article';
+        }
+
+        //获取评论列表
+        $comments = Comment::where('commentable_id', $commentableId)
+            ->where('commentable_type', $commentableType)
+            ->with('user', 'reply_user')
+            ->paginate(5);
+
+        return CommentResource::collection($comments);
+    }
+
+    /**
      * 评论
      *
      * @param CommentRequest $request
