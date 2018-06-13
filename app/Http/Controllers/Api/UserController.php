@@ -15,10 +15,22 @@ use App\Services\FileManager\BaseManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CommentResource;
+use Illuminate\Validation\Rule;
 
 
 class UserController extends Controller
 {
+    /**
+     * 获取用户信息
+     *
+     * @param Request $request
+     * @return UserResource
+     */
+    public function index(Request $request)
+    {
+        return new UserResource($request->user());
+    }
+
     /**
      * 用户详情
      *
@@ -56,11 +68,12 @@ class UserController extends Controller
     }
 
     /**
-     * 编辑用户信息
+     *  编辑用户信息
      *
      * @param UserRequest $request
      * @return UserResource
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(UserRequest $request)
     {
@@ -68,10 +81,30 @@ class UserController extends Controller
 
         $this->authorize('update', $user);
 
-        $data = $request->only(['nickname', 'website', 'weibo_name', 'weibo_link', 'github_name', 'description']);
+        $data = $request->only(['nickname', 'avatar', 'website', 'weibo_name', 'weibo_link', 'github_name', 'description']);
+        // 验证用户名
+        if ($request->has('name')) {
+            $validate = \Validator::make($request->all(), [
+                'name' => [
+                    'required',
+                    'min:3',
+                    'max:8',
+                    Rule::unique('users')->ignore($user->id)
+                ]
+            ], [
+                'name.required' => '请输入昵称',
+                'name.min' => '昵称最少为3个字符',
+                'name.max' => '昵称最长为8个字符',
+                'name.unique' => '昵称已存在',
+            ]);
 
+            $validate->validate();
+
+            $data = array_merge($data, ['name' => $request->name]);
+        }
+
+        // 更新
         $user->fill($data);
-
         $user->save();
 
         return new UserResource($user);
@@ -149,6 +182,12 @@ class UserController extends Controller
         return FollowingResource::collection($followings);
     }
 
+    /**
+     * 消息列表
+     *
+     * @param $username
+     * @return mixed
+     */
     public function notifications($username)
     {
         $user = $this->getUserByName($username);
@@ -181,6 +220,39 @@ class UserController extends Controller
         $user->save();
 
         return $this->success('success');
+    }
+
+    /**
+     * 小程序上传头像
+     *
+     * @param Request $request
+     * @param BaseManager $manager
+     * @return mixed
+     */
+    public function wx_avatar(Request $request, BaseManager $manager)
+    {
+        $this->validate($request, [
+            'image' => 'required|image'
+        ]);
+
+        $path = date('Y') . date('m') . '/' . date('d');
+
+        $resource = $manager->store($request->file('image'), $path);
+
+        $user = $request->user();
+
+        switch ($request->input('type')) {
+            case 'avatar':
+                $user->avatar = $resource['relative_url'];
+                $user->save();
+                break;
+            case 'wx_bg':
+                $user->wx_bg = $resource['relative_url'];
+                $user->save();
+                break;
+        }
+
+        return $this->respond($resource);
     }
 
     /**

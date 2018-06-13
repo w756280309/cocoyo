@@ -48,6 +48,12 @@
                 type: String,
                 default: 'upload/image'
             },
+            params: {
+                default() {
+                    return ''
+                },
+                type: String
+            }
         },
         mounted () {
             let img = document.getElementById('image-cover');
@@ -86,6 +92,9 @@
                     var formData = new FormData();
 
                     formData.append('image', blob);
+                    if (vm.params) {
+                        formData.append('type', vm.params);
+                    }
 
                     vm.$http.post(vm.action, formData).then((response) => {
                         vm.$emit('successUpload', response)

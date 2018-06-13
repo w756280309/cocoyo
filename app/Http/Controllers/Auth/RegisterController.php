@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'avatar' => $request->input('avatar') ?: '/images/default_avatar.png',
+            'avatar' => $request->input('avatar') ? $request->input('avatar') : rand_avatar(),
             'qq_id' => $request->input('qq_id') ?: '',
             'weibo_id' => $request->input('weibo_id') ?: '',
         ]);
@@ -96,5 +96,43 @@ class RegisterController extends Controller
         $user->notify(new UserRegisterVerficationCode($user));
 
         return $this->success('success');
+    }
+
+    /**
+     * 小程序注册
+     * (简化注册无需验证邮箱)
+     *
+     * @param RegisterRequest $request
+     * @return \App\Traits\json|mixed
+     */
+    public function weappStore(RegisterRequest $request)
+    {
+        // 获取微信的 openid 和 session_key
+        $miniProgram = \EasyWeChat::miniProgram();
+        $data = $miniProgram->auth->session($request->code);
+
+        if (isset($data['errcode'])) {
+            return $this->errorUnauthorized('code 不正确');
+        }
+
+        if (User::where('weapp_openid', $data['openid'])->first()) {
+            return $this->notAccess('微信已绑定其他用户，请直接登录');
+        }
+
+        // 创建用户
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'status' => 1,
+            'weapp_openid' => $data['openid'],
+            'weixin_session_key' => $data['session_key'],
+            'avatar' => $request->input('avatar') ?: rand_avatar(),
+        ]);
+
+        return $this->respond([
+            'token' => $this->getBearerTokenByUser($user, 1, false),
+            'user' => new UserResource($user)
+        ]);
     }
 }

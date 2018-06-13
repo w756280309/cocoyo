@@ -24,6 +24,8 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('articles/{slug}', 'ArticleController@show')->name('articles.show');
     # ------------------- 评论详情 ----------------------------
     Route::get('commentable/{commentableId}/comment', 'CommentController@show')->name('comments.show');
+    # ------------------- 小程序评论详情 ----------------------------
+    Route::get('commentable/{commentableId}/wx_comment', 'CommentController@wxshow')->name('comments.wx.show');
     # ------------------- 用户详情 ----------------------------
     Route::get('users/{username}', 'UserController@show')->name('users.show');
     # ------------------- 用户评论 ----------------------------
@@ -33,6 +35,8 @@ Route::group(['namespace' => 'Api'], function () {
 
     # ------------------- 需要登录路由 ----------------------------
     Route::group(['middleware' => 'auth:api'], function () {
+        # ------------------- 用户信息 ----------------------------
+        Route::get('user', 'UserController@index')->name('users.index');
         # ------------------- 用户消息 ----------------------------
         Route::get('users/{username}/notifications', 'UserController@notifications')->name('users.notifications');
         # ------------------- 用户资料 ----------------------------
@@ -41,6 +45,8 @@ Route::group(['namespace' => 'Api'], function () {
         Route::put('users/{username}/profile', 'UserController@update');
         # ------------------- 修改头像 ----------------------------
         Route::put('users/{username}/avatar', 'UserController@avatar');
+        # ------------------- 小程序修改头像 ----------------------------
+        Route::post('users/{username}/wx_avatar', 'UserController@wx_avatar');
         # ------------------- 修改邮件通知 ----------------------------
         Route::put('users/{username}/email_notify_enabled', 'UserController@email_notify_enabled');
         # ------------------- 修改密码 ----------------------------
@@ -65,6 +71,10 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('login', 'LoginController@login')->name('login');
     # ------------------- 第三方登录 ----------------------------
     Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')->name('socials.authorizations.store');
+    # ------------------- 小程序登录 ----------------------------
+    Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')->name('weapp.authorizations.store');
+    # ------------------- 小程序注册 ----------------------------
+    Route::post('weapp/users', 'RegisterController@weappStore')->name('weapp.users.store');
     # ------------------- 用户注册 ----------------------------
    Route::post('register', 'RegisterController@register')->name('register');
     # ------------------- 退出登录 ----------------------------
